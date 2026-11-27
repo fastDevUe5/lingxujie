@@ -10,6 +10,7 @@
 | --- | --- |
 | 编译 + 生成关卡 | `BuildAll.ps1`、`BuildLevel.ps1` |
 | 编辑器生命周期 | `EditorGuard.ps1`（check / dismiss / restart / watch / stop）、`RebuildInEditor.ps1` |
+| 开工自检 | **`Status.ps1`**（一屏：编辑器 / MCP / 关卡 / actor 数 / 相机是否默认位 / git / 磁盘） |
 | 窗口布局 | `SetupLayout.ps1` |
 | MCP 调用 | `mcp.ps1`、`mcp_capture.py`、`mcp_tools.py`、`list_mcp_tools.py` |
 | 视口复位 | `reset_view.py`（规则 3b 的兜底；MCP `SetCameraTransform` 也能做） |

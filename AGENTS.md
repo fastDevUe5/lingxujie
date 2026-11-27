@@ -69,6 +69,10 @@
    然后 `git commit`。**这是每个块的固定一步，不是"收工时"的判断**——
    判断会漏，清单不会。**上下文会被自动压缩，只有写进文件的东西才不丢。**
    别等人的提醒：一个块做完、验证完、截图完，就顺手写。
+   **⚠️ 验证纪律**：写进文档 / 清单 / SOP 的操作步骤，后面必须跟一条
+   **可复制的验证命令 + 期望输出**；当时没验证的标 `⚠️ 未验证`。
+   **没有验证的步骤等于没写** —— `Docs/ASSETS.md` 第 7 节"已核实 / 待核"就是模板。
+   **`Docs/NEXT-SESSION.md` 已分卷**：主文件只留最近 15 节，更早的在 `Docs/sessions/`。
 10. **写完状态后，回复末尾必须附「断点卡片」**，固定五行，不要自由发挥：
 
     ```
@@ -148,8 +152,8 @@
 2. 读 `Docs/ASSETS.md` —— 哪些资产已导入、哪些在 Fab 库、署名要求。**不要再去 Fab 找包。**
 3. 读 `Docs/P0-DESIGN.md` —— 要做什么（四张图、系统、数值、DoD）。
 4. 读 `Docs/BACKLOG.md` —— 领**一条**任务（T1–T8），它自带验收标准。
-5. 读 `Docs/NEXT-SESSION.md` —— **取编号最大的那一节**（目前是第 81 节：大资产退出 git —— 历史重启成"只有文本"的 14 MB），
-   那里是"上次停在哪"。第 14 节及之前是历史。
+5. 读 `Docs/NEXT-SESSION.md` —— **取编号最大的那一节**（目前是第 82 节：协作准备 —— 分卷 + 一屏自检 + 验证纪律），
+   那里是"上次停在哪"。**更早的在 `Docs/sessions/` 分卷里**（1–66 节）。
 
 **动手写任何工具/脚本之前，先读 `Docs/UE-TOOLSET-MAP.md` ——
 引擎自带 217 个工具，很可能已经有了，别重复造。**
@@ -275,6 +279,7 @@ powershell -ExecutionPolicy Bypass -File Tools\BuildAll.ps1     # 编译 + 生�
 powershell -ExecutionPolicy Bypass -File Tools\BuildLevel.ps1   # 只生成关卡（需关编辑器）
 powershell -ExecutionPolicy Bypass -File Tools\RebuildInEditor.ps1  # 编辑器常开时在内部重建
 powershell -ExecutionPolicy Bypass -File Tools\SetupLayout.ps1      # 摆好编辑器/Fab/聊天窗的位置
+powershell -ExecutionPolicy Bypass -File Tools\Status.ps1           # 一屏自检：编辑器/MCP/关卡/相机/git/磁盘
 powershell -ExecutionPolicy Bypass -File Tools\Cleanup.ps1          # 清理 Saved（默认只算不删，-Apply 才删）
 powershell -ExecutionPolicy Bypass -File Tools\EditorGuard.ps1 -Action check    # 编辑器/MCP/模态框/崩溃自检
 powershell -ExecutionPolicy Bypass -File Tools\EditorGuard.ps1 -Action dismiss  # 点掉 Crash Reporter / 恢复包
