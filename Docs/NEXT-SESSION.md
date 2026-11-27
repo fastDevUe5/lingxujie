@@ -1398,3 +1398,51 @@ disk       : Saved 1,087.2 MB  |  screenshots 499  (cleanup trigger 1200 MB / 60
 | 编辑器**租约文件**（多 agent 串行化） | 等真有两个 agent 同时干活再做；现在硬约束 3 够用 |
 | `Docs/ASSETS.md` 三个缺口 | 角色 glTF 批量导入 / Fab 库名核实 / 每个包被谁用 |
 | 回业务：动画接线 或 NOT_SOLID 法线 | 流程这条线可以收了 |
+
+## 83. C++ 闭环自证：编译 → 测试 → PIE → 截图（2026-11-27 12:35）
+
+### 一、结果（全部实测）
+
+| 步 | 结果 |
+| --- | --- |
+| `BuildAll.ps1` 编译 | `Result: Succeeded`，退出码 **0** |
+| 关卡生成 | `Done. 110 actors in /Game/Maps/LingXuJie` |
+| `RunTests.ps1` | **completed=15 failed=0**，`ALL TESTS PASSED` |
+| 重启编辑器 | `EditorGuard -Action restart -ApplyLayout` → MCP 2 秒内就绪、布局已应用 |
+| PIE | `StartPIE` → `running=True`；日志 `Player ready at V(8950,-6200,3675)`；截到画面；`StopPIE` → `False` |
+
+**证据**：`Saved\Logs\build.log`、`Saved\Logs\tests.log`、`Saved\proof_pie_player.png`（1180×688，
+看得见替身角色站在广场上）。
+
+### 二、两个发现（都比"编译通过"重要）
+
+**① 重建会抹掉手动摆的 actor：116 → 110。**
+`build_level.py` 是 `new_level` 全量重建，以下 6 个不属于生成流程的 actor 全没了：
+
+```
+MX_BOSS001_STATIC（刚修好材质的那个）  MX_BOSS001  MX_BOSSCOWF
+MX_BIRD_TEST  MX_BOBU_TEST  MX_AMBIENT_MUSIC（背景音乐）
+```
+
+**→ 上一轮（第 78 节）的材质修复从**关卡**里消失**（脚本 `place_static_boss.py` 里还在，材质在资产上）。
+**→ 这是硬缺口：手动摆的东西没有归属，每次重建都要人肉重跑 5 个脚本。**
+（`place_static_boss.py` / `place_bird.py` / `place_bobu.py` / `place_character.py` / `add_level_music.py` 都在，
+只是没人把它们串进 `BuildAll`。）
+
+**② 输入注入仍不可用：按钮点不动，但 `WM_CLOSE` 有效。**
+关编辑器时弹出「保存内容」对话框（脏的全是上一轮的实验室实验：`/Engine/BasicShapes/Cube` +
+`/Game/Learning/` 的 4 个），`ui.ps1 -Action click` **点了没反应**；`PostMessage(WM_CLOSE)` 却有效
+（对话框能关、编辑器能退出）。所以"先消息、后点击"的顺序是对的，**不要再指望点按钮**。
+强杀进程后编辑器再启动会弹「恢复包」，`EditorGuard -Action dismiss` 一次就清掉。
+
+### 三、相机的坑（gotcha #123）
+
+`StopPIE` 之后编辑器相机被打到 `(3536, -8740, -25328)` —— 地底。已按规则 3b 复位，
+`GetCameraTransform` 回读 `8950,-6200,3900 yaw 0 pitch -2`。**PIE 的调用里必须把复位写进去。**
+
+### 四、下一步
+
+| 事项 | 为什么排第一 |
+| --- | --- |
+| **写 `Tools/place_extras.py`，并挂到 `BuildAll` 末尾** | 补上"手动 actor 没有归属"这个缺口；一次调用放回 6 个，重建后不再丢 Boss 和背景音乐 |
+| 然后领 T6（秦皇陵：Boss 石台 + 入口 + 1 只 Boss） | 纯内容，且正好用上刚补的摆位脚本 |

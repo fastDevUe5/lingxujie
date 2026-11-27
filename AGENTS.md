@@ -152,7 +152,7 @@
 2. 读 `Docs/ASSETS.md` —— 哪些资产已导入、哪些在 Fab 库、署名要求。**不要再去 Fab 找包。**
 3. 读 `Docs/P0-DESIGN.md` —— 要做什么（四张图、系统、数值、DoD）。
 4. 读 `Docs/BACKLOG.md` —— 领**一条**任务（T1–T8），它自带验收标准。
-5. 读 `Docs/NEXT-SESSION.md` —— **取编号最大的那一节**（目前是第 82 节：协作准备 —— 分卷 + 一屏自检 + 验证纪律），
+5. 读 `Docs/NEXT-SESSION.md` —— **取编号最大的那一节**（目前是第 83 节：C++ 闭环自证 —— 编译 / 15 条测试 / PIE 全绿），
    那里是"上次停在哪"。**更早的在 `Docs/sessions/` 分卷里**（1–66 节）。
 
 **动手写任何工具/脚本之前，先读 `Docs/UE-TOOLSET-MAP.md` ——
@@ -325,9 +325,9 @@ powershell -ExecutionPolicy Bypass -File Tools\MakeRelease.ps1 -Version v0.0.1
 
 ## 5. 已知坑
 
-全部在 [`Docs/UE5-Gotchas.md`](Docs/UE5-Gotchas.md)（**122 条**）：继承 CoinRush 的 27 条（Live Coding 互斥、
+全部在 [`Docs/UE5-Gotchas.md`](Docs/UE5-Gotchas.md)（**123 条**）：继承 CoinRush 的 27 条（Live Coding 互斥、
 LFS、MCP 会话失效、Smart App Control 拦 UBT、打包版 ProjectSavedDir 等），
-加上 P0 阶段新增的 #28–#122（Canvas HUD 伤害数字、相机 yaw、UE5.8 编译两则、actor 清单排查、
+加上 P0 阶段新增的 #28–#123（Canvas HUD 伤害数字、相机 yaw、UE5.8 编译两则、actor 清单排查、
 agent 沙箱弄坏 UBT、SpawnActor 朝向、状态机"巡逻≠回家"、近战判定三连坑、自动曝光洗白画面、
 多平行光竞争、程序化地面不进存档、Python 烘 StaticMesh 撞断言、崩溃报告窗口挡自动化、
 编辑器内重建复用旧模块、重建后截图只有影子、Python 建材质的 Clamp 引脚、
@@ -335,7 +335,7 @@ agent 沙箱弄坏 UBT、SpawnActor 朝向、状态机"巡逻≠回家"、近战
 #67 PIE 开着建不了关卡、#68 墨香 OBJ 的 Y 会被取反、
 #116 组件 override 优先于资产材质槽、#117 沙箱里 try/except 抓不住工具报错、
 #118 CaptureViewport 必须传 annotations、#119 PowerShell 字符串不是字符串、
-#120 GitHub 用 GH008 拒绝缺 LFS 对象的推送、#121 从快照分支切回 main 不能用 checkout -f、#122 LFS 不是"大资产进 git"的解药**）。**新坑继续追加**。
+#120 GitHub 用 GH008 拒绝缺 LFS 对象的推送、#121 从快照分支切回 main 不能用 checkout -f、#122 LFS 不是"大资产进 git"的解药、#123 StopPIE 后相机跑到地底**）。**新坑继续追加**。
 
 **能力地图与 API 出处在 [`Docs/UE5-OFFICIAL-REFERENCE.md`](Docs/UE5-OFFICIAL-REFERENCE.md)：**
 我们这台 5.8.4 有哪些 MCP 工具集、视口相机的权威 API（引擎源码核实）、

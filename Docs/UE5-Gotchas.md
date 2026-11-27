@@ -1828,6 +1828,9 @@
   ```
   `gridSpacing: 0` 关网格、`maxLabelDistance: 0` 关标签，`classFilter: null` 可以接受
 - **教训**：**schema 说"可选"不等于包装函数给默认值** —— 报"needs a default value"时照着 schema 全填
+- **更正（2026-11-27 PIE 抓图）**：反过来也一样 —— 只传 `annotations` 不传 `captureTransform`，报
+  `input param "captureTransform" needs a default value`。**两个参数都没有默认值，必须同时传**，
+  否则你会在两个错误之间来回跳
 - **出处**：2026-11-27，一次调用里两次截图
 
 ## 119. PowerShell 里 `$script` 装 `Get-Content -Raw` 的结果，`ConvertTo-Json` 会变成 `{"value": ...}`
@@ -1897,3 +1900,17 @@
 - **教训**：**体积问题只能在"要不要进版本库"这一层解决。**
   判断标准不是"能不能压缩/LFS"，是"**丢了能不能重建**"：能重建的不进 git，不能重建的（源码、文档、参数）才进
 - **出处**：2026-11-27，`main` 历史重建（NEXT-SESSION 第 81 节）
+
+## 123. `StopPIE` 之后编辑器相机跑到 z = -25328，必须手动复位
+
+- **症状**：一次调用里 `StartPIE → CaptureViewport → StopPIE`，返回的 `camera_after` 是
+  `(3536, -8740, **-25328**)` —— 远在地底。人切回编辑器就是一屏黑（规则 3b 正是防这个）
+- **原因**：PIE 在视口里运行会把视口相机交给游戏视角；停止时恢复的姿势不一定是 PIE 之前的那个
+- **修法**：**PIE 的调用里，`StopPIE` 之后立刻 `SetCameraTransform` 回默认位，并回读确认**：
+  ```
+  SetCameraTransform({location: 8950,-6200,3900, rotation: 0,-2,0})
+  GetCameraTransform  → 期望 8950,-6200,3900 yaw 0 pitch -2
+  ```
+  `Tools\Status.ps1` 会直接告诉你 `default view: yes/no`
+- **教训**：**"截图好看"和"人的编辑器好看"是两件事**，PIE 之后尤其如此 —— 相机复位要写进调用里，不能靠记性
+- **出处**：2026-11-27，C++ 闭环自证（NEXT-SESSION 第 83 节）
