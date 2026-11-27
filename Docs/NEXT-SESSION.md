@@ -6765,6 +6765,7 @@ check-ignore         Content/*.umap=ignored, Assets/**/*.png=ignored,
 
 | 事项 | 备注 |
 | --- | --- |
-| **`Docs/ASSETS.md` 补"资产怎么重建"** | 现在没有它，资产丢了就是真丢了 |
+| ✅ `Docs/ASSETS.md` 已改成可执行的重建清单 | 兰州城那条链路已核实（`build_map_obj.py` → `build_moxiang_map.py`），见 `Docs/ASSETS.md` 第 2 节 |
+| 剩余缺口：角色 glTF 批量导入 / Fab 包库名核实 / 每个包被谁用 | 都写在 `Docs/ASSETS.md` 第 7 节 |
 | 删 `archive-lfs` 回收 5.5 GB | 确认旧历史不要了再动（`git branch -D archive-lfs` + `git lfs prune`） |
 | 继续业务：工作方式第二块（动画接线 / NOT_SOLID 法线） | 备份这条线到此收口 |

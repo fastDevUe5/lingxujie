@@ -19,11 +19,12 @@
 | 5 | **Megaplant Library** `Content/Megaplant_Library` | 342 MB / 149 | ❌ | Fab 库 | 同上 |
 | 6 | **KHS 建春门** `Content/GeonchunmunComplex` | 320 MB / 417 | ❌ | Fab 库 | 同上（只是练习场，关卡不依赖） |
 | 7 | **Fab Megascans** `Content/Fab/Megascans`（QMF_* 材质函数） | 219 MB / 41 | ❌ | Fab 库 | 同上 |
-| 8 | **墨香源模型** `Assets/Moxiang` | 445 MB / 3,147 | ❌ | 研究区 `moxiang-study` | `batch_export.py` → glTF → 导入 |
-| 9 | **Polyfork 试用资产** `Assets/Polyfork` | 5.5 MB / 37 | ❌ **授权原因不入库** | Polyfork | 重下（见第 3 节的说明） |
-| 10 | `Content/Props`（BP_Terrain / Roof / GrassField / StoneField） | 8.1 MB / 111 | ❌ | **由 `Assets/Polyfork` 生成** | `build_level.py` |
-| 11 | `Content/Materials`、`Content/Textures` | 12 MB | ❌ | **生成物** | `build_level.py` |
-| 12 | `Content/Maps/LingXuJie.umap` | 0.2 MB | ❌ | **生成物** | `build_level.py` |
+| 8 | **兰州城几何源** `Assets/Moxiang/ue_import/*_arch_*.obj`（96 个）+ `textures_png`（2,407 张） | 86 MB + 340 MB | ❌ 本地 | **研究区**（`moxiang-study` 解析好的 map） | `build_map_obj.py` 重跑 |
+| 9 | **角色/骨骼 glTF** `Assets/Moxiang/ue_import/batch/*.gltf`（253 个） | 6 MB | ❌ 本地 | 研究区 `resources/mod` | `batch_export.py` 重跑 |
+| 10 | **Polyfork 试用资产** `Assets/Polyfork` | 5.5 MB / 37 | ❌ **授权原因不入库** | Polyfork | 重下（见第 3 节） |
+| 11 | `Content/Props`（BP_Terrain / Roof / GrassField / StoneField） | 8.1 MB / 111 | ❌ | **由 `Assets/Polyfork` 生成** | `build_level.py` |
+| 12 | `Content/Materials`、`Content/Textures` | 12 MB | ❌ | **生成物** | `build_level.py` |
+| 13 | `Content/Maps/LingXuJie.umap` | 0.2 MB | ❌ | **生成物** | `build_level.py` |
 
 **判据（AGENTS 硬约束 5）**：**"丢了能不能重建"** —— 能重建的不进 git，不能重建的（源码、文档、参数、2 MB 的自绘贴图）才进。
 
@@ -52,12 +53,25 @@ powershell -ExecutionPolicy Bypass -File Tools\ImportFab.ps1 -Source <zip所在�
 
 **⚠️ Fab 原始 zip 目前不在本机**（`Downloads` 与 `Saved\FabStaging` 都空），只能重新下载。
 
-### 第 2 步：重建墨香资产
+### 第 2 步：重建墨香资产（**两条路，别混**）
+
+**A. 兰州城（96 个 `SM_LZ_*` + 95 个 `M_LZ_*`，关卡的主体）—— 来自 OBJ，不是 glTF：**
 
 ```powershell
-# 源：研究区  C:/Users/tk/Desktop/moxiang-study/resources/mod/*.mod
-py Tools/batch_export.py                 # → Assets/Moxiang/ue_import/batch/*.gltf
-# 再把这些 glTF 导入 Content/Moxiang（导入脚本链路见第 5 节缺口 ②）
+# 源：研究区  C:/Users/tk/Desktop/moxiang-study（解析好的 map）
+py Tools/build_map_obj.py
+#   → Assets/Moxiang/ue_import/*_arch_*.obj（96 个，86 MB）+ textures_png/（2,407 张，340 MB）
+
+py Tools/build_moxiang_map.py
+#   → /Game/Moxiang：96 个 SM_LZ_* + 95 个 M_LZ_* + M_Moxiang_Ground
+```
+
+**B. 角色 / 骨骼（`Content/Moxiang/Skeletal`，59 个）—— 来自 glTF：**
+
+```powershell
+py Tools/batch_export.py
+#   → Assets/Moxiang/ue_import/batch/*.gltf（253 个，6 MB）
+# 再逐个导入 /Game/Moxiang/Skeletal/...（⚠️ 这一步仍是**一次性脚本**，见第 7 节缺口 ②）
 ```
 
 ### 第 3 步：生成关卡（材质、道具、地形都在这一步）
@@ -83,6 +97,9 @@ MCP 截图：广场应能看到红牌坊、石板路、建筑群
 - **`Assets/Textures` 那 16 张 PNG 没有生成脚本**（`Tools/paint_textures.py` 已不在），
   所以是**不可再生**的，才破例放进仓库（2.1 MB）。
 - **`Content/Textures` 是导入产物**，不是原件；原件在 `Assets/Textures`。
+- **兰州城的源是 OBJ，不是 glTF。** `17_arch_101_10_soongsan_door.obj` → `SM_LZ_101_10_SOONGSAN_DOOR`。
+  `Assets/Moxiang/ue_import/batch` 那 253 个 glTF 是**角色**（`batch_export.py` 产出），
+  **和建筑名对不上是正常的，不是资产丢了。**
 - **两个大包不在生成流程里**：`SeyeonjeongPavilion` 和 `GeonchunmunComplex` 目前只是素材池 +
   练习场（后者的 Demo 地图用于渲染实验）。**关卡的 116 个 actor 不依赖它们。**
 
@@ -124,7 +141,9 @@ MCP 截图：广场应能看到红牌坊、石板路、建筑群
 | # | 缺口 | 影响 |
 | --- | --- | --- |
 | ① | **Fab 包的准确库名与档位**只在下表里，没核实到 Fab 页面 | 重下时可能选错包/选错质量档 |
-| ② | **墨香 glTF → `Content/Moxiang` 的导入脚本链路**没逐步核对 | 第 2 步可能跑不通 |
+| ② | **角色 glTF（253 个）没有批量导入脚本** —— 当年是一个一个 `import_gltf_any.py` 导的 | 第 2 步 B 只能手工补，`Content/Moxiang/Skeletal` 的 59 个资产恢复不了 |
 | ③ | **"每个包被哪些 actor 用"没反查** | 不知道丢了哪个包会少哪片景 |
 
-**补法**：① 打开 Fab 库对照；② 读 `Tools/import_gltf_any.py` 一类脚本 + 跑一次 ③ 扫关卡 actor 的 mesh 路径。
+**已核实（不再算缺口）**：兰州城那条链路两个脚本都在
+（`build_map_obj.py` → 96 个 `*_arch_*.obj`；`build_moxiang_map.py` → `/Game/Moxiang`），
+且产物命名能对上现有资产（`17_arch_<stem>.obj` → `SM_LZ_<STEM>`）。
