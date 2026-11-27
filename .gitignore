@@ -35,6 +35,10 @@ Assets/**/*.dds
 Assets/**/*.wav
 Assets/**/*.mp3
 
+# 例外：自绘贴图 16 张（2.1 MB）—— 生成脚本已不在，丢了就真没了（见 Docs/ASSETS.md 第 3 节）
+!Assets/Textures/
+!Assets/Textures/**/*.png
+
 # DSH 本地 bundle 的依赖（源文件仍然提交）
 dsh-bundles/**/node_modules/
 dsh-bundles/**/.pnpm-store/

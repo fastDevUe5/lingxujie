@@ -6730,8 +6730,8 @@ Assets/**/*.gltf            （269 个，6.1 MB）
 ### 三、验证
 
 ```
-git ls-files         1132
-tracked 工作区体积    14.2 MB
+git ls-files         1150
+tracked 工作区体积    16.3 MB
 git status           0 行
 check-ignore         Content/*.umap=ignored, Assets/**/*.png=ignored,
                      Assets/Map/p0_world.json=kept, Assets/Gate/*.json=kept
@@ -6753,6 +6753,7 @@ check-ignore         Content/*.umap=ignored, Assets/**/*.png=ignored,
 | --- | --- |
 | 代码 / 文档 / 工具 / `.gltf` / `.json` | ✅ GitHub `main`（14.2 MB，每次 commit 都能推） |
 | `Content/`（4.7 GB）+ `Assets/` 二进制（0.48 GB） | ❌ **只有本机一份** |
+| 例外：`Assets/Textures` 16 张自绘 PNG（2.1 MB） | ✅ 已进 git —— **生成脚本已不在，丢了就真没了** |
 
 **代价说清楚：磁盘坏 = 资产没了。** 代码和文档能拉回来，`Content/` 只能重导。
 **所以 `Docs/ASSETS.md` 必须写清"每个包从哪来、用哪个脚本导" —— 这是接下来的硬任务**，
