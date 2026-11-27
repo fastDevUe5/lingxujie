@@ -111,6 +111,33 @@ if ($LASTEXITCODE -eq 0 -and $upstream) {
 $saved = Get-ChildItem (Join-Path $Root 'Saved') -Recurse -File -ErrorAction SilentlyContinue | Measure-Object Length -Sum
 $shots = @(Get-ChildItem (Join-Path $Root 'Saved\Screenshots') -File -ErrorAction SilentlyContinue).Count
 
+# ------------------------------------------------------- stray windows --
+# The editor restores whatever windows were open when it last exited, and a hard
+# kill means "closed" was never recorded - that is how the Message Log keeps coming
+# back and covering the viewport (AGENTS rule 6). Check for it instead of trusting
+# memory. The titles are Chinese, so they are built from code points to keep this
+# file ASCII.
+Add-Type @"
+using System;using System.Text;using System.Runtime.InteropServices;
+public static class EWinStatus {
+ [DllImport("user32.dll")] public static extern bool EnumWindows(E cb, IntPtr p);
+ [DllImport("user32.dll")] public static extern bool IsWindowVisible(IntPtr h);
+ [DllImport("user32.dll", CharSet=CharSet.Unicode)] public static extern int GetWindowText(IntPtr h, StringBuilder s, int c);
+ public delegate bool E(IntPtr h, IntPtr p);
+ public static bool Has(string needle){ bool found=false; EnumWindows((h,p)=>{ if(!IsWindowVisible(h)) return true;
+   var t=new StringBuilder(512); GetWindowText(h,t,512); if(t.ToString().Contains(needle)) found=true; return true; }, IntPtr.Zero); return found; }
+}
+"@
+$strays = New-Object System.Collections.ArrayList
+foreach ($probe in @(
+    @{ Name = 'message log';    Text = (-join ([char]0x6D88, [char]0x606F, [char]0x65E5, [char]0x5FD7)) },
+    @{ Name = 'save content';   Text = (-join ([char]0x4FDD, [char]0x5B58, [char]0x5185, [char]0x5BB9)) },
+    @{ Name = 'restore pkgs';   Text = (-join ([char]0x6062, [char]0x590D, [char]0x5305)) }
+)) {
+    if ([EWinStatus]::Has($probe.Text)) { [void]$strays.Add($probe.Name) }
+}
+$strayText = if ($strays.Count -eq 0) { 'none' } else { ($strays -join ', ') + '  <- close: PostMessage WM_CLOSE' }
+
 # ----------------------------------------------------------------- print --
 
 Write-Host ''
@@ -125,4 +152,5 @@ Write-Host ('git        : {0}{1}  ahead {2}  behind {3}  dirty {4}' -f $branch,
             $(if ($upstream) { ' -> ' + $upstream } else { ' (no upstream)' }), $ahead, $behind, $dirty)
 Write-Host ('disk       : Saved {0:N1} MB  |  screenshots {1}  (cleanup trigger 1200 MB / 600)' -f
             (($saved.Sum) / 1MB), $shots)
+Write-Host ('windows    : {0}' -f $strayText)
 Write-Host ''
