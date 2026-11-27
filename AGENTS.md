@@ -154,7 +154,7 @@
 2. 读 `Docs/ASSETS.md` —— 哪些资产已导入、哪些在 Fab 库、署名要求。**不要再去 Fab 找包。**
 3. 读 `Docs/P0-DESIGN.md` —— 要做什么（四张图、系统、数值、DoD）。
 4. 读 `Docs/BACKLOG.md` —— 领**一条**任务（T1–T8），它自带验收标准。
-5. 读 `Docs/NEXT-SESSION.md` —— **取编号最大的那一节**（目前是第 83 节：C++ 闭环自证 —— 编译 / 15 条测试 / PIE 全绿），
+5. 读 `Docs/NEXT-SESSION.md` —— **取编号最大的那一节**（目前是第 84 节：重建不再丢手动 actor —— place_extras 接进 build_level），
    那里是"上次停在哪"。**更早的在 `Docs/sessions/` 分卷里**（1–66 节）。
 
 **动手写任何工具/脚本之前，先读 `Docs/UE-TOOLSET-MAP.md` ——

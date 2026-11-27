@@ -281,6 +281,22 @@ switch ($Action) {
             & powershell -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot 'SetupLayout.ps1') | Out-Null
             Write-GuardLog 'restart: window layout re-applied'
         }
+        # The editor can restore the Message Log window from the previous session's layout, and
+        # that window covers the viewport (AGENTS rule 6). Closing it persists only when the
+        # editor exits normally, so every restart double-checks: two probes over 16 seconds,
+        # because the window can appear a few seconds after the MCP port does.
+        $logTitle = ([char]0x6D88 + [char]0x606F + [char]0x65E5 + [char]0x5FD7)
+        $closedLogs = 0
+        foreach ($wait in @(4, 12)) {
+            Start-Sleep -Seconds $wait
+            foreach ($handle in [GuardWin]::Find($logTitle)) {
+                if (Close-WindowByMessage $handle) { $closedLogs++ }
+            }
+            if ($closedLogs -gt 0) { break }
+        }
+        if ($closedLogs -gt 0) {
+            Write-GuardLog ("restart: closed {0} Message Log window(s)" -f $closedLogs)
+        }
         if (Test-McpPort) { exit 0 } else { exit 1 }
     }
     'watch' {

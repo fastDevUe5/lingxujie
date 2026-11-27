@@ -29,6 +29,13 @@ if "build_moxiang_map" in sys.modules:
     importlib.reload(sys.modules["build_moxiang_map"])
 import build_moxiang_map
 
+# Actors the builder does not create itself (boss statue with its material, the bird and bobu
+# reference models, the background music). They were placed by one-off scripts and therefore
+# vanished on every rebuild. Kept in their own module so there is one place to add the next one.
+if "place_extras" in sys.modules:
+    importlib.reload(sys.modules["place_extras"])
+import place_extras
+
 LEVEL_PATH = "/Game/Maps/LingXuJie"
 MATERIAL_DIR = "/Game/Materials"
 
@@ -2688,6 +2695,7 @@ def main():
     build_lighting()
     placed = build_moxiang_map.build()
     log("moxiang map rebuilt from the client data: %d surfaces" % placed)
+    place_extras.place_all()
     saved = LEVELS.save_current_level()
     log("save_current_level -> %s" % saved)
     log("Done. %d actors in %s" % (len(ACTORS.get_all_level_actors()), LEVEL_PATH))

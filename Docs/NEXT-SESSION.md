@@ -1446,3 +1446,50 @@ MX_BIRD_TEST  MX_BOBU_TEST  MX_AMBIENT_MUSIC（背景音乐）
 | --- | --- |
 | **写 `Tools/place_extras.py`，并挂到 `BuildAll` 末尾** | 补上"手动 actor 没有归属"这个缺口；一次调用放回 6 个，重建后不再丢 Boss 和背景音乐 |
 | 然后领 T6（秦皇陵：Boss 石台 + 入口 + 1 只 Boss） | 纯内容，且正好用上刚补的摆位脚本 |
+
+## 84. 重建不再丢手动 actor：`place_extras` 接进 `build_level.py`（2026-11-27 12:50）
+
+### 一、做了什么
+
+**`Tools/place_extras.py`**：把上一轮重建时被抹掉的 actor 放回来，**幂等**（按 label 先删再放）。
+
+```
+MX_BOSS001_STATIC  @ (9550,-6200,3740)  SM_Boss001 + M_Boss_Mob01（逐槽赋）
+MX_BIRD_TEST       @ (9200,-6200,3820)  SK_Bird    （×4 缩放，沿用 place_bird.py）
+MX_BOBU_TEST       @ (9600,-6200,3660)  SK_Bobu
+MX_AMBIENT_MUSIC   @ (8950,-6200,3800)  S_bg_field（音量 0.6）
+```
+
+**`build_level.py` 在存关卡之前调用它**（`place_extras.place_all()`），所以 `BuildAll` 和
+`RebuildInEditor` 两条路都会带上 —— **不是另开一条要人记得跑的命令**。
+
+**故意没恢复的两个**：`MX_BOSS001`、`MX_BOSSCOWF`。它们的骨骼导入时就塌陷（span 0.00 cm，
+记录在第 23 节），当年只是诊断用，放回去只会给关卡加两个坏模型。
+
+### 二、验证
+
+```
+BuildAll:  Result: Succeeded，退出码 0
+levelgen:  [LingXuJie] EXTRA: MX_BOSS001_STATIC: 1 slot(s) -> M_Boss_Mob01
+           [LingXuJie] EXTRA: extras: 4 of 4 placed (0 removed first)
+           [LingXuJie] Done. 114 actors        ← 110 + 4
+Status:    actors 114 ｜ camera 8950,-6200,3900 default view: yes
+PIE:       Saved/proof_extras_pie.png —— Boss 雕像（红褐材质）回到广场
+```
+
+### 三、顺带查清的两件事
+
+**① 消息日志到底为什么回来（gotcha #124 的根因确认）**：
+不是 MapCheck 弹出的（这轮 MapCheck 照样有警告，窗口没出现），是**上次退出时它开着 → 布局被恢复**。
+这次先手工关掉、再**正常退出**（WM_CLOSE，没有脏资产），重启后 `windows: none`。
+`EditorGuard -Action restart` 现在还加了保险：重启后探两次（+4s / +12s），
+发现它就 `WM_CLOSE` 掉并记一行日志。
+
+**② 2 条 MapCheck 警告还在，没解决**：
+`M_Moxiang_Ground` / `M_Lanzhou_Stone` 的 "缺失使用标记 Nanite"。
+实测 `bUsedWithNanite` 读出来是 **true**、两个资产也**不脏**（`save_assets` 无事可做）。
+怀疑 5.8 对旧资产的字段误报，**未证实** —— 不影响编译与运行，先记着。
+
+### 四、下一步
+
+T6（秦皇陵秘境）：Boss 石台 + 入口门道 + 1 只 Boss。摆位脚本刚补齐，正好接上。
