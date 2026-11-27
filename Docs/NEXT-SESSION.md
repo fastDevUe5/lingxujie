@@ -6745,10 +6745,25 @@ check-ignore         Content/*.umap=ignored, Assets/**/*.png=ignored,
 - **`.git` 仍是 5.6 GB**：空间由 `archive-lfs` 占着。确认不再需要后：
   `git branch -D archive-lfs` + `git lfs prune` 才能真回收。
 
-### 五、下一步
+### 五、资产的备份：**决定"只在本机"**（2026-11-27 12:10，人拍板）
+
+**不买 data pack、不换远端。5.2 GB 资产只存在这台机器上。**
+
+| 东西 | 备份状况 |
+| --- | --- |
+| 代码 / 文档 / 工具 / `.gltf` / `.json` | ✅ GitHub `main`（14.2 MB，每次 commit 都能推） |
+| `Content/`（4.7 GB）+ `Assets/` 二进制（0.48 GB） | ❌ **只有本机一份** |
+
+**代价说清楚：磁盘坏 = 资产没了。** 代码和文档能拉回来，`Content/` 只能重导。
+**所以 `Docs/ASSETS.md` 必须写清"每个包从哪来、用哪个脚本导" —— 这是接下来的硬任务**，
+不然"重下得来"只是嘴上说说。
+
+**免费降低风险的办法只有一个**：偶尔把整个工程目录（17.8 GB）拷到移动硬盘。
+
+### 六、下一步
 
 | 事项 | 备注 |
 | --- | --- |
-| 把 `origin/main` 覆成新历史 | 需要 `push --force`，等一句确认 |
-| `Docs/ASSETS.md` 补"资产怎么重建" | 否则"重下得来"只是说法 |
-| 删 `archive-lfs` 回收 5.5 GB | 确认旧历史不要了再动 |
+| **`Docs/ASSETS.md` 补"资产怎么重建"** | 现在没有它，资产丢了就是真丢了 |
+| 删 `archive-lfs` 回收 5.5 GB | 确认旧历史不要了再动（`git branch -D archive-lfs` + `git lfs prune`） |
+| 继续业务：工作方式第二块（动画接线 / NOT_SOLID 法线） | 备份这条线到此收口 |
