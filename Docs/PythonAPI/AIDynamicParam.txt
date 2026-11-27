@@ -1,0 +1,51 @@
+# unreal.AIDynamicParam  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/AIDynamicParam.html
+
+unreal.AIDynamicParam
+
+class unreal.AIDynamicParam(param_name: Name = 'None', param_type: AIParamType = Ellipsis, allow_bb_key: bool = False, value: float = 0.0, bb_key: BlackboardKeySelector = Ellipsis)
+Bases: StructBase
+AIDynamic Param
+C++ Source:
+
+Module: AIModule
+File: EnvQueryTypes.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+allow_bb_key (bool): [Read-Write]
+bb_key (BlackboardKeySelector): [Read-Write]
+param_name (Name): [Read-Only]
+param_type (AIParamType): [Read-Only]
+value (float): [Read-Write]
+
+property allow_bb_key: bool
+[Read-Write]
+
+Type:
+(bool)
+
+property bb_key: BlackboardKeySelector
+[Read-Write]
+
+Type:
+(BlackboardKeySelector)
+
+property param_name: Name
+[Read-Only]
+
+Type:
+(Name)
+
+property param_type: AIParamType
+[Read-Only]
+
+Type:
+(AIParamType)
+
+property value: float
+[Read-Write]
+
+Type:
+(float)

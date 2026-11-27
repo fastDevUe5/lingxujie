@@ -1,0 +1,45 @@
+# unreal.AssetEditorSubsystem  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/AssetEditorSubsystem.html
+
+unreal.AssetEditorSubsystem
+
+class unreal.AssetEditorSubsystem(outer: Object | None = None, name: Name | str = 'None')
+Bases: EditorSubsystem
+UAssetEditorSubsystem
+C++ Source:
+
+Module: UnrealEd
+File: AssetEditorSubsystem.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+debug_object_delegate (AssetEditorOpenDebugObjectDynamic): [Read-Write] Callbacks to open specific debug objects exposed to blueprint.
+
+close_all_editors_for_asset(asset) → int32
+Close all active editors for the supplied asset and return the number of asset editors that were closed
+
+Parameters:
+asset (Object)
+
+Return type:
+int32
+
+property debug_object_delegate: AssetEditorOpenDebugObjectDynamic
+[Read-Write] Callbacks to open specific debug objects exposed to blueprint.
+
+Type:
+(AssetEditorOpenDebugObjectDynamic)
+
+open_editor_for_assets(assets, opened_method=AssetTypeActivationOpenedMethod.EDIT) → bool
+Tries to open an editor for all of the specified assets.
+If any of the assets are already open, it will not create a new editor for them.
+If all assets are of the same type, the supporting AssetTypeAction (if it exists) is responsible for the details of how to handle opening multiple assets at once.
+
+Parameters:
+
+assets (Array[Object])
+opened_method (AssetTypeActivationOpenedMethod)
+
+Return type:
+bool

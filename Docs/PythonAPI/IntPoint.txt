@@ -1,0 +1,215 @@
+# unreal.IntPoint  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/IntPoint.html
+
+unreal.IntPoint
+
+class unreal.IntPoint(x: int = 0, y: int = 0)
+Bases: StructBase
+Screen coordinates.
+note: The full C++ class is located here: EngineSourceRuntimeCorePublicMathIntPoint.h
+C++ Source:
+
+Module: CoreUObject
+File: NoExportTypes.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+x (int32): [Read-Write]
+y (int32): [Read-Write]
+
+DOWN: IntPoint
+Down Int Point (0, 1)
+
+Type:
+(IntPoint)
+
+LEFT: IntPoint
+Left Int Point (-1, 0)
+
+Type:
+(IntPoint)
+
+ONE: IntPoint
+One Int Point (1, 1)
+
+Type:
+(IntPoint)
+
+RIGHT: IntPoint
+Right Int Point (1, 0)
+
+Type:
+(IntPoint)
+
+UP: IntPoint
+Up Int Point (0, -1)
+
+Type:
+(IntPoint)
+
+ZERO: IntPoint
+Zero Int Point (0, 0)
+
+Type:
+(IntPoint)
+
+__add__(other: IntPoint) → None
+Overloads:
+
+IntPoint Returns IntPoint A added by B
+int32 Addition (A - B)
+
+__eq__(other: object) → bool
+Overloads:
+
+IntPoint Returns true if IntPoint A is equal to IntPoint B (A == B)
+
+__iadd__(other: IntPoint) → None
+Overloads:
+
+IntPoint Returns IntPoint A added by B
+int32 Addition (A - B)
+
+__imul__(other: IntPoint) → None
+Overloads:
+
+IntPoint Returns IntPoint A multiplied by B
+int32 Multiplication (A * B)
+
+__isub__(other: IntPoint) → None
+Overloads:
+
+IntPoint Returns IntPoint A subtracted by B
+int32 Subtraction (A - B)
+
+__mul__(other: IntPoint) → None
+Overloads:
+
+IntPoint Returns IntPoint A multiplied by B
+int32 Multiplication (A * B)
+
+__ne__(other: object) → bool
+Overloads:
+
+IntPoint Returns true if IntPoint A is NOT equal to IntPoint B (A != B)
+
+__sub__(other: IntPoint) → None
+Overloads:
+
+IntPoint Returns IntPoint A subtracted by B
+int32 Subtraction (A - B)
+
+__truediv__(other: IntPoint) → None
+Overloads:
+
+IntPoint Returns IntPoint A divided by B
+int32 Division (A * B)
+
+add(b) → IntPoint
+Returns IntPoint A added by B
+
+Parameters:
+b (IntPoint)
+
+Return type:
+IntPoint
+
+add_int(b) → IntPoint
+Addition (A - B)
+
+Parameters:
+b (int32)
+
+Return type:
+IntPoint
+
+divide(b) → IntPoint
+Returns IntPoint A divided by B
+
+Parameters:
+b (IntPoint)
+
+Return type:
+IntPoint
+
+divide_int(b) → IntPoint
+Division (A * B)
+
+Parameters:
+b (int32)
+
+Return type:
+IntPoint
+
+equals(b) → bool
+Returns true if IntPoint A is equal to IntPoint B (A == B)
+
+Parameters:
+b (IntPoint)
+
+Return type:
+bool
+
+multiply(b) → IntPoint
+Returns IntPoint A multiplied by B
+
+Parameters:
+b (IntPoint)
+
+Return type:
+IntPoint
+
+multiply_int(b) → IntPoint
+Multiplication (A * B)
+
+Parameters:
+b (int32)
+
+Return type:
+IntPoint
+
+not_equal(b) → bool
+Returns true if IntPoint A is NOT equal to IntPoint B (A != B)
+
+Parameters:
+b (IntPoint)
+
+Return type:
+bool
+
+subtract(b) → IntPoint
+Returns IntPoint A subtracted by B
+
+Parameters:
+b (IntPoint)
+
+Return type:
+IntPoint
+
+subtract_int(b) → IntPoint
+Subtraction (A - B)
+
+Parameters:
+b (int32)
+
+Return type:
+IntPoint
+
+vector2d() → Vector2D
+Converts an IntPoint to a Vector2D
+
+Return type:
+Vector2D
+
+property x: int
+[Read-Write]
+
+Type:
+(int32)
+
+property y: int
+[Read-Write]
+
+Type:
+(int32)

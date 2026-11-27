@@ -1,0 +1,24 @@
+# unreal.ActorLayer  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/ActorLayer.html
+
+unreal.ActorLayer
+
+class unreal.ActorLayer(name: Name = 'None')
+Bases: StructBase
+Actor Layer
+C++ Source:
+
+Plugin: ActorLayerUtilities
+Module: ActorLayerUtilities
+File: ActorLayerUtilities.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+name (Name): [Read-Write] The name of this layer
+
+property name: Name
+[Read-Write] The name of this layer
+
+Type:
+(Name)

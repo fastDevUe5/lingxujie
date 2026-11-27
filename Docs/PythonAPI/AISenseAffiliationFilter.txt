@@ -1,0 +1,37 @@
+# unreal.AISenseAffiliationFilter  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/AISenseAffiliationFilter.html
+
+unreal.AISenseAffiliationFilter
+
+class unreal.AISenseAffiliationFilter(detect_enemies: bool = False, detect_neutrals: bool = False, detect_friendlies: bool = False)
+Bases: StructBase
+AISense Affiliation Filter
+C++ Source:
+
+Module: AIModule
+File: AIPerceptionTypes.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+detect_enemies (bool): [Read-Write]
+detect_friendlies (bool): [Read-Write]
+detect_neutrals (bool): [Read-Write]
+
+property detect_enemies: bool
+[Read-Only]
+
+Type:
+(bool)
+
+property detect_friendlies: bool
+[Read-Only]
+
+Type:
+(bool)
+
+property detect_neutrals: bool
+[Read-Only]
+
+Type:
+(bool)

@@ -1,0 +1,147 @@
+{
+ "asset": {
+  "version": "2.0",
+  "generator": "LingXuJie mod+anm exporter"
+ },
+ "scene": 0,
+ "scenes": [
+  {
+   "nodes": [
+    0
+   ]
+  }
+ ],
+ "nodes": [
+  {
+   "name": "mineral",
+   "mesh": 0,
+   "skin": 0
+  }
+ ],
+ "meshes": [
+  {
+   "name": "109_mineral_00",
+   "primitives": [
+    {
+     "attributes": {
+      "POSITION": 0,
+      "NORMAL": 1,
+      "TEXCOORD_0": 2,
+      "JOINTS_0": 4,
+      "WEIGHTS_0": 5
+     },
+     "indices": 3
+    }
+   ]
+  }
+ ],
+ "skins": [
+  {
+   "joints": [],
+   "inverseBindMatrices": 6
+  }
+ ],
+ "bufferViews": [
+  {
+   "buffer": 0,
+   "byteOffset": 0,
+   "byteLength": 52152,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 52152,
+   "byteLength": 52152,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 104304,
+   "byteLength": 34768,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 139072,
+   "byteLength": 21492,
+   "target": 34963
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 160564,
+   "byteLength": 34768,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 195332,
+   "byteLength": 69536,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 264868,
+   "byteLength": 0
+  }
+ ],
+ "accessors": [
+  {
+   "bufferView": 0,
+   "componentType": 5126,
+   "count": 4346,
+   "type": "VEC3",
+   "min": [
+    -54.706511510224956,
+    -34.95061748590655,
+    -3.612196374393749
+   ],
+   "max": [
+    50.09411348977505,
+    47.29532001409345,
+    1.8630990357625012
+   ]
+  },
+  {
+   "bufferView": 1,
+   "componentType": 5126,
+   "count": 4346,
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 2,
+   "componentType": 5126,
+   "count": 4346,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 3,
+   "componentType": 5123,
+   "count": 10746,
+   "type": "SCALAR"
+  },
+  {
+   "bufferView": 4,
+   "componentType": 5123,
+   "count": 4346,
+   "type": "VEC4"
+  },
+  {
+   "bufferView": 5,
+   "componentType": 5126,
+   "count": 4346,
+   "type": "VEC4"
+  },
+  {
+   "bufferView": 6,
+   "componentType": 5126,
+   "count": 0,
+   "type": "MAT4"
+  }
+ ],
+ "buffers": [
+  {
+   "byteLength": 264868,
+   "uri": "109_mineral_00.bin"
+  }
+ ]
+}

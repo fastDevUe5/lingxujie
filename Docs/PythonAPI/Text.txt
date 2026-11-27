@@ -1,0 +1,33 @@
+# unreal.Text  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/Text.html
+
+unreal.Text
+
+class unreal.Text(value: Text | str = '')
+Bases: _WrapperBase
+Type for all Unreal exposed text instances
+
+classmethod as_currency(cls, val: int, code: str) → Text -- convert the given number (specified in the smallest unit for the given currency i.e. 650 for $6.50) to a culture correct Unreal text currency representation
+
+classmethod as_number(cls, num: float) → Text -- convert the given number to a culture correct Unreal text representation
+
+classmethod as_percent(cls, num: float) → Text -- convert the given number to a culture correct Unreal text percentgage representation
+
+classmethod cast(cls, object: object) → Text -- cast the given object to this Unreal text type
+
+format(self, *args: Union[Mapping[str, object], object], **named_args: object) -> Text -- use this Unreal text as a format pattern and generate a new text using the format arguments (may be a mapping[arg_name, arg] or comma separed (optionally named) arguments)
+
+is_culture_invariant(self) → bool -- is this Unreal text culture invariant?
+
+is_empty(self) → bool -- is this Unreal text empty?
+
+is_empty_or_whitespace(self) → bool -- is this Unreal text empty or only whitespace?
+
+is_from_string_table(self) → bool -- is this Unreal text referencing a string table entry?
+
+is_transient(self) → bool -- is this Unreal text transient?
+
+to_lower(self) → Text -- convert this Unreal text to lowercase in a culture correct way
+
+to_upper(self) → Text -- convert this Unreal text to uppercase in a culture correct way

@@ -1,0 +1,22 @@
+# unreal.AIDataProviderValue  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/AIDataProviderValue.html
+
+unreal.AIDataProviderValue
+
+class unreal.AIDataProviderValue
+Bases: StructBase
+AIDataProvider is an object that can provide collection of properties
+associated with bound pawn owner or request Id.
+Editable properties are used to set up provider instance,
+creating additional filters or ways of accessing data (e.g. gameplay tag of ability)
+Non editable properties are holding data
+C++ Source:
+
+Module: AIModule
+File: AIDataProvider.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+data_binding (AIDataProvider): [Read-Write] (optional) provider for dynamic data binding
+data_field (Name): [Read-Write] name of provider’s value property

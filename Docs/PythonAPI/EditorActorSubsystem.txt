@@ -1,0 +1,602 @@
+# unreal.EditorActorSubsystem  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/EditorActorSubsystem
+
+unreal.EditorActorSubsystem¶
+
+
+class unreal.EditorActorSubsystem(outer: Object | None = None, name: Name | str = 'None')¶
+
+Bases: EditorSubsystem
+
+UEditorActorUtilitiesSubsystem
+
+Subsystem for exposing actor related utilities to scripts,
+
+C++ Source:
+
+
+
+Module: UnrealEd
+
+File: EditorActorSubsystem.h
+
+
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+
+
+on_actor_label_changed (OnActorLabelChanged): [Read-Write]
+
+on_delete_actors_begin (OnDeleteActorsBegin): [Read-Write]
+
+on_delete_actors_end (OnDeleteActorsEnd): [Read-Write]
+
+on_duplicate_actors_begin (OnEditCutActorsBegin): [Read-Write]
+
+on_duplicate_actors_end (OnDuplicateActorsEnd): [Read-Write]
+
+on_edit_copy_actors_begin (OnEditCopyActorsBegin): [Read-Write]
+
+on_edit_copy_actors_end (OnEditCopyActorsEnd): [Read-Write]
+
+on_edit_cut_actors_begin (OnEditCutActorsBegin): [Read-Write]
+
+on_edit_cut_actors_end (OnEditCutActorsEnd): [Read-Write]
+
+on_edit_paste_actors_begin (OnEditPasteActorsBegin): [Read-Write]
+
+on_edit_paste_actors_end (OnEditPasteActorsEnd): [Read-Write]
+
+on_new_actors_dropped (OnEditNewActorsDropped): [Read-Write]
+
+on_new_actors_placed (OnEditNewActorsPlaced): [Read-Write]
+
+
+clear_actor_selection_set() → None¶
+
+Remove all actors from the selection set
+
+
+convert_actors(actors, actor_class, static_mesh_package_path) → Array[Actor]¶
+
+Replace in the level all Actors provided with a new actor of type ActorClass. Destroy all Actors provided.
+
+
+
+Parameters:
+
+
+
+actors (Array[Actor]) – List of Actors to replace.
+
+actor_class (type(Class)) – Class/Blueprint of the new actor that will be spawn.
+
+static_mesh_package_path (str) – If the list contains Brushes and it is requested to change them to StaticMesh, StaticMeshPackagePath is the package path to where the StaticMesh will be created. ie. /Game/MyFolder/
+
+
+Return type:
+
+Array[Actor]
+
+
+delete_selected_actors(world) → None¶
+
+Delete all the selected actors in the given world
+
+
+
+Parameters:
+
+world (World) – The world the actors are selected in.
+
+
+destroy_actor(actor_to_destroy) → bool¶
+
+Destroy the actor from the world editor. Notify the Editor that the actor got destroyed.
+
+
+
+Parameters:
+
+actor_to_destroy (Actor) – Actor to destroy.
+
+
+
+Returns:
+
+True if the operation succeeds.
+
+
+
+Return type:
+
+bool
+
+
+destroy_actors(actors_to_destroy) → bool¶
+
+Destroy the actors from the world editor. Notify the Editor that the actor got destroyed.
+
+
+
+Parameters:
+
+actors_to_destroy (Array[Actor]) – Actors to destroy.
+
+
+
+Returns:
+
+True if the operation succeeds.
+
+
+
+Return type:
+
+bool
+
+
+duplicate_actor(actor_to_duplicate, to_world=None, offset=[0.000000, 0.000000, 0.000000]) → Actor¶
+
+Duplicate an actor from the world editor.
+
+
+
+Parameters:
+
+
+
+actor_to_duplicate (Actor) – Actor to duplicate.
+
+to_world (World) – World to place the duplicated actor in.
+
+offset (Vector) – Translation to offset duplicated actor by.
+
+
+Returns:
+
+The duplicated actor, or none if it didn’t succeed
+
+
+
+Return type:
+
+Actor
+
+
+duplicate_actors(actors_to_duplicate, to_world=None, offset=[0.000000, 0.000000, 0.000000]) → Array[Actor]¶
+
+Duplicate actors from the world editor.
+
+
+
+Parameters:
+
+
+
+actors_to_duplicate (Array[Actor]) – Actors to duplicate.
+
+to_world (World) – World to place the duplicated actors in. *
+
+offset (Vector) – Translation to offset duplicated actors by.
+
+
+Returns:
+
+The duplicated actors, or empty if it didn’t succeed
+
+
+
+Return type:
+
+Array[Actor]
+
+
+duplicate_selected_actors(world) → None¶
+
+Duplicate all the selected actors in the given world
+
+
+
+Parameters:
+
+world (World) – The world the actors are selected in.
+
+
+get_actor_reference(path_to_actor) → Actor¶
+
+Attempts to find the actor specified by PathToActor in the current editor world
+
+
+
+Parameters:
+
+path_to_actor (str) – The path to the actor (e.g. PersistentLevel.PlayerStart)
+
+
+
+Returns:
+
+A reference to the actor, or none if it wasn’t found
+
+
+
+Return type:
+
+Actor
+
+
+get_all_level_actors() → Array[Actor]¶
+
+Find all loaded Actors in the world editor. Exclude actor that are pending kill, in PIE, PreviewEditor, …
+
+
+
+Returns:
+
+List of found Actors
+
+
+
+Return type:
+
+Array[Actor]
+
+
+get_all_level_actors_components() → Array[ActorComponent]¶
+
+Find all loaded ActorComponent own by an actor in the world editor. Exclude actor that are pending kill, in PIE, PreviewEditor, …
+
+
+
+Returns:
+
+List of found ActorComponent
+
+
+
+Return type:
+
+Array[ActorComponent]
+
+
+get_selected_level_actors() → Array[Actor]¶
+
+Find all loaded Actors that are selected in the world editor. Exclude actor that are pending kill, in PIE, PreviewEditor, …
+
+
+
+Returns:
+
+List of found Actors
+
+
+
+Return type:
+
+Array[Actor]
+
+
+invert_selection(world) → None¶
+
+Invert the selection in the given world
+
+
+
+Parameters:
+
+world (World) – The world the selection is in.
+
+
+property on_actor_label_changed: OnActorLabelChanged¶
+
+[Read-Write]
+
+
+
+Type:
+
+(OnActorLabelChanged)
+
+
+property on_delete_actors_begin: OnDeleteActorsBegin¶
+
+[Read-Write]
+
+
+
+Type:
+
+(OnDeleteActorsBegin)
+
+
+property on_delete_actors_end: OnDeleteActorsEnd¶
+
+[Read-Write]
+
+
+
+Type:
+
+(OnDeleteActorsEnd)
+
+
+property on_duplicate_actors_begin: OnEditCutActorsBegin¶
+
+[Read-Write]
+
+
+
+Type:
+
+(OnEditCutActorsBegin)
+
+
+property on_duplicate_actors_end: OnDuplicateActorsEnd¶
+
+[Read-Write]
+
+
+
+Type:
+
+(OnDuplicateActorsEnd)
+
+
+property on_edit_copy_actors_begin: OnEditCopyActorsBegin¶
+
+[Read-Write]
+
+
+
+Type:
+
+(OnEditCopyActorsBegin)
+
+
+property on_edit_copy_actors_end: OnEditCopyActorsEnd¶
+
+[Read-Write]
+
+
+
+Type:
+
+(OnEditCopyActorsEnd)
+
+
+property on_edit_cut_actors_begin: OnEditCutActorsBegin¶
+
+[Read-Write]
+
+
+
+Type:
+
+(OnEditCutActorsBegin)
+
+
+property on_edit_cut_actors_end: OnEditCutActorsEnd¶
+
+[Read-Write]
+
+
+
+Type:
+
+(OnEditCutActorsEnd)
+
+
+property on_edit_paste_actors_begin: OnEditPasteActorsBegin¶
+
+[Read-Write]
+
+
+
+Type:
+
+(OnEditPasteActorsBegin)
+
+
+property on_edit_paste_actors_end: OnEditPasteActorsEnd¶
+
+[Read-Write]
+
+
+
+Type:
+
+(OnEditPasteActorsEnd)
+
+
+property on_new_actors_dropped: OnEditNewActorsDropped¶
+
+[Read-Write]
+
+
+
+Type:
+
+(OnEditNewActorsDropped)
+
+
+property on_new_actors_placed: OnEditNewActorsPlaced¶
+
+[Read-Write]
+
+
+
+Type:
+
+(OnEditNewActorsPlaced)
+
+
+select_all(world) → None¶
+
+Select all actors and BSP models in the given world, except those which are hidden
+
+
+
+Parameters:
+
+world (World) – The world the actors are to be selected in.
+
+
+select_all_children(recurse_children) → None¶
+
+Select all children actors of the current selection.
+
+
+
+Parameters:
+
+recurse_children (bool) – True to recurse through all descendants of the children
+
+
+select_nothing() → None¶
+
+Selects nothing in the editor (another way to clear the selection)
+
+
+set_actor_selection_state(actor, should_be_selected) → None¶
+
+Set the selection state for the selected actor
+
+
+
+Parameters:
+
+
+
+actor (Actor)
+
+should_be_selected (bool)
+
+
+set_actor_transform(actor, world_transform) → bool¶
+
+Sets the world transform of the given actor, if possible.
+
+
+
+Parameters:
+
+
+
+actor (Actor)
+
+world_transform (Transform)
+
+
+Returns:
+
+false if the world transform could not be set.
+
+
+
+Return type:
+
+bool
+
+
+set_component_transform(scene_component, world_transform) → bool¶
+
+Sets the world transform of the given component, if possible.
+
+
+
+Parameters:
+
+
+
+scene_component (SceneComponent)
+
+world_transform (Transform)
+
+
+Returns:
+
+false if the world transform could not be set.
+
+
+
+Return type:
+
+bool
+
+
+set_selected_level_actors(actors_to_select) → None¶
+
+Clear the current world editor selection and select the provided actors. Exclude actor that are pending kill, in PIE, PreviewEditor, …
+
+
+
+Parameters:
+
+actors_to_select (Array[Actor]) – Actor that should be selected in the world editor.
+
+
+spawn_actor_from_class(actor_class, location, rotation=[0.000000, 0.000000, 0.000000], transient=False) → Actor¶
+
+Create an actor and place it in the world editor. Can be created from a Blueprint or a Class.
+
+The actor will be created in the current level and will be selected.
+
+
+
+Parameters:
+
+
+
+actor_class (type(Class)) – Asset to attempt to use for an actor to place.
+
+location (Vector) – Location of the new actor.
+
+rotation (Rotator)
+
+transient (bool)
+
+
+Returns:
+
+The created actor.
+
+
+
+Return type:
+
+Actor
+
+
+spawn_actor_from_object(object_to_use, location, rotation=[0.000000, 0.000000, 0.000000], transient=False) → Actor¶
+
+Create an actor and place it in the world editor. The Actor can be created from a Factory, Archetype, Blueprint, Class or an Asset.
+
+The actor will be created in the current level and will be selected.
+
+
+
+Parameters:
+
+
+
+object_to_use (Object) – Asset to attempt to use for an actor to place.
+
+location (Vector) – Location of the new actor.
+
+rotation (Rotator)
+
+transient (bool)
+
+
+Returns:
+
+The created actor.
+
+
+
+Return type:
+
+Actor

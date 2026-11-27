@@ -1,0 +1,109 @@
+# unreal.AnimationAsset  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/AnimationAsset.html
+
+unreal.AnimationAsset
+
+class unreal.AnimationAsset(outer: Object | None = None, name: Name | str = 'None')
+Bases: Object
+Animation Asset
+C++ Source:
+
+Module: Engine
+File: AnimationAsset.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+asset_mapping_table (AssetMappingTable): [Read-Only] Asset mapping table when ParentAsset is set
+asset_user_data (Array[AssetUserData]): [Read-Write] Array of user data stored with the asset
+meta_data (Array[AnimMetaData]): [Read-Write] Meta data that can be saved with the asset
+You can query by GetMetaData function
+
+parent_asset (AnimationAsset): [Read-Only] Parent Asset, if set, you won’t be able to edit any data in here but just mapping table
+During cooking, this data will be used to bake out to normal asset
+
+preview_pose_asset (PoseAsset): [Read-Write] The default skeletal mesh to use when previewing this asset - this only applies when you open Persona using this asset//
+todo:: note that this doesn’t retarget right now
+skeleton (Skeleton): [Read-Only] Pointer to the Skeleton this asset can be played on .
+thumbnail_info (ThumbnailInfo): [Read-Only] Information for thumbnail rendering
+
+add_asset_user_data_of_class(user_data_class) → bool
+Creates and adds an instance of the provided AssetUserData class to the target asset.
+
+Parameters:
+user_data_class (type(Class)) – UAssetUserData sub class to create
+
+Returns:
+Whether or not an instance of InUserDataClass was succesfully added
+
+Return type:
+bool
+
+create_attribute_identifier(attribute_name, bone_name, attribute_type, validate_exists_on_asset=False) → AnimationAttributeIdentifier
+Constructs a valid FAnimationAttributeIdentifier instance. Ensuring that the underlying BoneName exists on the Skeleton for the provided AnimationAsset.
+
+Parameters:
+
+attribute_name (Name) – Name of the attribute
+bone_name (Name) – Name of the bone this attribute should be attributed to
+attribute_type (ScriptStruct) – Type of the underlying data (to-be) stored by this attribute
+validate_exists_on_asset (bool) – Whether or not the attribute should exist on the AnimationAsset. False by default.
+
+Returns:
+Valid FAnimationCurveIdentifier if the operation was successful
+
+Return type:
+AnimationAttributeIdentifier
+
+find_meta_data_by_class(meta_data_class) → AnimMetaData
+Returns the first metadata of the specified class
+
+Parameters:
+meta_data_class (type(Class))
+
+Return type:
+AnimMetaData
+
+get_asset_user_data_of_class(user_data_class) → AssetUserData
+Returns an instance of the provided AssetUserData class if it’s contained in the target asset.
+
+Parameters:
+user_data_class (type(Class)) – UAssetUserData sub class to get
+
+Returns:
+The instance of the UAssetUserData class contained, or null if it doesn’t exist
+
+Return type:
+AssetUserData
+
+get_play_length() → float
+Get Play Length
+
+Return type:
+float
+
+get_skeleton() → Skeleton
+
+Returns:
+The target USkeleton for the provided UAnimationAsset
+
+Return type:
+Skeleton
+
+has_asset_user_data_of_class(user_data_class) → bool
+Checks whether or not an instance of the provided AssetUserData class is contained.
+
+Parameters:
+user_data_class (type(Class)) – UAssetUserData sub class to check for
+
+Returns:
+Whether or not an instance of InUserDataClass was found
+
+Return type:
+bool
+
+set_preview_skeletal_mesh(preview_mesh) → None
+Sets or updates the preview skeletal mesh
+
+Parameters:
+preview_mesh (SkeletalMesh)

@@ -1,0 +1,146 @@
+# unreal.AnimationDataModel  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/AnimationDataModel.html
+
+unreal.AnimationDataModel
+
+class unreal.AnimationDataModel(outer: Object | None = None, name: Name | str = 'None')
+Bases: Interface
+Animation Data Model
+C++ Source:
+
+Module: Engine
+File: IAnimationDataModel.h
+
+get_animation_sequence() → AnimSequence
+
+Returns:
+The outer UAnimSequence object if found, otherwise returns a nullptr
+
+Return type:
+AnimSequence
+
+get_bone_animation_tracks() → Array[BoneAnimationTrack]
+Get Bone Animation Tracks
+
+Return type:
+Array[BoneAnimationTrack]
+
+get_bone_track_by_index(track_index) → BoneAnimationTrack
+Get Bone Track by Index
+
+Parameters:
+track_index (int32)
+
+Return type:
+BoneAnimationTrack
+
+get_bone_track_by_name(track_name) → BoneAnimationTrack
+Get Bone Track by Name
+
+Parameters:
+track_name (Name)
+
+Return type:
+BoneAnimationTrack
+
+get_bone_track_index(track) → int32
+Get Bone Track Index
+
+Parameters:
+track (BoneAnimationTrack)
+
+Return type:
+int32
+
+get_bone_track_index_by_name(track_name) → int32
+Get Bone Track Index by Name
+
+Parameters:
+track_name (Name)
+
+Return type:
+int32
+
+get_bone_track_names() → Array[Name]
+Populates the provided array with all contained (bone) track names
+
+Returns:
+out_names (Array[Name]): [out] Array containing all bone track names
+
+Return type:
+Array[Name]
+
+get_frame_rate() → FrameRate
+
+Returns:
+Frame rate at which the animation data is key-ed
+
+Return type:
+FrameRate
+
+get_num_bone_tracks() → int32
+
+Returns:
+Total number of bone animation tracks
+
+Return type:
+int32
+
+get_number_of_float_curves() → int32
+
+Returns:
+Total number of stored float curves
+
+Return type:
+int32
+
+get_number_of_frames() → int32
+
+Returns:
+Total number of frames of animation data stored
+
+Return type:
+int32
+
+get_number_of_keys() → int32
+
+Returns:
+Total number of animation data keys stored
+
+Return type:
+int32
+
+get_number_of_transform_curves() → int32
+
+Returns:
+Total number of stored FTransform curves
+
+Return type:
+int32
+
+get_play_length() → double
+
+Returns:
+Total length of play-able animation data
+
+Return type:
+double
+
+is_valid_bone_track_index(track_index) → bool
+Is Valid Bone Track Index
+
+Parameters:
+track_index (int32)
+
+Return type:
+bool
+
+is_valid_bone_track_name(track_name) → bool
+Is Valid Bone Track Name
+
+Parameters:
+track_name (Name)
+
+Return type:
+bool

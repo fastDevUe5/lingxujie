@@ -1,0 +1,175 @@
+{
+ "asset": {
+  "version": "2.0",
+  "generator": "LingXuJie mod+anm exporter"
+ },
+ "scene": 0,
+ "scenes": [
+  {
+   "nodes": [
+    0
+   ]
+  }
+ ],
+ "nodes": [
+  {
+   "name": "104_water02",
+   "mesh": 0,
+   "skin": 0
+  }
+ ],
+ "meshes": [
+  {
+   "name": "104_water02",
+   "primitives": [
+    {
+     "attributes": {
+      "POSITION": 0,
+      "NORMAL": 1,
+      "TEXCOORD_0": 2,
+      "JOINTS_0": 5,
+      "WEIGHTS_0": 6
+     },
+     "indices": 4,
+     "material": 0
+    }
+   ]
+  }
+ ],
+ "materials": [
+  {
+   "name": "moxiang_material_0",
+   "pbrMetallicRoughness": {
+    "baseColorFactor": [
+     0.8,
+     0.8,
+     0.8,
+     1.0
+    ],
+    "metallicFactor": 0.0,
+    "roughnessFactor": 0.8
+   }
+  }
+ ],
+ "skins": [
+  {
+   "joints": [],
+   "inverseBindMatrices": 7
+  }
+ ],
+ "bufferViews": [
+  {
+   "buffer": 0,
+   "byteOffset": 0,
+   "byteLength": 2328,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 2328,
+   "byteLength": 2328,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 4656,
+   "byteLength": 1552,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 6208,
+   "byteLength": 600,
+   "target": 34963
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 6808,
+   "byteLength": 600,
+   "target": 34963
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 7408,
+   "byteLength": 1552,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 8960,
+   "byteLength": 3104,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 12064,
+   "byteLength": 0
+  }
+ ],
+ "accessors": [
+  {
+   "bufferView": 0,
+   "componentType": 5126,
+   "count": 194,
+   "type": "VEC3",
+   "min": [
+    -87.01709920666879,
+    -48.30662919821199,
+    -35.217402683533344
+   ],
+   "max": [
+    133.4694242308312,
+    118.86137861428801,
+    14.273285793029157
+   ]
+  },
+  {
+   "bufferView": 1,
+   "componentType": 5126,
+   "count": 194,
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 2,
+   "componentType": 5126,
+   "count": 194,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 3,
+   "componentType": 5123,
+   "count": 300,
+   "type": "SCALAR"
+  },
+  {
+   "bufferView": 4,
+   "componentType": 5123,
+   "count": 300,
+   "type": "SCALAR"
+  },
+  {
+   "bufferView": 5,
+   "componentType": 5123,
+   "count": 194,
+   "type": "VEC4"
+  },
+  {
+   "bufferView": 6,
+   "componentType": 5126,
+   "count": 194,
+   "type": "VEC4"
+  },
+  {
+   "bufferView": 7,
+   "componentType": 5126,
+   "count": 0,
+   "type": "MAT4"
+  }
+ ],
+ "buffers": [
+  {
+   "byteLength": 12064,
+   "uri": "104_water02.bin"
+  }
+ ]
+}

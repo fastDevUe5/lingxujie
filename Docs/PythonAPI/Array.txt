@@ -1,0 +1,40 @@
+# unreal.Array  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/Array.html
+
+unreal.Array
+
+class unreal.Array(type: type)
+Bases: _WrapperBase, MutableSequence[_ElemType]
+Type for all Unreal exposed array instances
+
+classmethod __class_getitem__(*args)
+__class_getitem__(cls, item: _ElemType) – implemented for type hinting purpose only
+
+__copy__(self) → Array[_ElemType] -- copy this Unreal array
+
+append(self, value: _ElemType) -> None -- append the given value to the end of this Unreal array (equivalent to TArray::Add in C++)
+
+classmethod cast(cls, type: Type[_ElemType], obj: object) → Array[_ElemType] -- cast the given object to this Unreal array type
+
+clear(self) → None -- remove all values from this Unreal array
+
+copy(self) → Array[_ElemType] -- copy this Unreal array
+
+count(self, value: _ElemType) → int -- return the number of times that value appears in this this Unreal array
+
+extend(self, values: Iterable[_ElemType]) -> None -- extend this Unreal array by appending elements from the given iterable (equivalent to TArray::Append in C++)
+
+index(self, value: _ElemType, start: int = 0, stop: int = -1) -> int -- get the index of the first matching value in this Unreal array, or raise ValueError if missing (equivalent to TArray: :IndexOfByKey in C++)
+
+insert(self, index: int, value: _ElemType) → None -- insert the given value at the given index in this Unreal array
+
+pop(self, index: int = -1) → _ElemType -- remove and return the value at the given index in this Unreal array, or raise IndexError if the index is out-of-bounds
+
+remove(self, value: _ElemType) → None -- remove the first matching value in this Unreal array, or raise ValueError if missing
+
+resize(self, len: int) → None -- resize this Unreal array to hold the given number of elements
+
+reverse(self) → None -- reverse this Unreal array in-place
+
+sort(self, key: Callable[[_ElemType], object] | None = None, reverse: bool = False) → None -- stable sort this Unreal array in-place

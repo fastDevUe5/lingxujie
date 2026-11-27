@@ -1,0 +1,79 @@
+# unreal.MaterialProperty  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/MaterialProperty.html
+
+unreal.MaterialProperty
+
+class unreal.MaterialProperty
+Bases: EnumBase
+EMaterialProperty
+C++ Source:
+
+Module: Engine
+File: SceneTypes.h
+
+MP_AMBIENT_OCCLUSION: MaterialProperty = Ellipsis
+18
+
+MP_ANISOTROPY: MaterialProperty = Ellipsis
+9
+
+MP_BASE_COLOR: MaterialProperty = Ellipsis
+SpecularColor, Metallic, Specular Also used in Substrate which uses Albedo/F0 parameterization
+
+Type:
+5
+
+Type:
+used in Lightmass, not exposed to user, derived from
+
+MP_EMISSIVE_COLOR: MaterialProperty = Ellipsis
+0
+
+MP_FRONT_MATERIAL: MaterialProperty = Ellipsis
+30
+
+MP_LAST_CUSTOMIZED_U_VS: MaterialProperty = Ellipsis
+Aliases
+
+Type:
+27
+
+MP_MATERIAL_ATTRIBUTES: MaterialProperty = Ellipsis
+^^^ New material properties go above here ^^^^
+
+Type:
+33
+
+MP_MAX: MaterialProperty = Ellipsis
+35
+
+MP_METALLIC: MaterialProperty = Ellipsis
+6
+
+MP_NORMAL: MaterialProperty = Ellipsis
+10
+
+MP_OPACITY: MaterialProperty = Ellipsis
+1
+
+MP_OPACITY_MASK: MaterialProperty = Ellipsis
+2
+
+MP_REFRACTION: MaterialProperty = Ellipsis
+19
+
+MP_ROUGHNESS: MaterialProperty = Ellipsis
+8
+
+MP_SPECULAR: MaterialProperty = Ellipsis
+7
+
+MP_SUBSURFACE_COLOR: MaterialProperty = Ellipsis
+15
+
+MP_TANGENT: MaterialProperty = Ellipsis
+11
+
+MP_WORLD_POSITION_OFFSET: MaterialProperty = Ellipsis
+12

@@ -1,0 +1,28 @@
+# unreal.AgentSkill  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/AgentSkill.html
+
+unreal.AgentSkill
+
+class unreal.AgentSkill(outer: Object | None = None, name: Name | str = 'None')
+Bases: Object
+Agent Skill
+C++ Source:
+
+Plugin: ToolsetRegistry
+Module: ToolsetRegistry
+File: AgentSkill.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+description (str): [Read-Write] A brief description of what the skill does or how it should be used.
+instructions (str): [Read-Write] Detailed instructions for how to use this skill and its associated tools.
+
+generate_prompt(initial_instructions) → str
+Generates the final prompt text for the Agent Skill.
+
+Parameters:
+initial_instructions (str)
+
+Return type:
+str

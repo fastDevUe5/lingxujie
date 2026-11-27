@@ -1,0 +1,20 @@
+# unreal.ToolsetDefinition  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/ToolsetDefinition
+
+unreal.ToolsetDefinition¶
+
+class unreal.ToolsetDefinition(outer: Object | None = None, name: Name | str = 'None')¶
+Bases: Object
+This is the common base class for Toolsets defined as UObjects.
+UFunctions that define tools in this class should be static functions
+
+and be marked with meta = (AICallable). This is used both by UHT and the runtime UToolRegistry.
+
+UFunctions which should be ignored by tools should be marked with meta = (AIIgnore)in order to silence errors about invalid UFunctions
+
+C++ Source:
+
+Plugin: ToolsetRegistry
+Module: ToolsetRegistry
+File: ToolsetDefinition.h

@@ -1,0 +1,386 @@
+# unreal.LevelSequenceEditorSubsystem  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/LevelSequenceEditorSubsystem.html
+
+unreal.LevelSequenceEditorSubsystem
+
+class unreal.LevelSequenceEditorSubsystem(outer: Object | None = None, name: Name | str = 'None')
+Bases: EditorSubsystem
+ULevelSequenceEditorSubsystem
+Subsystem for level sequence editor related utilities to scripts
+C++ Source:
+
+Plugin: LevelSequenceEditor
+Module: LevelSequenceEditor
+File: LevelSequenceEditorSubsystem.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+on_begin_scrubbing_event (OnLevelSequenceBeginScrubbingEvent): [Read-Write] Called when the user begins scrubbing in the active sequencer
+on_end_scrubbing_event (OnLevelSequenceEndScrubbingEvent): [Read-Write] Called when the user ends scrubbing in the active sequencer
+on_global_time_changed (OnLevelSequenceGlobalTimeChanged): [Read-Write] Called when the global time changes in the active sequencer
+on_play_event (OnLevelSequencePlayEvent): [Read-Write] Called when the active sequencer begins playing
+on_record_event (OnLevelSequenceRecordEvent): [Read-Write] Called when the active sequencer toggles recording
+on_stop_event (OnLevelSequenceStopEvent): [Read-Write] Called when the active sequencer stops playing
+
+add_actors(actors) → Array[MovieSceneBindingProxy]
+Add existing actors to Sequencer. Tracks will be automatically added based on default track settings.
+
+Parameters:
+actors (Array[Actor])
+
+Return type:
+Array[MovieSceneBindingProxy]
+
+add_actors_to_binding(actors, object_binding) → None
+Assigns the given actors to the binding
+
+Parameters:
+
+actors (Array[Actor])
+object_binding (MovieSceneBindingProxy)
+
+add_spawnable_from_class(sequence, class_to_spawn) → MovieSceneBindingProxy
+Add a new binding to this sequence that will spawn the specified class.
+
+Parameters:
+
+sequence (MovieSceneSequence)
+class_to_spawn (type(Class))
+
+Return type:
+MovieSceneBindingProxy
+
+add_spawnable_from_instance(sequence, object_to_spawn) → MovieSceneBindingProxy
+Add a new binding to this sequence that will spawn the specified object.
+
+Parameters:
+
+sequence (MovieSceneSequence)
+object_to_spawn (Object)
+
+Return type:
+MovieSceneBindingProxy
+
+bake_transform_with_settings(object_bindings, settings, params=[MovieSceneTimeUnit.DISPLAY_RATE]) → bool
+Bake transform
+
+Parameters:
+
+object_bindings (Array[MovieSceneBindingProxy])
+settings (BakingAnimationKeySettings)
+params (MovieSceneScriptingParams)
+
+Return type:
+bool
+
+change_actor_template_class(object_binding, actor_class) → bool
+Sets the actor class for the spawnable or replaceable template, in the case those binding types support templates.
+
+Parameters:
+
+object_binding (MovieSceneBindingProxy)
+actor_class (type(Class))
+
+Return type:
+bool
+
+convert_to_custom_binding(object_binding, binding_type) → MovieSceneBindingProxy
+Convert to a custom binding of the given binding type
+
+Parameters:
+
+object_binding (MovieSceneBindingProxy)
+binding_type (type(Class))
+
+Return type:
+MovieSceneBindingProxy
+
+convert_to_possessable(object_binding) → MovieSceneBindingProxy
+Convert to possessable. If there are multiple objects assigned to the spawnable.
+
+Parameters:
+object_binding (MovieSceneBindingProxy)
+
+Return type:
+MovieSceneBindingProxy
+
+convert_to_spawnable(object_binding) → Array[MovieSceneBindingProxy]
+Convert to spawnable. If there are multiple objects assigned to the possessable, multiple spawnables will be created.
+For level sequences, the bindings created will be custom bindings of type UMovieSceneSpawnableActorBinding.
+
+Parameters:
+object_binding (MovieSceneBindingProxy)
+
+Return type:
+Array[MovieSceneBindingProxy]
+
+copy_bindings(bindings) → str
+Copy bindings
+The copied bindings will be saved to the clipboard as well as assigned to the ExportedText string.
+The ExportedTest string can be used in conjunction with PasteBindings if, for example, pasting copy/pasting multiple
+bindings without relying on a single clipboard.
+
+Parameters:
+bindings (Array[MovieSceneBindingProxy])
+
+Returns:
+exported_text (str):
+
+Return type:
+str
+
+copy_folders(folders) -> (folders_exported_text=str, objects_exported_text=str, tracks_exported_text=str)
+Copy folders
+The copied folders will be saved to the clipboard as well as assigned to the ExportedText string.
+The ExportedTest string can be used in conjunction with PasteFolders if, for example, pasting copy/pasting multiple
+folders without relying on a single clipboard.
+
+Parameters:
+folders (Array[MovieSceneFolder])
+
+Returns:
+folders_exported_text (str):
+objects_exported_text (str):
+tracks_exported_text (str):
+
+Return type:
+tuple
+
+copy_sections(sections) → str
+Copy sections
+The copied sections will be saved to the clipboard as well as assigned to the ExportedText string.
+The ExportedTest string can be used in conjunction with PasteSections if, for example, pasting copy/pasting multiple
+sections without relying on a single clipboard.
+
+Parameters:
+sections (Array[MovieSceneSection])
+
+Returns:
+exported_text (str):
+
+Return type:
+str
+
+copy_tracks(tracks) → str
+Copy tracks
+The copied tracks will be saved to the clipboard as well as assigned to the ExportedText string.
+The ExportedTest string can be used in conjunction with PasteTracks if, for example, pasting copy/pasting multiple
+tracks without relying on a single clipboard.
+
+Parameters:
+tracks (Array[MovieSceneTrack])
+
+Returns:
+exported_text (str):
+
+Return type:
+str
+
+create_camera(spawnable) -> (MovieSceneBindingProxy, out_actor=CineCameraActor)
+Create a cine camera actor and add it to Sequencer
+
+Parameters:
+spawnable (bool)
+
+Returns:
+out_actor (CineCameraActor):
+
+Return type:
+CineCameraActor
+
+fix_actor_references() → None
+Attempts to automatically fix up broken actor references in the current scene
+
+get_curve_editor() → SequencerCurveEditorObject
+Retrieve the curve editor
+
+Return type:
+SequencerCurveEditorObject
+
+get_custom_binding_objects(object_binding) → Array[MovieSceneCustomBinding]
+In the case that the given binding proxy holds custom bindings, returns an array of the binding objects so properties can be accessed.
+
+Parameters:
+object_binding (MovieSceneBindingProxy)
+
+Return type:
+Array[MovieSceneCustomBinding]
+
+get_custom_binding_type(object_binding)
+Returns the custom binding type for the given binding, or nullptr for possessables
+
+Parameters:
+object_binding (MovieSceneBindingProxy)
+
+Return type:
+type(Class)
+
+get_custom_bindings_of_type(custom_binding_type) → Array[MovieSceneBindingProxy]
+Returns all of the bindings in the sequence of the given custom type.
+
+Parameters:
+custom_binding_type (type(Class))
+
+Return type:
+Array[MovieSceneBindingProxy]
+
+get_scripting_layer() → SequencerModuleScriptingLayer
+Retrieve the scripting layer
+
+Return type:
+SequencerModuleScriptingLayer
+
+property on_begin_scrubbing_event: OnLevelSequenceBeginScrubbingEvent
+[Read-Write] Called when the user begins scrubbing in the active sequencer
+
+Type:
+(OnLevelSequenceBeginScrubbingEvent)
+
+property on_end_scrubbing_event: OnLevelSequenceEndScrubbingEvent
+[Read-Write] Called when the user ends scrubbing in the active sequencer
+
+Type:
+(OnLevelSequenceEndScrubbingEvent)
+
+property on_global_time_changed: OnLevelSequenceGlobalTimeChanged
+[Read-Write] Called when the global time changes in the active sequencer
+
+Type:
+(OnLevelSequenceGlobalTimeChanged)
+
+property on_play_event: OnLevelSequencePlayEvent
+[Read-Write] Called when the active sequencer begins playing
+
+Type:
+(OnLevelSequencePlayEvent)
+
+property on_record_event: OnLevelSequenceRecordEvent
+[Read-Write] Called when the active sequencer toggles recording
+
+Type:
+(OnLevelSequenceRecordEvent)
+
+property on_stop_event: OnLevelSequenceStopEvent
+[Read-Write] Called when the active sequencer stops playing
+
+Type:
+(OnLevelSequenceStopEvent)
+
+paste_bindings(text_to_import, paste_bindings_params) → Array[MovieSceneBindingProxy] or None
+Paste bindings
+Paste bindings from the given TextToImport string (used in conjunction with CopyBindings).
+If TextToImport is empty, the contents of the clipboard will be used.
+
+Parameters:
+
+text_to_import (str)
+paste_bindings_params (MovieScenePasteBindingsParams)
+
+Returns:
+out_object_bindings (Array[MovieSceneBindingProxy]):
+
+Return type:
+Array[MovieSceneBindingProxy] or None
+
+paste_folders(text_to_import, paste_folders_params) → Array[MovieSceneFolder] or None
+Paste folders
+Paste folders from the given TextToImport string (used in conjunction with CopyFolders).
+If TextToImport is empty, the contents of the clipboard will be used.
+
+Parameters:
+
+text_to_import (str)
+paste_folders_params (MovieScenePasteFoldersParams)
+
+Returns:
+out_folders (Array[MovieSceneFolder]):
+
+Return type:
+Array[MovieSceneFolder] or None
+
+paste_sections(text_to_import, paste_sections_params) → Array[MovieSceneSection] or None
+Paste sections
+Paste sections from the given TextToImport string (used in conjunction with CopySections).
+If TextToImport is empty, the contents of the clipboard will be used.
+
+Parameters:
+
+text_to_import (str)
+paste_sections_params (MovieScenePasteSectionsParams)
+
+Returns:
+out_sections (Array[MovieSceneSection]):
+
+Return type:
+Array[MovieSceneSection] or None
+
+paste_tracks(text_to_import, paste_tracks_params) → Array[MovieSceneTrack] or None
+Paste tracks
+Paste tracks from the given TextToImport string (used in conjunction with CopyTracks).
+If TextToImport is empty, the contents of the clipboard will be used.
+
+Parameters:
+
+text_to_import (str)
+paste_tracks_params (MovieScenePasteTracksParams)
+
+Returns:
+out_tracks (Array[MovieSceneTrack]):
+
+Return type:
+Array[MovieSceneTrack] or None
+
+rebind_component(component_bindings, component_name) → None
+Rebind the component binding to the requested component
+
+Parameters:
+
+component_bindings (Array[MovieSceneBindingProxy])
+component_name (Name)
+
+remove_actors_from_binding(actors, object_binding) → None
+Removes the given actors from the binding
+
+Parameters:
+
+actors (Array[Actor])
+object_binding (MovieSceneBindingProxy)
+
+remove_all_bindings(object_binding) → None
+Remove all bound actors from this track
+
+Parameters:
+object_binding (MovieSceneBindingProxy)
+
+remove_invalid_bindings(object_binding) → None
+Remove missing objects bound to this track
+
+Parameters:
+object_binding (MovieSceneBindingProxy)
+
+replace_binding_with_actors(actors, object_binding) → None
+Replaces the binding with the given actors
+
+Parameters:
+
+actors (Array[Actor])
+object_binding (MovieSceneBindingProxy)
+
+save_default_spawnable_state(object_binding) → None
+Save the default state of the spawnable.
+
+Parameters:
+object_binding (MovieSceneBindingProxy)
+
+snap_sections_to_timeline_using_source_timecode(sections) → None
+Snap sections to timeline using source timecode
+
+Parameters:
+sections (Array[MovieSceneSection])
+
+sync_sections_using_source_timecode(sections) → None
+Sync section using source timecode
+
+Parameters:
+sections (Array[MovieSceneSection])

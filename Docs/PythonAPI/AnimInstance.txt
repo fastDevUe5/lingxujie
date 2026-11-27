@@ -1,0 +1,842 @@
+# unreal.AnimInstance  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/AnimInstance.html
+
+unreal.AnimInstance
+
+class unreal.AnimInstance(outer: Object | None = None, name: Name | str = 'None')
+Bases: Object
+Anim Instance
+C++ Source:
+
+Module: Engine
+File: AnimInstance.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+on_all_montage_instances_ended (OnAllMontageInstancesEndedMCDelegate): [Read-Write] Called when all Montage instances have ended.
+on_montage_blended_in (OnMontageBlendedInEndedMCDelegate): [Read-Write] Called when a montage finishes blending in
+on_montage_blending_out (OnMontageBlendingOutStartedMCDelegate): [Read-Write] Called when a montage starts blending out, whether interrupted or finished
+on_montage_ended (OnMontageEndedMCDelegate): [Read-Write] Called when a montage has ended, whether interrupted or finished
+on_montage_section_changed (OnMontageSectionChangedMCDelegate): [Read-Write] Called when a montage section changes
+on_montage_started (OnMontageStartedMCDelegate): [Read-Write] Called when a montage has started
+propagate_notifies_to_linked_instances (bool): [Read-Write] Whether to propagate notifies to any linked anim instances
+receive_notifies_from_linked_instances (bool): [Read-Write] Whether to process notifies from any linked anim instances
+root_motion_mode (RootMotionMode): [Read-Write] Sets where this blueprint pulls Root Motion from
+use_main_instance_montage_evaluation_data (bool): [Read-Write] If true, linked instances will use the main instance’s montage data. (i.e. playing a montage on a main instance will play it on the linked layer too.)
+
+blueprint_begin_play() → None
+Executed when begin play is called on the owning component
+
+blueprint_get_main_anim_instance() → AnimInstance
+Get the ‘main’ anim instance, i.e. the one that is hosted on the skeletal mesh component
+
+Return type:
+AnimInstance
+
+blueprint_get_slot_montage_local_weight(slot_node_name) → float
+Get local weight of any montages this slot node is playing. If this slot is not currently playing a montage, it will return 0.
+
+Parameters:
+slot_node_name (Name)
+
+Return type:
+float
+
+blueprint_initialize_animation() → None
+Executed when the Animation is initialized
+
+blueprint_linked_animation_layers_initialized() → None
+Executed when the all Linked Animation Layers are initialized
+
+blueprint_post_evaluate_animation() → None
+Executed after the Animation is evaluated
+
+blueprint_thread_safe_update_animation(delta_time) → None
+Executed when the Animation Blueprint is updated on a worker thread, just prior to graph update
+
+Parameters:
+delta_time (float)
+
+blueprint_update_animation(delta_time_x) → None
+Executed when the Animation is updated
+
+Parameters:
+delta_time_x (float)
+
+calculate_direction(velocity, base_rotation) → float
+Calculate Direction
+
+Parameters:
+
+velocity (Vector)
+base_rotation (Rotator)
+
+Return type:
+float
+
+clear_all_transition_events() → None
+Removes all queued transition requests
+
+clear_layer_overlay(class_: Class) → None
+deprecated: ‘clear_layer_overlay’ was renamed to ‘unlink_anim_class_layers’.
+
+clear_morph_targets() → None
+Clears the current morph targets.
+
+clear_transition_events(event_name) → None
+Removes all queued transition requests with the given event name
+
+Parameters:
+event_name (Name)
+
+dynamic_montage_is_playing_from(animation) → bool
+Returns true if there is an animation montage is currently active and playing that was created from the provided animation.
+
+Parameters:
+animation (AnimSequenceBase)
+
+Return type:
+bool
+
+get_active_curve_names(curve_type) → Array[Name]
+This returns last up-to-date list of active curve names
+
+Parameters:
+curve_type (AnimCurveType)
+
+Returns:
+out_names (Array[Name]):
+
+Return type:
+Array[Name]
+
+get_all_curve_names() → Array[Name]
+This returns all curve names. This is the same as calling GetActiveCurveNames with CurveType == AttributeCurve
+
+Returns:
+out_names (Array[Name]):
+
+Return type:
+Array[Name]
+
+get_blend_profile_by_name(blend_profile_name) → BlendProfile
+Returns a blend profile by name from our current skeleton. Null if not found.
+
+Parameters:
+blend_profile_name (Name)
+
+Return type:
+BlendProfile
+
+get_current_active_montage() → AnimMontage
+
+Get a current Active Montage in this AnimInstance.Note that there might be multiple Active at the same time. This will only return the first active one it finds. *
+
+Return type:
+AnimMontage
+
+get_curve_value(curve_name) → float
+Returns the value of a named curve.
+
+Parameters:
+curve_name (Name)
+
+Return type:
+float
+
+get_curve_value_with_default(curve_name, default_value) → float or None
+Returns whether a named curve was found, its value, and a default value when it’s not found.
+
+Parameters:
+
+curve_name (Name) – The name of the curve.
+default_value (float) – Value to use when the curve is not found.
+
+Returns:
+out_value (float): The curve’s value.
+
+Return type:
+float or None
+
+get_delta_seconds() → float
+Get the current delta time
+
+Return type:
+float
+
+get_layer_sub_instance_by_class(class_: Class, check_for_child_class: bool = False) → AnimInstance
+deprecated: ‘get_layer_sub_instance_by_class’ was renamed to ‘get_linked_anim_layer_instance_by_class’.
+
+get_layer_sub_instance_by_group(group: Name) → AnimInstance
+deprecated: ‘get_layer_sub_instance_by_group’ was renamed to ‘get_linked_anim_layer_instance_by_group’.
+
+get_linked_anim_graph_instance_by_tag(tag) → AnimInstance
+Runs through all nodes, attempting to find the first linked instance by name/tag
+
+Parameters:
+tag (Name)
+
+Return type:
+AnimInstance
+
+get_linked_anim_graph_instances_by_tag(tag) → Array[AnimInstance]
+Get Linked Anim Graph Instances by Tag
+deprecated: Tags are unique so this function is no longer supported. Please use GetLinkedAnimGraphInstanceByTag instead
+
+Parameters:
+tag (Name)
+
+Returns:
+out_linked_instances (Array[AnimInstance]):
+
+Return type:
+Array[AnimInstance]
+
+get_linked_anim_layer_instance_by_class(class_, check_for_child_class=False) → AnimInstance
+Gets the first layer linked instance corresponding to the specified class, optionally if bCheckForChildClass is true, it will check IsChildOf on InClass.
+
+Parameters:
+
+class (type(Class))
+check_for_child_class (bool)
+
+Return type:
+AnimInstance
+
+get_linked_anim_layer_instance_by_group(group) → AnimInstance
+Gets the layer linked instance corresponding to the specified group
+
+Parameters:
+group (Name)
+
+Return type:
+AnimInstance
+
+get_linked_anim_layer_instance_by_group_and_class(group, class_) → AnimInstance
+Gets layer linked instance that matches group and class
+
+Parameters:
+
+group (Name)
+class (type(Class))
+
+Return type:
+AnimInstance
+
+get_linked_anim_layer_instances_by_group(group) → Array[AnimInstance]
+Runs through all nodes, attempting to find all distinct layer linked instances in the group
+
+Parameters:
+group (Name)
+
+Returns:
+out_linked_instances (Array[AnimInstance]):
+
+Return type:
+Array[AnimInstance]
+
+get_lod_level() → int32
+Get the ‘animation’ LOD level, which by default is the PredictedLODLevel of this anim instance’s skeletal mesh component.
+This function is used by the anim graph to determine the LOD level at which to run.
+
+Returns:
+the current LOD level
+
+Return type:
+int32
+
+get_owning_actor() → Actor
+Returns the owning actor of this AnimInstance
+
+Return type:
+Actor
+
+get_owning_component() → SkeletalMeshComponent
+Returns the skeletal mesh component that has created this AnimInstance
+
+Return type:
+SkeletalMeshComponent
+
+get_propagate_notifies_to_linked_instances() → bool
+Get whether to propagate notifies to any linked anim instances
+
+Return type:
+bool
+
+get_receive_notifies_from_linked_instances() → bool
+Get whether to process notifies from any linked anim instances
+
+Return type:
+bool
+
+get_sub_instance_by_tag(tag: Name) → AnimInstance
+deprecated: ‘get_sub_instance_by_tag’ was renamed to ‘get_linked_anim_graph_instance_by_tag’.
+
+get_sub_instances_by_tag(tag: Name) → None
+deprecated: ‘get_sub_instances_by_tag’ was renamed to ‘get_linked_anim_graph_instances_by_tag’.
+
+get_sync_group_position(sync_group_name) → MarkerSyncAnimPosition
+Get Sync Group Position
+
+Parameters:
+sync_group_name (Name)
+
+Return type:
+MarkerSyncAnimPosition
+
+get_time_to_closest_marker(sync_group, marker_name) → float or None
+Get Time to Closest Marker
+
+Parameters:
+
+sync_group (Name)
+marker_name (Name)
+
+Returns:
+out_marker_time (float):
+
+Return type:
+float or None
+
+has_marker_been_hit_this_frame(sync_group, marker_name) → bool
+Has Marker Been Hit This Frame
+
+Parameters:
+
+sync_group (Name)
+marker_name (Name)
+
+Return type:
+bool
+
+is_any_montage_playing() → bool
+Returns true if any montage is playing currently. Doesn’t mean it’s active though, it could be blending out.
+
+Return type:
+bool
+
+is_playing_slot_animation(asset, slot_node_name) → bool
+Return true if it’s playing the slot animation
+
+Parameters:
+
+asset (AnimSequenceBase)
+slot_node_name (Name)
+
+Return type:
+bool
+
+is_slot_active(slot_node_name) → bool
+Return true if this instance has an active montage in the given slot. A UAnimMontage that is playing in the slot and blending out is not determined to be “active”.
+
+Parameters:
+slot_node_name (Name)
+
+Return type:
+bool
+
+is_sync_group_between_markers(sync_group_name, previous_marker, next_marker, respect_marker_order=True) → bool
+Is Sync Group Between Markers
+
+Parameters:
+
+sync_group_name (Name)
+previous_marker (Name)
+next_marker (Name)
+respect_marker_order (bool)
+
+Return type:
+bool
+
+is_using_main_instance_montage_evaluation_data() → bool
+Is Using Main Instance Montage Evaluation Data
+
+Return type:
+bool
+
+kismet_initialize_animation() → None
+deprecated: ‘kismet_initialize_animation’ was renamed to ‘blueprint_initialize_animation’.
+
+kismet_update_animation(delta_time_x: float) → None
+deprecated: ‘kismet_update_animation’ was renamed to ‘blueprint_update_animation’.
+
+link_anim_class_layers(class_) → None
+Runs through all layer nodes, attempting to find layer nodes that are implemented by the specified class, then sets up a linked instance of the class for each.
+Allocates one linked instance to run each of the groups specified in the class, so state is shared. If a layer is not grouped (ie. NAME_None), then state is not shared
+and a separate linked instance is allocated for each layer node.
+If InClass is null, then all layers are reset to their defaults.
+
+Parameters:
+class (type(Class))
+
+link_anim_graph_by_tag(tag, class_) → None
+Runs through all nodes, attempting to find a linked instance by name/tag, then sets the class of each node if the tag matches
+
+Parameters:
+
+tag (Name)
+class (type(Class))
+
+lock_ai_resources(lock_movement, lock_ai_logic) → None
+
+locks indicated AI resources of animated pawnDEPRECATED. Use LockAIResourcesWithAnimation instead
+
+deprecated: Use LockAIResourcesWithAnimation instead
+
+Parameters:
+
+lock_movement (bool)
+lock_ai_logic (bool)
+
+montage_get_blend_time(montage) → float
+
+Get the current blend time of the Montage.If Montage reference is NULL, it will return the current blend time on the first active Montage found.
+
+Parameters:
+montage (AnimMontage)
+
+Return type:
+float
+
+montage_get_current_section(montage=None) → Name
+Returns the name of the current animation montage section.
+
+Parameters:
+montage (AnimMontage)
+
+Return type:
+Name
+
+montage_get_effective_play_rate(montage) → float
+
+Get scaled PlayRate for Montage. This accounts for RateScale, so it will reflect the actual play rate seen in game.If Montage reference is NULL, scaled PlayRate for any Active Montage will be returned.
+If Montage is not playing, 0 is returned.
+
+Parameters:
+montage (AnimMontage)
+
+Return type:
+float
+
+montage_get_is_stopped(montage) → bool
+return true if Montage is not currently active. (not valid or blending out)
+
+Parameters:
+montage (AnimMontage)
+
+Return type:
+bool
+
+montage_get_play_rate(montage) → float
+
+Get PlayRate for Montage. This does not account for RateScale, so it may not reflect the actual play rate seen in game (see Montage_GetEffectivePlayRate).If Montage reference is NULL, PlayRate for any Active Montage will be returned.
+If Montage is not playing, 0 is returned.
+
+Parameters:
+montage (AnimMontage)
+
+Return type:
+float
+
+montage_get_position(montage) → float
+Get Current Montage Position
+
+Parameters:
+montage (AnimMontage)
+
+Return type:
+float
+
+montage_is_active(montage) → bool
+Returns true if the animation montage is active. If the Montage reference is NULL, it will return true if any Montage is active.
+
+Parameters:
+montage (AnimMontage)
+
+Return type:
+bool
+
+montage_is_playing(montage) → bool
+
+Returns true if the animation montage is currently active and playing.If reference is NULL, it will return true is ANY montage is currently active and playing.
+
+Parameters:
+montage (AnimMontage)
+
+Return type:
+bool
+
+montage_jump_to_section(section_name, montage=None) → None
+Makes a montage jump to a named section. If Montage reference is NULL, it will do that to all active montages.
+
+Parameters:
+
+section_name (Name)
+montage (AnimMontage)
+
+montage_jump_to_sections_end(section_name, montage=None) → None
+Makes a montage jump to the end of a named section. If Montage reference is NULL, it will do that to all active montages.
+
+Parameters:
+
+section_name (Name)
+montage (AnimMontage)
+
+montage_pause(montage=None) → None
+Pauses the animation montage. If reference is NULL, it will pause ALL active montages.
+
+Parameters:
+montage (AnimMontage)
+
+montage_play(montage_to_play, play_rate=1.000000, return_value_type=MontagePlayReturnType.MONTAGE_LENGTH, time_to_start_montage_at=0.000000, stop_all_montages=True) → float
+Plays an animation montage. Returns the length of the animation montage in seconds. Returns 0.f if failed to play.
+
+Parameters:
+
+montage_to_play (AnimMontage)
+play_rate (float)
+return_value_type (MontagePlayReturnType)
+time_to_start_montage_at (float)
+stop_all_montages (bool)
+
+Return type:
+float
+
+montage_play_with_blend_in(montage_to_play, blend_in, play_rate=1.000000, return_value_type=MontagePlayReturnType.MONTAGE_LENGTH, time_to_start_montage_at=0.000000, stop_all_montages=True) → float
+Plays an animation montage. Same as Montage_Play, but you can specify an AlphaBlend for Blend In settings.
+
+Parameters:
+
+montage_to_play (AnimMontage)
+blend_in (AlphaBlendArgs)
+play_rate (float)
+return_value_type (MontagePlayReturnType)
+time_to_start_montage_at (float)
+stop_all_montages (bool)
+
+Return type:
+float
+
+montage_play_with_blend_settings(montage_to_play, blend_in_settings, play_rate=1.000000, return_value_type=MontagePlayReturnType.MONTAGE_LENGTH, time_to_start_montage_at=0.000000, stop_all_montages=True) → float
+Plays an animation montage. Same as Montage_Play, but you can overwrite all of the montage’s default blend in settings.
+
+Parameters:
+
+montage_to_play (AnimMontage)
+blend_in_settings (MontageBlendSettings)
+play_rate (float)
+return_value_type (MontagePlayReturnType)
+time_to_start_montage_at (float)
+stop_all_montages (bool)
+
+Return type:
+float
+
+montage_resume(montage) → None
+Resumes a paused animation montage. If reference is NULL, it will resume ALL active montages.
+
+Parameters:
+montage (AnimMontage)
+
+montage_set_next_section(section_name_to_change, next_section, montage=None) → None
+
+Relink new next section AFTER SectionNameToChange in run-timeYou can link section order the way you like in editor, but in run-time if you’d like to change it dynamically,
+use this function to relink the next section
+For example, you can have Start->Loop->Loop->Loop…. but when you want it to end, you can relink
+next section of Loop to be End to finish the montage, in which case, it stops looping by Loop->End.
+
+Parameters:
+
+section_name_to_change (Name) – : This should be the name of the Montage Section after which you want to insert a new next section
+next_section (Name) – : new next section
+montage (AnimMontage)
+
+montage_set_play_rate(montage, new_play_rate=1.000000) → None
+Change AnimMontage play rate. NewPlayRate = 1.0 is the default playback rate.
+
+Parameters:
+
+montage (AnimMontage)
+new_play_rate (float)
+
+montage_set_position(montage, new_position) → None
+Set position.
+
+Parameters:
+
+montage (AnimMontage)
+new_position (float)
+
+montage_stop(blend_out_time, montage=None) → None
+Stopped montages will blend out using their montage asset’s BlendOut, with InBlendOutTime as the BlendTime
+
+Parameters:
+
+blend_out_time (float)
+montage (AnimMontage)
+
+montage_stop_group_by_name(blend_out_time, group_name) → None
+Stops all active montages belonging to a group.
+
+Parameters:
+
+blend_out_time (float)
+group_name (Name)
+
+montage_stop_with_blend_out(blend_out, montage=None) → None
+Same as Montage_Stop. Uses values from the AlphaBlendArgs. Other settings come from the montage asset
+
+Parameters:
+
+blend_out (AlphaBlendArgs)
+montage (AnimMontage)
+
+montage_stop_with_blend_settings(blend_out_settings, montage=None) → None
+Same as Montage_Stop, but all blend settings are provided instead of using the ones on the montage asset
+
+Parameters:
+
+blend_out_settings (MontageBlendSettings)
+montage (AnimMontage)
+
+montage_sync_follow(montage_follower, other_anim_instance, montage_leader) → None
+Synchronize a montage to another anim instance’s montage. Both montages must be playing already
+
+Parameters:
+
+montage_follower (AnimMontage) – : The montage that will follow the leader in OtherAnimInstance
+other_anim_instance (AnimInstance) – : The other anim instance we want to synchronize to. Can be set to self
+montage_leader (AnimMontage) – : The montage we want to follow in the other anim instance
+
+montage_sync_stop_following(montage_follower) → None
+Stop following the montage’s leader in this anim instance
+
+Parameters:
+montage_follower (AnimMontage) – : The montage we want to stop synchronizing
+
+property on_all_montage_instances_ended: OnAllMontageInstancesEndedMCDelegate
+[Read-Write] Called when all Montage instances have ended.
+
+Type:
+(OnAllMontageInstancesEndedMCDelegate)
+
+property on_montage_blended_in: OnMontageBlendedInEndedMCDelegate
+[Read-Write] Called when a montage finishes blending in
+
+Type:
+(OnMontageBlendedInEndedMCDelegate)
+
+property on_montage_blending_out: OnMontageBlendingOutStartedMCDelegate
+[Read-Write] Called when a montage starts blending out, whether interrupted or finished
+
+Type:
+(OnMontageBlendingOutStartedMCDelegate)
+
+property on_montage_ended: OnMontageEndedMCDelegate
+[Read-Write] Called when a montage has ended, whether interrupted or finished
+
+Type:
+(OnMontageEndedMCDelegate)
+
+property on_montage_section_changed: OnMontageSectionChangedMCDelegate
+[Read-Write] Called when a montage section changes
+
+Type:
+(OnMontageSectionChangedMCDelegate)
+
+property on_montage_started: OnMontageStartedMCDelegate
+[Read-Write] Called when a montage has started
+
+Type:
+(OnMontageStartedMCDelegate)
+
+play_slot_animation_as_dynamic_montage(asset, slot_node_name, blend_in_time=0.250000, blend_out_time=0.250000, play_rate=1.000000, loop_count=1, blend_out_trigger_time=-1.000000, time_to_start_montage_at=0.000000) → AnimMontage
+Play normal animation asset on the slot node by creating a dynamic UAnimMontage. You can only play one asset (whether montage or animsequence) at a time per SlotGroup.
+
+Parameters:
+
+asset (AnimSequenceBase)
+slot_node_name (Name)
+blend_in_time (float)
+blend_out_time (float)
+play_rate (float)
+loop_count (int32)
+blend_out_trigger_time (float)
+time_to_start_montage_at (float)
+
+Return type:
+AnimMontage
+
+play_slot_animation_as_dynamic_montage_with_blend_args(asset, slot_node_name, blend_in, blend_out, play_rate=1.000000, loop_count=1, blend_out_trigger_time=-1.000000, time_to_start_montage_at=0.000000) → AnimMontage
+Play normal animation asset on the slot node by creating a dynamic UAnimMontage with blend in arguments. You can only play one asset (whether montage or animsequence) at a time per SlotGroup.
+
+Parameters:
+
+asset (AnimSequenceBase)
+slot_node_name (Name)
+blend_in (AlphaBlendArgs)
+blend_out (AlphaBlendArgs)
+play_rate (float)
+loop_count (int32)
+blend_out_trigger_time (float)
+time_to_start_montage_at (float)
+
+Return type:
+AnimMontage
+
+play_slot_animation_as_dynamic_montage_with_blend_settings(asset, slot_node_name, blend_in_settings, blend_out_settings, play_rate=1.000000, loop_count=1, blend_out_trigger_time=-1.000000, time_to_start_montage_at=0.000000) → AnimMontage
+Play normal animation asset on the slot node by creating a dynamic UAnimMontage with blend in settings. You can only play one asset (whether montage or animsequence) at a time per SlotGroup.
+
+Parameters:
+
+asset (AnimSequenceBase)
+slot_node_name (Name)
+blend_in_settings (MontageBlendSettings)
+blend_out_settings (MontageBlendSettings)
+play_rate (float)
+loop_count (int32)
+blend_out_trigger_time (float)
+time_to_start_montage_at (float)
+
+Return type:
+AnimMontage
+
+remove_pose_snapshot(snapshot_name) → None
+Remove a previously saved pose snapshot from the internal snapshot cache
+
+Parameters:
+snapshot_name (Name)
+
+request_slot_group_inertialization(slot_group_name, duration, blend_profile=None) → None
+Requests an inertial blend during the next anim graph update. Requires your anim graph to have a slot node belonging to the specified group name
+
+Parameters:
+
+slot_group_name (Name)
+duration (float)
+blend_profile (BlendProfile)
+
+request_transition_event(event_name, request_timeout, queue_mode, overwrite_mode) → bool
+Attempts to queue a transition request, returns true if the request was successful
+
+Parameters:
+
+event_name (Name)
+request_timeout (double)
+queue_mode (TransitionRequestQueueMode)
+overwrite_mode (TransitionRequestOverwriteMode)
+
+Return type:
+bool
+
+reset_dynamics(teleport_type) → None
+Reset any dynamics running simulation-style updates (e.g. on teleport, time skip etc.)
+
+Parameters:
+teleport_type (TeleportType)
+
+reset_sync() → None
+— AI communication end —
+
+save_pose_snapshot(snapshot_name) → None
+Takes a snapshot of the current skeletal mesh component pose & saves it internally.
+This snapshot can then be retrieved by name in the animation blueprint for blending.
+The snapshot is taken at the current LOD, so if for example you took the snapshot at LOD1 and then used it at LOD0 any bones not in LOD1 will use the reference pose
+
+Parameters:
+snapshot_name (Name)
+
+set_layer_overlay(class_: Class) → None
+deprecated: ‘set_layer_overlay’ was renamed to ‘link_anim_class_layers’.
+
+set_morph_target(morph_target_name, value) → None
+Sets a morph target to a certain weight.
+
+Parameters:
+
+morph_target_name (Name)
+value (float)
+
+set_propagate_notifies_to_linked_instances(set) → None
+Set whether to propagate notifies to any linked anim instances
+
+Parameters:
+set (bool)
+
+set_receive_notifies_from_linked_instances(set) → None
+Set whether to process notifies from any linked anim instances
+
+Parameters:
+set (bool)
+
+set_root_motion_mode(value) → None
+Set RootMotionMode
+
+Parameters:
+value (RootMotionMode)
+
+set_sub_instance_class_by_tag(tag: Name, class_: Class) → None
+deprecated: ‘set_sub_instance_class_by_tag’ was renamed to ‘link_anim_graph_by_tag’.
+
+set_use_main_instance_montage_evaluation_data(set) → None
+Set Use Main Instance Montage Evaluation Data
+
+Parameters:
+set (bool)
+
+snapshot_pose(snapshot) → PoseSnapshot
+Takes a snapshot of the current skeletal mesh component pose and saves it to the specified snapshot.
+The snapshot is taken at the current LOD, so if for example you took the snapshot at LOD1
+and then used it at LOD0 any bones not in LOD1 will use the reference pose
+
+Parameters:
+snapshot (PoseSnapshot)
+
+Returns:
+snapshot (PoseSnapshot):
+
+Return type:
+PoseSnapshot
+
+stop_slot_animation(blend_out_time=0.250000, slot_node_name='None') → None
+Stops currently playing slot animation slot or all
+
+Parameters:
+
+blend_out_time (float)
+slot_node_name (Name)
+
+try_get_pawn_owner() → Pawn
+kismet event functions
+
+Return type:
+Pawn
+
+unlink_anim_class_layers(class_) → None
+Runs through all layer nodes, attempting to find layer nodes that are currently running the specified class, then resets each to its default value.
+State sharing rules are as with SetLayerOverlay.
+If InClass is null, does nothing.
+
+Parameters:
+class (type(Class))
+
+unlock_ai_resources(unlock_movement, unlock_ai_logic) → None
+
+unlocks indicated AI resources of animated pawn. Will unlock only animation-locked resources.DEPRECATED. Use UnlockAIResourcesWithAnimation instead
+
+deprecated: Use UnlockAIResourcesWithAnimation instead
+
+Parameters:
+
+unlock_movement (bool)
+unlock_ai_logic (bool)
+
+was_anim_notify_state_active_in_any_state(anim_notify_state_type) → bool
+Get whether a particular notify state was active in any state machine last tick.
+
+Parameters:
+anim_notify_state_type (type(Class))
+
+Return type:
+bool

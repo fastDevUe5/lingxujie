@@ -1,0 +1,31 @@
+# unreal.Sphere  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/Sphere.html
+
+unreal.Sphere
+
+class unreal.Sphere(center: Vector = Ellipsis, w: float = 0.0)
+Bases: StructBase
+3D Sphere represented by Center and Radius.
+note: The full C++ class is located here: EngineSourceRuntimeCorePublicMathSphere.h
+C++ Source:
+
+Module: CoreUObject
+File: NoExportTypes.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+center (Vector): [Read-Write]
+w (double): [Read-Write]
+
+property center: Vector
+[Read-Write]
+
+Type:
+(Vector)
+
+property w: float
+[Read-Write]
+
+Type:
+(double)

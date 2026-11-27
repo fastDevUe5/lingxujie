@@ -1,0 +1,190 @@
+# unreal.Box  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/Box.html
+
+unreal.Box
+
+class unreal.Box(min: Vector = Ellipsis, max: Vector = Ellipsis)
+Bases: StructBase
+A bounding box.
+note: The full C++ class is located here: EngineSourceRuntimeCorePublicMathBox.h
+C++ Source:
+
+Module: CoreUObject
+File: NoExportTypes.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+is_valid (bool): [Read-Write]
+max (Vector): [Read-Write]
+min (Vector): [Read-Write]
+
+find_box_box_intersection(box2) -> (Box, is_intersecting=bool)
+Find the Box formed by the intersection of Box1 and Box2
+
+Parameters:
+box2 (Box)
+
+Returns:
+is_intersecting (bool): if the boxes do not intersect, this will be returned as false, otherwise true
+
+Return type:
+bool
+
+find_closest_point_on_box(point) -> (Vector, is_inside=bool)
+Find the point on the faces of the Box that is closest to the input Point.
+If the Point is inside the Box, it is returned, ie points Inside do not project to the Box Faces
+
+Parameters:
+point (Vector)
+
+Returns:
+is_inside (bool): if the Point is inside the Box, this will return as true, otherwise false
+
+Return type:
+bool
+
+get_box_box_distance(box2) → double
+Calculate the minimum distance between Box1 and Box2
+
+Parameters:
+box2 (Box)
+
+Return type:
+double
+
+get_box_center_size() -> (center=Vector, dimensions=Vector)
+Get the Center point and X/Y/Z Dimensions of a Box (full dimensions, not Extents)
+
+Returns:
+center (Vector):
+dimensions (Vector):
+
+Return type:
+tuple
+
+get_box_corner(corner_index) → Vector
+Get the position of a corner of the Box. Corners are indexed from 0 to 7, using
+an ordering where 0 is the Min corner, 1/2/3 are +Z/+Y/+X from the Min corner,
+7 is the Max corner, and 4/5/6 are -Z/-Y/-X from the Max corner.
+
+Parameters:
+corner_index (int32)
+
+Return type:
+Vector
+
+get_box_face_center(face_index) -> (Vector, face_normal=Vector)
+Get the position of the center of a face of the Box. Faces are indexed from 0 to 5,
+using an ordering where 0/1 are the MinZ/MaxZ faces, 2/3 are MinY/MaxY, and 4/5 are MinX/MaxX
+
+Parameters:
+face_index (int32)
+
+Returns:
+face_normal (Vector): returned Normal vector of the identified face
+
+Return type:
+Vector
+
+get_box_point_distance(point) → double
+Calculate the minimum distance between the Box and the Point
+
+Parameters:
+point (Vector)
+
+Return type:
+double
+
+get_box_volume_area() -> (volume=double, surface_area=double)
+Get the Volume and Surface Area of a Box
+
+Returns:
+volume (double):
+surface_area (double):
+
+Return type:
+tuple
+
+get_expanded_box(expand_by) → Box
+Get the input Box expanded by adding the ExpandBy parameter to both the Min and Max.
+Dimensions will be clamped to the center point if any of ExpandBy are larger than half the box size
+
+Parameters:
+expand_by (Vector)
+
+Return type:
+Box
+
+get_transformed_box(transform) → Box
+Apply the input Transform to the corners of the input Box, and return the new Box containing those points
+
+Parameters:
+transform (Transform)
+
+Return type:
+Box
+
+property is_valid: bool
+[Read-Write]
+
+Type:
+(bool)
+
+property max: Vector
+[Read-Write]
+
+Type:
+(Vector)
+
+property min: Vector
+[Read-Write]
+
+Type:
+(Vector)
+
+random_point_in_box_extents() → Vector
+Returns a random point within the specified bounding box.
+
+Return type:
+Vector
+
+test_box_box_intersection(box2) → bool
+Test if Box1 and Box2 intersect
+
+Parameters:
+box2 (Box)
+
+Return type:
+bool
+
+test_box_oriented_box_intersection(oriented_box) → bool
+Test if an axis-aligned box intersects an oriented box
+
+Parameters:
+oriented_box (OrientedBox)
+
+Return type:
+bool
+
+test_box_sphere_intersection(sphere_center, sphere_radius) → bool
+Check if the Box intersects a Sphere defined by the SphereCenter and SphereRadius
+
+Parameters:
+
+sphere_center (Vector)
+sphere_radius (double)
+
+Return type:
+bool
+
+test_point_inside_box(point, consider_on_box_as_inside=True) → bool
+Test if a Point is inside the Box, returning true if so, otherwise false
+
+Parameters:
+
+point (Vector)
+consider_on_box_as_inside (bool) – if true, a point lying on the box face is considered “inside”, otherwise it is considered “outside”
+
+Return type:
+bool

@@ -1,0 +1,543 @@
+{
+  "assetCategories": {
+    "surface": {
+      "stone": {
+        "floor": {}
+      }
+    }
+  },
+  "averageColor": "#000000",
+  "categories": [
+    "surface",
+    "stone",
+    "floor"
+  ],
+  "comp_version": 1,
+  "description": "",
+  "displacementBias": 0.654465,
+  "displacementCalibrationAccuracy": 0.969007,
+  "displacementScale": 11.746934,
+  "environment": {
+    "biome": "undefined",
+    "region": "Asia"
+  },
+  "highest_available_res": 16384,
+  "id": "ue4rcgxg",
+  "json": {
+    "contentLength": 11402,
+    "uri": "ue4rcgxg.json"
+  },
+  "maps": [
+    {
+      "averageColor": "#F3F3F3",
+      "bitDepth": 32,
+      "colorSpace": "sRGB",
+      "contentLength": 111316043,
+      "maxIntensity": 255,
+      "mimeType": "image/x-exr",
+      "minIntensity": 192,
+      "name": "AO",
+      "physicalSize": "2x4",
+      "resolution": "4096x8192",
+      "type": "ao",
+      "uri": "ue4rcgxg_8K_AO.exr"
+    },
+    {
+      "averageColor": "#F3F3F3",
+      "bitDepth": 8,
+      "colorSpace": "sRGB",
+      "contentLength": 16915128,
+      "maxIntensity": 255,
+      "mimeType": "image/jpeg",
+      "minIntensity": 192,
+      "name": "AO",
+      "physicalSize": "2x4",
+      "resolution": "4096x8192",
+      "type": "ao",
+      "uri": "ue4rcgxg_8K_AO.jpg"
+    },
+    {
+      "averageColor": "#4A412F",
+      "bitDepth": 16,
+      "colorSpace": "sRGB",
+      "contentLength": 137551207,
+      "maxIntensity": 94,
+      "mimeType": "image/x-exr",
+      "minIntensity": 34,
+      "name": "Basecolor",
+      "physicalSize": "2x4",
+      "resolution": "4096x8192",
+      "type": "basecolor",
+      "uri": "ue4rcgxg_8K_Basecolor.exr"
+    },
+    {
+      "averageColor": "#4A412F",
+      "bitDepth": 8,
+      "colorSpace": "sRGB",
+      "contentLength": 27144847,
+      "maxIntensity": 94,
+      "mimeType": "image/jpeg",
+      "minIntensity": 34,
+      "name": "Basecolor",
+      "physicalSize": "2x4",
+      "resolution": "4096x8192",
+      "type": "basecolor",
+      "uri": "ue4rcgxg_8K_Basecolor.jpg"
+    },
+    {
+      "averageColor": "#808080",
+      "bitDepth": 32,
+      "colorSpace": "Linear",
+      "contentLength": 110297443,
+      "maxIntensity": 255,
+      "mimeType": "image/x-exr",
+      "minIntensity": 0,
+      "name": "Bump",
+      "physicalSize": "2x4",
+      "resolution": "4096x8192",
+      "type": "bump",
+      "uri": "ue4rcgxg_8K_Bump.exr"
+    },
+    {
+      "averageColor": "#808080",
+      "bitDepth": 8,
+      "colorSpace": "Linear",
+      "contentLength": 12327846,
+      "maxIntensity": 255,
+      "mimeType": "image/jpeg",
+      "minIntensity": 0,
+      "name": "Bump",
+      "physicalSize": "2x4",
+      "resolution": "4096x8192",
+      "type": "bump",
+      "uri": "ue4rcgxg_8K_Bump.jpg"
+    },
+    {
+      "averageColor": "#FFFFFF",
+      "bitDepth": 32,
+      "colorSpace": "sRGB",
+      "contentLength": 118797278,
+      "maxIntensity": 255,
+      "mimeType": "image/x-exr",
+      "minIntensity": 255,
+      "name": "Cavity",
+      "physicalSize": "2x4",
+      "resolution": "4096x8192",
+      "type": "cavity",
+      "uri": "ue4rcgxg_8K_Cavity.exr"
+    },
+    {
+      "averageColor": "#FFFFFF",
+      "bitDepth": 8,
+      "colorSpace": "sRGB",
+      "contentLength": 25747078,
+      "maxIntensity": 255,
+      "mimeType": "image/jpeg",
+      "minIntensity": 255,
+      "name": "Cavity",
+      "physicalSize": "2x4",
+      "resolution": "4096x8192",
+      "type": "cavity",
+      "uri": "ue4rcgxg_8K_Cavity.jpg"
+    },
+    {
+      "averageColor": "#242424",
+      "bitDepth": 32,
+      "colorSpace": "Linear",
+      "contentLength": 116298031,
+      "maxIntensity": 43,
+      "mimeType": "image/x-exr",
+      "minIntensity": 20,
+      "name": "Gloss",
+      "physicalSize": "2x4",
+      "resolution": "4096x8192",
+      "type": "gloss",
+      "uri": "ue4rcgxg_8K_Gloss.exr"
+    },
+    {
+      "averageColor": "#242424",
+      "bitDepth": 8,
+      "colorSpace": "Linear",
+      "contentLength": 13725954,
+      "maxIntensity": 43,
+      "mimeType": "image/jpeg",
+      "minIntensity": 20,
+      "name": "Gloss",
+      "physicalSize": "2x4",
+      "resolution": "4096x8192",
+      "type": "gloss",
+      "uri": "ue4rcgxg_8K_Gloss.jpg"
+    },
+    {
+      "averageColor": "#8181F6",
+      "bitDepth": 16,
+      "colorSpace": "Linear",
+      "contentLength": 118947491,
+      "maxIntensity": 173,
+      "mimeType": "image/x-exr",
+      "minIntensity": 110,
+      "name": "Normal",
+      "physicalSize": "2x4",
+      "resolution": "4096x8192",
+      "type": "normal",
+      "uri": "ue4rcgxg_8K_Normal.exr"
+    },
+    {
+      "averageColor": "#8181F6",
+      "bitDepth": 8,
+      "colorSpace": "Linear",
+      "contentLength": 54262615,
+      "maxIntensity": 173,
+      "mimeType": "image/jpeg",
+      "minIntensity": 110,
+      "name": "Normal",
+      "physicalSize": "2x4",
+      "resolution": "4096x8192",
+      "type": "normal",
+      "uri": "ue4rcgxg_8K_Normal.jpg"
+    },
+    {
+      "averageColor": "#DBDBDB",
+      "bitDepth": 32,
+      "colorSpace": "Linear",
+      "contentLength": 106691784,
+      "maxIntensity": 235,
+      "mimeType": "image/x-exr",
+      "minIntensity": 212,
+      "name": "Roughness",
+      "physicalSize": "2x4",
+      "resolution": "4096x8192",
+      "type": "roughness",
+      "uri": "ue4rcgxg_8K_Roughness.exr"
+    },
+    {
+      "averageColor": "#DBDBDB",
+      "bitDepth": 8,
+      "colorSpace": "Linear",
+      "contentLength": 12804243,
+      "maxIntensity": 235,
+      "mimeType": "image/jpeg",
+      "minIntensity": 212,
+      "name": "Roughness",
+      "physicalSize": "2x4",
+      "resolution": "4096x8192",
+      "type": "roughness",
+      "uri": "ue4rcgxg_8K_Roughness.jpg"
+    },
+    {
+      "averageColor": "#383838",
+      "bitDepth": 16,
+      "colorSpace": "sRGB",
+      "contentLength": 131517702,
+      "maxIntensity": 56,
+      "mimeType": "image/x-exr",
+      "minIntensity": 56,
+      "name": "Specular",
+      "physicalSize": "2x4",
+      "resolution": "4096x8192",
+      "type": "specular",
+      "uri": "ue4rcgxg_8K_Specular.exr"
+    },
+    {
+      "averageColor": "#383838",
+      "bitDepth": 8,
+      "colorSpace": "sRGB",
+      "contentLength": 17339306,
+      "maxIntensity": 56,
+      "mimeType": "image/jpeg",
+      "minIntensity": 56,
+      "name": "Specular",
+      "physicalSize": "2x4",
+      "resolution": "4096x8192",
+      "type": "specular",
+      "uri": "ue4rcgxg_8K_Specular.jpg"
+    }
+  ],
+  "meta": [
+    {
+      "key": "scanArea",
+      "name": "Scan Area",
+      "value": "2x4 m"
+    },
+    {
+      "key": "height",
+      "name": "Height",
+      "value": "0.018 m"
+    },
+    {
+      "key": "tileable",
+      "name": "Tileable",
+      "value": true
+    },
+    {
+      "key": "texelDensity",
+      "name": "Texel Density",
+      "value": "4096 px/m"
+    },
+    {
+      "key": "calibration",
+      "name": "Calibration",
+      "value": "GretagMacbeth ColorChecker Color Rendition Chart"
+    },
+    {
+      "key": "scanner",
+      "name": "Scanner",
+      "value": "MKX"
+    }
+  ],
+  "models": [],
+  "name": "Mossy Stone Walkway",
+  "pack": null,
+  "physicalSize": null,
+  "points": 2,
+  "previews": {
+    "images": [
+      {
+        "contentLength": 256705,
+        "resolution": "360x360",
+        "tags": [
+          "thumb"
+        ],
+        "uri": "ue4rcgxg_Grid_360.png"
+      },
+      {
+        "contentLength": 347996,
+        "resolution": "420x420",
+        "tags": [
+          "thumb"
+        ],
+        "uri": "ue4rcgxg_Grid_420.png"
+      },
+      {
+        "contentLength": 1036781,
+        "resolution": "720x720",
+        "tags": [
+          "thumb",
+          "retina"
+        ],
+        "uri": "ue4rcgxg_Grid_720.png"
+      },
+      {
+        "contentLength": 1416249,
+        "resolution": "840x840",
+        "tags": [
+          "thumb",
+          "retina"
+        ],
+        "uri": "ue4rcgxg_Grid_840.png"
+      },
+      {
+        "contentLength": 2874436,
+        "resolution": "1440x768",
+        "tags": [
+          "preview",
+          "clay"
+        ],
+        "uri": "ue4rcgxg_PopupClay_1440.png"
+      },
+      {
+        "contentLength": 5465092,
+        "resolution": "1920x1080",
+        "tags": [
+          "preview",
+          "clay"
+        ],
+        "uri": "ue4rcgxg_PopupClay_1920.png"
+      },
+      {
+        "contentLength": 11895737,
+        "resolution": "2880x1536",
+        "tags": [
+          "preview",
+          "clay",
+          "retina"
+        ],
+        "uri": "ue4rcgxg_PopupClay_2880.png"
+      },
+      {
+        "contentLength": 23047154,
+        "resolution": "3840x2160",
+        "tags": [
+          "preview",
+          "clay",
+          "retina"
+        ],
+        "uri": "ue4rcgxg_PopupClay_3840.png"
+      },
+      {
+        "contentLength": 3094519,
+        "resolution": "1440x768",
+        "tags": [
+          "preview",
+          "tiled"
+        ],
+        "uri": "ue4rcgxg_PopupTiled_1440.png"
+      },
+      {
+        "contentLength": 5795024,
+        "resolution": "1920x1080",
+        "tags": [
+          "preview",
+          "tiled"
+        ],
+        "uri": "ue4rcgxg_PopupTiled_1920.png"
+      },
+      {
+        "contentLength": 12383535,
+        "resolution": "2880x1536",
+        "tags": [
+          "preview",
+          "tiled",
+          "retina"
+        ],
+        "uri": "ue4rcgxg_PopupTiled_2880.png"
+      },
+      {
+        "contentLength": 23724187,
+        "resolution": "3840x2160",
+        "tags": [
+          "preview",
+          "tiled",
+          "retina"
+        ],
+        "uri": "ue4rcgxg_PopupTiled_3840.png"
+      },
+      {
+        "contentLength": 3102304,
+        "resolution": "1440x768",
+        "tags": [
+          "preview"
+        ],
+        "uri": "ue4rcgxg_Popup_1440.png"
+      },
+      {
+        "contentLength": 5855087,
+        "resolution": "1920x1080",
+        "tags": [
+          "preview"
+        ],
+        "uri": "ue4rcgxg_Popup_1920.png"
+      },
+      {
+        "contentLength": 12579800,
+        "resolution": "2880x1536",
+        "tags": [
+          "preview",
+          "retina"
+        ],
+        "uri": "ue4rcgxg_Popup_2880.png"
+      },
+      {
+        "contentLength": 24088665,
+        "resolution": "3840x2160",
+        "tags": [
+          "preview",
+          "retina"
+        ],
+        "uri": "ue4rcgxg_Popup_3840.png"
+      }
+    ],
+    "relativeSize": "1x1",
+    "scaleReferences": []
+  },
+  "process_date": "2024-04-17 05:03:09",
+  "properties": [],
+  "referencePreviews": {
+    "maps": [],
+    "models": []
+  },
+  "references": [],
+  "revised": false,
+  "revision": 0,
+  "semanticTags": {
+    "architectural_style": {},
+    "asset_type": "surface",
+    "contains": [
+      "stone",
+      "moss"
+    ],
+    "country": "Japan",
+    "descriptive": [
+      "rough",
+      "mossy"
+    ],
+    "environment": [
+      "rural",
+      "medieval"
+    ],
+    "industry": [
+      "archviz",
+      "games",
+      "VFX"
+    ],
+    "interior_exterior": [
+      "exterior"
+    ],
+    "locations": {
+      "Asia": {
+        "Japan": {}
+      }
+    },
+    "maxSize": 4,
+    "minSize": 2,
+    "name": "Mossy Stone Walkway",
+    "orientation": [
+      "floor"
+    ],
+    "region": "Asia",
+    "resolution": 16384,
+    "state": [
+      "damaged"
+    ],
+    "subject_matter": "manmade",
+    "theme": [
+      "Floor",
+      "Ground"
+    ]
+  },
+  "tags": [
+    "floor",
+    "ground",
+    "stone",
+    "moss",
+    "rough",
+    "mossy"
+  ],
+  "texelDensity": 4096,
+  "texture_type": "basic",
+  "ue_plugin_archives": [
+    {
+      "contentLength": 170587715,
+      "gltfVersion": "2.0",
+      "tier": 0,
+      "type": "gltf",
+      "uri": "ue_plugin_archives/tier_0/ue4rcgxg_tier_0.zip",
+      "version": 1
+    },
+    {
+      "contentLength": 49328900,
+      "gltfVersion": "2.0",
+      "tier": 1,
+      "type": "gltf",
+      "uri": "ue_plugin_archives/tier_1/ue4rcgxg_tier_1.zip",
+      "version": 1
+    },
+    {
+      "contentLength": 12902650,
+      "gltfVersion": "2.0",
+      "tier": 2,
+      "type": "gltf",
+      "uri": "ue_plugin_archives/tier_2/ue4rcgxg_tier_2.zip",
+      "version": 1
+    },
+    {
+      "contentLength": 1063422,
+      "gltfVersion": "2.0",
+      "tier": 3,
+      "type": "gltf",
+      "uri": "ue_plugin_archives/tier_3/ue4rcgxg_tier_3.zip",
+      "version": 1
+    }
+  ],
+  "version": 2
+}

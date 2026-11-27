@@ -1,0 +1,9 @@
+# unreal.PropertyDef  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/PropertyDef.html
+
+unreal.PropertyDef
+
+class unreal.PropertyDef(type: type, meta: Dict[str, str] | None, getter: str | None, setter: str | None)
+Bases: object
+Type used to define FProperty fields from Python

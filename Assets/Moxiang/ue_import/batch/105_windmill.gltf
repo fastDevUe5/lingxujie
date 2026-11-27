@@ -1,0 +1,372 @@
+{
+ "asset": {
+  "version": "2.0",
+  "generator": "LingXuJie mod+anm exporter"
+ },
+ "scene": 0,
+ "scenes": [
+  {
+   "nodes": [
+    0
+   ]
+  }
+ ],
+ "nodes": [
+  {
+   "name": "map101_windmill06",
+   "mesh": 0,
+   "skin": 0
+  }
+ ],
+ "meshes": [
+  {
+   "name": "105_windmill",
+   "primitives": [
+    {
+     "attributes": {
+      "POSITION": 0,
+      "NORMAL": 1,
+      "TEXCOORD_0": 2,
+      "JOINTS_0": 9,
+      "WEIGHTS_0": 10
+     },
+     "indices": 4,
+     "material": 0
+    },
+    {
+     "attributes": {
+      "POSITION": 0,
+      "NORMAL": 1,
+      "TEXCOORD_0": 2,
+      "JOINTS_0": 9,
+      "WEIGHTS_0": 10
+     },
+     "indices": 5,
+     "material": 0
+    },
+    {
+     "attributes": {
+      "POSITION": 0,
+      "NORMAL": 1,
+      "TEXCOORD_0": 2,
+      "JOINTS_0": 9,
+      "WEIGHTS_0": 10
+     },
+     "indices": 6,
+     "material": 0
+    },
+    {
+     "attributes": {
+      "POSITION": 0,
+      "NORMAL": 1,
+      "TEXCOORD_0": 2,
+      "JOINTS_0": 9,
+      "WEIGHTS_0": 10
+     },
+     "indices": 7,
+     "material": 0
+    },
+    {
+     "attributes": {
+      "POSITION": 0,
+      "NORMAL": 1,
+      "TEXCOORD_0": 2,
+      "JOINTS_0": 9,
+      "WEIGHTS_0": 10
+     },
+     "indices": 8,
+     "material": 0
+    },
+    {
+     "attributes": {
+      "POSITION": 11,
+      "NORMAL": 12,
+      "TEXCOORD_0": 13,
+      "JOINTS_0": 16,
+      "WEIGHTS_0": 17
+     },
+     "indices": 15,
+     "material": 0
+    }
+   ]
+  }
+ ],
+ "materials": [
+  {
+   "name": "moxiang_material_0",
+   "pbrMetallicRoughness": {
+    "baseColorFactor": [
+     0.8,
+     0.8,
+     0.8,
+     1.0
+    ],
+    "metallicFactor": 0.0,
+    "roughnessFactor": 0.8
+   }
+  }
+ ],
+ "skins": [
+  {
+   "joints": [],
+   "inverseBindMatrices": 18
+  }
+ ],
+ "bufferViews": [
+  {
+   "buffer": 0,
+   "byteOffset": 0,
+   "byteLength": 420,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 420,
+   "byteLength": 420,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 840,
+   "byteLength": 280,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 1120,
+   "byteLength": 102,
+   "target": 34963
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 1224,
+   "byteLength": 24,
+   "target": 34963
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 1248,
+   "byteLength": 12,
+   "target": 34963
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 1260,
+   "byteLength": 12,
+   "target": 34963
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 1272,
+   "byteLength": 24,
+   "target": 34963
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 1296,
+   "byteLength": 30,
+   "target": 34963
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 1328,
+   "byteLength": 280,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 1608,
+   "byteLength": 560,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 2168,
+   "byteLength": 252,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 2420,
+   "byteLength": 252,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 2672,
+   "byteLength": 168,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 2840,
+   "byteLength": 90,
+   "target": 34963
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 2932,
+   "byteLength": 90,
+   "target": 34963
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 3024,
+   "byteLength": 168,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 3192,
+   "byteLength": 336,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 3528,
+   "byteLength": 0
+  }
+ ],
+ "accessors": [
+  {
+   "bufferView": 0,
+   "componentType": 5126,
+   "count": 35,
+   "type": "VEC3",
+   "min": [
+    -0.4638435457340841,
+    -0.4332919882450785,
+    -0.4539782304316759
+   ],
+   "max": [
+    0.4373162366755839,
+    0.9425303460444723,
+    0.4473808317631483
+   ]
+  },
+  {
+   "bufferView": 1,
+   "componentType": 5126,
+   "count": 35,
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 2,
+   "componentType": 5126,
+   "count": 35,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 3,
+   "componentType": 5123,
+   "count": 51,
+   "type": "SCALAR"
+  },
+  {
+   "bufferView": 4,
+   "componentType": 5123,
+   "count": 12,
+   "type": "SCALAR"
+  },
+  {
+   "bufferView": 5,
+   "componentType": 5123,
+   "count": 6,
+   "type": "SCALAR"
+  },
+  {
+   "bufferView": 6,
+   "componentType": 5123,
+   "count": 6,
+   "type": "SCALAR"
+  },
+  {
+   "bufferView": 7,
+   "componentType": 5123,
+   "count": 12,
+   "type": "SCALAR"
+  },
+  {
+   "bufferView": 8,
+   "componentType": 5123,
+   "count": 15,
+   "type": "SCALAR"
+  },
+  {
+   "bufferView": 9,
+   "componentType": 5123,
+   "count": 35,
+   "type": "VEC4"
+  },
+  {
+   "bufferView": 10,
+   "componentType": 5126,
+   "count": 35,
+   "type": "VEC4"
+  },
+  {
+   "bufferView": 11,
+   "componentType": 5126,
+   "count": 21,
+   "type": "VEC3",
+   "min": [
+    -3.5529971025578146,
+    -0.16787467943770545,
+    -4.000859257653356
+   ],
+   "max": [
+    3.6075986005671856,
+    0.07659585965531213,
+    2.3962508802860976
+   ]
+  },
+  {
+   "bufferView": 12,
+   "componentType": 5126,
+   "count": 21,
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 13,
+   "componentType": 5126,
+   "count": 21,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 14,
+   "componentType": 5123,
+   "count": 45,
+   "type": "SCALAR"
+  },
+  {
+   "bufferView": 15,
+   "componentType": 5123,
+   "count": 45,
+   "type": "SCALAR"
+  },
+  {
+   "bufferView": 16,
+   "componentType": 5123,
+   "count": 21,
+   "type": "VEC4"
+  },
+  {
+   "bufferView": 17,
+   "componentType": 5126,
+   "count": 21,
+   "type": "VEC4"
+  },
+  {
+   "bufferView": 18,
+   "componentType": 5126,
+   "count": 0,
+   "type": "MAT4"
+  }
+ ],
+ "buffers": [
+  {
+   "byteLength": 3528,
+   "uri": "105_windmill.bin"
+  }
+ ]
+}

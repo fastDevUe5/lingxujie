@@ -1,0 +1,9 @@
+# unreal.ValueDef  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/ValueDef.html
+
+unreal.ValueDef
+
+class unreal.ValueDef(val: object, meta: Dict[str, str] | None)
+Bases: object
+Type used to define constant values from Python

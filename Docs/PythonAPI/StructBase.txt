@@ -1,0 +1,33 @@
+# unreal.StructBase  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/StructBase.html
+
+unreal.StructBase
+
+class unreal.StructBase(*args: Any, **kwargs: Any)
+Bases: _WrapperBase
+Type for all Unreal exposed struct instances
+
+__copy__(self) → Any -- copy this Unreal struct
+
+assign(self, other: object) → None -- assign the value of this Unreal struct to value of the given object
+
+classmethod cast(cls: Type[_T], object: object | Mapping[str, object] | Iterable[object]) → _T -- cast the given object to this Unreal struct type. Can be partial Mapping[fieldName, fiedValue] or a sequence of field values
+
+copy(self) → Any -- copy this Unreal struct
+
+export_text(self) → str -- exports the content of the Unreal struct of this type
+
+get_editor_property(self, name: Name | str) → object -- get the value of any property visible to the editor
+
+import_text(self, content: str) → bool -- imports the provided string into the Unreal struct
+
+set_editor_properties(self, properties: Mapping[str, object]) → None -- set the value of any properties visible to the editor (from a name->value dict), ensuring that the pre/post change notifications are called
+
+set_editor_property(self, name: Name | str, value: object, notify_mode: PropertyAccessChangeNotifyMode = PropertyAccessChangeNotifyMode.DEFAULT) → None -- set the value of any property visible to the editor, ensuring that the pre/post change notifications are called
+
+classmethod static_struct(cls) → ScriptStruct -- get the Unreal struct of this type
+
+to_dict(self) → Dict[str, object] -- convert this Unreal struct into a dict of its properties
+
+to_tuple(self) → Tuple[object, ...] -- break this Unreal struct into a tuple of its properties

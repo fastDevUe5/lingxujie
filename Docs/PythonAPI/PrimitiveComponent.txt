@@ -1,0 +1,2115 @@
+# unreal.PrimitiveComponent  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/PrimitiveComponent.html
+
+unreal.PrimitiveComponent
+
+class unreal.PrimitiveComponent(outer: Object | None = None, name: Name | str = 'None')
+Bases: SceneComponent
+PrimitiveComponents are SceneComponents that contain or generate some sort of geometry, generally to be rendered or used as collision data.
+There are several subclasses for the various types of geometry, but the most common by far are the ShapeComponents (Capsule, Sphere, Box), StaticMeshComponent, and SkeletalMeshComponent.
+ShapeComponents generate geometry that is used for collision detection but are not rendered, while StaticMeshComponents and SkeletalMeshComponents contain pre-built geometry that is rendered, but can also be used for collision detection.
+C++ Source:
+
+Module: Engine
+File: PrimitiveComponent.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+absolute_location (bool): [Read-Write] If RelativeLocation should be considered relative to the world, rather than the parent
+absolute_rotation (bool): [Read-Write] If RelativeRotation should be considered relative to the world, rather than the parent
+absolute_scale (bool): [Read-Write] If RelativeScale3D should be considered relative to the world, rather than the parent
+affect_distance_field_lighting (bool): [Read-Write] Controls whether the primitive should affect dynamic distance field lighting methods. This flag is only used if CastShadow is true.
+affect_dynamic_indirect_lighting (bool): [Read-Write] Controls whether the primitive should influence indirect lighting.
+affect_indirect_lighting_while_hidden (bool): [Read-Write] Controls whether the primitive should affect indirect lighting when hidden. This flag is only used if bAffectDynamicIndirectLighting is true.
+allow_cull_distance_volume (bool): [Read-Write] Whether to accept cull distance volumes to modify cached cull distance.
+always_create_physics_state (bool): [Read-Write] Indicates if we’d like to create physics state all the time (for collision and simulation).
+If you set this to false, it still will create physics state if collision or simulation activated.
+This can help performance if you’d like to avoid overhead of creating physics state when triggers
+apply_impulse_on_damage (bool): [Read-Write] True for damage to this component to apply physics impulse, false to opt out of these impulses.
+asset_user_data (Array[AssetUserData]): [Read-Write] Array of user data stored with the component
+asset_user_data_editor_only (Array[AssetUserData]): [Read-Write] Array of user data stored with the component
+auto_activate (bool): [Read-Write] Whether the component is activated at creation or must be explicitly activated.
+body_instance (BodyInstance): [Read-Write] Physics scene information for this component, holds a single rigid body with multiple shapes.
+bounds_scale (float): [Read-Write] Scales the bounds of the object.
+This is useful when using World Position Offset to animate the vertices of the object outside of its bounds.
+Warning: Increasing the bounds of an object will reduce performance and shadow quality!
+Currently only used by StaticMeshComponent and SkeletalMeshComponent.
+cached_max_draw_distance (float): [Read-Only] The distance to cull this primitive at.
+A CachedMaxDrawDistance of 0 indicates that the primitive should not be culled by distance.
+can_character_step_up_on (CanBeCharacterBase): [Read-Write] Determine whether a Character can step up onto this component.
+This controls whether they can try to step up on it when they bump in to it, not whether they can walk on it after landing on it.
+see: FWalkableSlopeOverride
+can_ever_affect_navigation (bool): [Read-Write] Whether this component can potentially influence navigation
+cast_cinematic_shadow (bool): [Read-Write] Whether this component should cast shadows from lights that have bCastShadowsFromCinematicObjectsOnly enabled.
+This is useful for characters in a cinematic with special cinematic lights, where the cost of shadowmap rendering of the environment is undesired.
+cast_contact_shadow (bool): [Read-Write] Whether the object should cast contact shadows.
+This flag is only used if CastShadow is true.
+cast_dynamic_shadow (bool): [Read-Write] Controls whether the primitive should cast shadows in the case of non precomputed shadowing. This flag is only used if CastShadow is true and if FirstPersonPrimitiveType is not set to FirstPerson.
+cast_far_shadow (bool): [Read-Write] When enabled, the component will be rendering into the far shadow cascades (only for directional lights). This flag is only used if CastShadow is true and if FirstPersonPrimitiveType is not set to FirstPerson.
+cast_hidden_shadow (bool): [Read-Write] If true, the primitive will cast shadows even if bHidden is true.
+Controls whether the primitive should cast shadows when hidden.
+This flag is only used if CastShadow is true and if FirstPersonPrimitiveType is not set to WorldSpaceRepresentation.
+cast_inset_shadow (bool): [Read-Write] Whether this component should create a per-object shadow that gives higher effective shadow resolution.
+Useful for cinematic character shadowing. Assumed to be enabled if bSelfShadowOnly is enabled.
+cast_shadow (bool): [Read-Write] Controls whether the primitive component should cast a shadow or not.
+cast_shadow_as_two_sided (bool): [Read-Write] Whether this primitive should cast dynamic shadows as if it were a two sided material.
+cast_static_shadow (bool): [Read-Write] Whether the object should cast a static shadow from shadow casting lights. This flag is only used if CastShadow is true and if FirstPersonPrimitiveType is not set to FirstPerson.
+cast_volumetric_translucent_shadow (bool): [Read-Write] Whether the object should cast a volumetric translucent shadow.
+Volumetric translucent shadows are useful for primitives with smoothly changing opacity like particles representing a volume,
+but have artifacts when used on highly opaque surfaces. This flag is only used if CastShadow is true and if FirstPersonPrimitiveType is not set to FirstPerson.
+component_tags (Array[Name]): [Read-Write] Array of tags that can be used for grouping and categorizing. Can also be accessed from scripting.
+consider_for_actor_placement_when_hidden (bool): [Read-Write] If true, this component will be considered for placement when dragging and placing items in the editor even if it is not visible, such as in the case of hidden collision meshes
+custom_depth_stencil_value (int32): [Read-Write] Optionally write this 0-255 value to the stencil buffer in CustomDepth pass (Requires project setting or r.CustomDepth == 3)
+custom_depth_stencil_write_mask (RendererStencilMask): [Read-Write] Mask used for stencil buffer writes.
+custom_primitive_data (CustomPrimitiveData): [Read-Write] Optional user defined default values for the custom primitive data of this primitive
+detail_mode (DetailMode): [Read-Write] Set the required detail level of this component.
+It will be deleted or made invisible if the world’s detail level is higher, based on platform and scalability settings.
+For example, a detail mode of High may prevent this component from loading on mobile platforms.
+editable_when_inherited (bool): [Read-Write] True if this component can be modified when it was inherited from a parent actor class
+emissive_light_source (bool): [Read-Write] Whether the primitive will be used as an emissive light source.
+enable_auto_lod_generation (bool): [Read-Write] Whether to include this component in HLODs or not.
+exclude_for_specific_hlod_levels (Array[int32]): [Read-Write]
+deprecated: WARNING: This property has been deprecated, use the SetExcludedFromHLODLevel/IsExcludedFromHLODLevel functions instead
+exclude_from_hlod_levels (uint8): [Read-Write] Which specific HLOD levels this component should be excluded from
+exclude_from_light_attachment_group (bool): [Read-Write] If set, then it overrides any bLightAttachmentsAsGroup set in a parent.
+fill_collision_underneath_for_navmesh (bool): [Read-Write] If set, navmesh will not be generated under the surface of the geometry
+first_person_primitive_type (FirstPersonPrimitiveType): [Read-Write] If this is set to FirstPerson, the camera FirstPersonFieldOfView and FirstPersonScale parameters will be used on this component. These parameters can be used to render the component with a different field of view and a smaller depth range such that clipping with the scene can be avoided. This is useful for rendering first person view geometry.
+force_mip_streaming (bool): [Read-Write] If true, forces mips for textures used by this component to be resident when this component’s level is loaded.
+generate_overlap_events (bool): [Read-Write]
+has_per_instance_hit_proxies (bool): [Read-Write] If true a hit-proxy will be generated for each instance of instanced static meshes.
+This allows for other systems, like selection in viewports, to function at the individual instance.
+hidden_in_game (bool): [Read-Write] Whether to hide the primitive in game, if the primitive is Visible.
+hidden_in_scene_capture (bool): [Read-Write] When true, will not be captured by Scene Capture
+hlod_batching_policy (HLODBatchingPolicy): [Read-Write] Determines how the geometry of a component will be incorporated in proxy (simplified) HLODs.
+holdout (bool): [Read-Write] If this is True, this primitive will render black with an alpha of 0, but all secondary effects (shadows, reflections, indirect lighting) remain. This feature requires activating the project setting(s) “Alpha Output”, and “Support Primitive Alpha Holdout” if using the deferred renderer.
+ignore_radial_force (bool): [Read-Write] Will ignore radial forces applied to this component.
+ignore_radial_impulse (bool): [Read-Write] Will ignore radial impulses applied to this component.
+indirect_lighting_cache_quality (IndirectLightingCacheQuality): [Read-Write] Quality of indirect lighting for Movable primitives. This has a large effect on Indirect Lighting Cache update time.
+is_editor_only (bool): [Read-Write] If true, the component will be excluded from non-editor builds
+ld_max_draw_distance (float): [Read-Write] Max draw distance exposed to LDs. The real max draw distance is the min (disregarding 0) of this and volumes affecting this object.
+light_attachments_as_group (bool): [Read-Write] Whether to light this component and any attachments as a group. This only has effect on the root component of an attachment tree.
+When enabled, attached component shadowing settings like bCastInsetShadow, bCastVolumetricTranslucentShadow, etc, will be ignored.
+This is useful for improving performance when multiple movable components are attached together.
+lighting_channels (LightingChannels): [Read-Write] Channels that this component should be in. Lights with matching channels will affect the component.
+These channels only apply to opaque materials, direct lighting, and dynamic lighting and shadowing.
+Lighting channels are only supported on translucent materials using forward shading (i.e. when not using the translucency lighting volume).
+lightmap_type (LightmapType): [Read-Write]
+min_draw_distance (float): [Read-Write] The minimum distance at which the primitive should be rendered,
+measured in world space units from the center of the primitive’s bounding sphere to the camera position.
+mobility (ComponentMobility): [Read-Write] How often this component is allowed to move, used to make various optimizations. Only safe to set in constructor.
+multi_body_overlap (bool): [Read-Write] If true, this component will generate individual overlaps for each overlapping physics body if it is a multi-body component. When false, this component will
+generate only one overlap, regardless of how many physics bodies it has and how many of them are overlapping another component/body. This flag has no
+influence on single body components.
+never_distance_cull (bool): [Read-Write] When enabled this object will not be culled by distance. This is ignored if a child of a HLOD.
+on_begin_cursor_over (ComponentBeginCursorOverSignature): [Read-Write] Event called when the mouse cursor is moved over this component and mouse over events are enabled in the player controller
+on_clicked (ComponentOnClickedSignature): [Read-Write] Event called when the left mouse button is clicked while the mouse is over this component and click events are enabled in the player controller
+on_component_activated (ActorComponentActivatedSignature): [Read-Write] Called when the component has been activated, with parameter indicating if it was from a reset
+on_component_begin_overlap (ComponentBeginOverlapSignature): [Read-Write] Event called when something starts to overlaps this component, for example a player walking into a trigger.
+For events when objects have a blocking collision, for example a player hitting a wall, see ‘Hit’ events.
+note: Both this component and the other one must have GetGenerateOverlapEvents() set to true to generate overlap events.
+note: When receiving an overlap from another object’s movement, the directions of ‘Hit.Normal’ and ‘Hit.ImpactNormal’ will be adjusted to indicate force from the other object against this object.
+on_component_deactivated (ActorComponentDeactivateSignature): [Read-Write] Called when the component has been deactivated
+on_component_end_overlap (ComponentEndOverlapSignature): [Read-Write] Event called when something stops overlapping this component
+note: Both this component and the other one must have GetGenerateOverlapEvents() set to true to generate overlap events.
+on_component_hit (ComponentHitSignature): [Read-Write] Event called when a component hits (or is hit by) something solid. This could happen due to things like Character movement, using Set Location with ‘sweep’ enabled, or physics simulation.
+For events when objects overlap (e.g. walking into a trigger) see the ‘Overlap’ event.
+note: For collisions during physics simulation to generate hit events, ‘Simulation Generates Hit Events’ must be enabled for this component.
+note: When receiving a hit from another object’s movement, the directions of ‘Hit.Normal’ and ‘Hit.ImpactNormal’ will be adjusted to indicate force from the other object against this object.
+note: NormalImpulse will be filled in for physics-simulating bodies, but will be zero for swept-component blocking collisions.
+on_component_physics_state_changed (ComponentPhysicsStateChanged): [Read-Write] Event called when physics state is created or destroyed for this component
+on_component_sleep (ComponentSleepSignature): [Read-Write] Event called when the underlying physics objects is put to sleep
+on_component_wake (ComponentWakeSignature): [Read-Write] Event called when the underlying physics objects is woken up
+on_end_cursor_over (ComponentEndCursorOverSignature): [Read-Write] Event called when the mouse cursor is moved off this component and mouse over events are enabled in the player controller
+on_input_touch_begin (ComponentOnInputTouchBeginSignature): [Read-Write] Event called when a touch input is received over this component when touch events are enabled in the player controller
+This will be deprecated in the next engine release. Use OnTouchBegan with TouchId, Player Controller, and Hit Result arguments instead.
+on_input_touch_end (ComponentOnInputTouchEndSignature): [Read-Write] Event called when a touch input is released over this component when touch events are enabled in the player controller
+This will be deprecated in the next engine release. Use OnTouchEnded with TouchId, Player Controller, and Hit Result arguments instead.
+on_input_touch_enter (ComponentBeginTouchOverSignature): [Read-Write] Event called when a finger is moved over this component when touch over events are enabled in the player controller
+This will be deprecated in the next engine release. Use OnTouchEntered with TouchId, Player Controller, and Hit Result arguments instead.
+on_input_touch_leave (ComponentEndTouchOverSignature): [Read-Write] Event called when a finger is moved off this component when touch over events are enabled in the player controller
+This will be deprecated in the next engine release. Use OnTouchExited with TouchId, Player Controller, and Hit Result arguments instead.
+on_released (ComponentOnReleasedSignature): [Read-Write] Event called when the left mouse button is released while the mouse is over this component click events are enabled in the player controller
+on_touch_began (ComponentOnTouchBeganSignature): [Read-Write] Event called when a touch input is received over this component when touch events are enabled in the player controller
+on_touch_ended (ComponentOnTouchEndedSignature): [Read-Write] Event called when a touch input is released over this component when touch events are enabled in the player controller
+on_touch_entered (ComponentOnTouchEnteredSignature): [Read-Write] Event called when a finger is moved over this component when touch over events are enabled in the player controller
+on_touch_exited (ComponentOnTouchExitedSignature): [Read-Write] Event called when a finger is moved off this component when touch over events are enabled in the player controller
+only_owner_see (bool): [Read-Write] If this is True, this component will only be visible when the view actor is the component’s owner, directly or indirectly.
+owner_no_see (bool): [Read-Write] If this is True, this component won’t be visible when the view actor is the component’s owner, directly or indirectly. Will be internally set to true when FirstPersonPrimitiveType is set to WorldSpaceRepresentation.
+physics_volume_changed_delegate (PhysicsVolumeChanged): [Read-Write] Delegate that will be called when PhysicsVolume has been changed *
+primary_component_tick (ActorComponentTickFunction): [Read-Write] Main tick function for the Component
+rasterize_as_filled_convex_volume (bool): [Read-Write] If set, the geometry gathered for navigation data generation will be converted into a filled vertical convex volume.
+It means that all collision geometries of the asset are merged vertically resulting in a grid of vertical columns that encompass the asset.
+This can be useful to represent the interior of the surface and prevent navmesh inside.
+ray_tracing_far_field (bool): [Read-Write] If true, this component will be included in the ray tracing far field layer instead of the near field. The ray tracing far field layer ignores whether the component is hidden.
+ray_tracing_group_culling_priority (RayTracingGroupCullingPriority): [Read-Write] Defines how quickly it should be culled. For example buildings should have a low priority, but small dressing should have a high priority.
+ray_tracing_group_id (int32): [Read-Write] Defines run-time groups of components. For example allows to assemble multiple parts of a building at runtime.
+-1 means that component doesn’t belong to any group.
+receive_mobile_csm_shadows (bool): [Read-Write] Mobile only:
+If disabled this component will not receive CSM shadows. (Components that do not receive CSM may have reduced shading cost)
+receives_decals (bool): [Read-Write] Whether the primitive receives decals.
+relative_location (Vector): [Read-Write] Location of the component relative to its parent
+relative_rotation (Rotator): [Read-Write] Rotation of the component relative to its parent
+relative_scale3d (Vector): [Read-Write] Non-uniform scaling of the component relative to its parent.
+Note that scaling is always applied in local space (no shearing etc)
+render_custom_depth (bool): [Read-Write] If true, this component will be rendered in the CustomDepth pass (usually used for outlines)
+render_in_depth_pass (bool): [Read-Write] If true, this component will be rendered in the depth pass even if it’s not rendered in the main pass
+render_in_main_pass (bool): [Read-Write] If true, this component will be rendered in the main pass (z prepass, basepass, transparency)
+
+replicate_physics_to_autonomous_proxy (bool): [Read-Write] True if physics should be replicated to autonomous proxies. This should be true forserver-authoritative simulations, and false for client authoritative simulations.
+
+replicate_using_registered_sub_object_list (bool): [Read-Write] When true the replication system will only replicate the registered subobjects list
+When false the replication system will instead call the virtual ReplicateSubObjects() function where the subobjects need to be manually replicated.
+replicates (bool): [Read-Write] Is this component currently replicating? Should the network code consider it for replication? Owning Actor must be replicating first!
+return_material_on_move (bool): [Read-Write] If true, component sweeps will return the material in their hit result.
+see: MoveComponent(), FHitResult
+runtime_virtual_textures (Array[RuntimeVirtualTexture]): [Read-Write] Array of runtime virtual textures into which we draw the mesh for this actor.
+The material also needs to be set up to output to a virtual texture.
+self_shadow_only (bool): [Read-Write] When enabled, the component will only cast a shadow on itself and not other components in the world.
+This is especially useful for first person weapons, and forces bCastInsetShadow to be enabled.
+shadow_cache_invalidation_behavior (ShadowCacheInvalidationBehavior): [Read-Write] Control shadow invalidation behavior, in particular with respect to Virtual Shadow Maps and material effects like World Position Offset.
+should_update_physics_volume (bool): [Read-Write] Whether or not the cached PhysicsVolume this component overlaps should be updated when the component is moved.
+see: GetPhysicsVolume()
+single_sample_shadow_from_stationary_lights (bool): [Read-Write] Whether the whole component should be shadowed as one from stationary lights, which makes shadow receiving much cheaper.
+When enabled shadowing data comes from the volume lighting samples precomputed by Lightmass, which are very sparse.
+This is currently only used on stationary directional lights.
+static_when_not_moveable (bool): [Read-Write] When false, the underlying physics body will contain all sim data (mass, inertia tensor, etc) even if mobility is not set to Moveable
+trace_complex_on_move (bool): [Read-Write] If true, component sweeps with this component should trace against complex collision during movement (for example, each triangle of a mesh).
+If false, collision will be resolved against simple collision bounds instead.
+see: MoveComponent()
+translucency_sort_distance_offset (float): [Read-Write] Modified sort distance offset for translucent objects in world units.
+A positive number will move the sort distance further and a negative number will move the distance closer.
+Ignored if the object is not translucent.
+Warning: Adjusting this value will prevent the renderer from correctly sorting based on distance. Only modify this value if you are certain it will not cause visual artifacts.
+
+translucency_sort_priority (int32): [Read-Write] Translucent objects with a lower sort priority draw behind objects with a higher priority.
+Translucent objects with the same priority are rendered from back-to-front based on their bounds origin.
+This setting is also used to sort objects being drawn into a runtime virtual texture.
+Ignored if the object is not translucent. The default priority is zero.
+Warning: This should never be set to a non-default value unless you know what you are doing, as it will prevent the renderer from sorting correctly.
+It is especially problematic on dynamic gameplay effects.
+
+treat_as_background_for_occlusion (bool): [Read-Write] Treat this primitive as part of the background for occlusion purposes. This can be used as an optimization to reduce the cost of rendering skyboxes, large ground planes that are part of the vista, etc.
+use_as_occluder (bool): [Read-Write] Whether to render the primitive in the depth only pass.
+This should generally be true for all objects, and let the renderer make decisions about whether to render objects in the depth only pass.
+todo: if any rendering features rely on a complete depth only pass, this variable needs to go away.
+use_attach_parent_bound (bool): [Read-Write] If true, this component uses its parents bounds when attached.
+This can be a significant optimization with many components attached together.
+virtual_texture_cull_mips (int8): [Read-Write] Number of lower mips in the runtime virtual texture to skip for rendering this primitive.
+Larger values reduce the effective draw distance in the runtime virtual texture.
+This culling method doesn’t take into account primitive size or virtual texture size.
+virtual_texture_lod_bias (int8): [Read-Write] Bias to the LOD selected for rendering to runtime virtual textures.
+virtual_texture_min_coverage (int8): [Read-Write] Set the minimum pixel coverage before culling from the runtime virtual texture.
+Larger values reduce the effective draw distance in the runtime virtual texture.
+virtual_texture_render_pass_type (RuntimeVirtualTextureMainPassType): [Read-Write] Controls if this component draws in the main pass as well as in the virtual texture.
+visible (bool): [Read-Write] Whether to completely draw the primitive; if false, the primitive is not drawn, does not cast a shadow.
+visible_in_ray_tracing (bool): [Read-Write] If true, this component will be visible in ray tracing effects. Turning this off will remove it from ray traced reflections, shadows, etc.
+visible_in_real_time_sky_captures (bool): [Read-Write] If true, this component will be visible in real-time sky light reflection captures.
+visible_in_reflection_captures (bool): [Read-Write] If true, this component will be visible in reflection captures.
+visible_in_reflections (bool): [Read-Write] If true, this component will be visible in ray traced reflections. Screen space traces will ignore this flag, as they directly sample SceneColor
+visible_in_scene_capture_only (bool): [Read-Write] When true, will only be visible in Scene Capture
+
+add_angular_impulse_in_degrees(impulse, bone_name='None', vel_change=False) → None
+Add an angular impulse to a single rigid body. Good for one time instant burst.
+
+Parameters:
+
+impulse (Vector)
+bone_name (Name) – If a SkeletalMeshComponent, name of body to apply angular impulse to. ‘None’ indicates root body.
+vel_change (bool) – If true, the Strength is taken as a change in angular velocity instead of an impulse (ie. mass will have no effect).
+
+add_angular_impulse_in_radians(impulse, bone_name='None', vel_change=False) → None
+Add an angular impulse to a single rigid body. Good for one time instant burst.
+
+Parameters:
+
+impulse (Vector)
+bone_name (Name) – If a SkeletalMeshComponent, name of body to apply angular impulse to. ‘None’ indicates root body.
+vel_change (bool) – If true, the Strength is taken as a change in angular velocity instead of an impulse (ie. mass will have no effect).
+
+add_force(force, bone_name='None', accel_change=False) → None
+Add a force to a single rigid body.
+This is like a ‘thruster’. Good for adding a burst over some (non zero) time. Should be called every frame for the duration of the force.
+
+Parameters:
+
+force (Vector) – Force vector to apply. Magnitude indicates strength of force.
+bone_name (Name) – If a SkeletalMeshComponent, name of body to apply force to. ‘None’ indicates root body.
+accel_change (bool) – If true, Force is taken as a change in acceleration instead of a physical force (i.e. mass will have no effect).
+
+add_force_at_location(force, location, bone_name='None') → None
+Add a force to a single rigid body at a particular location in world space.
+This is like a ‘thruster’. Good for adding a burst over some (non zero) time. Should be called every frame for the duration of the force.
+
+Parameters:
+
+force (Vector) – Force vector to apply. Magnitude indicates strength of force.
+location (Vector) – Location to apply force, in world space.
+bone_name (Name) – If a SkeletalMeshComponent, name of body to apply force to. ‘None’ indicates root body.
+
+add_force_at_location_local(force, location, bone_name='None') → None
+Add a force to a single rigid body at a particular location. Both Force and Location should be in body space.
+This is like a ‘thruster’. Good for adding a burst over some (non zero) time. Should be called every frame for the duration of the force.
+
+Parameters:
+
+force (Vector) – Force vector to apply. Magnitude indicates strength of force.
+location (Vector) – Location to apply force, in component space.
+bone_name (Name) – If a SkeletalMeshComponent, name of body to apply force to. ‘None’ indicates root body.
+
+add_force_at_position(force: Vector, location: Vector, bone_name: Name = 'None') → None
+deprecated: ‘add_force_at_position’ was renamed to ‘add_force_at_location’.
+
+add_impulse(impulse, bone_name='None', vel_change=False) → None
+Add an impulse to a single rigid body. Good for one time instant burst.
+
+Parameters:
+
+impulse (Vector) – Magnitude and direction of impulse to apply.
+bone_name (Name) – If a SkeletalMeshComponent, name of body to apply impulse to. ‘None’ indicates root body.
+vel_change (bool) – If true, the Strength is taken as a change in velocity instead of an impulse (ie. mass will have no effect).
+
+add_impulse_at_location(impulse, location, bone_name='None') → None
+Add an impulse to a single rigid body at a specific location.
+
+Parameters:
+
+impulse (Vector) – Magnitude and direction of impulse to apply.
+location (Vector) – Point in world space to apply impulse at.
+bone_name (Name) – If a SkeletalMeshComponent, name of bone to apply impulse to. ‘None’ indicates root body.
+
+add_impulse_at_position(impulse: Vector, location: Vector, bone_name: Name = 'None') → None
+deprecated: ‘add_impulse_at_position’ was renamed to ‘add_impulse_at_location’.
+
+add_radial_force(origin, radius, strength, falloff, accel_change=False) → None
+Add a force to all bodies in this component, originating from the supplied world-space location.
+
+Parameters:
+
+origin (Vector) – Origin of force in world space.
+radius (float) – Radius within which to apply the force.
+strength (float) – Strength of force to apply.
+falloff (RadialImpulseFalloff) – Allows you to control the strength of the force as a function of distance from Origin.
+accel_change (bool) – If true, Strength is taken as a change in acceleration instead of a physical force (i.e. mass will have no effect).
+
+add_radial_impulse(origin, radius, strength, falloff, vel_change=False) → None
+Add an impulse to all rigid bodies in this component, radiating out from the specified position.
+
+Parameters:
+
+origin (Vector) – Point of origin for the radial impulse blast, in world space
+radius (float) – Size of radial impulse. Beyond this distance from Origin, there will be no affect.
+strength (float) – Maximum strength of impulse applied to body.
+falloff (RadialImpulseFalloff) – Allows you to control the strength of the impulse as a function of distance from Origin.
+vel_change (bool) – If true, the Strength is taken as a change in velocity instead of an impulse (ie. mass will have no effect).
+
+add_torque_in_degrees(torque, bone_name='None', accel_change=False) → None
+Add a torque to a single rigid body.
+
+Parameters:
+
+torque (Vector) – Torque to apply. Direction is axis of rotation and magnitude is strength of torque.
+bone_name (Name) – If a SkeletalMeshComponent, name of body to apply torque to. ‘None’ indicates root body.
+accel_change (bool) – If true, Torque is taken as a change in angular acceleration instead of a physical torque (i.e. mass will have no effect).
+
+add_torque_in_radians(torque, bone_name='None', accel_change=False) → None
+Add a torque to a single rigid body.
+
+Parameters:
+
+torque (Vector) – Torque to apply. Direction is axis of rotation and magnitude is strength of torque.
+bone_name (Name) – If a SkeletalMeshComponent, name of body to apply torque to. ‘None’ indicates root body.
+accel_change (bool) – If true, Torque is taken as a change in angular acceleration instead of a physical torque (i.e. mass will have no effect).
+
+add_velocity_change_impulse_at_location(impulse, location, bone_name='None') → None
+Add an impulse to a single rigid body at a specific location. The Strength is taken as a change in angular velocity instead of an impulse (ie. mass will have no effect).
+
+Parameters:
+
+impulse (Vector) – Magnitude and direction of impulse to apply.
+location (Vector) – Point in world space to apply impulse at.
+bone_name (Name) – If a SkeletalMeshComponent, name of bone to apply impulse to. ‘None’ indicates root body.
+
+property affect_distance_field_lighting: bool
+[Read-Only] Controls whether the primitive should affect dynamic distance field lighting methods. This flag is only used if CastShadow is true.
+
+Type:
+(bool)
+
+property affect_dynamic_indirect_lighting: bool
+[Read-Only] Controls whether the primitive should influence indirect lighting.
+
+Type:
+(bool)
+
+property affect_indirect_lighting_while_hidden: bool
+[Read-Only] Controls whether the primitive should affect indirect lighting when hidden. This flag is only used if bAffectDynamicIndirectLighting is true.
+
+Type:
+(bool)
+
+property allow_cull_distance_volume: bool
+[Read-Only] Whether to accept cull distance volumes to modify cached cull distance.
+
+Type:
+(bool)
+
+property always_create_physics_state: bool
+[Read-Only] Indicates if we’d like to create physics state all the time (for collision and simulation).
+If you set this to false, it still will create physics state if collision or simulation activated.
+This can help performance if you’d like to avoid overhead of creating physics state when triggers
+
+Type:
+(bool)
+
+property apply_impulse_on_damage: bool
+[Read-Write] True for damage to this component to apply physics impulse, false to opt out of these impulses.
+
+Type:
+(bool)
+
+property body_instance: BodyInstance
+[Read-Only] Physics scene information for this component, holds a single rigid body with multiple shapes.
+
+Type:
+(BodyInstance)
+
+box_overlap_component(box_centre, box, trace_complex=True, show_trace, persistent_show_trace=False) → (hit_location=Vector, hit_normal=Vector, bone_name=Name, out_hit=HitResult) or None
+Perform a box overlap against a single component as an AABB (No rotation)
+
+Parameters:
+
+box_centre (Vector) – The centre of the box to overlap with the component
+box (Box) – Description of the box to use in the overlap
+trace_complex (bool) – Whether or not to trace the complex physics representation or just the simple representation
+show_trace (bool) – Whether or not to draw the trace in the world (for debugging)
+persistent_show_trace (bool) – Whether or not to make the debugging draw stay in the world permanently
+
+Returns:
+hit_location (Vector):
+hit_normal (Vector):
+bone_name (Name):
+out_hit (HitResult):
+
+Return type:
+tuple or None
+
+property cached_max_draw_distance: float
+[Read-Only] The distance to cull this primitive at.
+A CachedMaxDrawDistance of 0 indicates that the primitive should not be culled by distance.
+
+Type:
+(float)
+
+property can_be_character_base: CanBeCharacterBase
+‘can_be_character_base’ was renamed to ‘can_character_step_up_on’.
+
+Type:
+deprecated
+
+can_character_step_up(pawn) → bool
+Return true if the given Pawn can step up onto this component.
+This controls whether they can try to step up on it when they bump in to it, not whether they can walk on it after landing on it.
+see: CanCharacterStepUpOn
+
+Parameters:
+pawn (Pawn) – the Pawn that wants to step onto this component.
+
+Return type:
+bool
+
+property can_character_step_up_on: CanBeCharacterBase
+[Read-Write] Determine whether a Character can step up onto this component.
+This controls whether they can try to step up on it when they bump in to it, not whether they can walk on it after landing on it.
+see: FWalkableSlopeOverride
+
+Type:
+(CanBeCharacterBase)
+
+property cast_cinematic_shadow: bool
+[Read-Only] Whether this component should cast shadows from lights that have bCastShadowsFromCinematicObjectsOnly enabled.
+This is useful for characters in a cinematic with special cinematic lights, where the cost of shadowmap rendering of the environment is undesired.
+
+Type:
+(bool)
+
+property cast_contact_shadow: bool
+[Read-Only] Whether the object should cast contact shadows.
+This flag is only used if CastShadow is true.
+
+Type:
+(bool)
+
+property cast_dynamic_shadow: bool
+[Read-Only] Controls whether the primitive should cast shadows in the case of non precomputed shadowing. This flag is only used if CastShadow is true and if FirstPersonPrimitiveType is not set to FirstPerson.
+
+Type:
+(bool)
+
+property cast_far_shadow: bool
+[Read-Only] When enabled, the component will be rendering into the far shadow cascades (only for directional lights). This flag is only used if CastShadow is true and if FirstPersonPrimitiveType is not set to FirstPerson.
+
+Type:
+(bool)
+
+property cast_hidden_shadow: bool
+[Read-Only] If true, the primitive will cast shadows even if bHidden is true.
+Controls whether the primitive should cast shadows when hidden.
+This flag is only used if CastShadow is true and if FirstPersonPrimitiveType is not set to WorldSpaceRepresentation.
+
+Type:
+(bool)
+
+property cast_inset_shadow: bool
+[Read-Only] Whether this component should create a per-object shadow that gives higher effective shadow resolution.
+Useful for cinematic character shadowing. Assumed to be enabled if bSelfShadowOnly is enabled.
+
+Type:
+(bool)
+
+property cast_shadow: bool
+[Read-Only] Controls whether the primitive component should cast a shadow or not.
+
+Type:
+(bool)
+
+property cast_shadow_as_two_sided: bool
+[Read-Only] Whether this primitive should cast dynamic shadows as if it were a two sided material.
+
+Type:
+(bool)
+
+property cast_static_shadow: bool
+[Read-Only] Whether the object should cast a static shadow from shadow casting lights. This flag is only used if CastShadow is true and if FirstPersonPrimitiveType is not set to FirstPerson.
+
+Type:
+(bool)
+
+property cast_volumetric_translucent_shadow: bool
+[Read-Only] Whether the object should cast a volumetric translucent shadow.
+Volumetric translucent shadows are useful for primitives with smoothly changing opacity like particles representing a volume,
+but have artifacts when used on highly opaque surfaces. This flag is only used if CastShadow is true and if FirstPersonPrimitiveType is not set to FirstPerson.
+
+Type:
+(bool)
+
+clear_move_ignore_actors() → None
+Clear the list of actors we ignore when moving.
+
+clear_move_ignore_components() → None
+Clear the list of components we ignore when moving.
+
+copy_array_of_move_ignore_actors() → Array[Actor]
+Returns the list of actors we currently ignore when moving.
+
+Return type:
+Array[Actor]
+
+copy_array_of_move_ignore_components() → Array[PrimitiveComponent]
+Returns the list of actors we currently ignore when moving.
+
+Return type:
+Array[PrimitiveComponent]
+
+create_and_set_material_instance_dynamic(element_index) → MaterialInstanceDynamic
+Creates a Dynamic Material Instance for the specified element index. The parent of the instance is set to the material being replaced.
+deprecated: Use CreateDynamicMaterialInstance instead.
+
+Parameters:
+element_index (int32) – The index of the skin to replace the material for. If invalid, the material is unchanged and NULL is returned.
+
+Return type:
+MaterialInstanceDynamic
+
+create_and_set_material_instance_dynamic_from_material(element_index, parent) → MaterialInstanceDynamic
+Creates a Dynamic Material Instance for the specified element index. The parent of the instance is set to the material being replaced.
+deprecated: Use CreateDynamicMaterialInstance instead.
+
+Parameters:
+
+element_index (int32) – The index of the skin to replace the material for. If invalid, the material is unchanged and NULL is returned.
+parent (MaterialInterface)
+
+Return type:
+MaterialInstanceDynamic
+
+create_dynamic_material_instance(element_index, source_material=None, optional_name='None') → MaterialInstanceDynamic
+Creates a Dynamic Material Instance for the specified element index, optionally from the supplied material.
+
+Parameters:
+
+element_index (int32) – The index of the skin to replace the material for. If invalid, the material is unchanged and NULL is returned.
+source_material (MaterialInterface)
+optional_name (Name)
+
+Return type:
+MaterialInstanceDynamic
+
+property custom_depth_stencil_value: int
+[Read-Only] Optionally write this 0-255 value to the stencil buffer in CustomDepth pass (Requires project setting or r.CustomDepth == 3)
+
+Type:
+(int32)
+
+property custom_depth_stencil_write_mask: RendererStencilMask
+[Read-Only] Mask used for stencil buffer writes.
+
+Type:
+(RendererStencilMask)
+
+property emissive_light_source: bool
+[Read-Only] Whether the primitive will be used as an emissive light source.
+
+Type:
+(bool)
+
+property enable_auto_lod_generation: bool
+[Read-Write] Whether to include this component in HLODs or not.
+
+Type:
+(bool)
+
+property exclude_for_specific_hlod_levels: None
+[Read-Write]
+deprecated: WARNING: This property has been deprecated, use the SetExcludedFromHLODLevel/IsExcludedFromHLODLevel functions instead
+
+Type:
+(Array[int32])
+
+property exclude_from_light_attachment_group: bool
+[Read-Only] If set, then it overrides any bLightAttachmentsAsGroup set in a parent.
+
+Type:
+(bool)
+
+property first_person_primitive_type: FirstPersonPrimitiveType
+[Read-Only] If this is set to FirstPerson, the camera FirstPersonFieldOfView and FirstPersonScale parameters will be used on this component. These parameters can be used to render the component with a different field of view and a smaller depth range such that clipping with the scene can be avoided. This is useful for rendering first person view geometry.
+
+Type:
+(FirstPersonPrimitiveType)
+
+property force_mip_streaming: bool
+[Read-Only] If true, forces mips for textures used by this component to be resident when this component’s level is loaded.
+
+Type:
+(bool)
+
+property generate_overlap_events: bool
+[Read-Write]
+
+Type:
+(bool)
+
+get_angular_damping() → float
+Returns the angular damping of this component.
+
+Return type:
+float
+
+get_body_instance_async_physics_tick_handle(bone_name='None', get_welded=True, index=-1) → BodyInstanceAsyncPhysicsTickHandle
+Returns BodyInstanceAsyncPhysicsTickHandle of the component. For use in the Async Physics Tick event
+
+Parameters:
+
+bone_name (Name) – Used to get body associated with specific bone. NAME_None automatically gets the root most body
+get_welded (bool) – If the component has been welded to another component and bGetWelded is true we return the single welded BodyInstance that is used in the simulation
+index (int32) – Index used in Components with multiple body instances
+
+Returns:
+Returns the BodyInstanceAsyncPhysicsTickHandle based on various states (does component have multiple bodies? Is the body welded to another body?)
+
+Return type:
+BodyInstanceAsyncPhysicsTickHandle
+
+get_center_of_mass(bone_name='None') → Vector
+Get the center of mass of a single body. In the case of a welded body this will return the center of mass of the entire welded body (including its parent and children)
+Objects that are not simulated return (0,0,0) as they do not have COM
+
+Parameters:
+bone_name (Name) – If a SkeletalMeshComponent, name of body to get center of mass of. ‘None’ indicates root body.
+
+Return type:
+Vector
+
+get_closest_point_on_collision(point, bone_name="None") -> (float, out_point_on_body=Vector)
+Returns the distance and closest point to the collision surface.
+Component must have simple collision to be queried for closest point.
+
+Parameters:
+
+point (Vector) – World 3D vector
+bone_name (Name) – If a SkeletalMeshComponent, name of body to set center of mass of. ‘None’ indicates root body.
+
+Returns:
+Success if returns > 0.f, if returns 0.f, it is either not convex or inside of the point If returns < 0.f, this primitive does not have collsion
+out_point_on_body (Vector): Point on the surface of collision closest to Point
+
+Return type:
+Vector
+
+get_collision_enabled() → CollisionEnabled
+Returns the form of collision for this component
+
+Return type:
+CollisionEnabled
+
+get_collision_object_type() → CollisionChannel
+Gets the collision object type
+
+Return type:
+CollisionChannel
+
+get_collision_profile_name() → Name
+Get the collision profile name
+
+Return type:
+Name
+
+get_collision_response_to_channel(channel) → CollisionResponseType
+Gets the response type given a specific channel
+
+Parameters:
+channel (CollisionChannel)
+
+Return type:
+CollisionResponseType
+
+get_custom_primitive_data_index_for_scalar_parameter(parameter_name) → int32
+Gets the index of the scalar parameter for the custom primitive data array
+
+Parameters:
+parameter_name (Name) – The parameter name of the custom primitive
+
+Returns:
+The index of the custom primitive, INDEX_NONE (-1) if not found
+
+Return type:
+int32
+
+get_custom_primitive_data_index_for_vector_parameter(parameter_name) → int32
+Gets the index of the vector parameter for the custom primitive data array
+
+Parameters:
+parameter_name (Name) – The parameter name of the custom primitive
+
+Returns:
+The index of the custom primitive, INDEX_NONE (-1) if not found
+
+Return type:
+int32
+
+get_editor_material(element_index) → MaterialInterface
+Returns the material to show in the editor details panel as being used. Skips Nanite Override materials.
+
+Parameters:
+element_index (int32)
+
+Return type:
+MaterialInterface
+
+get_gyroscopic_torque_enabled() → bool
+Returns whether this component is affected by gyroscopic torque.
+
+Return type:
+bool
+
+get_ignore_bounds_for_editor_focus() → bool
+Whether or not the bounds of this component should be considered when focusing the editor camera to an actor with this component in it.
+Useful for debug components which need a bounds for rendering but don’t contribute to the visible part of the mesh in a meaningful way
+
+Return type:
+bool
+
+get_inertia_tensor(bone_name='None') → Vector
+Returns the inertia tensor of this component in kg cm^2. The inertia tensor is in local component space.
+
+Parameters:
+bone_name (Name)
+
+Return type:
+Vector
+
+get_linear_damping() → float
+Returns the linear damping of this component.
+
+Return type:
+float
+
+get_mass() → float
+Returns the mass of this component in kg.
+
+Return type:
+float
+
+get_mass_scale(bone_name='None') → float
+Returns the mass scale used to calculate the mass of a single physics body
+
+Parameters:
+bone_name (Name)
+
+Return type:
+float
+
+get_material(element_index) → MaterialInterface
+Returns the material used by the element at the specified index
+
+Parameters:
+element_index (int32) – The element to access the material of.
+
+Returns:
+the material used by the indexed element of this mesh.
+
+Return type:
+MaterialInterface
+
+get_material_by_name(material_slot_name) → MaterialInterface
+Returns the material used by the element in the slot with the specified name.
+
+Parameters:
+material_slot_name (Name) – The slot name to access the material of.
+
+Returns:
+the material used in the slot specified, or null if none exists or the slot name is not found.
+
+Return type:
+MaterialInterface
+
+get_material_from_collision_face_index(face_index) -> (MaterialInterface, section_index=int32)
+Try and retrieve the material applied to a particular collision face of mesh. Used with face index returned from collision trace.
+
+Parameters:
+face_index (int32) – Face index from hit result that was hit by a trace
+
+Returns:
+Material applied to section that the hit face belongs to
+section_index (int32): Section of the mesh that the face belongs to
+
+Return type:
+int32
+
+get_material_index(material_slot_name) → int32
+Get Material Index
+
+Parameters:
+material_slot_name (Name)
+
+Return type:
+int32
+
+get_material_slot_names() → Array[Name]
+Get Material Slot Names
+
+Return type:
+Array[Name]
+
+get_max_depenetration_velocity(bone_name='None') → float
+The maximum velocity used to depenetrate this object from others when spawned or teleported with initial overlaps (does not affect overlaps as a result of normal movement).
+A value of zero will allow objects that are spawned overlapping to go to sleep without moving rather than pop out of each other. E.g., use zero if you spawn dynamic rocks
+partially embedded in the ground and want them to be interactive but not pop out of the ground when touched.
+A negative value means that the config setting CollisionInitialOverlapDepenetrationVelocity will be used.
+
+Parameters:
+bone_name (Name)
+
+Return type:
+float
+
+get_move_ignore_actors() → None
+deprecated: ‘get_move_ignore_actors’ was renamed to ‘copy_array_of_move_ignore_actors’.
+
+get_num_materials() → int32
+Return number of material elements in this primitive
+
+Return type:
+int32
+
+get_overlapping_actors(class_filter=None) → Array[Actor]
+Returns a list of actors that this component is overlapping.
+
+Parameters:
+class_filter (type(Class)) – [optional] If set, only returns actors of this class or subclasses
+
+Returns:
+overlapping_actors (Array[Actor]): [out] Returned list of overlapping actors
+
+Return type:
+Array[Actor]
+
+get_overlapping_components() → Array[PrimitiveComponent]
+Returns unique list of components this component is overlapping.
+
+Returns:
+out_overlapping_components (Array[PrimitiveComponent]):
+
+Return type:
+Array[PrimitiveComponent]
+
+get_physics_angular_velocity_in_degrees(bone_name='None') → Vector
+Get the angular velocity of a single body, in degrees per second.
+
+Parameters:
+bone_name (Name) – If a SkeletalMeshComponent, name of body to get velocity of. ‘None’ indicates root body.
+
+Return type:
+Vector
+
+get_physics_angular_velocity_in_radians(bone_name='None') → Vector
+Get the angular velocity of a single body, in radians per second.
+
+Parameters:
+bone_name (Name) – If a SkeletalMeshComponent, name of body to get velocity of. ‘None’ indicates root body.
+
+Return type:
+Vector
+
+get_physics_linear_velocity(bone_name='None') → Vector
+Get the linear velocity of a single body.
+
+Parameters:
+bone_name (Name) – If a SkeletalMeshComponent, name of body to get velocity of. ‘None’ indicates root body.
+
+Return type:
+Vector
+
+get_physics_linear_velocity_at_point(point, bone_name='None') → Vector
+Get the linear velocity of a point on a single body.
+
+Parameters:
+
+point (Vector) – Point is specified in world space.
+bone_name (Name) – If a SkeletalMeshComponent, name of body to get velocity of. ‘None’ indicates root body.
+
+Return type:
+Vector
+
+get_rb_linear_velocity(bone_name: Name = 'None') → Vector
+deprecated: ‘get_rb_linear_velocity’ was renamed to ‘get_physics_linear_velocity’.
+
+get_static_when_not_moveable() → bool
+Get Static when Not Moveable
+
+Return type:
+bool
+
+get_touching_actors(class_filter: Class = Ellipsis) → None
+deprecated: ‘get_touching_actors’ was renamed to ‘get_overlapping_actors’.
+
+get_touching_components() → None
+deprecated: ‘get_touching_components’ was renamed to ‘get_overlapping_components’.
+
+get_update_kinematic_from_simulation() → bool
+Returns whether this component should be updated by simulation when it is kinematic.
+
+Return type:
+bool
+
+get_walkable_slope_override() → WalkableSlopeOverride
+Returns the slope override struct for this component.
+
+Return type:
+WalkableSlopeOverride
+
+property has_per_instance_hit_proxies: bool
+[Read-Write] If true a hit-proxy will be generated for each instance of instanced static meshes.
+This allows for other systems, like selection in viewports, to function at the individual instance.
+
+Type:
+(bool)
+
+property hidden_in_scene_capture: bool
+[Read-Only] When true, will not be captured by Scene Capture
+
+Type:
+(bool)
+
+property hlod_batching_policy: HLODBatchingPolicy
+[Read-Write] Determines how the geometry of a component will be incorporated in proxy (simplified) HLODs.
+
+Type:
+(HLODBatchingPolicy)
+
+property holdout: bool
+[Read-Only] If this is True, this primitive will render black with an alpha of 0, but all secondary effects (shadows, reflections, indirect lighting) remain. This feature requires activating the project setting(s) “Alpha Output”, and “Support Primitive Alpha Holdout” if using the deferred renderer.
+
+Type:
+(bool)
+
+ignore_actor_when_moving(actor, should_ignore) → None
+Tells this component whether to ignore collision with all components of a specific Actor when this component is moved.
+Components on the other Actor may also need to be told to do the same when they move.
+Does not affect movement of this component when simulating physics.
+
+Parameters:
+
+actor (Actor)
+should_ignore (bool)
+
+ignore_component_when_moving(component, should_ignore) → None
+Tells this component whether to ignore collision with another component when this component is moved.
+The other components may also need to be told to do the same when they move.
+Does not affect movement of this component when simulating physics.
+
+Parameters:
+
+component (PrimitiveComponent)
+should_ignore (bool)
+
+property ignore_radial_force: bool
+[Read-Write] Will ignore radial forces applied to this component.
+
+Type:
+(bool)
+
+property ignore_radial_impulse: bool
+[Read-Write] Will ignore radial impulses applied to this component.
+
+Type:
+(bool)
+
+property indirect_lighting_cache_quality: IndirectLightingCacheQuality
+[Read-Only] Quality of indirect lighting for Movable primitives. This has a large effect on Indirect Lighting Cache update time.
+
+Type:
+(IndirectLightingCacheQuality)
+
+invalidate_lumen_surface_cache() → None
+Invalidates Lumen surface cache and forces it to be refreshed. Useful to make material updates more responsive.
+
+is_any_rigid_body_awake() → bool
+Returns if any body in this component is currently awake and simulating.
+
+Return type:
+bool
+
+is_collision_enabled() → bool
+Utility to see if there is any form of collision (query or physics) enabled on this component.
+
+Return type:
+bool
+
+is_excluded_from_hlod_level(hlod_level) → bool
+Whether this primitive is excluded from the specified HLOD level
+
+Parameters:
+hlod_level (HLODLevelExclusion)
+
+Return type:
+bool
+
+is_gravity_enabled() → bool
+Returns whether this component is affected by gravity. Returns always false if the component is not simulated.
+
+Return type:
+bool
+
+is_material_slot_name_valid(material_slot_name) → bool
+Is Material Slot Name Valid
+
+Parameters:
+material_slot_name (Name)
+
+Return type:
+bool
+
+is_overlapping_actor(other) → bool
+Check whether this component is overlapping any component of the given Actor.
+
+Parameters:
+other (Actor) – Actor to test this component against.
+
+Returns:
+Whether this component is overlapping any component of the given Actor.
+
+Return type:
+bool
+
+is_overlapping_component(other_comp) → bool
+Check whether this component is overlapping another component.
+
+Parameters:
+other_comp (PrimitiveComponent) – Component to test this component against.
+
+Returns:
+Whether this component is overlapping another component.
+
+Return type:
+bool
+
+is_physics_collision_enabled() → bool
+Utility to see if there is any physics collision enabled on this component.
+
+Return type:
+bool
+
+is_query_collision_enabled() → bool
+Utility to see if there is any query collision enabled on this component.
+
+Return type:
+bool
+
+property ld_max_draw_distance: float
+[Read-Only] Max draw distance exposed to LDs. The real max draw distance is the min (disregarding 0) of this and volumes affecting this object.
+
+Type:
+(float)
+
+property light_attachments_as_group: bool
+[Read-Only] Whether to light this component and any attachments as a group. This only has effect on the root component of an attachment tree.
+When enabled, attached component shadowing settings like bCastInsetShadow, bCastVolumetricTranslucentShadow, etc, will be ignored.
+This is useful for improving performance when multiple movable components are attached together.
+
+Type:
+(bool)
+
+property lighting_channels: LightingChannels
+[Read-Only] Channels that this component should be in. Lights with matching channels will affect the component.
+These channels only apply to opaque materials, direct lighting, and dynamic lighting and shadowing.
+Lighting channels are only supported on translucent materials using forward shading (i.e. when not using the translucency lighting volume).
+
+Type:
+(LightingChannels)
+
+property lightmap_type: LightmapType
+[Read-Only]
+
+Type:
+(LightmapType)
+
+line_trace_component(trace_start, trace_end, trace_complex=True, show_trace, persistent_show_trace=False) → (hit_location=Vector, hit_normal=Vector, bone_name=Name, out_hit=HitResult) or None
+Perform a line trace against a single component
+
+Parameters:
+
+trace_start (Vector) – The start of the trace in world-space
+trace_end (Vector) – The end of the trace in world-space
+trace_complex (bool) – Whether or not to trace the complex physics representation or just the simple representation
+show_trace (bool) – Whether or not to draw the trace in the world (for debugging)
+persistent_show_trace (bool) – Whether or not to make the debugging draw stay in the world permanently
+
+Returns:
+hit_location (Vector):
+hit_normal (Vector):
+bone_name (Name):
+out_hit (HitResult):
+
+Return type:
+tuple or None
+
+property min_draw_distance: float
+[Read-Only] The minimum distance at which the primitive should be rendered,
+measured in world space units from the center of the primitive’s bounding sphere to the camera position.
+
+Type:
+(float)
+
+property multi_body_overlap: bool
+[Read-Write] If true, this component will generate individual overlaps for each overlapping physics body if it is a multi-body component. When false, this component will
+generate only one overlap, regardless of how many physics bodies it has and how many of them are overlapping another component/body. This flag has no
+influence on single body components.
+
+Type:
+(bool)
+
+property never_distance_cull: bool
+[Read-Only] When enabled this object will not be culled by distance. This is ignored if a child of a HLOD.
+
+Type:
+(bool)
+
+property on_begin_cursor_over: ComponentBeginCursorOverSignature
+[Read-Write] Event called when the mouse cursor is moved over this component and mouse over events are enabled in the player controller
+
+Type:
+(ComponentBeginCursorOverSignature)
+
+property on_clicked: ComponentOnClickedSignature
+[Read-Write] Event called when the left mouse button is clicked while the mouse is over this component and click events are enabled in the player controller
+
+Type:
+(ComponentOnClickedSignature)
+
+property on_component_begin_overlap: ComponentBeginOverlapSignature
+[Read-Write] Event called when something starts to overlaps this component, for example a player walking into a trigger.
+For events when objects have a blocking collision, for example a player hitting a wall, see ‘Hit’ events.
+note: Both this component and the other one must have GetGenerateOverlapEvents() set to true to generate overlap events.
+note: When receiving an overlap from another object’s movement, the directions of ‘Hit.Normal’ and ‘Hit.ImpactNormal’ will be adjusted to indicate force from the other object against this object.
+
+Type:
+(ComponentBeginOverlapSignature)
+
+property on_component_end_overlap: ComponentEndOverlapSignature
+[Read-Write] Event called when something stops overlapping this component
+note: Both this component and the other one must have GetGenerateOverlapEvents() set to true to generate overlap events.
+
+Type:
+(ComponentEndOverlapSignature)
+
+property on_component_hit: ComponentHitSignature
+[Read-Write] Event called when a component hits (or is hit by) something solid. This could happen due to things like Character movement, using Set Location with ‘sweep’ enabled, or physics simulation.
+For events when objects overlap (e.g. walking into a trigger) see the ‘Overlap’ event.
+note: For collisions during physics simulation to generate hit events, ‘Simulation Generates Hit Events’ must be enabled for this component.
+note: When receiving a hit from another object’s movement, the directions of ‘Hit.Normal’ and ‘Hit.ImpactNormal’ will be adjusted to indicate force from the other object against this object.
+note: NormalImpulse will be filled in for physics-simulating bodies, but will be zero for swept-component blocking collisions.
+
+Type:
+(ComponentHitSignature)
+
+property on_component_physics_state_changed: ComponentPhysicsStateChanged
+[Read-Write] Event called when physics state is created or destroyed for this component
+
+Type:
+(ComponentPhysicsStateChanged)
+
+property on_component_sleep: ComponentSleepSignature
+[Read-Write] Event called when the underlying physics objects is put to sleep
+
+Type:
+(ComponentSleepSignature)
+
+property on_component_wake: ComponentWakeSignature
+[Read-Write] Event called when the underlying physics objects is woken up
+
+Type:
+(ComponentWakeSignature)
+
+property on_end_cursor_over: ComponentEndCursorOverSignature
+[Read-Write] Event called when the mouse cursor is moved off this component and mouse over events are enabled in the player controller
+
+Type:
+(ComponentEndCursorOverSignature)
+
+property on_input_touch_begin: ComponentOnInputTouchBeginSignature
+[Read-Write] Event called when a touch input is received over this component when touch events are enabled in the player controller
+This will be deprecated in the next engine release. Use OnTouchBegan with TouchId, Player Controller, and Hit Result arguments instead.
+
+Type:
+(ComponentOnInputTouchBeginSignature)
+
+property on_input_touch_end: ComponentOnInputTouchEndSignature
+[Read-Write] Event called when a touch input is released over this component when touch events are enabled in the player controller
+This will be deprecated in the next engine release. Use OnTouchEnded with TouchId, Player Controller, and Hit Result arguments instead.
+
+Type:
+(ComponentOnInputTouchEndSignature)
+
+property on_input_touch_enter: ComponentBeginTouchOverSignature
+[Read-Write] Event called when a finger is moved over this component when touch over events are enabled in the player controller
+This will be deprecated in the next engine release. Use OnTouchEntered with TouchId, Player Controller, and Hit Result arguments instead.
+
+Type:
+(ComponentBeginTouchOverSignature)
+
+property on_input_touch_leave: ComponentEndTouchOverSignature
+[Read-Write] Event called when a finger is moved off this component when touch over events are enabled in the player controller
+This will be deprecated in the next engine release. Use OnTouchExited with TouchId, Player Controller, and Hit Result arguments instead.
+
+Type:
+(ComponentEndTouchOverSignature)
+
+property on_released: ComponentOnReleasedSignature
+[Read-Write] Event called when the left mouse button is released while the mouse is over this component click events are enabled in the player controller
+
+Type:
+(ComponentOnReleasedSignature)
+
+property on_touch_began: ComponentOnTouchBeganSignature
+[Read-Write] Event called when a touch input is received over this component when touch events are enabled in the player controller
+
+Type:
+(ComponentOnTouchBeganSignature)
+
+property on_touch_ended: ComponentOnTouchEndedSignature
+[Read-Write] Event called when a touch input is released over this component when touch events are enabled in the player controller
+
+Type:
+(ComponentOnTouchEndedSignature)
+
+property on_touch_entered: ComponentOnTouchEnteredSignature
+[Read-Write] Event called when a finger is moved over this component when touch over events are enabled in the player controller
+
+Type:
+(ComponentOnTouchEnteredSignature)
+
+property on_touch_exited: ComponentOnTouchExitedSignature
+[Read-Write] Event called when a finger is moved off this component when touch over events are enabled in the player controller
+
+Type:
+(ComponentOnTouchExitedSignature)
+
+property only_owner_see: bool
+[Read-Only] If this is True, this component will only be visible when the view actor is the component’s owner, directly or indirectly.
+
+Type:
+(bool)
+
+property owner_no_see: bool
+[Read-Only] If this is True, this component won’t be visible when the view actor is the component’s owner, directly or indirectly. Will be internally set to true when FirstPersonPrimitiveType is set to WorldSpaceRepresentation.
+
+Type:
+(bool)
+
+put_rigid_body_to_sleep(bone_name='None') → None
+Force a single body back to sleep.
+
+Parameters:
+bone_name (Name) – If a SkeletalMeshComponent, name of body to put to sleep. ‘None’ indicates root body.
+
+property ray_tracing_far_field: bool
+[Read-Only] If true, this component will be included in the ray tracing far field layer instead of the near field. The ray tracing far field layer ignores whether the component is hidden.
+
+Type:
+(bool)
+
+property ray_tracing_group_culling_priority: RayTracingGroupCullingPriority
+[Read-Only] Defines how quickly it should be culled. For example buildings should have a low priority, but small dressing should have a high priority.
+
+Type:
+(RayTracingGroupCullingPriority)
+
+property ray_tracing_group_id: int
+[Read-Only] Defines run-time groups of components. For example allows to assemble multiple parts of a building at runtime.
+-1 means that component doesn’t belong to any group.
+
+Type:
+(int32)
+
+property receive_mobile_csm_shadows: bool
+[Read-Only] Mobile only:
+If disabled this component will not receive CSM shadows. (Components that do not receive CSM may have reduced shading cost)
+
+Type:
+(bool)
+
+property receives_decals: bool
+[Read-Only] Whether the primitive receives decals.
+
+Type:
+(bool)
+
+register_as_focal_point_in_physics_replication_lod() → None
+Register this components physics object as a focal particle in Physics Replication LOD
+
+property render_custom_depth: bool
+[Read-Only] If true, this component will be rendered in the CustomDepth pass (usually used for outlines)
+
+Type:
+(bool)
+
+property render_in_depth_pass: bool
+[Read-Only] If true, this component will be rendered in the depth pass even if it’s not rendered in the main pass
+
+Type:
+(bool)
+
+property render_in_main_pass: bool
+[Read-Only] If true, this component will be rendered in the main pass (z prepass, basepass, transparency)
+
+Type:
+(bool)
+
+property replicate_physics_to_autonomous_proxy: bool
+[Read-Write] True if physics should be replicated to autonomous proxies. This should be true for
+server-authoritative simulations, and false for client authoritative simulations.
+
+Type:
+(bool)
+
+property return_material_on_move: bool
+[Read-Write] If true, component sweeps will return the material in their hit result.
+see: MoveComponent(), FHitResult
+
+Type:
+(bool)
+
+property runtime_virtual_textures: None
+[Read-Write] Array of runtime virtual textures into which we draw the mesh for this actor.
+The material also needs to be set up to output to a virtual texture.
+
+Type:
+(Array[RuntimeVirtualTexture])
+
+scale_by_moment_of_inertia(input_vector, bone_name='None') → Vector
+Scales the given vector by the world space moment of inertia. Useful for computing the torque needed to rotate an object.
+
+Parameters:
+
+input_vector (Vector)
+bone_name (Name)
+
+Return type:
+Vector
+
+property self_shadow_only: bool
+[Read-Only] When enabled, the component will only cast a shadow on itself and not other components in the world.
+This is especially useful for first person weapons, and forces bCastInsetShadow to be enabled.
+
+Type:
+(bool)
+
+set_affect_distance_field_lighting(new_affect_distance_field_lighting) → None
+Changes the value of Affect Distance Field Lighting
+
+Parameters:
+new_affect_distance_field_lighting (bool)
+
+set_affect_dynamic_indirect_lighting(new_affect_dynamic_indirect_lighting) → None
+Changes the value of bAffectDynamicIndirectLighting
+
+Parameters:
+new_affect_dynamic_indirect_lighting (bool)
+
+set_affect_indirect_lighting_while_hidden(new_affect_indirect_lighting_while_hidden) → None
+Changes the value of bAffectIndirectLightingWhileHidden
+
+Parameters:
+new_affect_indirect_lighting_while_hidden (bool)
+
+set_all_allow_partial_island_sleep(allow_partial_island_sleep=True) → None
+
+[EXPERIMENTAL] Set whether all bodies in this component allow Partial Island Sleeping for the island they are in.Note that Partial Island Sleeping is a CPU optimization disabling non-moving bodies in the solver.
+This feature is useful for scenes with many rigid bodies but can affect the physics behavior.
+
+Parameters:
+allow_partial_island_sleep (bool)
+
+set_all_mass_scale(mass_scale=1.000000) → None
+Change the mass scale used fo all bodies in this component
+
+Parameters:
+mass_scale (float)
+
+set_all_physics_angular_velocity_in_degrees(new_ang_vel, add_to_current=False) → None
+Set the angular velocity of all bodies in this component.
+
+Parameters:
+
+new_ang_vel (Vector) – New angular velocity to apply to physics, in degrees per second.
+add_to_current (bool) – If true, NewAngVel is added to the existing angular velocity of all bodies.
+
+set_all_physics_angular_velocity_in_radians(new_ang_vel, add_to_current=False) → None
+Set the angular velocity of all bodies in this component.
+
+Parameters:
+
+new_ang_vel (Vector) – New angular velocity to apply to physics, in radians per second.
+add_to_current (bool) – If true, NewAngVel is added to the existing angular velocity of all bodies.
+
+set_all_physics_linear_velocity(new_vel, add_to_current=False) → None
+Set the linear velocity of all bodies in this component.
+
+Parameters:
+
+new_vel (Vector) – New linear velocity to apply to physics.
+add_to_current (bool) – If true, NewVel is added to the existing velocity of the body.
+
+set_all_rb_linear_velocity(new_vel: Vector, add_to_current: bool = False) → None
+deprecated: ‘set_all_rb_linear_velocity’ was renamed to ‘set_all_physics_linear_velocity’.
+
+set_all_use_ccd(use_ccd) → None
+Set whether all bodies in this component should use Continuous Collision Detection
+
+Parameters:
+use_ccd (bool)
+
+set_all_use_macd(use_macd) → None
+[EXPERIMENTAL] Set whether all bodies in this component should use Motion-Aware Collision Detection
+
+Parameters:
+use_macd (bool)
+
+set_allow_partial_island_sleep(allow_partial_island_sleep=True, bone_name='None') → None
+
+[EXPERIMENTAL] Set whether this component allows Partial Island Sleeping for the island it is in.Note that Partial Island Sleeping is a CPU optimization disabling non-moving bodies in the solver.
+This feature is useful for scenes with many rigid bodies but can affect the physics behavior.
+
+Parameters:
+
+allow_partial_island_sleep (bool)
+bone_name (Name)
+
+set_angular_damping(damping) → None
+Sets the angular damping of this component.
+
+Parameters:
+damping (float)
+
+set_bounds_scale(new_bounds_scale=1.000000) → None
+Scale the bounds of this object, used for frustum culling. Useful for features like WorldPositionOffset.
+
+Parameters:
+new_bounds_scale (float)
+
+set_cast_contact_shadow(cast_contact_shadow) → None
+Changes the value of bCastContactShadow.
+
+Parameters:
+cast_contact_shadow (bool)
+
+set_cast_hidden_shadow(new_cast_hidden_shadow) → None
+Changes the value of CastHiddenShadow.
+
+Parameters:
+new_cast_hidden_shadow (bool)
+
+set_cast_inset_shadow(cast_inset_shadow) → None
+Changes the value of CastInsetShadow.
+
+Parameters:
+cast_inset_shadow (bool)
+
+set_cast_shadow(new_cast_shadow) → None
+Changes the value of CastShadow.
+
+Parameters:
+new_cast_shadow (bool)
+
+set_center_of_mass(center_of_mass_offset, bone_name='None') → None
+Set the center of mass of a single body. This will offset the physx-calculated center of mass.
+Note that in the case where multiple bodies are attached together, the center of mass will be set for the entire group.
+
+Parameters:
+
+center_of_mass_offset (Vector) – User specified offset for the center of mass of this object, from the calculated location.
+bone_name (Name) – If a SkeletalMeshComponent, name of body to set center of mass of. ‘None’ indicates root body.
+
+set_collision_enabled(new_type) → None
+Controls what kind of collision is enabled for this body
+
+Parameters:
+new_type (CollisionEnabled)
+
+set_collision_object_type(channel) → None
+Changes the collision channel that this object uses when it moves
+
+Parameters:
+channel (CollisionChannel) – The new channel for this component to use
+
+set_collision_profile_name(collision_profile_name, update_overlaps=True) → None
+Set Collision Profile Name
+This function is called by constructors when they set ProfileName
+This will change current CollisionProfileName to be this, and overwrite Collision Setting
+
+Parameters:
+
+collision_profile_name (Name) – : New Profile Name
+update_overlaps (bool)
+
+set_collision_response_to_all_channels(new_response) → None
+Changes all ResponseToChannels container for this PrimitiveComponent. to be NewResponse
+
+Parameters:
+new_response (CollisionResponseType) – What the new response should be to the supplied Channel
+
+set_collision_response_to_channel(channel, new_response) → None
+Changes a member of the ResponseToChannels container for this PrimitiveComponent.
+
+Parameters:
+
+channel (CollisionChannel) – The channel to change the response of
+new_response (CollisionResponseType) – What the new response should be to the supplied Channel
+
+set_constraint_mode(constraint_mode) → None
+Sets the constraint mode of the component.
+
+Parameters:
+constraint_mode (DOFMode) – The type of constraint to use.
+
+set_cull_distance(new_cull_distance) → None
+Changes the value of CullDistance.
+
+Parameters:
+new_cull_distance (float) – The value to assign to CullDistance.
+
+set_custom_depth_stencil_value(value) → None
+Sets the CustomDepth stencil value (0 - 255) and marks the render state dirty.
+
+Parameters:
+value (int32)
+
+set_custom_depth_stencil_write_mask(write_mask_bit) → None
+Sets the CustomDepth stencil write mask and marks the render state dirty.
+
+Parameters:
+write_mask_bit (RendererStencilMask)
+
+set_custom_primitive_data_float(data_index, value) → None
+Set custom primitive data at index DataIndex. This sets the run-time data only, so it doesn’t serialize.
+
+Parameters:
+
+data_index (int32)
+value (float)
+
+set_custom_primitive_data_float_array(data_index, values) → None
+Set custom primitive data, an array of floats at once, from index DataIndex to index DataIndex + Values.Num(). This sets the run-time data only, so it doesn’t serialize.
+
+Parameters:
+
+data_index (int32)
+values (Array[float])
+
+set_custom_primitive_data_vector2(data_index, value) → None
+Set custom primitive data, two floats at once, from index DataIndex to index DataIndex + 1. This sets the run-time data only, so it doesn’t serialize.
+
+Parameters:
+
+data_index (int32)
+value (Vector2D)
+
+set_custom_primitive_data_vector3(data_index, value) → None
+Set custom primitive data, three floats at once, from index DataIndex to index DataIndex + 2. This sets the run-time data only, so it doesn’t serialize.
+
+Parameters:
+
+data_index (int32)
+value (Vector)
+
+set_custom_primitive_data_vector4(data_index, value) → None
+Set custom primitive data, four floats at once, from index DataIndex to index DataIndex + 3. This sets the run-time data only, so it doesn’t serialize.
+
+Parameters:
+
+data_index (int32)
+value (Vector4)
+
+set_default_custom_primitive_data_float(data_index, value) → None
+Set default custom primitive data at index DataIndex, and marks the render state dirty
+
+Parameters:
+
+data_index (int32)
+value (float)
+
+set_default_custom_primitive_data_float_array(data_index, values) → None
+Set default custom primitive data, an array floats at once, from index DataIndex to index DataIndex + Values.Num(), and marks the render state dirty
+
+Parameters:
+
+data_index (int32)
+values (Array[float])
+
+set_default_custom_primitive_data_vector2(data_index, value) → None
+Set default custom primitive data, two floats at once, from index DataIndex to index DataIndex + 1, and marks the render state dirty
+
+Parameters:
+
+data_index (int32)
+value (Vector2D)
+
+set_default_custom_primitive_data_vector3(data_index, value) → None
+Set default custom primitive data, three floats at once, from index DataIndex to index DataIndex + 2, and marks the render state dirty
+
+Parameters:
+
+data_index (int32)
+value (Vector)
+
+set_default_custom_primitive_data_vector4(data_index, value) → None
+Set default custom primitive data, four floats at once, from index DataIndex to index DataIndex + 3, and marks the render state dirty
+
+Parameters:
+
+data_index (int32)
+value (Vector4)
+
+set_emissive_light_source(new_emissive_light_source) → None
+Changes the value of EmissiveLightSource.
+
+Parameters:
+new_emissive_light_source (bool)
+
+set_enable_gravity(gravity_enabled) → None
+Enables/disables whether this component is affected by gravity. This applies only to components with bSimulatePhysics set to true.
+
+Parameters:
+gravity_enabled (bool)
+
+set_exclude_from_light_attachment_group(exclude_from_light_attachment_group) → None
+Changes the value of ExcludeFromLightAttachmentGroup.
+
+Parameters:
+exclude_from_light_attachment_group (bool)
+
+set_excluded_from_hlod_level(hlod_level, excluded) → None
+Exclude this primitive from the specified HLOD level
+
+Parameters:
+
+hlod_level (HLODLevelExclusion)
+excluded (bool)
+
+set_first_person_primitive_type(value) → None
+Sets FirstPersonPrimitiveType property and marks the render state dirty.
+
+Parameters:
+value (FirstPersonPrimitiveType)
+
+set_gyroscopic_torque_enabled(gyroscopic_torque_enabled) → None
+Enabled/disables whether this body is affected by gyroscopic torque, mainly useful for long/thin objects that spin
+
+Parameters:
+gyroscopic_torque_enabled (bool)
+
+set_hidden_in_scene_capture(value) → None
+Sets bHideInSceneCapture property and marks the render state dirty.
+
+Parameters:
+value (bool)
+
+set_holdout(new_holdout) → None
+Changes the value of bHoldout
+
+Parameters:
+new_holdout (bool)
+
+set_ignore_bounds_for_editor_focus(ignore) → None
+Set if we should ignore bounds when focusing the editor camera.
+
+Parameters:
+ignore (bool)
+
+set_light_attachments_as_group(light_attachments_as_group) → None
+Changes the value of LightAttachmentsAsGroup.
+
+Parameters:
+light_attachments_as_group (bool)
+
+set_lighting_channels(channel0, channel1, channel2) → None
+Set Lighting Channels
+
+Parameters:
+
+channel0 (bool)
+channel1 (bool)
+channel2 (bool)
+
+set_linear_damping(damping) → None
+Sets the linear damping of this component.
+
+Parameters:
+damping (float)
+
+set_mass_override_in_kg(bone_name='None', mass_in_kg=1.000000, override_mass=True) → None
+Override the mass (in Kg) of a single physics body.
+Note that in the case where multiple bodies are attached together, the override mass will be set for the entire group.
+Set the Override Mass to false if you want to reset the body’s mass to the auto-calculated physx mass.
+
+Parameters:
+
+bone_name (Name)
+mass_in_kg (float)
+override_mass (bool)
+
+set_mass_scale(bone_name='None', mass_scale=1.000000) → None
+Change the mass scale used to calculate the mass of a single physics body
+
+Parameters:
+
+bone_name (Name)
+mass_scale (float)
+
+set_material(element_index, material) → None
+Changes the material applied to an element of the mesh.
+
+Parameters:
+
+element_index (int32) – The element to access the material of.
+material (MaterialInterface)
+
+set_material_by_name(material_slot_name, material) → None
+Changes the material applied to an element of the mesh.
+
+Parameters:
+
+material_slot_name (Name) – The slot name to access the material of.
+material (MaterialInterface)
+
+set_max_depenetration_velocity(bone_name='None', max_depenetration_velocity=-1.000000) → None
+The maximum velocity used to depenetrate this object from others when spawned or teleported with initial overlaps (does not affect overlaps as a result of normal movement).
+A value of zero will allow objects that are spawned overlapping to go to sleep without moving rather than pop out of each other. E.g., use zero if you spawn dynamic rocks
+partially embedded in the ground and want them to be interactive but not pop out of the ground when touched.
+A negative value means that the config setting CollisionInitialOverlapDepenetrationVelocity will be used.
+
+Parameters:
+
+bone_name (Name)
+max_depenetration_velocity (float)
+
+set_movement_channel(channel: CollisionChannel) → None
+deprecated: ‘set_movement_channel’ was renamed to ‘set_collision_object_type’.
+
+set_notify_rigid_body_collision(new_notify_rigid_body_collision) → None
+Changes the value of bNotifyRigidBodyCollision
+
+Parameters:
+new_notify_rigid_body_collision (bool)
+
+set_only_owner_see(new_only_owner_see) → None
+Changes the value of bOnlyOwnerSee.
+
+Parameters:
+new_only_owner_see (bool)
+
+set_owner_no_see(new_owner_no_see) → None
+Changes the value of bOwnerNoSee.
+
+Parameters:
+new_owner_no_see (bool)
+
+set_phys_material_override(new_phys_material) → None
+Changes the current PhysMaterialOverride for this component.
+Note that if physics is already running on this component, this will _not_ alter its mass/inertia etc,
+it will only change its surface properties like friction.
+
+Parameters:
+new_phys_material (PhysicalMaterial)
+
+set_physics_angular_velocity_in_degrees(new_ang_vel, add_to_current=False, bone_name='None') → None
+Set the angular velocity of a single body.
+This should be used cautiously - it may be better to use AddTorque or AddImpulse.
+
+Parameters:
+
+new_ang_vel (Vector) – New angular velocity to apply to body, in degrees per second.
+add_to_current (bool) – If true, NewAngVel is added to the existing angular velocity of the body.
+bone_name (Name) – If a SkeletalMeshComponent, name of body to modify angular velocity of. ‘None’ indicates root body.
+
+set_physics_angular_velocity_in_radians(new_ang_vel, add_to_current=False, bone_name='None') → None
+Set the angular velocity of a single body.
+This should be used cautiously - it may be better to use AddTorque or AddImpulse.
+
+Parameters:
+
+new_ang_vel (Vector) – New angular velocity to apply to body, in radians per second.
+add_to_current (bool) – If true, NewAngVel is added to the existing angular velocity of the body.
+bone_name (Name) – If a SkeletalMeshComponent, name of body to modify angular velocity of. ‘None’ indicates root body.
+
+set_physics_linear_velocity(new_vel, add_to_current=False, bone_name='None') → None
+Set the linear velocity of a single body.
+This should be used cautiously - it may be better to use AddForce or AddImpulse.
+
+Parameters:
+
+new_vel (Vector) – New linear velocity to apply to physics.
+add_to_current (bool) – If true, NewVel is added to the existing velocity of the body.
+bone_name (Name) – If a SkeletalMeshComponent, name of body to modify velocity of. ‘None’ indicates root body.
+
+set_physics_max_angular_velocity_in_degrees(new_max_ang_vel, add_to_current=False, bone_name='None') → None
+Set the maximum angular velocity of a single body.
+
+Parameters:
+
+new_max_ang_vel (float) – New maximum angular velocity to apply to body, in degrees per second.
+add_to_current (bool) – If true, NewMaxAngVel is added to the existing maximum angular velocity of the body.
+bone_name (Name) – If a SkeletalMeshComponent, name of body to modify maximum angular velocity of. ‘None’ indicates root body.
+
+set_physics_max_angular_velocity_in_radians(new_max_ang_vel, add_to_current=False, bone_name='None') → None
+Set the maximum angular velocity of a single body.
+
+Parameters:
+
+new_max_ang_vel (float) – New maximum angular velocity to apply to body, in radians per second.
+add_to_current (bool) – If true, NewMaxAngVel is added to the existing maximum angular velocity of the body.
+bone_name (Name) – If a SkeletalMeshComponent, name of body to modify maximum angular velocity of. ‘None’ indicates root body.
+
+set_rb_linear_velocity(new_vel: Vector, add_to_current: bool = False, bone_name: Name = 'None') → None
+deprecated: ‘set_rb_linear_velocity’ was renamed to ‘set_physics_linear_velocity’.
+
+set_receives_decals(new_receives_decals) → None
+Changes the value of bReceivesDecals.
+
+Parameters:
+new_receives_decals (bool)
+
+set_render_custom_depth(value) → None
+Sets the bRenderCustomDepth property and marks the render state dirty.
+
+Parameters:
+value (bool)
+
+set_render_in_depth_pass(value) → None
+Sets bRenderInDepthPass property and marks the render state dirty.
+
+Parameters:
+value (bool)
+
+set_render_in_main_pass(value) → None
+Sets bRenderInMainPass property and marks the render state dirty.
+
+Parameters:
+value (bool)
+
+set_scalar_parameter_for_custom_primitive_data(parameter_name, value) → None
+Set a scalar parameter for custom primitive data. This sets the run-time data only, so it doesn’t serialize.
+
+Parameters:
+
+parameter_name (Name) – The parameter name of the custom primitive
+value (float) – The new value of the custom primitive
+
+set_scalar_parameter_for_default_custom_primitive_data(parameter_name, value) → None
+Set a scalar parameter for default custom primitive data. This will be serialized and is useful in construction scripts.
+
+Parameters:
+
+parameter_name (Name) – The parameter name of the custom primitive
+value (float) – The new value of the custom primitive
+
+set_simulate_physics(simulate) → None
+When this component is a simple/single body, this will enable or disable simulation on that body. In addition,
+if this component is currently attached to something, beginning simulation will detach it. Note that stopping
+simulation will not reattach the component - that would need to be done explicitly.
+For more complex components (e.g. skeletal meshes), simulation will apply to the bodies contained by the
+component (e.g. using a physics asset). Since these bodies will be free to move independently of the component,
+the component will not be automatically detached. If detachment is required, then that can be done by
+calling DetachFromComponent.
+
+Parameters:
+simulate (bool) – New simulation state for the single body or multiple bodies
+
+set_single_sample_shadow_from_stationary_lights(new_single_sample_shadow_from_stationary_lights) → None
+Changes the value of bSingleSampleShadowFromStationaryLights.
+
+Parameters:
+new_single_sample_shadow_from_stationary_lights (bool)
+
+set_static_when_not_moveable(static_when_not_moveable) → None
+Set Static when Not Moveable
+
+Parameters:
+static_when_not_moveable (bool)
+
+set_translucency_sort_distance_offset(new_translucency_sort_distance_offset) → None
+Changes the value of TranslucencySortDistanceOffset.
+
+Parameters:
+new_translucency_sort_distance_offset (float)
+
+set_translucent_sort_priority(new_translucent_sort_priority) → None
+Changes the value of TranslucentSortPriority.
+
+Parameters:
+new_translucent_sort_priority (int32)
+
+set_update_kinematic_from_simulation(update_kinematic_from_simulation) → None
+Enables/disables whether this component should be updated by simulation when it is kinematic. This is needed if (for example) its velocity needs to be accessed.
+
+Parameters:
+update_kinematic_from_simulation (bool)
+
+set_use_ccd(use_ccd, bone_name='None') → None
+Set whether this component should use Continuous Collision Detection
+
+Parameters:
+
+use_ccd (bool)
+bone_name (Name)
+
+set_use_macd(use_macd, bone_name='None') → None
+[EXPERIMENTAL] Set whether this component should use Motion-Aware Collision Detection
+
+Parameters:
+
+use_macd (bool)
+bone_name (Name)
+
+set_vector_parameter_for_custom_primitive_data(parameter_name, value) → None
+Set a vector parameter for custom primitive data. This sets the run-time data only, so it doesn’t serialize.
+
+Parameters:
+
+parameter_name (Name) – The parameter name of the custom primitive
+value (Vector4) – The new value of the custom primitive
+
+set_vector_parameter_for_default_custom_primitive_data(parameter_name, value) → None
+Set a vector parameter for default custom primitive data. This will be serialized and is useful in construction scripts.
+
+Parameters:
+
+parameter_name (Name) – The parameter name of the custom primitive
+value (Vector4) – The new value of the custom primitive
+
+set_visible_in_ray_tracing(new_visible_in_ray_tracing) → None
+Changes the value of bIsVisibleInRayTracing.
+
+Parameters:
+new_visible_in_ray_tracing (bool)
+
+set_visible_in_scene_capture_only(value) → None
+Sets bVisibleInSceneCaptureOnly property and marks the render state dirty.
+
+Parameters:
+value (bool)
+
+set_walkable_slope_override(new_override) → None
+Sets a new slope override for this component instance.
+
+Parameters:
+new_override (WalkableSlopeOverride)
+
+setup_default_custom_primitive_data_from_materials() → None
+Setup the Default Custom Primitive Data based on the assigned materials. Wipes any existing data.
+
+property shadow_cache_invalidation_behavior: ShadowCacheInvalidationBehavior
+[Read-Only] Control shadow invalidation behavior, in particular with respect to Virtual Shadow Maps and material effects like World Position Offset.
+
+Type:
+(ShadowCacheInvalidationBehavior)
+
+property single_sample_shadow_from_stationary_lights: bool
+[Read-Only] Whether the whole component should be shadowed as one from stationary lights, which makes shadow receiving much cheaper.
+When enabled shadowing data comes from the volume lighting samples precomputed by Lightmass, which are very sparse.
+This is currently only used on stationary directional lights.
+
+Type:
+(bool)
+
+sphere_overlap_component(sphere_centre, sphere_radius, trace_complex=True, show_trace, persistent_show_trace=False) → (hit_location=Vector, hit_normal=Vector, bone_name=Name, out_hit=HitResult) or None
+Perform a sphere overlap against a single component
+
+Parameters:
+
+sphere_centre (Vector) – The centre of the sphere to overlap with the component
+sphere_radius (float) – The Radius of the sphere to overlap with the component
+trace_complex (bool) – Whether or not to trace the complex physics representation or just the simple representation
+show_trace (bool) – Whether or not to draw the trace in the world (for debugging)
+persistent_show_trace (bool) – Whether or not to make the debugging draw stay in the world permanently
+
+Returns:
+hit_location (Vector):
+hit_normal (Vector):
+bone_name (Name):
+out_hit (HitResult):
+
+Return type:
+tuple or None
+
+sphere_trace_component(trace_start, trace_end, sphere_radius, trace_complex=True, show_trace, persistent_show_trace=False) → (hit_location=Vector, hit_normal=Vector, bone_name=Name, out_hit=HitResult) or None
+Perform a sphere trace against a single component
+
+Parameters:
+
+trace_start (Vector) – The start of the trace in world-space
+trace_end (Vector) – The end of the trace in world-space
+sphere_radius (float) – Radius of the sphere to trace against the component
+trace_complex (bool) – Whether or not to trace the complex physics representation or just the simple representation
+show_trace (bool) – Whether or not to draw the trace in the world (for debugging)
+persistent_show_trace (bool) – Whether or not to make the debugging draw stay in the world permanently
+
+Returns:
+hit_location (Vector):
+hit_normal (Vector):
+bone_name (Name):
+out_hit (HitResult):
+
+Return type:
+tuple or None
+
+property static_when_not_moveable: bool
+[Read-Only] When false, the underlying physics body will contain all sim data (mass, inertia tensor, etc) even if mobility is not set to Moveable
+
+Type:
+(bool)
+
+property trace_complex_on_move: bool
+[Read-Write] If true, component sweeps with this component should trace against complex collision during movement (for example, each triangle of a mesh).
+If false, collision will be resolved against simple collision bounds instead.
+see: MoveComponent()
+
+Type:
+(bool)
+
+property translucency_sort_distance_offset: float
+[Read-Only] Modified sort distance offset for translucent objects in world units.
+A positive number will move the sort distance further and a negative number will move the distance closer.
+Ignored if the object is not translucent.
+Warning: Adjusting this value will prevent the renderer from correctly sorting based on distance. Only modify this value if you are certain it will not cause visual artifacts.
+
+Type:
+(float)
+
+property translucency_sort_priority: int
+[Read-Only] Translucent objects with a lower sort priority draw behind objects with a higher priority.
+Translucent objects with the same priority are rendered from back-to-front based on their bounds origin.
+This setting is also used to sort objects being drawn into a runtime virtual texture.
+Ignored if the object is not translucent. The default priority is zero.
+Warning: This should never be set to a non-default value unless you know what you are doing, as it will prevent the renderer from sorting correctly.
+It is especially problematic on dynamic gameplay effects.
+
+Type:
+(int32)
+
+property treat_as_background_for_occlusion: bool
+[Read-Only] Treat this primitive as part of the background for occlusion purposes. This can be used as an optimization to reduce the cost of rendering skyboxes, large ground planes that are part of the vista, etc.
+
+Type:
+(bool)
+
+unregister_as_focal_point_in_physics_replication_lod() → None
+Unregister this components physics object from being a focal particle in Physics Replication LOD
+
+property use_as_occluder: bool
+[Read-Only] Whether to render the primitive in the depth only pass.
+This should generally be true for all objects, and let the renderer make decisions about whether to render objects in the depth only pass.
+todo: if any rendering features rely on a complete depth only pass, this variable needs to go away.
+
+Type:
+(bool)
+
+property virtual_texture_render_pass_type: RuntimeVirtualTextureMainPassType
+[Read-Write] Controls if this component draws in the main pass as well as in the virtual texture.
+
+Type:
+(RuntimeVirtualTextureMainPassType)
+
+property visible_in_ray_tracing: bool
+[Read-Only] If true, this component will be visible in ray tracing effects. Turning this off will remove it from ray traced reflections, shadows, etc.
+
+Type:
+(bool)
+
+property visible_in_real_time_sky_captures: bool
+[Read-Only] If true, this component will be visible in real-time sky light reflection captures.
+
+Type:
+(bool)
+
+property visible_in_reflection_captures: bool
+[Read-Only] If true, this component will be visible in reflection captures.
+
+Type:
+(bool)
+
+property visible_in_reflections: bool
+[Read-Only] If true, this component will be visible in ray traced reflections. Screen space traces will ignore this flag, as they directly sample SceneColor
+
+Type:
+(bool)
+
+property visible_in_scene_capture_only: bool
+[Read-Only] When true, will only be visible in Scene Capture
+
+Type:
+(bool)
+
+wake_all_rigid_bodies() → None
+Ensure simulation is running for all bodies in this component.
+
+wake_rigid_body(bone_name='None') → None
+‘Wake’ physics simulation for a single body.
+
+Parameters:
+bone_name (Name) – If a SkeletalMeshComponent, name of body to wake. ‘None’ indicates root body.
+
+was_recently_rendered(tolerance=0.200000) → bool
+Returns true if this component has been rendered “recently”, with a tolerance in seconds to define what “recent” means.
+e.g.: If a tolerance of 0.1 is used, this function will return true only if the actor was rendered in the last 0.1 seconds of game time.
+
+Parameters:
+tolerance (float) – How many seconds ago the actor last render time can be and still count as having been “recently” rendered.
+
+Returns:
+Whether this actor was recently rendered.
+
+Return type:
+bool

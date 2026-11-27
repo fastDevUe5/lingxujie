@@ -1,0 +1,52 @@
+# unreal.AbcConversionSettings  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/AbcConversionSettings.html
+
+unreal.AbcConversionSettings
+
+class unreal.AbcConversionSettings(preset: AbcConversionPreset = Ellipsis, flip_u: bool = False, flip_v: bool = False, scale: Vector = Ellipsis, rotation: Vector = Ellipsis)
+Bases: StructBase
+Abc Conversion Settings
+C++ Source:
+
+Plugin: AlembicImporter
+Module: AlembicLibrary
+File: AbcImportSettings.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+flip_u (bool): [Read-Write] Flag whether or not to flip the U channel in the Texture Coordinates
+flip_v (bool): [Read-Write] Flag whether or not to flip the V channel in the Texture Coordinates
+preset (AbcConversionPreset): [Read-Write] Currently preset that should be applied
+rotation (Vector): [Read-Write] Rotation in Euler angles that should be applied
+scale (Vector): [Read-Write] Scale value that should be applied
+
+property flip_u: bool
+[Read-Write] Flag whether or not to flip the U channel in the Texture Coordinates
+
+Type:
+(bool)
+
+property flip_v: bool
+[Read-Write] Flag whether or not to flip the V channel in the Texture Coordinates
+
+Type:
+(bool)
+
+property preset: AbcConversionPreset
+[Read-Write] Currently preset that should be applied
+
+Type:
+(AbcConversionPreset)
+
+property rotation: Vector
+[Read-Write] Rotation in Euler angles that should be applied
+
+Type:
+(Vector)
+
+property scale: Vector
+[Read-Write] Scale value that should be applied
+
+Type:
+(Vector)

@@ -1,0 +1,17 @@
+# unreal.BoneReference  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/BoneReference.html
+
+unreal.BoneReference
+
+class unreal.BoneReference
+Bases: StructBase
+Bone Reference
+C++ Source:
+
+Module: Engine
+File: BoneReference.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+bone_name (Name): [Read-Write] Name of bone to control. This is the main bone chain to modify from. *

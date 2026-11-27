@@ -1,0 +1,213 @@
+# unreal.EditorUtilitySubsystem  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/EditorUtilitySubsystem.html
+
+unreal.EditorUtilitySubsystem
+
+class unreal.EditorUtilitySubsystem(outer: Object | None = None, name: Name | str = 'None')
+Bases: EditorSubsystem
+Editor Utility Subsystem
+C++ Source:
+
+Module: Blutility
+File: EditorUtilitySubsystem.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+on_begin_pie (OnEditorUtilityPIEEvent): [Read-Write] Expose Begin PIE to blueprints.
+on_end_pie (OnEditorUtilityPIEEvent): [Read-Write] Expose End PIE to blueprints.
+
+can_run(asset) → bool
+Can Run
+
+Parameters:
+asset (Object)
+
+Return type:
+bool
+
+close_tab_by_id(new_tab_id) → bool
+Given an ID for a tab, try to find and close an existing tab. Returns true if it found a tab to close.
+
+Parameters:
+new_tab_id (Name)
+
+Return type:
+bool
+
+does_tab_exist(new_tab_id) → bool
+Given an ID for a tab, try to find an existing tab. Returns true if it found a tab.
+
+Parameters:
+new_tab_id (Name)
+
+Return type:
+bool
+
+find_utility_widget_from_blueprint(blueprint) → EditorUtilityWidget
+Given an editor utility widget blueprint, get the widget it creates. This will return a null pointer if the widget is not currently in a tab.
+
+Parameters:
+blueprint (EditorUtilityWidgetBlueprint)
+
+Return type:
+EditorUtilityWidget
+
+get_tab_id_from_blueprint(blueprint) → Name
+Given an editor utility widget blueprint, get the TabID for it. This will return None if the widget is not currently in a tab.
+
+Parameters:
+blueprint (EditorUtilityWidgetBlueprint)
+
+Return type:
+Name
+
+property on_begin_pie: OnEditorUtilityPIEEvent
+[Read-Write] Expose Begin PIE to blueprints.
+
+Type:
+(OnEditorUtilityPIEEvent)
+
+property on_end_pie: OnEditorUtilityPIEEvent
+[Read-Write] Expose End PIE to blueprints.
+
+Type:
+(OnEditorUtilityPIEEvent)
+
+register_and_execute_task(new_task, optional_parent_task=None) → None
+Register and Execute Task
+
+Parameters:
+
+new_task (EditorUtilityTask)
+optional_parent_task (EditorUtilityTask)
+
+register_tab_and_get_id(blueprint) → Name
+Register Tab and Get ID
+
+Parameters:
+blueprint (EditorUtilityWidgetBlueprint)
+
+Returns:
+new_tab_id (Name):
+
+Return type:
+Name
+
+register_tab_and_get_id_generated_class(generated_widget_blueprint) → Name
+Register Tab and Get IDGenerated Class
+
+Parameters:
+generated_widget_blueprint (type(WidgetBlueprintGeneratedClass))
+
+Returns:
+new_tab_id (Name):
+
+Return type:
+Name
+
+release_instance_of_asset(asset) → None
+Allow startup object to be garbage collected
+
+Parameters:
+asset (Object)
+
+spawn_and_register_tab(blueprint) → EditorUtilityWidget
+Spawn and Register Tab
+
+Parameters:
+blueprint (EditorUtilityWidgetBlueprint)
+
+Return type:
+EditorUtilityWidget
+
+spawn_and_register_tab_and_get_id(blueprint) -> (EditorUtilityWidget, new_tab_id=Name)
+Spawn and Register Tab and Get ID
+
+Parameters:
+blueprint (EditorUtilityWidgetBlueprint)
+
+Returns:
+new_tab_id (Name):
+
+Return type:
+Name
+
+spawn_and_register_tab_and_get_id_generated_class(generated_widget_blueprint) -> (EditorUtilityWidget, new_tab_id=Name)
+Spawn and Register Tab and Get IDGenerated Class
+
+Parameters:
+generated_widget_blueprint (type(WidgetBlueprintGeneratedClass))
+
+Returns:
+new_tab_id (Name):
+
+Return type:
+Name
+
+spawn_and_register_tab_generated_class(generated_widget_blueprint) → EditorUtilityWidget
+Spawn and Register Tab Generated Class
+
+Parameters:
+generated_widget_blueprint (type(WidgetBlueprintGeneratedClass))
+
+Return type:
+EditorUtilityWidget
+
+spawn_and_register_tab_with_id(blueprint, tab_id) → EditorUtilityWidget
+Unlike SpawnAndRegisterTabAndGetID allows spawn tab while providing TabID from Python scripts or BP
+
+Parameters:
+
+blueprint (EditorUtilityWidgetBlueprint)
+tab_id (Name)
+
+Return type:
+EditorUtilityWidget
+
+spawn_and_register_tab_with_id_generated_class(generated_widget_blueprint, tab_id) → EditorUtilityWidget
+Unlike SpawnAndRegisterTabAndGetID allows spawn tab while providing TabID from Python scripts or BP
+
+Parameters:
+
+generated_widget_blueprint (type(WidgetBlueprintGeneratedClass))
+tab_id (Name)
+
+Return type:
+EditorUtilityWidget
+
+spawn_registered_tab_by_id(new_tab_id) → bool
+Given an ID for a tab, try to find a tab spawner that matches, and then spawn a tab. Returns true if it was able to find a matching tab spawner
+
+Parameters:
+new_tab_id (Name)
+
+Return type:
+bool
+
+try_run(asset) → bool
+Try Run
+
+Parameters:
+asset (Object)
+
+Return type:
+bool
+
+try_run_class(object_class) → bool
+Try Run Class
+
+Parameters:
+object_class (type(Class))
+
+Return type:
+bool
+
+unregister_tab_by_id(tab_id) → bool
+Given an ID for a tab, try to close and unregister a tab that was registered through this subsystem
+
+Parameters:
+tab_id (Name)
+
+Return type:
+bool

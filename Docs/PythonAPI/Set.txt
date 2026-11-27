@@ -1,0 +1,50 @@
+# unreal.Set  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/Set.html
+
+unreal.Set
+
+class unreal.Set(type: type)
+Bases: _WrapperBase, MutableSet[_ElemType]
+Type for all Unreal exposed set instances
+
+classmethod __class_getitem__(*args)
+__class_getitem__(cls, item: _ElemType) – implemented for type hinting purpose only
+
+__copy__(self) → Set[_ElemType] -- copy this Unreal set
+
+add(self, value: _ElemType) → None -- add the given value to this Unreal set if not already present
+
+classmethod cast(cls, type: Type[_ElemType], obj: object) → Set[_ElemType] -- cast the given object to this Unreal set type
+
+clear(self) → None -- remove all values from this Unreal set
+
+copy(self) → Set[_ElemType] -- copy this Unreal set
+
+difference(self, *iterable: Iterable[_ElemType]) -> Set[_ElemType] -- return the difference between this Unreal set and the other iterables passed for comparison (ie, all values that are in this set but not the others)
+
+difference_update(self, *iterables: Iterable[_ElemType]) -> None -- make this set the difference between this Unreal set and the other iterables passed for comparison (ie, all values that are in this set but not the others)
+
+discard(self, value: _ElemType) → None -- remove the given value from this Unreal set, or do nothing if not present
+
+intersection(self, *iterables: Iterable[_ElemType]) -> Set[_ElemType] -- return the intersection between this Unreal set and the other iterables passed for comparison (ie, values that are common to all of the sets)
+
+intersection_update(self, *iterables: Iterable[_ElemType]) -> None -- make this set the intersection between this Unreal set and the other iterables passed for comparison (ie, values that are common to all of the sets)
+
+isdisjoint(self, other: Iterable[_ElemType]) → bool -- return True if there is a null intersection between this Unreal set and another
+
+issubset(self, other: Iterable[_ElemType]) → bool -- return True if another set contains this Unreal set
+
+issuperset(self, other: Iterable[_ElemType]) → bool -- return True if this Unreal set contains another
+
+pop(self) → _ElemType -- remove and return an arbitrary value from this Unreal set, or raise KeyError if the set is empty
+
+remove(self, value: _ElemType) → None -- remove the given value from this Unreal set, or raise KeyError if not present
+
+symmetric_difference(self, other: Iterable[_ElemType]) -> Set[_ElemType] -- return the symmetric difference between this Unreal set and another (ie, values that are in exactly one of the sets)
+
+symmetric_difference_update(self, other: Iterable[_ElemType]) -> None -- make this set the symmetric difference between this Unreal set and another (ie, values that are in exactly one of the sets)
+
+union(self, *iterables: Iterable[_ElemType]) -> Set[_ElemType] -- return the union between this Unreal set and the other iterables passed for comparison (ie, values that are in any set)
+
+update(self, *iterables: Iterable[_ElemType]) -> None -- make this set the union between this Unreal set and the other iterables passed for comparison (ie, values that are in any set)

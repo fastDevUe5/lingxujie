@@ -1,0 +1,37 @@
+# unreal.ActorForWorldTransforms  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/ActorForWorldTransforms.html
+
+unreal.ActorForWorldTransforms
+
+class unreal.ActorForWorldTransforms(actor: Actor = Ellipsis, component: SceneComponent = Ellipsis, socket_name: Name = 'None')
+Bases: StructBase
+Description of an actor selected parts we can find world transforms on
+C++ Source:
+
+Module: MovieScene
+File: ActorForWorldTransforms.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+actor (Actor): [Read-Write]
+component (SceneComponent): [Read-Write]
+socket_name (Name): [Read-Write]
+
+property actor: Actor
+[Read-Write]
+
+Type:
+(Actor)
+
+property component: SceneComponent
+[Read-Write]
+
+Type:
+(SceneComponent)
+
+property socket_name: Name
+[Read-Write]
+
+Type:
+(Name)

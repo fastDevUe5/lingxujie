@@ -1,0 +1,105 @@
+# unreal.SkeletalMeshSocket  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/SkeletalMeshSocket.html
+
+unreal.SkeletalMeshSocket
+
+class unreal.SkeletalMeshSocket(outer: Object | None = None, name: Name | str = 'None')
+Bases: Object
+Skeletal Mesh Socket
+C++ Source:
+
+Module: Engine
+File: SkeletalMeshSocket.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+bone_name (Name): [Read-Only]
+
+force_always_animated (bool): [Read-Write] If true then the hierarchy of bones this socket is attached to will always beevaluated, even if it had previously been removed due to the current lod setting
+
+relative_location (Vector): [Read-Write]
+relative_rotation (Rotator): [Read-Write]
+relative_scale (Vector): [Read-Write]
+socket_name (Name): [Read-Only] Defines a named attachment location on the USkeletalMesh.
+These are set up in editor and used as a shortcut instead of specifying
+everything explicitly to AttachComponent in the SkeletalMeshComponent.
+The Outer of a SkeletalMeshSocket should always be the USkeletalMesh.
+
+property bone_name: Name
+[Read-Only]
+
+Type:
+(Name)
+
+property force_always_animated: bool
+[Read-Only] If true then the hierarchy of bones this socket is attached to will always be
+evaluated, even if it had previously been removed due to the current lod setting
+
+Type:
+(bool)
+
+get_socket_local_transform() → Transform
+returns FTransform of Socket local transform
+
+Return type:
+Transform
+
+get_socket_location(skel_comp) → Vector
+Get Socket Location
+
+Parameters:
+skel_comp (SkeletalMeshComponent)
+
+Return type:
+Vector
+
+initialize_socket_from_location(skel_comp, world_location, world_normal) → None
+Sets BoneName, RelativeLocation and RelativeRotation based on closest bone to WorldLocation and WorldNormal
+
+Parameters:
+
+skel_comp (SkeletalMeshComponent)
+world_location (Vector)
+world_normal (Vector)
+
+property relative_location: Vector
+[Read-Only]
+
+Type:
+(Vector)
+
+property relative_rotation: Rotator
+[Read-Only]
+
+Type:
+(Rotator)
+
+property relative_scale: Vector
+[Read-Only]
+
+Type:
+(Vector)
+
+set_socket_local_transform(transform) → None
+Sets the relative transform parameters of the socket to the given local FTransform
+
+Parameters:
+transform (Transform)
+
+set_socket_parent(skeletal_mesh, bone_name) → None
+Change the sockets parent to a new bone. The skeleton is used to validate that the bone exists
+
+Parameters:
+
+skeletal_mesh (SkeletalMesh)
+bone_name (Name)
+
+property socket_name: Name
+[Read-Only] Defines a named attachment location on the USkeletalMesh.
+These are set up in editor and used as a shortcut instead of specifying
+everything explicitly to AttachComponent in the SkeletalMeshComponent.
+The Outer of a SkeletalMeshSocket should always be the USkeletalMesh.
+
+Type:
+(Name)

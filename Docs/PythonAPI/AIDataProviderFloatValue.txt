@@ -1,0 +1,19 @@
+# unreal.AIDataProviderFloatValue  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/AIDataProviderFloatValue.html
+
+unreal.AIDataProviderFloatValue
+
+class unreal.AIDataProviderFloatValue
+Bases: AIDataProviderTypedValue
+AIData Provider Float Value
+C++ Source:
+
+Module: AIModule
+File: AIDataProvider.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+data_binding (AIDataProvider): [Read-Write] (optional) provider for dynamic data binding
+data_field (Name): [Read-Write] name of provider’s value property
+default_value (float): [Read-Write]

@@ -1,0 +1,24 @@
+# unreal.AgentSkillDetails  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/AgentSkillDetails.html
+
+unreal.AgentSkillDetails
+
+class unreal.AgentSkillDetails(instructions: str = '')
+Bases: StructBase
+Detailed information about a specific AgentSkill.
+C++ Source:
+
+Plugin: ToolsetRegistry
+Module: ToolsetRegistry
+File: AgentSkill.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+instructions (str): [Read-Write] Detailed information about how to use the skill.
+
+property instructions: str
+[Read-Write] Detailed information about how to use the skill.
+
+Type:
+(str)

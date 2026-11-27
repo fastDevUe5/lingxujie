@@ -1,0 +1,20 @@
+# unreal.AimTarget  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/AimTarget.html
+
+unreal.AimTarget
+
+class unreal.AimTarget
+Bases: StructBase
+Aim Target
+C++ Source:
+
+Plugin: ControlRig
+Module: ControlRig
+File: RigUnit_AimConstraint.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+align_vector (Vector): [Read-Write] # Orient To Target Transforms mode only : Vector in the space of Target Transform to which the Aim Vector will be aligned
+transform (Transform): [Read-Write] # Aim at/Align to this Transform
+weight (float): [Read-Write] # Target Weight

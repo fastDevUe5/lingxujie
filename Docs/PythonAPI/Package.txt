@@ -1,0 +1,13 @@
+# unreal.Package  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/Package.html
+
+unreal.Package
+
+class unreal.Package(outer: Object | None = None, name: Name | str = 'None')
+Bases: Object
+Required for auto-generated functions referencing PackageFlags
+C++ Source:
+
+Module: CoreUObject
+File: Package.h

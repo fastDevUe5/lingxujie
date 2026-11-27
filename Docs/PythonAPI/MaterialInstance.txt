@@ -1,0 +1,161 @@
+# unreal.MaterialInstance  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/MaterialInstance.html
+
+unreal.MaterialInstance
+
+class unreal.MaterialInstance(outer: Object | None = None, name: Name | str = 'None')
+Bases: MaterialInterface
+Material Instance
+C++ Source:
+
+Module: Engine
+File: MaterialInstance.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+asset_import_data (AssetImportData): [Read-Write] Importing data and options used for this material
+asset_user_data (Array[AssetUserData]): [Read-Write] Array of user data stored with the asset
+base_property_overrides (MaterialInstanceBasePropertyOverrides): [Read-Write]
+blendable_location_override (BlendableLocation): [Read-Write]
+blendable_priority_override (int32): [Read-Write]
+double_vector_parameter_values (Array[DoubleVectorParameterValue]): [Read-Write] DoubleVector parameters.
+editor_only_data (MaterialInterfaceEditorOnlyData): [Read-Only]
+font_parameter_values (Array[FontParameterValue]): [Read-Write] Font parameters.
+lightmass_settings (LightmassMaterialInterfaceSettings): [Read-Write] The Lightmass settings for this object.
+nanite_override_material (MaterialOverrideNanite): [Read-Write] An override material which will be used instead of this one when rendering with Nanite.
+neural_profile (NeuralProfile): [Read-Write] Neural network profile. For internal usage, not editable/visible
+override_blendable_location (bool): [Read-Write] For post process materials, use BlendableLocationOverride.
+override_blendable_priority (bool): [Read-Write] For post process materials, use BlendablePriorityOverride.
+override_phys_material (bool): [Read-Write] Defines if PhysMaterial from this instance is used or if the parent one is used.
+override_specular_profile (bool): [Read-Write] Defines if SpecularProfile from this instance is used or it uses the parent one.
+override_subsurface_profile (bool): [Read-Write] Defines if SubsurfaceProfile from this instance is used or it uses the parent one.
+override_toon_profile (bool): [Read-Write] Defines if ToonProfile from this instance is used or it uses the parent one.
+parameter_collection_parameter_values (Array[ParameterCollectionParameterValue]): [Read-Write] Texture Collection parameters.
+parent (MaterialInterface): [Read-Write] Parent material.
+phys_material (PhysicalMaterial): [Read-Write] Physical material to use for this graphics material. Used for sounds, effects etc.
+physical_material_map (PhysicalMaterial): [Read-Write] Physical material map used with physical material mask, when it exists.
+preview_mesh (SoftObjectPath): [Read-Write] The mesh used by the material editor to preview the material.
+runtime_virtual_texture_parameter_values (Array[RuntimeVirtualTextureParameterValue]): [Read-Write] RuntimeVirtualTexture parameters.
+scalar_parameter_values (Array[ScalarParameterValue]): [Read-Write] Scalar parameters.
+sparse_volume_texture_parameter_values (Array[SparseVolumeTextureParameterValue]): [Read-Write] Sparse Volume Texture parameters.
+subsurface_profile (SubsurfaceProfile): [Read-Write] SubsurfaceProfile, for Screen Space Subsurface Scattering..
+texture_collection_parameter_values (Array[TextureCollectionParameterValue]): [Read-Write] Texture Collection parameters.
+texture_parameter_values (Array[TextureParameterValue]): [Read-Write] Texture parameters.
+thumbnail_info (ThumbnailInfo): [Read-Only] Information for thumbnail rendering
+user_scene_texture_overrides (Array[UserSceneTextureOverride]): [Read-Write] User scene texture overrides. Applies to post process domain materials only.
+vector_parameter_values (Array[VectorParameterValue]): [Read-Write] Vector parameters.
+
+property blendable_location_override: BlendableLocation
+[Read-Write]
+
+Type:
+(BlendableLocation)
+
+property blendable_priority_override: int
+[Read-Write]
+
+Type:
+(int32)
+
+property double_vector_parameter_values: None
+[Read-Only] DoubleVector parameters.
+
+Type:
+(Array[DoubleVectorParameterValue])
+
+property font_parameter_values: None
+[Read-Only] Font parameters.
+
+Type:
+(Array[FontParameterValue])
+
+property override_blendable_location: bool
+[Read-Write] For post process materials, use BlendableLocationOverride.
+
+Type:
+(bool)
+
+property override_blendable_priority: bool
+[Read-Write] For post process materials, use BlendablePriorityOverride.
+
+Type:
+(bool)
+
+property override_phys_material: bool
+[Read-Write] Defines if PhysMaterial from this instance is used or if the parent one is used.
+
+Type:
+(bool)
+
+property override_specular_profile: bool
+[Read-Only] Defines if SpecularProfile from this instance is used or it uses the parent one.
+
+Type:
+(bool)
+
+property override_subsurface_profile: bool
+[Read-Only] Defines if SubsurfaceProfile from this instance is used or it uses the parent one.
+
+Type:
+(bool)
+
+property override_toon_profile: bool
+[Read-Only] Defines if ToonProfile from this instance is used or it uses the parent one.
+
+Type:
+(bool)
+
+property parameter_collection_parameter_values: None
+[Read-Only] Texture Collection parameters.
+
+Type:
+(Array[ParameterCollectionParameterValue])
+
+property parent: MaterialInterface
+[Read-Only] Parent material.
+
+Type:
+(MaterialInterface)
+
+property phys_material: PhysicalMaterial
+[Read-Write] Physical material to use for this graphics material. Used for sounds, effects etc.
+
+Type:
+(PhysicalMaterial)
+
+property runtime_virtual_texture_parameter_values: None
+[Read-Only] RuntimeVirtualTexture parameters.
+
+Type:
+(Array[RuntimeVirtualTextureParameterValue])
+
+property scalar_parameter_values: None
+[Read-Only] Scalar parameters.
+
+Type:
+(Array[ScalarParameterValue])
+
+property sparse_volume_texture_parameter_values: None
+[Read-Only] Sparse Volume Texture parameters.
+
+Type:
+(Array[SparseVolumeTextureParameterValue])
+
+property texture_collection_parameter_values: None
+[Read-Only] Texture Collection parameters.
+
+Type:
+(Array[TextureCollectionParameterValue])
+
+property texture_parameter_values: None
+[Read-Only] Texture parameters.
+
+Type:
+(Array[TextureParameterValue])
+
+property vector_parameter_values: None
+[Read-Only] Vector parameters.
+
+Type:
+(Array[VectorParameterValue])

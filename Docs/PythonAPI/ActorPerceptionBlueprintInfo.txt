@@ -1,0 +1,44 @@
+# unreal.ActorPerceptionBlueprintInfo  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/ActorPerceptionBlueprintInfo.html
+
+unreal.ActorPerceptionBlueprintInfo
+
+class unreal.ActorPerceptionBlueprintInfo(target: Actor = Ellipsis, last_sensed_stimuli: None = [], is_hostile: bool = False, is_friendly: bool = False)
+Bases: StructBase
+Sensed Actor’s Data
+C++ Source:
+
+Module: AIModule
+File: AIPerceptionComponent.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+is_friendly (bool): [Read-Write]
+is_hostile (bool): [Read-Write]
+last_sensed_stimuli (Array[AIStimulus]): [Read-Write]
+target (Actor): [Read-Write]
+
+property is_friendly: bool
+[Read-Write]
+
+Type:
+(bool)
+
+property is_hostile: bool
+[Read-Write]
+
+Type:
+(bool)
+
+property last_sensed_stimuli: None
+[Read-Write]
+
+Type:
+(Array[AIStimulus])
+
+property target: Actor
+[Read-Write]
+
+Type:
+(Actor)

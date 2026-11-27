@@ -1,0 +1,54 @@
+# OS / 编辑器杂项
+Desktop.ini
+.DS_Store
+*.log
+
+# Unreal 构建产物：绝不入库（AGENTS.md 硬约束 6）
+Binaries/
+Intermediate/
+Saved/
+DerivedDataCache/
+.vs/
+*.sln
+*.suo
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
+
+# 大资产不进 git（2026-11-27 决定，见 NEXT-SESSION 第 81 节）
+# 素材可重下/重导：Fab 有账号就能下，墨香源文件在 moxiang-study 研究区。
+# 二进制全部排除；文本（.gltf / .json 的参数与引用关系）保留，build_level.py 要读它们。
+Content/
+Assets/**/*.png
+Assets/**/*.jpg
+Assets/**/*.jpeg
+Assets/**/*.bmp
+Assets/**/*.tga
+Assets/**/*.exr
+Assets/**/*.hdr
+Assets/**/*.obj
+Assets/**/*.bin
+Assets/**/*.glb
+Assets/**/*.fbx
+Assets/**/*.dds
+Assets/**/*.wav
+Assets/**/*.mp3
+
+# DSH 本地 bundle 的依赖（源文件仍然提交）
+dsh-bundles/**/node_modules/
+dsh-bundles/**/.pnpm-store/
+
+# 本地 token / 临时文件
+*.tmp
+*.bak
+
+# git-lfs 安装时自动写入的钩子（重新执行 git lfs install --local 会重建）
+.githooks/post-checkout
+.githooks/post-commit
+.githooks/post-merge
+.githooks/pre-push
+
+# Python 缓存
+__pycache__/
+*.pyc

@@ -1,0 +1,38 @@
+# unreal.Box2D  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/Box2D.html
+
+unreal.Box2D
+
+class unreal.Box2D(min: Vector2D = Ellipsis, max: Vector2D = Ellipsis)
+Bases: StructBase
+A rectangular 2D Box.
+note: The full C++ class is located here: EngineSourceRuntimeCorePublicMathBox2D.h
+C++ Source:
+
+Module: CoreUObject
+File: NoExportTypes.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+is_valid (bool): [Read-Write]
+max (Vector2D): [Read-Write]
+min (Vector2D): [Read-Write]
+
+property is_valid: bool
+[Read-Write]
+
+Type:
+(bool)
+
+property max: Vector2D
+[Read-Write]
+
+Type:
+(Vector2D)
+
+property min: Vector2D
+[Read-Write]
+
+Type:
+(Vector2D)

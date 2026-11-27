@@ -1,0 +1,794 @@
+# unreal.LinearColor  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/LinearColor
+
+unreal.LinearColor¶
+
+
+class unreal.LinearColor(r: float = 0.0, g: float = 0.0, b: float = 0.0, a: float = 0.0)¶
+
+Bases: StructBase
+
+A linear, 32-bit/component floating point RGBA color.
+
+note: The full C++ class is located here: EngineSourceRuntimeCorePublicMathColor.h
+
+C++ Source:
+
+
+
+Module: CoreUObject
+
+File: NoExportTypes.h
+
+
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+
+
+a (float): [Read-Write]
+
+b (float): [Read-Write]
+
+g (float): [Read-Write]
+
+r (float): [Read-Write]
+
+
+BLACK: LinearColor¶
+
+Black linear color
+
+
+
+Type:
+
+(LinearColor)
+
+
+BLUE: LinearColor¶
+
+Blue linear color
+
+
+
+Type:
+
+(LinearColor)
+
+
+GRAY: LinearColor¶
+
+Grey linear color
+
+
+
+Type:
+
+(LinearColor)
+
+
+GREEN: LinearColor¶
+
+Green linear color
+
+
+
+Type:
+
+(LinearColor)
+
+
+RED: LinearColor¶
+
+Red linear color
+
+
+
+Type:
+
+(LinearColor)
+
+
+TRANSPARENT: LinearColor¶
+
+Transparent linear color - black with 0 opacity/alpha
+
+
+
+Type:
+
+(LinearColor)
+
+
+WHITE: LinearColor¶
+
+White linear color
+
+
+
+Type:
+
+(LinearColor)
+
+
+YELLOW: LinearColor¶
+
+Yellow linear color
+
+
+
+Type:
+
+(LinearColor)
+
+
+__add__(other: LinearColor) → None¶
+
+Overloads:
+
+
+
+LinearColor Element-wise addition of two linear colors (R+R, G+G, B+B, A+A)
+
+
+__eq__(other: object) → bool¶
+
+Overloads:
+
+
+
+LinearColor Returns true if linear color A is equal to linear color B (A == B) within a specified error tolerance
+
+LinearColor Returns true if linear color A is equal to linear color B (A == B) within a specified error tolerance
+
+
+__iadd__(other: LinearColor) → None¶
+
+Overloads:
+
+
+
+LinearColor Element-wise addition of two linear colors (R+R, G+G, B+B, A+A)
+
+
+__imul__(other: LinearColor) → None¶
+
+Overloads:
+
+
+
+LinearColor Element-wise multiplication of two linear colors (R*R, G*G, B*B, A*A)
+
+
+__isub__(other: LinearColor) → None¶
+
+Overloads:
+
+
+
+LinearColor Element-wise subtraction of two linear colors (R-R, G-G, B-B, A-A)
+
+
+__mul__(other: LinearColor) → None¶
+
+Overloads:
+
+
+
+LinearColor Element-wise multiplication of two linear colors (R*R, G*G, B*B, A*A)
+
+
+__ne__(other: object) → bool¶
+
+Overloads:
+
+
+
+LinearColor Returns true if linear color A is not equal to linear color B (A != B) within a specified error tolerance
+
+
+__sub__(other: LinearColor) → None¶
+
+Overloads:
+
+
+
+LinearColor Element-wise subtraction of two linear colors (R-R, G-G, B-B, A-A)
+
+
+__truediv__(other: LinearColor) → None¶
+
+Overloads:
+
+
+
+LinearColor Element-wise multiplication of two linear colors (R/R, G/G, B/B, A/A)
+
+
+property a: float¶
+
+[Read-Write]
+
+
+
+Type:
+
+(float)
+
+
+add(b) → LinearColor¶
+
+Element-wise addition of two linear colors (R+R, G+G, B+B, A+A)
+
+
+
+Parameters:
+
+b (LinearColor)
+
+
+
+Return type:
+
+LinearColor
+
+
+property b: float¶
+
+[Read-Write]
+
+
+
+Type:
+
+(float)
+
+
+desaturated(desaturation) → LinearColor¶
+
+Returns a desaturated color, with 0 meaning no desaturation and 1 == full desaturation
+
+
+
+Parameters:
+
+desaturation (float)
+
+
+
+Returns:
+
+Desaturated color
+
+
+
+Return type:
+
+LinearColor
+
+
+distance(c2) → float¶
+
+Euclidean distance between two color points.
+
+
+
+Parameters:
+
+c2 (LinearColor)
+
+
+
+Return type:
+
+float
+
+
+divide(b) → LinearColor¶
+
+Element-wise multiplication of two linear colors (R/R, G/G, B/B, A/A)
+
+
+
+Parameters:
+
+b (LinearColor)
+
+
+
+Return type:
+
+LinearColor
+
+
+equals(b) → bool¶
+
+Returns true if linear color A is equal to linear color B (A == B) within a specified error tolerance
+
+
+
+Parameters:
+
+b (LinearColor)
+
+
+
+Return type:
+
+bool
+
+
+property g: float¶
+
+[Read-Write]
+
+
+
+Type:
+
+(float)
+
+
+get_luminance() → float¶
+
+Returns the perceived brightness of a color on a display taking into account the impact on the human eye per color channel: green > red > blue.
+
+
+
+Return type:
+
+float
+
+
+get_max() → float¶
+
+Returns the maximum color channel value in this color structure
+
+
+
+Returns:
+
+The maximum color channel value
+
+
+
+Return type:
+
+float
+
+
+get_min() → float¶
+
+Returns the minimum color channel value in this color structure
+
+
+
+Returns:
+
+The minimum color channel value
+
+
+
+Return type:
+
+float
+
+
+hsv_into_rgb() → LinearColor¶
+
+Converts a HSV linear color (where H is in R (0..360), S is in G (0..1), and V is in B (0..1)) to RGB
+
+
+
+Returns:
+
+rgb (LinearColor):
+
+
+
+Return type:
+
+LinearColor
+
+
+hsv_to_rgb() → LinearColor¶
+
+Converts a HSV linear color (where H is in R, S is in G, and V is in B) to linear RGB
+
+
+
+Return type:
+
+LinearColor
+
+
+interpolate_to(target, delta_time, interp_speed) → LinearColor¶
+
+Interpolate Linear Color from Current to Target. Scaled by distance to Target, so it has a strong start speed and ease out.
+
+
+
+Parameters:
+
+
+
+target (LinearColor) – Target Color
+
+delta_time (float) – Time since last tick
+
+interp_speed (float) – Interpolation speed, if the speed given is 0, then jump to the target.
+
+
+Returns:
+
+New interpolated Color
+
+
+
+Return type:
+
+LinearColor
+
+
+is_near_equal(b, tolerance=0.000100) → bool¶
+
+Returns true if linear color A is equal to linear color B (A == B) within a specified error tolerance
+
+
+
+Parameters:
+
+
+
+b (LinearColor)
+
+tolerance (float)
+
+
+Return type:
+
+bool
+
+
+lerp_to(b, alpha) → LinearColor¶
+
+Linearly interpolates between A and B based on Alpha (100% of A when Alpha=0 and 100% of B when Alpha=1)
+
+
+
+Parameters:
+
+
+
+b (LinearColor)
+
+alpha (float)
+
+
+Return type:
+
+LinearColor
+
+
+lerp_using_hsv_to(b, alpha) → LinearColor¶
+
+Linearly interpolates between two colors by the specified Alpha amount (100% of A when Alpha=0 and 100% of B when Alpha=1). The interpolation is performed in HSV color space taking the shortest path to the new color’s hue. This can give better results than a normal lerp, but is much more expensive. The incoming colors are in RGB space, and the output color will be RGB. The alpha value will also be interpolated.
+
+
+
+Parameters:
+
+
+
+b (LinearColor) – The color and alpha to interpolate to as linear RGBA
+
+alpha (float) – Scalar interpolation amount (usually between 0.0 and 1.0 inclusive)
+
+
+Returns:
+
+The interpolated color in linear RGB space along with the interpolated alpha value
+
+
+
+Return type:
+
+LinearColor
+
+
+multiply(b) → LinearColor¶
+
+Element-wise multiplication of two linear colors (R*R, G*G, B*B, A*A)
+
+
+
+Parameters:
+
+b (LinearColor)
+
+
+
+Return type:
+
+LinearColor
+
+
+multiply_float(b) → LinearColor¶
+
+Element-wise multiplication of a linear color by a float (F*R, F*G, F*B, F*A)
+
+
+
+Parameters:
+
+b (float)
+
+
+
+Return type:
+
+LinearColor
+
+
+not_equal(b) → bool¶
+
+Returns true if linear color A is not equal to linear color B (A != B) within a specified error tolerance
+
+
+
+Parameters:
+
+b (LinearColor)
+
+
+
+Return type:
+
+bool
+
+
+quantize() → Color¶
+
+Quantizes the linear color and returns the result as an 8-bit color. This bypasses the SRGB conversion.
+
+deprecated: Use LinearColor_QuantizeRound instead for correct color conversion.
+
+
+
+Return type:
+
+Color
+
+
+quantize_round() → Color¶
+
+Quantizes the linear color with rounding and returns the result as an 8-bit color. This bypasses the SRGB conversion.
+
+
+
+Return type:
+
+Color
+
+
+property r: float¶
+
+[Read-Write]
+
+
+
+Type:
+
+(float)
+
+
+rgb_into_hsv() → LinearColor¶
+
+Converts a RGB linear color to HSV (where H is in R (0..360), S is in G (0..1), and V is in B (0..1))
+
+
+
+Returns:
+
+hsv (LinearColor):
+
+
+
+Return type:
+
+LinearColor
+
+
+rgb_into_hsv_components() -> (h=float, s=float, v=float, a=float)¶
+
+Breaks apart a color into individual HSV components (as well as alpha) (Hue is [0..360) while Saturation and Value are 0..1)
+
+
+
+Returns:
+
+h (float):
+
+s (float):
+
+v (float):
+
+a (float):
+
+
+Return type:
+
+tuple
+
+
+rgb_to_hsv() → LinearColor¶
+
+Converts a RGB linear color to HSV (where H is in R, S is in G, and V is in B)
+
+
+
+Return type:
+
+LinearColor
+
+
+set(color) → None¶
+
+Assign contents of InColor
+
+
+
+Parameters:
+
+color (LinearColor)
+
+
+set_from_hsv(h, s, v, a=1.000000) → None¶
+
+Assigns an HSV color to a linear space RGB color
+
+
+
+Parameters:
+
+
+
+h (float)
+
+s (float)
+
+v (float)
+
+a (float)
+
+
+set_from_pow22(color) → None¶
+
+Assigns an FColor coming from an observed Pow(1/2.2) output, into a linear color.
+
+
+
+Parameters:
+
+color (Color) – The Pow(1/2.2) color that needs to be converted into linear space.
+
+
+set_from_srgb(srgb) → None¶
+
+Assigns an FColor coming from an observed sRGB output, into a linear color.
+
+
+
+Parameters:
+
+srgb (Color) – The sRGB color that needs to be converted into linear space.
+
+
+set_random_hue() → None¶
+
+Sets to a random color. Choses a quite nice color based on a random hue.
+
+
+set_rgba(r, g, b, a=1.000000) → None¶
+
+Assign individual linear RGBA components.
+
+
+
+Parameters:
+
+
+
+r (float)
+
+g (float)
+
+b (float)
+
+a (float)
+
+
+set_temperature(temperature) → None¶
+
+Converts temperature in Kelvins of a black body radiator to RGB chromaticity.
+
+
+
+Parameters:
+
+temperature (float)
+
+
+subtract(b) → LinearColor¶
+
+Element-wise subtraction of two linear colors (R-R, G-G, B-B, A-A)
+
+
+
+Parameters:
+
+b (LinearColor)
+
+
+
+Return type:
+
+LinearColor
+
+
+to_color(use_srgb=True) → Color¶
+
+Quantizes the linear color and returns the result as a FColor with optional sRGB conversion and quality as goal.
+
+
+
+Parameters:
+
+use_srgb (bool)
+
+
+
+Return type:
+
+Color
+
+
+to_new_opacity(opacity) → LinearColor¶
+
+Returns a copy of this color using the specified opacity/alpha.
+
+
+
+Parameters:
+
+opacity (float)
+
+
+
+Return type:
+
+LinearColor
+
+
+to_rgb_vector() → Vector¶
+
+Converts a LinearColor to a vector
+
+
+
+Return type:
+
+Vector
+
+
+to_rgbe() → Color¶
+
+Converts from linear to 8-bit RGBE as outlined in Gregory Ward’s Real Pixels article, Graphics Gems II, page 80.
+
+
+
+Return type:
+
+Color

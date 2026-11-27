@@ -1,0 +1,603 @@
+# unreal.LevelEditorSubsystem  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/LevelEditorSubsystem
+
+unreal.LevelEditorSubsystem¶
+
+
+class unreal.LevelEditorSubsystem(outer: Object | None = None, name: Name | str = 'None')¶
+
+Bases: EditorSubsystem
+
+ULevelEditorSubsystem
+
+Subsystem for exposing Level Editor related functionality to scripts
+
+C++ Source:
+
+
+
+Module: LevelEditor
+
+File: LevelEditorSubsystem.h
+
+
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+
+
+on_editor_camera_moved (OnLevelEditorEditorCameraMoved): [Read-Write] Expose EditorCameraMoved to blueprints
+
+on_map_changed (OnLevelEditorMapChanged): [Read-Write] Expose MapChanged to blueprints. Note: This executes too early for some editor scripting, consider using OnMapOpened if this doesn’t work for you.
+
+on_map_opened (OnLevelEditorMapOpened): [Read-Write] Expose MapOpened to blueprints
+
+on_post_save_world (OnLevelEditorPostSaveWorld): [Read-Write] Expose PostSaveWorld to blueprints
+
+on_pre_save_world (OnLevelEditorPreSaveWorld): [Read-Write] Expose PreSaveWorld to blueprints
+
+
+build_light_maps(quality=LightingBuildQuality.QUALITY_PRODUCTION, with_reflection_captures=False) → bool¶
+
+Build Light Maps and optionally the reflection captures.
+
+
+
+Parameters:
+
+
+
+quality (LightingBuildQuality) – One of the enum LightingBuildQuality value. Default is Quality_Production.
+
+with_reflection_captures (bool) – Build the related reflection captures after building the light maps.
+
+
+Returns:
+
+True if build was successful.
+
+
+
+Return type:
+
+bool
+
+
+delete_actor_folder(folder_path) → bool¶
+
+Deletes a folder from the World Outliner.
+
+Does not move or delete actors; only removes the folder entry itself.
+
+
+
+Parameters:
+
+folder_path (Name) – The path of the folder to delete (e.g. ‘Lighting/Spotlights’).
+
+
+
+Returns:
+
+True if the folder existed and was deleted.
+
+
+
+Return type:
+
+bool
+
+
+editor_get_game_view(viewport_config_key='None') → bool¶
+
+Editor Get Game View
+
+
+
+Parameters:
+
+viewport_config_key (Name)
+
+
+
+Return type:
+
+bool
+
+
+editor_invalidate_viewports() → None¶
+
+Editor Invalidate Viewports
+
+
+editor_play_simulate() → None¶
+
+Editor Play Simulate
+
+
+editor_request_begin_play() → None¶
+
+Editor Request Begin Play
+
+
+editor_request_end_play() → None¶
+
+Editor Request End Play
+
+
+editor_set_game_view(game_view, viewport_config_key='None') → None¶
+
+Editor Set Game View
+
+
+
+Parameters:
+
+
+
+game_view (bool)
+
+viewport_config_key (Name)
+
+
+editor_set_viewport_realtime(realtime, viewport_config_key='None') → None¶
+
+Editor Set Viewport Realtime
+
+
+
+Parameters:
+
+
+
+realtime (bool)
+
+viewport_config_key (Name)
+
+
+eject_pilot_level_actor(viewport_config_key='None') → None¶
+
+Eject Pilot Level Actor
+
+
+
+Parameters:
+
+viewport_config_key (Name)
+
+
+get_active_viewport_config_key() → Name¶
+
+Get Active Viewport Config Key
+
+
+
+Return type:
+
+Name
+
+
+get_allows_cinematic_control(viewport_config_key='None') → bool¶
+
+Get Allows Cinematic Control
+
+
+
+Parameters:
+
+viewport_config_key (Name)
+
+
+
+Return type:
+
+bool
+
+
+get_current_level() → Level¶
+
+Get the current level used by the world editor.
+
+
+
+Returns:
+
+The current level
+
+
+
+Return type:
+
+Level
+
+
+get_exact_camera_view(viewport_config_key='None') → bool¶
+
+Get Exact Camera View
+
+
+
+Parameters:
+
+viewport_config_key (Name)
+
+
+
+Return type:
+
+bool
+
+
+get_level_viewport_camera_info(viewport_config_key) → (camera_location=Vector, camera_rotation=Rotator) or None¶
+
+Gets information about the camera position for the given level editor viewport.
+
+
+
+Parameters:
+
+viewport_config_key (Name) – the viewport you wish to get from
+
+
+
+Returns:
+
+Whether we were able to get the camera position for a level editing viewport
+
+camera_location (Vector): (out) Current location of the level editing viewport camera, or zero if none found
+
+camera_rotation (Rotator): (out) Current rotation of the level editing viewport camera, or zero if none found
+
+
+Return type:
+
+tuple or None
+
+
+get_level_viewport_fov(viewport_config_key) → float or None¶
+
+Gets the horizontal field of view for the given level editor viewport.
+
+
+
+Parameters:
+
+viewport_config_key (Name) – the viewport you wish to get from
+
+
+
+Returns:
+
+Whether we were able to get the FOV for a level editing viewport
+
+fov (float): Field of View of the Level editing viewport camera
+
+
+Return type:
+
+float or None
+
+
+get_pilot_level_actor(viewport_config_key='None') → Actor¶
+
+Get Pilot Level Actor
+
+
+
+Parameters:
+
+viewport_config_key (Name)
+
+
+
+Return type:
+
+Actor
+
+
+get_selection_set() → TypedElementSelectionSet¶
+
+Get the selection set for the current world, you can use this to track
+
+and create changes to the level editor’s selection
+
+
+
+Return type:
+
+TypedElementSelectionSet
+
+
+get_viewport_config_keys() → Array[Name]¶
+
+Get Viewport Config Keys
+
+
+
+Return type:
+
+Array[Name]
+
+
+is_in_play_in_editor() → bool¶
+
+Is in Play in Editor
+
+
+
+Return type:
+
+bool
+
+
+load_level(asset_path) → bool¶
+
+Close the current Persistent Level (without saving it). Loads the specified level.
+
+
+
+Parameters:
+
+asset_path (str) – Asset Path of the level to be loaded. ie. /Game/MyFolder/MyAsset
+
+
+
+Returns:
+
+True if the operation succeeds.
+
+
+
+Return type:
+
+bool
+
+
+new_level(asset_path, is_partitioned_world=False) → bool¶
+
+Close the current Persistent Level (without saving it). Create a new blank Level and save it. Load the new created level.
+
+
+
+Parameters:
+
+
+
+asset_path (str) – Asset Path of where the level will be saved. ie. /Game/MyFolder/MyAsset
+
+is_partitioned_world (bool) – If true, new map is partitioned.
+
+
+Returns:
+
+True if the operation succeeds.
+
+
+
+Return type:
+
+bool
+
+
+new_level_from_template(asset_path, template_asset_path) → bool¶
+
+Close the current Persistent Level (without saving it). Create a new Level base on another level and save it. Load the new created level.
+
+
+
+Parameters:
+
+
+
+asset_path (str) – Asset Path of where the level will be saved. ie. /Game/MyFolder/MyAsset
+
+template_asset_path (str) – Level to be used as Template. ie. /Game/MyFolder/MyAsset
+
+
+Returns:
+
+True if the operation succeeds.
+
+
+
+Return type:
+
+bool
+
+
+property on_editor_camera_moved: OnLevelEditorEditorCameraMoved¶
+
+[Read-Write] Expose EditorCameraMoved to blueprints
+
+
+
+Type:
+
+(OnLevelEditorEditorCameraMoved)
+
+
+property on_map_changed: OnLevelEditorMapChanged¶
+
+This executes too early for some editor scripting, consider using OnMapOpened if this doesn’t work for you.
+
+
+
+Type:
+
+(OnLevelEditorMapChanged)
+
+
+
+Type:
+
+[Read-Write] Expose MapChanged to blueprints. Note
+
+
+property on_map_opened: OnLevelEditorMapOpened¶
+
+[Read-Write] Expose MapOpened to blueprints
+
+
+
+Type:
+
+(OnLevelEditorMapOpened)
+
+
+property on_post_save_world: OnLevelEditorPostSaveWorld¶
+
+[Read-Write] Expose PostSaveWorld to blueprints
+
+
+
+Type:
+
+(OnLevelEditorPostSaveWorld)
+
+
+property on_pre_save_world: OnLevelEditorPreSaveWorld¶
+
+[Read-Write] Expose PreSaveWorld to blueprints
+
+
+
+Type:
+
+(OnLevelEditorPreSaveWorld)
+
+
+pilot_level_actor(actor_to_pilot, viewport_config_key='None') → None¶
+
+Pilot Level Actor
+
+
+
+Parameters:
+
+
+
+actor_to_pilot (Actor)
+
+viewport_config_key (Name)
+
+
+save_all_dirty_levels() → bool¶
+
+Saves all Level currently loaded by the World Editor.
+
+
+
+Returns:
+
+True if the operation succeeds.
+
+
+
+Return type:
+
+bool
+
+
+save_current_level() → bool¶
+
+Saves the specified Level. Must already be saved at lease once to have a valid path.
+
+
+
+Returns:
+
+True if the operation succeeds.
+
+
+
+Return type:
+
+bool
+
+
+set_allows_cinematic_control(allow, viewport_config_key='None') → None¶
+
+Set Allows Cinematic Control
+
+
+
+Parameters:
+
+
+
+allow (bool)
+
+viewport_config_key (Name)
+
+
+set_current_level_by_name(level_name) → bool¶
+
+Set the current level used by the world editor.
+
+If more than one level shares the same name, the first one encounter of that level name will be used.
+
+
+
+Parameters:
+
+level_name (Name) – The name of the Level the actor belongs to (same name as in the ContentBrowser).
+
+
+
+Returns:
+
+True if the operation succeeds.
+
+
+
+Return type:
+
+bool
+
+
+set_exact_camera_view(exact_camera_view, viewport_config_key='None') → None¶
+
+Set Exact Camera View
+
+
+
+Parameters:
+
+
+
+exact_camera_view (bool)
+
+viewport_config_key (Name)
+
+
+set_level_viewport_camera_info(camera_location, camera_rotation, viewport_config_key) → None¶
+
+Sets information about the camera position for the given level editor viewport.
+
+
+
+Parameters:
+
+
+
+camera_location (Vector) – Location the camera will be moved to
+
+camera_rotation (Rotator) – Rotation the camera will be set to
+
+viewport_config_key (Name) – the viewport you wish to target
+
+
+set_level_viewport_fov(fov, viewport_config_key) → None¶
+
+Sets the horizontal field of view for the given level editor viewport.
+
+
+
+Parameters:
+
+
+
+fov (float) – Field of View to set the camera to. Value will be clamped between 5 and 170 deg
+
+viewport_config_key (Name) – the viewport you wish to target

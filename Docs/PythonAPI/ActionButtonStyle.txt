@@ -1,0 +1,107 @@
+# unreal.ActionButtonStyle  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/ActionButtonStyle.html
+
+unreal.ActionButtonStyle
+
+class unreal.ActionButtonStyle(button_style: ButtonStyle = Ellipsis, button_content_padding: Margin | None = Ellipsis, combo_button_style: ComboButtonStyle = Ellipsis, has_down_arrow: bool = False, combo_button_content_padding: Margin | None = Ellipsis, horizontal_content_alignment: HorizontalAlignment = Ellipsis, text_block_style: TextBlockStyle = Ellipsis, icon_brush: SlateBrush | None = Ellipsis, icon_color_and_opacity: SlateColor | None = Ellipsis, icon_normal_padding: Margin | None = Ellipsis, icon_pressed_padding: Margin | None = Ellipsis, action_button_type: Name = 'None', icon_button_style: ButtonStyle | None = Ellipsis)
+Bases: SlateWidgetStyle
+Represents the appearance of an SActionButton
+C++ Source:
+
+Module: ToolWidgets
+File: ToolWidgetsSlateTypes.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+action_button_type (Name): [Read-Write] The type to use for our SActionButton.
+button_content_padding (Optional[Margin]): [Read-Write] Spacing between button’s border and the content. Default uses ButtonStyle.
+button_style (ButtonStyle): [Read-Write] The style to use for our SButton.
+combo_button_content_padding (Optional[Margin]): [Read-Write] Spacing between button’s border and the content. Default uses ComboButtonStyle.
+combo_button_style (ComboButtonStyle): [Read-Write] The style to use for our SComboButton.
+has_down_arrow (bool): [Read-Write] Whether to show a down arrow for the combo button
+horizontal_content_alignment (HorizontalAlignment): [Read-Write] Horizontal Content alignment within the button.
+icon_brush (Optional[SlateBrush]): [Read-Write] Icon Brush to use.
+icon_button_style (Optional[ButtonStyle]): [Read-Write] The style to use for our SButton when an icon is present. ButtonStyle used if not specified.
+icon_color_and_opacity (Optional[SlateColor]): [Read-Write] Icon Color/Tint, defaults is determined by ActionButtonType.
+icon_normal_padding (Optional[Margin]): [Read-Write] If set and the button’s icon is non-null, overrides the button style’s additional spacing between the button’s border and the content when not pressed.
+icon_pressed_padding (Optional[Margin]): [Read-Write] If set and the button’s icon is non-null, overrides the button style’s additional spacing between the button’s border and the content when pressed.
+text_block_style (TextBlockStyle): [Read-Write] The style to use for the button Text.
+
+property action_button_type: Name
+[Read-Write] The type to use for our SActionButton.
+
+Type:
+(Name)
+
+property button_content_padding: Margin | None
+[Read-Write] Spacing between button’s border and the content. Default uses ButtonStyle.
+
+Type:
+(Optional[Margin])
+
+property button_style: ButtonStyle
+[Read-Write] The style to use for our SButton.
+
+Type:
+(ButtonStyle)
+
+property combo_button_content_padding: Margin | None
+[Read-Write] Spacing between button’s border and the content. Default uses ComboButtonStyle.
+
+Type:
+(Optional[Margin])
+
+property combo_button_style: ComboButtonStyle
+[Read-Write] The style to use for our SComboButton.
+
+Type:
+(ComboButtonStyle)
+
+property has_down_arrow: bool
+[Read-Write] Whether to show a down arrow for the combo button
+
+Type:
+(bool)
+
+property horizontal_content_alignment: HorizontalAlignment
+[Read-Write] Horizontal Content alignment within the button.
+
+Type:
+(HorizontalAlignment)
+
+property icon_brush: SlateBrush | None
+[Read-Write] Icon Brush to use.
+
+Type:
+(Optional[SlateBrush])
+
+property icon_button_style: ButtonStyle | None
+[Read-Write] The style to use for our SButton when an icon is present. ButtonStyle used if not specified.
+
+Type:
+(Optional[ButtonStyle])
+
+property icon_color_and_opacity: SlateColor | None
+[Read-Write] Icon Color/Tint, defaults is determined by ActionButtonType.
+
+Type:
+(Optional[SlateColor])
+
+property icon_normal_padding: Margin | None
+[Read-Write] If set and the button’s icon is non-null, overrides the button style’s additional spacing between the button’s border and the content when not pressed.
+
+Type:
+(Optional[Margin])
+
+property icon_pressed_padding: Margin | None
+[Read-Write] If set and the button’s icon is non-null, overrides the button style’s additional spacing between the button’s border and the content when pressed.
+
+Type:
+(Optional[Margin])
+
+property text_block_style: TextBlockStyle
+[Read-Write] The style to use for the button Text.
+
+Type:
+(TextBlockStyle)

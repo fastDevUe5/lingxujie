@@ -1,0 +1,147 @@
+{
+ "asset": {
+  "version": "2.0",
+  "generator": "LingXuJie mod+anm exporter"
+ },
+ "scene": 0,
+ "scenes": [
+  {
+   "nodes": [
+    0
+   ]
+  }
+ ],
+ "nodes": [
+  {
+   "name": "11210",
+   "mesh": 0,
+   "skin": 0
+  }
+ ],
+ "meshes": [
+  {
+   "name": "11210_lod1",
+   "primitives": [
+    {
+     "attributes": {
+      "POSITION": 0,
+      "NORMAL": 1,
+      "TEXCOORD_0": 2,
+      "JOINTS_0": 4,
+      "WEIGHTS_0": 5
+     },
+     "indices": 3
+    }
+   ]
+  }
+ ],
+ "skins": [
+  {
+   "joints": [],
+   "inverseBindMatrices": 6
+  }
+ ],
+ "bufferViews": [
+  {
+   "buffer": 0,
+   "byteOffset": 0,
+   "byteLength": 1992,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 1992,
+   "byteLength": 1992,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 3984,
+   "byteLength": 1328,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 5312,
+   "byteLength": 1416,
+   "target": 34963
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 6728,
+   "byteLength": 1328,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 8056,
+   "byteLength": 2656,
+   "target": 34962
+  },
+  {
+   "buffer": 0,
+   "byteOffset": 10712,
+   "byteLength": 0
+  }
+ ],
+ "accessors": [
+  {
+   "bufferView": 0,
+   "componentType": 5126,
+   "count": 166,
+   "type": "VEC3",
+   "min": [
+    -0.11449805179274225,
+    -0.9310109811195408,
+    -0.12900419763771878
+   ],
+   "max": [
+    0.07900090298020697,
+    0.6403094763389552,
+    0.1295864243105234
+   ]
+  },
+  {
+   "bufferView": 1,
+   "componentType": 5126,
+   "count": 166,
+   "type": "VEC3"
+  },
+  {
+   "bufferView": 2,
+   "componentType": 5126,
+   "count": 166,
+   "type": "VEC2"
+  },
+  {
+   "bufferView": 3,
+   "componentType": 5123,
+   "count": 708,
+   "type": "SCALAR"
+  },
+  {
+   "bufferView": 4,
+   "componentType": 5123,
+   "count": 166,
+   "type": "VEC4"
+  },
+  {
+   "bufferView": 5,
+   "componentType": 5126,
+   "count": 166,
+   "type": "VEC4"
+  },
+  {
+   "bufferView": 6,
+   "componentType": 5126,
+   "count": 0,
+   "type": "MAT4"
+  }
+ ],
+ "buffers": [
+  {
+   "byteLength": 10712,
+   "uri": "11210_lod1.bin"
+  }
+ ]
+}

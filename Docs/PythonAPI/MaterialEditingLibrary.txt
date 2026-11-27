@@ -1,0 +1,1619 @@
+# unreal.MaterialEditingLibrary  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/MaterialEditingLibrary
+
+unreal.MaterialEditingLibrary¶
+
+
+class unreal.MaterialEditingLibrary(outer: Object | None = None, name: Name | str = 'None')¶
+
+Bases: BlueprintFunctionLibrary
+
+Blueprint library for creating/editing Materials
+
+C++ Source:
+
+
+
+Module: MaterialEditor
+
+File: MaterialEditingLibrary.h
+
+
+classmethod clear_all_material_instance_parameters(instance) → None¶
+
+Clears all material parameters set by this Material Instance
+
+
+
+Parameters:
+
+instance (MaterialInstanceConstant)
+
+
+classmethod connect_material_expressions(from_expression, from_output_name, to_expression, to_input_name) → bool¶
+
+Create connection between two material expressions
+
+
+
+Parameters:
+
+
+
+from_expression (MaterialExpression) – Expression to make connection from
+
+from_output_name (str) – Name of output of FromExpression to make connection from. Leave empty to use first output.
+
+to_expression (MaterialExpression) – Expression to make connection to
+
+to_input_name (str) – Name of input of ToExpression to make connection to. Leave empty to use first input.
+
+
+Return type:
+
+bool
+
+
+classmethod connect_material_property(from_expression, from_output_name, property_) → bool¶
+
+Connect a material expression output to one of the material property inputs (e.g. diffuse color, opacity etc)
+
+
+
+Parameters:
+
+
+
+from_expression (MaterialExpression) – Expression to make connection from
+
+from_output_name (str) – Name of output of FromExpression to make connection from
+
+property (MaterialProperty) – Property input on material to make connection to
+
+
+Return type:
+
+bool
+
+
+classmethod create_material_expression(material, expression_class, node_pos_x=0, node_pos_y=0) → MaterialExpression¶
+
+Create a new material expression node within the supplied material
+
+
+
+Parameters:
+
+
+
+material (Material) – Material asset to add an expression to
+
+expression_class (type(Class)) – Class of expression to add
+
+node_pos_x (int32) – X position of new expression node
+
+node_pos_y (int32) – Y position of new expression node
+
+
+Return type:
+
+MaterialExpression
+
+
+classmethod create_material_expression_in_function(material_function, expression_class, node_pos_x=0, node_pos_y=0) → MaterialExpression¶
+
+Create a new material expression node within the supplied material function
+
+
+
+Parameters:
+
+
+
+material_function (MaterialFunction) – Material function asset to add an expression to
+
+expression_class (type(Class)) – Class of expression to add
+
+node_pos_x (int32) – X position of new expression node
+
+node_pos_y (int32) – Y position of new expression node
+
+
+Return type:
+
+MaterialExpression
+
+
+classmethod delete_all_material_expressions(material) → None¶
+
+Delete all material expressions in the supplied material
+
+
+
+Parameters:
+
+material (Material)
+
+
+classmethod delete_all_material_expressions_in_function(material_function) → None¶
+
+Delete all material expressions in the supplied material function
+
+
+
+Parameters:
+
+material_function (MaterialFunction)
+
+
+classmethod delete_material_expression(material, expression) → None¶
+
+Delete a specific expression from a material. Will disconnect from other expressions.
+
+
+
+Parameters:
+
+
+
+material (Material)
+
+expression (MaterialExpression)
+
+
+classmethod delete_material_expression_in_function(material_function, expression) → None¶
+
+Delete a specific expression from a material function. Will disconnect from other expressions.
+
+
+
+Parameters:
+
+
+
+material_function (MaterialFunction)
+
+expression (MaterialExpression)
+
+
+classmethod delete_unused_expressions(material) → None¶
+
+Delete all expressions not reachable from any material output. Call recompile afterwards.
+
+
+
+Parameters:
+
+material (Material)
+
+
+classmethod disconnect_material_expressions(to_expression, to_input_name) → bool¶
+
+Disconnect the input pin of a material expression, removing whatever is currently connected to it.
+
+
+
+Parameters:
+
+
+
+to_expression (MaterialExpression) – Expression whose input pin should be disconnected
+
+to_input_name (str) – Name of the input pin to disconnect.
+
+
+Returns:
+
+true if a connection was broken, false if the pin was already disconnected or not found
+
+
+
+Return type:
+
+bool
+
+
+classmethod disconnect_material_property(material, property_) → bool¶
+
+Disconnect the expression node currently connected to a material property input (e.g. base color, roughness).
+
+
+
+Parameters:
+
+
+
+material (Material) – Material asset to modify
+
+property (MaterialProperty) – Property input on material to disconnect
+
+
+Returns:
+
+true if a connection was broken, false if the input was already disconnected
+
+
+
+Return type:
+
+bool
+
+
+classmethod duplicate_material_expression(material, material_function, expression) → MaterialExpression¶
+
+Duplicates the provided material expression adding it to the same material / material function, and copying parameters.
+
+Note: Does not duplicate transient properties (Ex: GraphNode).
+
+
+
+Parameters:
+
+
+
+material (Material) – Material asset to add an expression to
+
+material_function (MaterialFunction) – Specified if adding an expression to a MaterialFunction, used as Outer for new expression object
+
+expression (MaterialExpression)
+
+
+Return type:
+
+MaterialExpression
+
+
+classmethod get_child_instances(parent) → Array[AssetData]¶
+
+Gets all direct child mat instances
+
+
+
+Parameters:
+
+parent (MaterialInterface)
+
+
+
+Returns:
+
+child_instances (Array[AssetData]):
+
+
+
+Return type:
+
+Array[AssetData]
+
+
+classmethod get_input_node_output_name_for_material_expression(material_expression, input_node) → str or None¶
+
+Get the output name of input node connected to MaterialExpression from an active material editor
+
+
+
+Parameters:
+
+
+
+material_expression (MaterialExpression)
+
+input_node (MaterialExpression)
+
+
+Returns:
+
+output_name (str):
+
+
+
+Return type:
+
+str or None
+
+
+classmethod get_inputs_for_material_expression(material, material_expression) → Array[MaterialExpression]¶
+
+Get the set of nodes acting as inputs to a node from an active material editor
+
+
+
+Parameters:
+
+
+
+material (Material)
+
+material_expression (MaterialExpression)
+
+
+Return type:
+
+Array[MaterialExpression]
+
+
+classmethod get_inputs_for_material_function_expression(material_function, material_expression) → Array[MaterialExpression]¶
+
+Get the set of nodes acting as inputs to a node in a material function graph
+
+
+
+Parameters:
+
+
+
+material_function (MaterialFunction)
+
+material_expression (MaterialExpression)
+
+
+Return type:
+
+Array[MaterialExpression]
+
+
+classmethod get_material_default_scalar_parameter_value(material, parameter_name) → float¶
+
+Get the default scalar (float) parameter value from a Material
+
+
+
+Parameters:
+
+
+
+material (Material)
+
+parameter_name (Name)
+
+
+Return type:
+
+float
+
+
+classmethod get_material_default_static_switch_parameter_value(material, parameter_name) → bool¶
+
+Get the default static switch parameter value from a Material
+
+
+
+Parameters:
+
+
+
+material (Material)
+
+parameter_name (Name)
+
+
+Return type:
+
+bool
+
+
+classmethod get_material_default_texture_parameter_value(material, parameter_name) → Texture¶
+
+Get the default texture parameter value from a Material
+
+
+
+Parameters:
+
+
+
+material (Material)
+
+parameter_name (Name)
+
+
+Return type:
+
+Texture
+
+
+classmethod get_material_default_vector_parameter_value(material, parameter_name) → LinearColor¶
+
+Get the default vector parameter value from a Material
+
+
+
+Parameters:
+
+
+
+material (Material)
+
+parameter_name (Name)
+
+
+Return type:
+
+LinearColor
+
+
+classmethod get_material_expression_input_names(material_expression) → Array[str]¶
+
+Get the array of input pin names for a material expression
+
+
+
+Parameters:
+
+material_expression (MaterialExpression)
+
+
+
+Return type:
+
+Array[str]
+
+
+classmethod get_material_expression_input_types(material_expression) → Array[int32]¶
+
+Get the array of input pin types for a material expression
+
+
+
+Parameters:
+
+material_expression (MaterialExpression)
+
+
+
+Return type:
+
+Array[int32]
+
+
+classmethod get_material_expression_node_position(material_expression) -> (node_pos_x=int32, node_pos_y=int32)¶
+
+Get the position of the MaterialExpression node.
+
+
+
+Parameters:
+
+material_expression (MaterialExpression)
+
+
+
+Returns:
+
+node_pos_x (int32):
+
+node_pos_y (int32):
+
+
+Return type:
+
+tuple
+
+
+classmethod get_material_expression_output_names(material_expression) → Array[str]¶
+
+Get the array of output pin names for a material expression
+
+
+
+Parameters:
+
+material_expression (MaterialExpression)
+
+
+
+Return type:
+
+Array[str]
+
+
+classmethod get_material_expressions(material) → Array[MaterialExpression]¶
+
+returns the Expressions contained in this Material. Does not include nested Expressions.
+
+
+
+Parameters:
+
+material (Material)
+
+
+
+Return type:
+
+Array[MaterialExpression]
+
+
+classmethod get_material_function_expressions(material_function) → Array[MaterialExpression]¶
+
+returns the Expressions contained in this Material Function. Does not include nested Expressions.
+
+
+
+Parameters:
+
+material_function (MaterialFunction)
+
+
+
+Return type:
+
+Array[MaterialExpression]
+
+
+classmethod get_material_instance_runtime_virtual_texture_parameter_value(instance, parameter_name, association=MaterialParameterAssociation.GLOBAL_PARAMETER) → RuntimeVirtualTexture¶
+
+Get the current texture parameter value from a Material Instance
+
+
+
+Parameters:
+
+
+
+instance (MaterialInstanceConstant)
+
+parameter_name (Name)
+
+association (MaterialParameterAssociation)
+
+
+Return type:
+
+RuntimeVirtualTexture
+
+
+classmethod get_material_instance_scalar_parameter_value(instance, parameter_name, association=MaterialParameterAssociation.GLOBAL_PARAMETER) → float¶
+
+Get the current scalar (float) parameter value from a Material Instance
+
+
+
+Parameters:
+
+
+
+instance (MaterialInstanceConstant)
+
+parameter_name (Name)
+
+association (MaterialParameterAssociation)
+
+
+Return type:
+
+float
+
+
+classmethod get_material_instance_sparse_volume_texture_parameter_value(instance, parameter_name, association=MaterialParameterAssociation.GLOBAL_PARAMETER) → SparseVolumeTexture¶
+
+Get the current texture parameter value from a Material Instance
+
+
+
+Parameters:
+
+
+
+instance (MaterialInstanceConstant)
+
+parameter_name (Name)
+
+association (MaterialParameterAssociation)
+
+
+Return type:
+
+SparseVolumeTexture
+
+
+classmethod get_material_instance_static_switch_parameter_value(instance, parameter_name, association=MaterialParameterAssociation.GLOBAL_PARAMETER) → bool¶
+
+Get the current static switch parameter value from a Material Instance
+
+
+
+Parameters:
+
+
+
+instance (MaterialInstanceConstant)
+
+parameter_name (Name)
+
+association (MaterialParameterAssociation)
+
+
+Return type:
+
+bool
+
+
+classmethod get_material_instance_texture_parameter_value(instance, parameter_name, association=MaterialParameterAssociation.GLOBAL_PARAMETER) → Texture¶
+
+Get the current texture parameter value from a Material Instance
+
+
+
+Parameters:
+
+
+
+instance (MaterialInstanceConstant)
+
+parameter_name (Name)
+
+association (MaterialParameterAssociation)
+
+
+Return type:
+
+Texture
+
+
+classmethod get_material_instance_vector_parameter_value(instance, parameter_name, association=MaterialParameterAssociation.GLOBAL_PARAMETER) → LinearColor¶
+
+Get the current vector parameter value from a Material Instance
+
+
+
+Parameters:
+
+
+
+instance (MaterialInstanceConstant)
+
+parameter_name (Name)
+
+association (MaterialParameterAssociation)
+
+
+Return type:
+
+LinearColor
+
+
+classmethod get_material_property_input_node(material, property_) → MaterialExpression¶
+
+Get the node providing the output for a given material property from an active material editor
+
+
+
+Parameters:
+
+
+
+material (Material)
+
+property (MaterialProperty)
+
+
+Return type:
+
+MaterialExpression
+
+
+classmethod get_material_property_input_node_output_name(material, property_) → str¶
+
+Get the node output name providing the output for a given material property from an active material editor
+
+
+
+Parameters:
+
+
+
+material (Material)
+
+property (MaterialProperty)
+
+
+Return type:
+
+str
+
+
+classmethod get_material_selected_nodes(material) → Set[Object]¶
+
+Get the set of selected nodes from an active material editor
+
+
+
+Parameters:
+
+material (Material)
+
+
+
+Return type:
+
+Set[Object]
+
+
+classmethod get_material_used_textures(material_interface) → Array[Texture]¶
+
+Get the list of textures used by a material
+
+
+
+Parameters:
+
+material_interface (MaterialInterface)
+
+
+
+Return type:
+
+Array[Texture]
+
+
+classmethod get_materials_referencing_function(function) → Array[AssetData]¶
+
+Gets all materials that use a material function
+
+
+
+Parameters:
+
+function (MaterialFunction)
+
+
+
+Returns:
+
+out_materials (Array[AssetData]):
+
+
+
+Return type:
+
+Array[AssetData]
+
+
+classmethod get_nanite_override_material(material) → MaterialInterface¶
+
+Returns any nanite override material for the given material
+
+
+
+Parameters:
+
+material (MaterialInterface)
+
+
+
+Return type:
+
+MaterialInterface
+
+
+classmethod get_num_material_expressions(material) → int32¶
+
+Returns number of material expressions in the supplied material
+
+
+
+Parameters:
+
+material (Material)
+
+
+
+Return type:
+
+int32
+
+
+classmethod get_num_material_expressions_in_function(material_function) → int32¶
+
+Returns number of material expressions in the supplied material
+
+
+
+Parameters:
+
+material_function (MaterialFunction)
+
+
+
+Return type:
+
+int32
+
+
+classmethod get_num_shader_types(material) → int32¶
+
+Returns the number of shader types (including pipeline shader types) for the given material.
+
+
+
+Parameters:
+
+material (MaterialInterface)
+
+
+
+Return type:
+
+int32
+
+
+classmethod get_scalar_parameter_names(material) → Array[Name]¶
+
+Gets all scalar parameter names
+
+
+
+Parameters:
+
+material (MaterialInterface)
+
+
+
+Returns:
+
+parameter_names (Array[Name]):
+
+
+
+Return type:
+
+Array[Name]
+
+
+classmethod get_scalar_parameter_source(material, parameter_name) → SoftObjectPath or None¶
+
+Returns the path of the asset where the parameter originated, as well as true/false if it was found
+
+
+
+Parameters:
+
+
+
+material (MaterialInterface) – The material or material instance you want to look up a parameter from
+
+parameter_name (Name) – The parameter name
+
+
+Returns:
+
+Whether or not the parameter was found in this material
+
+parameter_source (SoftObjectPath): The soft object path of the asset the parameter originates in
+
+
+Return type:
+
+SoftObjectPath or None
+
+
+classmethod get_static_switch_parameter_names(material) → Array[Name]¶
+
+Gets all static switch parameter names
+
+
+
+Parameters:
+
+material (MaterialInterface)
+
+
+
+Returns:
+
+parameter_names (Array[Name]):
+
+
+
+Return type:
+
+Array[Name]
+
+
+classmethod get_static_switch_parameter_source(material, parameter_name) → SoftObjectPath or None¶
+
+Returns the path of the asset where the parameter originated, as well as true/false if it was found
+
+
+
+Parameters:
+
+
+
+material (MaterialInterface) – The material or material instance you want to look up a parameter from
+
+parameter_name (Name) – The parameter name
+
+
+Returns:
+
+Whether or not the parameter was found in this material
+
+parameter_source (SoftObjectPath): The soft object path of the asset the parameter originates in
+
+
+Return type:
+
+SoftObjectPath or None
+
+
+classmethod get_statistics(material) → MaterialStatistics¶
+
+Returns statistics about the given material
+
+
+
+Parameters:
+
+material (MaterialInterface)
+
+
+
+Return type:
+
+MaterialStatistics
+
+
+classmethod get_texture_parameter_names(material) → Array[Name]¶
+
+Gets all texture parameter names
+
+
+
+Parameters:
+
+material (MaterialInterface)
+
+
+
+Returns:
+
+parameter_names (Array[Name]):
+
+
+
+Return type:
+
+Array[Name]
+
+
+classmethod get_texture_parameter_source(material, parameter_name) → SoftObjectPath or None¶
+
+Returns the path of the asset where the parameter originated, as well as true/false if it was found
+
+
+
+Parameters:
+
+
+
+material (MaterialInterface) – The material or material instance you want to look up a parameter from
+
+parameter_name (Name) – The parameter name
+
+
+Returns:
+
+Whether or not the parameter was found in this material
+
+parameter_source (SoftObjectPath): The soft object path of the asset the parameter originates in
+
+
+Return type:
+
+SoftObjectPath or None
+
+
+classmethod get_used_textures(material) → Array[Texture]¶
+
+Get the list of textures used by a material
+
+deprecated: Use GetMaterialUsedTextures instead since it works with Material Instances.
+
+
+
+Parameters:
+
+material (Material)
+
+
+
+Return type:
+
+Array[Texture]
+
+
+classmethod get_vector_parameter_names(material) → Array[Name]¶
+
+Gets all vector parameter names
+
+
+
+Parameters:
+
+material (MaterialInterface)
+
+
+
+Returns:
+
+parameter_names (Array[Name]):
+
+
+
+Return type:
+
+Array[Name]
+
+
+classmethod get_vector_parameter_source(material, parameter_name) → SoftObjectPath or None¶
+
+Returns the path of the asset where the parameter originated, as well as true/false if it was found
+
+
+
+Parameters:
+
+
+
+material (MaterialInterface) – The material or material instance you want to look up a parameter from
+
+parameter_name (Name) – The parameter name
+
+
+Returns:
+
+Whether or not the parameter was found in this material
+
+parameter_source (SoftObjectPath): The soft object path of the asset the parameter originates in
+
+
+Return type:
+
+SoftObjectPath or None
+
+
+classmethod has_material_usage(material, usage) → bool¶
+
+Check if a particular usage is enabled for the supplied material (e.g. SkeletalMesh, ParticleSprite etc)
+
+
+
+Parameters:
+
+
+
+material (MaterialInterface) – Material to check usage for
+
+usage (MaterialUsage) – Usage type to check for this material
+
+
+Return type:
+
+bool
+
+
+classmethod has_material_usage_override(material_instance, usage) → bool¶
+
+Check if a if the supplied material instance has an override for the particular usage
+
+
+
+Parameters:
+
+
+
+material_instance (MaterialInstanceConstant) – Material instance to check override for
+
+usage (MaterialUsage) – Usage type to check for this material
+
+
+Return type:
+
+bool
+
+
+classmethod is_material_instance_parameter_overridden(instance, parameter_name, association=MaterialParameterAssociation.GLOBAL_PARAMETER) → bool¶
+
+Check whether a parameter is overridden in this Material Instance.
+
+
+
+Parameters:
+
+
+
+instance (MaterialInstanceConstant) – Material Instance to query
+
+parameter_name (Name) – Name of the parameter
+
+association (MaterialParameterAssociation) – Parameter association type
+
+
+Returns:
+
+Whether the parameter is overridden in this instance
+
+
+
+Return type:
+
+bool
+
+
+classmethod layout_material_expressions(material) → None¶
+
+Layouts the expressions in a grid pattern
+
+
+
+Parameters:
+
+material (Material)
+
+
+classmethod layout_material_function_expressions(material_function) → None¶
+
+Layouts the expressions in a grid pattern
+
+
+
+Parameters:
+
+material_function (MaterialFunction)
+
+
+classmethod list_shaders(material) → Array[DebugShaderInfo]¶
+
+Returns a list of all the shaders contained in this material.
+
+
+
+Parameters:
+
+material (MaterialInterface)
+
+
+
+Return type:
+
+Array[DebugShaderInfo]
+
+
+classmethod recompile_material(material) → Array[str]¶
+
+Trigger a recompile of a material. Must be performed after making changes to the graph to have changes reflected.
+
+
+
+Parameters:
+
+material (Material)
+
+
+
+Returns:
+
+Any compiler error messages produced during compilation. Empty if compilation succeeded.
+
+
+
+Return type:
+
+Array[str]
+
+
+classmethod refresh_material_editor(material) → None¶
+
+Refresh an open Material Editor’s preview from its source asset. Call after script-driven edits
+
+so the editor reflects the change. No-op if no editor is open for the asset. Discards any
+
+in-editor edits not yet applied back to the asset.
+
+
+
+Parameters:
+
+material (Material) – Material whose open editor should be refreshed.
+
+
+classmethod refresh_material_function_editor(material_function) → None¶
+
+Refresh an open Material Function Editor’s preview from its source asset. Same semantics as
+
+RefreshMaterialEditor.
+
+
+
+Parameters:
+
+material_function (MaterialFunction) – MaterialFunction whose open editor should be refreshed.
+
+
+classmethod refresh_material_instance_editor(instance) → None¶
+
+Refresh an open Material Instance Editor’s parameter and inheritance views. Call after
+
+script-driven edits so the editor reflects the change. No-op if no editor is open for
+
+the instance.
+
+
+
+Parameters:
+
+instance (MaterialInstanceConstant) – Material Instance whose open editor should be refreshed.
+
+
+classmethod rename_material_function_parameter_group(material_function, old_group_name, new_group_name) → bool¶
+
+Renames a material parameter group within the specified material function.
+
+This function allows you to rename an existing parameter group in a material function.
+
+It iterates all parameters within the material function, finds all the one belonging
+
+to the OldGroupName group and switches those parameters to be in the NewGroupName
+
+group. This function only affects parameters that belong to the specified group.
+
+To remove the groups from the parameters the new group name can be ‘None’. If the
+
+OldGroupName does not exist in the material, the function will return false. If the
+
+NewGroupName already exists, the parameters will be “merged” into the existing group.
+
+see: RenameMaterialParameterGroup
+
+
+
+Parameters:
+
+
+
+material_function (MaterialFunctionInterface) – The material function asset in which the parameter group resides.
+
+old_group_name (Name) – The current name of the parameter group to rename.
+
+new_group_name (Name) – The new name to assign to the parameter group.
+
+
+Returns:
+
+true if the rename operation was successful; false otherwise.
+
+
+
+Return type:
+
+bool
+
+
+classmethod rename_material_parameter_group(material, old_group_name, new_group_name) → bool¶
+
+Renames a material parameter group within the specified material.
+
+This function allows you to rename an existing parameter group in a material.
+
+It iterates all parameters within the material, finds all the one belonging
+
+to the OldGroupName group and switches those parameters to be in the NewGroupName
+
+group. This function only affects parameters that belong to the specified group.
+
+To remove the groups from the parameters the new group name can be ‘None’. If the
+
+OldGroupName does not exist in the material, the function will return false. If
+
+the NewGroupName already exists, the parameters will be “merged” into the existing group.
+
+see: RenameMaterialFunctionParameterGroup
+
+
+
+Parameters:
+
+
+
+material (Material) – The material asset in which the parameter group resides.
+
+old_group_name (Name) – The current name of the parameter group to rename.
+
+new_group_name (Name) – The new name to assign to the parameter group.
+
+
+Returns:
+
+true if the rename operation was successful; false otherwise.
+
+
+
+Return type:
+
+bool
+
+
+classmethod set_base_material_usage(material, usage, value=True) → None¶
+
+Enable or disable a particular usage for the supplied material
+
+
+
+Parameters:
+
+
+
+material (Material) – Material to change usage for
+
+usage (MaterialUsage) – Usage type
+
+value (bool) – Whether to enable the usage
+
+
+classmethod set_material_instance_parameter_override(instance, parameter_name, override, association=MaterialParameterAssociation.GLOBAL_PARAMETER) → bool¶
+
+Set whether a parameter override is enabled in this Material Instance.
+
+
+
+Parameters:
+
+
+
+instance (MaterialInstanceConstant) – Material Instance to modify
+
+parameter_name (Name) – Name of the parameter
+
+override (bool) – Whether the parameter should be overridden
+
+association (MaterialParameterAssociation) – Parameter association type
+
+
+Returns:
+
+Whether the operation succeeded (false if Instance is null or the parameter was not found)
+
+
+
+Return type:
+
+bool
+
+
+classmethod set_material_instance_parent(instance, new_parent) → None¶
+
+Set the parent Material or Material Instance to use for this Material Instance
+
+
+
+Parameters:
+
+
+
+instance (MaterialInstanceConstant)
+
+new_parent (MaterialInterface)
+
+
+classmethod set_material_instance_runtime_virtual_texture_parameter_value(instance, parameter_name, value, association=MaterialParameterAssociation.GLOBAL_PARAMETER) → bool¶
+
+Set the texture parameter value for a Material Instance
+
+
+
+Parameters:
+
+
+
+instance (MaterialInstanceConstant)
+
+parameter_name (Name)
+
+value (RuntimeVirtualTexture)
+
+association (MaterialParameterAssociation)
+
+
+Return type:
+
+bool
+
+
+classmethod set_material_instance_scalar_parameter_value(instance, parameter_name, value, association=MaterialParameterAssociation.GLOBAL_PARAMETER) → bool¶
+
+Set the scalar (float) parameter value for a Material Instance
+
+
+
+Parameters:
+
+
+
+instance (MaterialInstanceConstant)
+
+parameter_name (Name)
+
+value (float)
+
+association (MaterialParameterAssociation)
+
+
+Return type:
+
+bool
+
+
+classmethod set_material_instance_sparse_volume_texture_parameter_value(instance, parameter_name, value, association=MaterialParameterAssociation.GLOBAL_PARAMETER) → bool¶
+
+Set the texture parameter value for a Material Instance
+
+
+
+Parameters:
+
+
+
+instance (MaterialInstanceConstant)
+
+parameter_name (Name)
+
+value (SparseVolumeTexture)
+
+association (MaterialParameterAssociation)
+
+
+Return type:
+
+bool
+
+
+classmethod set_material_instance_static_switch_parameter_value(instance, parameter_name, value, association=MaterialParameterAssociation.GLOBAL_PARAMETER, update_material_instance=True) → bool¶
+
+Set the static switch parameter value for a Material Instance
+
+
+
+Parameters:
+
+
+
+instance (MaterialInstanceConstant)
+
+parameter_name (Name)
+
+value (bool)
+
+association (MaterialParameterAssociation)
+
+update_material_instance (bool)
+
+
+Return type:
+
+bool
+
+
+classmethod set_material_instance_texture_parameter_value(instance, parameter_name, value, association=MaterialParameterAssociation.GLOBAL_PARAMETER) → bool¶
+
+Set the texture parameter value for a Material Instance
+
+
+
+Parameters:
+
+
+
+instance (MaterialInstanceConstant)
+
+parameter_name (Name)
+
+value (Texture)
+
+association (MaterialParameterAssociation)
+
+
+Return type:
+
+bool
+
+
+classmethod set_material_instance_vector_parameter_value(instance, parameter_name, value, association=MaterialParameterAssociation.GLOBAL_PARAMETER) → bool¶
+
+Set the vector parameter value for a Material Instance
+
+
+
+Parameters:
+
+
+
+instance (MaterialInstanceConstant)
+
+parameter_name (Name)
+
+value (LinearColor)
+
+association (MaterialParameterAssociation)
+
+
+Return type:
+
+bool
+
+
+classmethod set_material_usage(material, usage) → bool or None¶
+
+Enable a particular usage for the supplied material (e.g. SkeletalMesh, ParticleSprite etc)
+
+deprecated: Use SetBaseMaterialUsage instead
+
+
+
+Parameters:
+
+
+
+material (Material) – Material to change usage for
+
+usage (MaterialUsage) – New usage type to enable for this material
+
+
+Returns:
+
+needs_recompile (bool): Returned to indicate if material needs recompiling after this change
+
+
+
+Return type:
+
+bool or None
+
+
+classmethod set_material_usage_override(material_instance, usage, override=True, value=True) → None¶
+
+Set the material usage override for the supplied material instance
+
+
+
+Parameters:
+
+
+
+material_instance (MaterialInstanceConstant) – Material instance to change usage for
+
+usage (MaterialUsage) – Usage type
+
+override (bool) – Whether to enable the override (set to false to default to Parent setting)
+
+value (bool) – Whether to enable the usage (only if bOverride is true)
+
+
+classmethod update_material_function(material_function, preview_material=None) → None¶
+
+Update a Material Function after edits have been made.
+
+Will recompile any Materials that use the supplied Material Function.
+
+
+
+Parameters:
+
+
+
+material_function (MaterialFunctionInterface)
+
+preview_material (Material)
+
+
+classmethod update_material_instance(instance) → None¶
+
+Called after making modifications to a Material Instance to recompile shaders etc.
+
+
+
+Parameters:
+
+instance (MaterialInstanceConstant)

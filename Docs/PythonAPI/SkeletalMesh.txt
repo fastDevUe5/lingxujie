@@ -1,0 +1,466 @@
+# unreal.SkeletalMesh  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/SkeletalMesh.html
+
+unreal.SkeletalMesh
+
+class unreal.SkeletalMesh(outer: Object | None = None, name: Name | str = 'None')
+Bases: SkinnedAsset
+SkeletalMesh is geometry bound to a hierarchical skeleton of bones which can be animated for the purpose of deforming the mesh.
+Skeletal Meshes are built up of two parts; a set of polygons composed to make up the surface of the mesh, and a hierarchical skeleton which can be used to animate the polygons.
+The 3D models, rigging, and animations are created in an external modeling and animation application (3DSMax, Maya, Softimage, etc).
+see: https://docs.unrealengine.com/latest/INT/Engine/Content/Types/SkeletalMeshes/
+C++ Source:
+
+Module: Engine
+File: SkeletalMesh.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+asset_import_data (AssetImportData): [Read-Write]
+asset_user_data (Array[AssetUserData]): [Read-Write] Array of user data stored with the asset
+asset_user_data_editor_only (Array[AssetUserData]): [Read-Write]
+cloth_lod_bias_mode (ClothLODBiasMode): [Read-Write]
+default_animating_rig (Object): [Read-Write]
+default_mesh_deformer (MeshDeformer): [Read-Write]
+disable_below_min_lod_stripping (PerPlatformBool): [Read-Write]
+enable_per_poly_collision (bool): [Read-Write]
+forward_axis (AxisType): [Read-Only] Axis that the skeletal mesh is facing. Default is the Y axis.
+The facing axis represents the MeshDescription’s orientation and is set on import.
+Therefore, if this property is modified elsewhere, the associated MeshDescription should be appropriately modified to reflect the new orientation.
+global_force_mip_levels_to_be_resident (bool): [Read-Write] Global and serialized version of ForceMiplevelsToBeResident.
+lod_settings (SkeletalMeshLODSettings): [Read-Write]
+materials (Array[SkeletalMaterial]): [Read-Write]
+max_num_optional_lo_ds (PerPlatformInt): [Read-Write]
+max_num_streamed_lo_ds (PerPlatformInt): [Read-Write]
+mesh_clothing_assets (Array[ClothingAssetBase]): [Read-Only]
+min_lod (PerPlatformInt): [Read-Write]
+min_quality_level_lod (PerQualityLevelInt): [Read-Write]
+morph_targets (Array[MorphTarget]): [Read-Write]
+nanite_settings (MeshNaniteSettings): [Read-Write] Settings related to building Nanite data.
+negative_bounds_extension (Vector): [Read-Write]
+never_stream (bool): [Read-Write]
+node_mapping_data (Array[NodeMappingContainer]): [Read-Write]
+num_cinematic_mip_levels (int32): [Read-Write] Number of mip-levels to use for cinematic quality.
+overlay_material (MaterialInterface): [Read-Write]
+overlay_material_max_draw_distance (float): [Read-Write]
+override_lod_streaming_settings (bool): [Read-Write]
+physics_asset (PhysicsAsset): [Read-Write]
+positive_bounds_extension (Vector): [Read-Write]
+post_process_anim_blueprint (type(Class)): [Read-Write]
+post_process_anim_bplod_threshold (int32): [Read-Write] Max LOD level that post-process anim graphs are evaluated.
+For example if you have the threshold set to 2, it will evaluate until including LOD 2 (based on 0 index). In case the LOD level gets set to 3, it will stop evaluating the post-process anim graph.
+Setting it to -1 will always evaluate it and disable LODing.
+ray_tracing_min_lod (int32): [Read-Write]
+sampling_info (SkeletalMeshSamplingInfo): [Read-Write]
+shadow_physics_asset (PhysicsAsset): [Read-Write]
+skel_mirror_axis (AxisType): [Read-Write]
+skel_mirror_flip_axis (AxisType): [Read-Write]
+skel_mirror_table (Array[BoneMirrorInfo]): [Read-Write]
+skeleton (Skeleton): [Read-Only]
+skin_weight_profiles (Array[SkinWeightProfileInfo]): [Read-Write]
+source_models (Array[SkeletalMeshSourceModel]): [Read-Write]
+support_lod_streaming (PerPlatformBool): [Read-Write]
+support_ray_tracing (bool): [Read-Write]
+target_mesh_deformers (MeshDeformerCollection): [Read-Write]
+thumbnail_info (ThumbnailInfo): [Read-Only]
+
+add_asset_user_data_of_class(user_data_class) → bool
+Creates and adds an instance of the provided AssetUserData class to the target asset.
+
+Parameters:
+user_data_class (type(Class)) – UAssetUserData sub class to create
+
+Returns:
+Whether or not an instance of InUserDataClass was succesfully added
+
+Return type:
+bool
+
+add_socket(socket, add_to_skeleton=False) → None
+Add a skeletal socket object to this SkeletalMesh, and optionally promotes it to USkeleton socket.
+
+Parameters:
+
+socket (SkeletalMeshSocket)
+add_to_skeleton (bool)
+
+property default_animating_rig: Object
+[Read-Write]
+
+Type:
+(Object)
+
+property default_mesh_deformer: MeshDeformer
+[Read-Only]
+
+Type:
+(MeshDeformer)
+
+find_socket_and_index(socket_name) -> (SkeletalMeshSocket, out_index=int32)
+Find a socket object in this SkeletalMesh by name.
+Entering NAME_None will return NULL. If there are multiple sockets with the same name, will return the first one.
+Also returns the index for the socket allowing for future fast access via GetSocketByIndex()
+
+Parameters:
+socket_name (Name)
+
+Returns:
+out_index (int32):
+
+Return type:
+int32
+
+property forward_axis: AxisType
+[Read-Only] Axis that the skeletal mesh is facing. Default is the Y axis.
+The facing axis represents the MeshDescription’s orientation and is set on import.
+Therefore, if this property is modified elsewhere, the associated MeshDescription should be appropriately modified to reflect the new orientation.
+
+Type:
+(AxisType)
+
+get_all_morph_target_names() → Array[str]
+Returns the list of all morph targets of this skeletal mesh
+
+Returns:
+The list of morph targets
+
+Return type:
+Array[str]
+
+get_all_skin_weight_profile_names() → Array[str]
+Returns the list of the names of all the skin weight profile on this skeletal mesh
+
+Returns:
+The list of skin weight profiles.
+
+Return type:
+Array[str]
+
+get_asset_user_data_of_class(user_data_class) → AssetUserData
+Returns an instance of the provided AssetUserData class if it’s contained in the target asset.
+
+Parameters:
+user_data_class (type(Class)) – UAssetUserData sub class to get
+
+Returns:
+The instance of the UAssetUserData class contained, or null if it doesn’t exist
+
+Return type:
+AssetUserData
+
+get_bone_children(bone_name) → Array[Name]
+Get the direct children of a bone in a skeletal mesh.
+
+Parameters:
+bone_name (Name) – The name of the bone to query.
+
+Returns:
+An array of bone names that are direct children of the given bone.
+
+Return type:
+Array[Name]
+
+get_bone_parent(bone_name) → Name
+Get the parent bone name of a bone in a skeletal mesh.
+
+Parameters:
+bone_name (Name) – The name of the bone to query.
+
+Returns:
+The name of the parent bone, or NAME_None if the bone is the root or does not exist.
+
+Return type:
+Name
+
+get_bounds() → BoxSphereBounds
+Get the extended bounds of this mesh (imported bounds plus bounds extension). USkinnedAsset interface.
+
+Return type:
+BoxSphereBounds
+
+get_default_mesh_deformer() → MeshDeformer
+Get the default mesh deformer used by this mesh. A mesh deformer is used to deform the skeletal mesh at runtime
+
+Return type:
+MeshDeformer
+
+get_forward_axis() → AxisType
+Get the forward axis used by this mesh
+
+Return type:
+AxisType
+
+get_imported_bounds() → BoxSphereBounds
+Get the original imported bounds of the skel mesh
+
+Return type:
+BoxSphereBounds
+
+get_min_lod_for_quality_levels() -> (quality_level_minimum_lo_ds=Map[PerQualityLevels, int32], default=int32)
+Get Min LODFor Quality Levels
+
+Returns:
+quality_level_minimum_lo_ds (Map[PerQualityLevels, int32]):
+default (int32):
+
+Return type:
+tuple
+
+get_node_mapping_container(source_asset) → NodeMappingContainer
+Get Node Mapping Container
+
+Parameters:
+source_asset (Blueprint)
+
+Return type:
+NodeMappingContainer
+
+get_overlay_material() → MaterialInterface
+Get the default overlay material used by this mesh
+
+Return type:
+MaterialInterface
+
+get_overlay_material_max_draw_distance() → float
+Get the default overlay material max draw distance used by this mesh
+
+Return type:
+float
+
+get_socket_by_index(index) → SkeletalMeshSocket
+Returns a socket by index. Max index is NumSockets(). The meshes sockets are accessed first, then the skeletons.
+
+Parameters:
+index (int32)
+
+Return type:
+SkeletalMeshSocket
+
+get_target_mesh_deformers() → MeshDeformerCollection
+Get the collection of mesh deformers that may be applied to this mesh. Skeletal Mesh use these deformers to determined if any extra data needs to be cooked
+
+Return type:
+MeshDeformerCollection
+
+has_asset_user_data_of_class(user_data_class) → bool
+Checks whether or not an instance of the provided AssetUserData class is contained.
+
+Parameters:
+user_data_class (type(Class)) – UAssetUserData sub class to check for
+
+Returns:
+Whether or not an instance of InUserDataClass was found
+
+Return type:
+bool
+
+has_vertex_colors() → bool
+Return whether the mesh has vertex colors. USkinnedAsset interface.
+
+Return type:
+bool
+
+is_section_using_cloth(section_index, check_corresponding_sections=True) → bool
+Checks whether the provided section is using APEX cloth. if bCheckCorrespondingSections is true
+disabled sections will defer to correspond sections to see if they use cloth (non-cloth sections
+are disabled and another section added when cloth is enabled, using this flag allows for a check
+on the original section to succeed)
+
+Parameters:
+
+section_index (int32) – Index to check
+check_corresponding_sections (bool) – Whether to check corresponding sections for disabled sections
+
+Return type:
+bool
+
+property lod_settings: SkeletalMeshLODSettings
+[Read-Write]
+
+Type:
+(SkeletalMeshLODSettings)
+
+property materials: None
+[Read-Write]
+
+Type:
+(Array[SkeletalMaterial])
+
+property mesh_clothing_assets: None
+[Read-Only]
+
+Type:
+(Array[ClothingAssetBase])
+
+property morph_targets: None
+[Read-Write]
+
+Type:
+(Array[MorphTarget])
+
+property negative_bounds_extension: Vector
+[Read-Only]
+
+Type:
+(Vector)
+
+property node_mapping_data: None
+[Read-Only]
+
+Type:
+(Array[NodeMappingContainer])
+
+num_sockets() → int32
+Returns the number of sockets available. Both on this mesh and it’s skeleton.
+
+Return type:
+int32
+
+property overlay_material: MaterialInterface
+[Read-Only]
+
+Type:
+(MaterialInterface)
+
+property overlay_material_max_draw_distance: float
+[Read-Only]
+
+Type:
+(float)
+
+property physics_asset: PhysicsAsset
+[Read-Only]
+
+Type:
+(PhysicsAsset)
+
+property positive_bounds_extension: Vector
+[Read-Only]
+
+Type:
+(Vector)
+
+property post_process_anim_blueprint: Class
+[Read-Only]
+
+Type:
+(type(Class))
+
+regenerate_lod(new_lod_count=0, regenerate_even_if_imported=False, generate_base_lod=False) → bool
+Regenerate LODs of the mesh
+
+Parameters:
+
+new_lod_count (int32) – Set valid value (>0) if you want to change LOD count. Otherwise, it will use the current LOD and regenerate
+regenerate_even_if_imported (bool) – If this is true, it only regenerate even if this LOD was imported before If false, it will regenerate for only previously auto generated ones
+generate_base_lod (bool) – If this is true and there is some reduction data, the base LOD will be reduce according to the settings
+
+Returns:
+true if succeed. If mesh reduction is not available this will return false.
+
+Return type:
+bool
+
+remove_morph_target(morph_target_name, rebuild_render_mesh=False) → bool
+Remove a single morph target from all LODs on this mesh.
+
+Parameters:
+
+morph_target_name (Name) – The name of the morph target to remove.
+rebuild_render_mesh (bool) – Set to true if rebuilding the render mesh as a part of the operation is desired. This is needed if the result of the morph removal on the mesh is to be visible afterward.
+
+Returns:
+true if the morph target was successfully removed.
+
+Return type:
+bool
+
+remove_skin_weight_profile(profile_name, rebuild_render_mesh=False) → bool
+Remove the named skin weight profile from this skeletal mesh.
+
+Parameters:
+
+profile_name (Name) – The name of the profile to remove.
+rebuild_render_mesh (bool) – Set to true if rebuilding the render mesh as a part of the operation is desired. This is needed if the result of the skin weight profile removal on the mesh is to be visible afterward.
+
+Returns:
+true if the named profile was found and removed.
+
+Return type:
+bool
+
+remove_socket(socket_name) → bool
+Remove a socket from a skeletal mesh
+
+Parameters:
+socket_name (Name) – The name of the socket to remove
+
+Returns:
+true if the removal succeeded.
+
+Return type:
+bool
+
+rename_morph_target(old_name, new_name) → bool
+Rename the morph target named InOldName to InNewName
+
+Parameters:
+
+old_name (Name)
+new_name (Name)
+
+Return type:
+bool
+
+rename_socket(old_name, new_name) → bool
+Rename a socket within a skeleton
+
+Parameters:
+
+old_name (Name) – The old name of the socket
+new_name (Name) – The new name of the socket
+
+Returns:
+true if the renaming succeeded.
+
+Return type:
+bool
+
+set_min_lod_for_quality_levels(quality_level_minimum_lo_ds, default=-1) → None
+Allow to override min lod quality levels on a skeletalMesh and it Default value (-1 value for Default dont override its value).
+
+Parameters:
+
+quality_level_minimum_lo_ds (Map[PerQualityLevels, int32])
+default (int32)
+
+set_overlay_material(new_overlay_material) → None
+Change the default overlay material used by this mesh
+
+Parameters:
+new_overlay_material (MaterialInterface)
+
+set_overlay_material_max_draw_distance(max_draw_distance) → None
+Change the default overlay material max draw distance used by this mesh
+
+Parameters:
+max_draw_distance (float)
+
+property shadow_physics_asset: PhysicsAsset
+[Read-Only]
+
+Type:
+(PhysicsAsset)
+
+property skeleton: Skeleton
+[Read-Only]
+
+Type:
+(Skeleton)
+
+property target_mesh_deformers: MeshDeformerCollection
+[Read-Only]
+
+Type:
+(MeshDeformerCollection)

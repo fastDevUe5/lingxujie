@@ -1,0 +1,287 @@
+# unreal.Skeleton  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/Skeleton.html
+
+unreal.Skeleton
+
+class unreal.Skeleton(outer: Object | None = None, name: Name | str = 'None')
+Bases: Object
+
+USkeletonthat links between mesh and animation
+Bone hierarchy for animations
+Bone/track linkup between mesh and animation
+Retargetting related
+
+C++ Source:
+
+Module: Engine
+File: Skeleton.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+asset_user_data (Array[AssetUserData]): [Read-Write] Array of user data stored with the asset
+asset_user_data_editor_only (Array[AssetUserData]): [Read-Write] Array of user data stored with the asset
+bone_tree (Array[BoneNode]): [Read-Only] Skeleton bone tree - each contains name and parent index*
+compatible_skeletons (Array[Skeleton]): [Read-Write] The list of compatible skeletons. This skeleton will be able to use animation data originating from skeletons within this array, such as animation sequences.
+This property is not bi-directional.
+This is an array of TSoftObjectPtr in order to prevent all skeletons to be loaded, as we only want to load things on demand.
+As this is EditAnywhere and an array of TSoftObjectPtr, checking validity of pointers is needed.
+
+preview_forward_axis (AxisType): [Read-Write] Preview axis to consider as “forward” for the skeleton. Only used for preview purposes.
+use_retarget_modes_from_compatible_skeleton (bool): [Read-Write] Should we use the per bone translational retarget mode from the source (compatible) skeleton’s instead of from this skeleton? On default this is disabled.
+Enabling this would allow you to have one shared set of animations. You would configure the retarget settings on the animation skeleton.
+Then every character that plays animations from this source skeleton will use the translational retarget settings from the source skeleton, which saves you from
+having to configure the retarget modes for every bone in every character as they can be setup just once now on the animation skeleton.
+
+add_asset_user_data_of_class(user_data_class) → bool
+Creates and adds an instance of the provided AssetUserData class to the target asset.
+
+Parameters:
+user_data_class (type(Class)) – UAssetUserData sub class to create
+
+Returns:
+Whether or not an instance of InUserDataClass was succesfully added
+
+Return type:
+bool
+
+add_compatible_skeleton(source_skeleton) → None
+Add Compatible Skeleton
+
+Parameters:
+source_skeleton (Skeleton)
+
+add_compatible_skeleton_soft(source_skeleton) → None
+AddCompatibleSkeleton
+
+Parameters:
+source_skeleton (Skeleton)
+
+add_curve_meta_data(curve_name, transact=True) → bool
+Adds a curve metadata entry with the specified name on the skeleton
+
+Parameters:
+
+curve_name (Name)
+transact (bool) – If true record a new transaction
+
+Returns:
+true if an entry was added, false if an entry already existed
+
+Return type:
+bool
+
+property compatible_skeletons: None
+[Read-Only] The list of compatible skeletons. This skeleton will be able to use animation data originating from skeletons within this array, such as animation sequences.
+This property is not bi-directional.
+This is an array of TSoftObjectPtr in order to prevent all skeletons to be loaded, as we only want to load things on demand.
+As this is EditAnywhere and an array of TSoftObjectPtr, checking validity of pointers is needed.
+
+Type:
+(Array[Skeleton])
+
+copy_bones_from_skeleton(target_mesh, options=[False, BonesToCopyFromSource.ALL_BONES], debug=None) → DynamicMesh
+Copy the bone attributes (skeleton) from the SourceSkeleton to the TargetMesh.
+
+Parameters:
+
+target_mesh (DynamicMesh) – Mesh we are copying the bone attributes to.
+options (GeometryScriptCopyBonesFromMeshOptions) – An option object to control how the copying is performed.
+debug (GeometryScriptDebug)
+
+Return type:
+DynamicMesh
+
+find_curve_identifier(name, curve_type) → AnimationCurveIdentifier
+Tries to construct a valid FAnimationCurveIdentifier instance. It tries to find the underlying SmartName on the provided Skeleton for the provided curve type.
+deprecated: Curve identifiers are no longer retrievable globally from the skeleton, they are specified per-animation.
+
+Parameters:
+
+name (Name) – Name of the curve to find
+curve_type (RawCurveTrackTypes) – Type of the curve to find
+
+Returns:
+Valid FAnimationCurveIdentifier if the name exists on the skeleton and the operation was successful, invalid otherwise
+
+Return type:
+AnimationCurveIdentifier
+
+get_asset_user_data_of_class(user_data_class) → AssetUserData
+Returns an instance of the provided AssetUserData class if it’s contained in the target asset.
+
+Parameters:
+user_data_class (type(Class)) – UAssetUserData sub class to get
+
+Returns:
+The instance of the UAssetUserData class contained, or null if it doesn’t exist
+
+Return type:
+AssetUserData
+
+get_blend_profile(profile_name) → BlendProfile
+Get the specified blend profile by name
+
+Parameters:
+profile_name (Name)
+
+Return type:
+BlendProfile
+
+get_curve_identifier(name, curve_type) → AnimationCurveIdentifier
+Get Curve Identifier
+deprecated: Please use SetCurveIdentifier.
+
+Parameters:
+
+name (Name)
+curve_type (RawCurveTrackTypes)
+
+Return type:
+AnimationCurveIdentifier
+
+get_curve_identifiers(curve_type) → Array[AnimationCurveIdentifier]
+Retrieves all curve identifiers for a specific curve types from the provided Skeleton
+deprecated: Curve identifiers are no longer retrievable globally from the skeleton, they are specified per-animation.
+
+Parameters:
+curve_type (RawCurveTrackTypes) – Type of the curve identifers to retrieve
+
+Returns:
+Array of FAnimationCurveIdentifier instances each representing a unique curve if the operation was successful, empyty array otherwise
+
+Return type:
+Array[AnimationCurveIdentifier]
+
+get_curve_meta_data_material(curve_name) → bool
+Gets the material flag for a curve’s metadata
+
+Parameters:
+curve_name (Name) – The name of the curve to check
+
+Returns:
+true if the flag has been set
+
+Return type:
+bool
+
+get_curve_meta_data_morph_target(curve_name) → bool
+Gets the morph target flag for a curve’s metadata
+
+Parameters:
+curve_name (Name) – The name of the curve to check
+
+Returns:
+true if the flag has been set
+
+Return type:
+bool
+
+get_curve_meta_data_names() → Array[Name]
+Get an array of all curve metadata names
+
+Returns:
+out_names (Array[Name]): The array to receive the metadata names
+
+Return type:
+Array[Name]
+
+get_num_curve_meta_data() → int32
+
+Returns:
+the number of curve metadata entries on the skeleton *
+
+Return type:
+int32
+
+get_reference_pose() → AnimPose
+Populates an Anim Pose with the reference poses stored for the provided USkeleton
+
+Returns:
+out_pose (AnimPose): Anim pose to hold the reference pose
+
+Return type:
+AnimPose
+
+get_skeleton_additional_preview_meshes() → DataAsset
+Returns the additional preview skeletal meshes on a skeleton
+
+Return type:
+DataAsset
+
+get_skeleton_preview_mesh(find_if_not_set=False) → SkeletalMesh
+Returns the preview skeletal mesh on a skeleton, optionally finds one if a preview mesh hasn’t been set
+
+Parameters:
+find_if_not_set (bool)
+
+Return type:
+SkeletalMesh
+
+has_asset_user_data_of_class(user_data_class) → bool
+Checks whether or not an instance of the provided AssetUserData class is contained.
+
+Parameters:
+user_data_class (type(Class)) – UAssetUserData sub class to check for
+
+Returns:
+Whether or not an instance of InUserDataClass was found
+
+Return type:
+bool
+
+remove_curve_meta_data(curve_name) → bool
+Removes a curve metadata entry for the specified name.
+
+Parameters:
+curve_name (Name) – The name of the curve to remove the metadata for
+
+Returns:
+true if the entry was successfully removed (i.e. it existed)
+
+Return type:
+bool
+
+rename_curve_meta_data(old_name, new_name) → bool
+Renames a curve metadata entry. Metadata is preserved, but assigned to a different curve name.
+
+Parameters:
+
+old_name (Name) – The name of an existing curve entry
+new_name (Name) – The name to change the entry to
+
+Returns:
+true if the rename was successful (the old name was found and the new name didnt collide with an existing entry)
+
+Return type:
+bool
+
+set_curve_meta_data_material(curve_name, override_material) → None
+Set the material flag for a curve’s metadata
+
+Parameters:
+
+curve_name (Name) – The name of the curve to set
+override_material (bool) – Whether to set the material flag
+
+set_curve_meta_data_morph_target(curve_name, override_morph_target) → None
+Set the morph target flag for a curve’s metadata
+
+Parameters:
+
+curve_name (Name) – The name of the curve to set
+override_morph_target (bool) – Whether to set the morph target flag
+
+set_skeleton_additional_preview_meshes(additional_meshes) → None
+Sets the additional preview skeletal meshes on a skeleton
+
+Parameters:
+additional_meshes (DataAsset)
+
+set_skeleton_preview_mesh(preview_mesh, mark_as_dirty=True) → None
+Sets the preview skeletal mesh on a skeleton, optionally marks the skeleton as dirty
+
+Parameters:
+
+preview_mesh (SkeletalMesh)
+mark_as_dirty (bool)

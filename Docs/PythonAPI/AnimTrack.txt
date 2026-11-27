@@ -1,0 +1,25 @@
+# unreal.AnimTrack  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/AnimTrack.html
+
+unreal.AnimTrack
+
+class unreal.AnimTrack(anim_segments: None = [])
+Bases: StructBase
+This is list of anim segments for this track
+For now this is only one TArray, but in the future
+we should define more transition/blending behaviors
+C++ Source:
+
+Module: Engine
+File: AnimCompositeBase.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+anim_segments (Array[AnimSegment]): [Read-Write]
+
+property anim_segments: None
+[Read-Only]
+
+Type:
+(Array[AnimSegment])

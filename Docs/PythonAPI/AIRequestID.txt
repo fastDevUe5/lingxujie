@@ -1,0 +1,13 @@
+# unreal.AIRequestID  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/AIRequestID.html
+
+unreal.AIRequestID
+
+class unreal.AIRequestID
+Bases: StructBase
+AIRequest ID
+C++ Source:
+
+Module: AIModule
+File: AITypes.h
