@@ -6690,3 +6690,65 @@ git read-tree HEAD
 | 每个里程碑打一次快照分支 | 0 | 只保代码+文档，资产永远在本地 |
 
 **在拍板之前：`main` 仍然只有本地一份，磁盘坏 = 全丢（资产部分）。**
+
+## 81. 大资产退出 git：历史重启成"只有文本"的 14 MB（2026-11-27 12:00）
+
+### 一、为什么推翻第 80 节的方案
+
+**人的判断："大的资产不要进 git。"** 对的，而且比"买 data pack"更根本：
+
+| 事实 | 数字 |
+| --- | --- |
+| `HEAD` 引用的 LFS 文件 | **5,208 MB / 5,361 个** |
+| GitHub 免费 LFS | **1 GB** |
+| `lfs prune` 能回收 | **400 MB**（5,463 个对象是当前版本，删不得） |
+
+**→ LFS 解决的是 git 对象膨胀，不解决配额和推送体积。** 体积只能在"要不要进版本库"这一层解决。
+
+### 二、做了什么
+
+```
+archive-lfs             旧历史（236 个提交 + 5.2 GB LFS 对象），**只留在本地，永不推**
+main                    新的孤儿历史，1 个提交，**1,132 个文件 / 14.2 MB**
+Remote backup-code-*    昨天的代码+文档快照，留着
+```
+
+**`.gitignore` 新规则（AGENTS 硬约束 5）：**
+
+```
+Content/
+Assets/**/*.png  *.jpg  *.obj  *.bin  *.glb  *.dds  *.hdr  *.fbx  …
+# 文本保留 —— build_level.py 要读它们
+Assets/Gate/geonchunmun_gate.json
+Assets/Map/p0_world.json
+Assets/**/*.gltf            （269 个，6.1 MB）
+```
+
+**保留 `.gltf` / `.json` 的原因不是"想留"，是 `build_level.py` 真的读它们**
+（`Assets/Gate/geonchunmun_gate.json` 在 1241 行被引用；`p0_world.json` 是 D12 的关卡真源）。
+
+### 三、验证
+
+```
+git ls-files         1132
+tracked 工作区体积    14.2 MB
+git status           0 行
+check-ignore         Content/*.umap=ignored, Assets/**/*.png=ignored,
+                     Assets/Map/p0_world.json=kept, Assets/Gate/*.json=kept
+```
+
+### 四、代价（要记住）
+
+- **粒度历史没了**：远程只有 1 个提交，`git log` 看不到分段。旧历史在本地 `archive-lfs`，
+  磁盘坏就一起没了 —— 这是"大资产不进 git"的必然代价。
+- **新克隆必须自己补资产**：`Content/` 不在库里。重建路径要写进 `Docs/ASSETS.md`（**待补**）。
+- **`.git` 仍是 5.6 GB**：空间由 `archive-lfs` 占着。确认不再需要后：
+  `git branch -D archive-lfs` + `git lfs prune` 才能真回收。
+
+### 五、下一步
+
+| 事项 | 备注 |
+| --- | --- |
+| 把 `origin/main` 覆成新历史 | 需要 `push --force`，等一句确认 |
+| `Docs/ASSETS.md` 补"资产怎么重建" | 否则"重下得来"只是说法 |
+| 删 `archive-lfs` 回收 5.5 GB | 确认旧历史不要了再动 |

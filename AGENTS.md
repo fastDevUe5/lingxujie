@@ -148,7 +148,7 @@
 2. 读 `Docs/ASSETS.md` —— 哪些资产已导入、哪些在 Fab 库、署名要求。**不要再去 Fab 找包。**
 3. 读 `Docs/P0-DESIGN.md` —— 要做什么（四张图、系统、数值、DoD）。
 4. 读 `Docs/BACKLOG.md` —— 领**一条**任务（T1–T8），它自带验收标准。
-5. 读 `Docs/NEXT-SESSION.md` —— **取编号最大的那一节**（目前是第 80 节：异地备份第一次尝试 —— `main` 推不上去，改走快照分支），
+5. 读 `Docs/NEXT-SESSION.md` —— **取编号最大的那一节**（目前是第 81 节：大资产退出 git —— 历史重启成"只有文本"的 14 MB），
    那里是"上次停在哪"。第 14 节及之前是历史。
 
 **动手写任何工具/脚本之前，先读 `Docs/UE-TOOLSET-MAP.md` ——
@@ -245,26 +245,19 @@
 2. **编译前关闭编辑器**（Live Coding 持有互斥体，UBT 会报错）。打包必须走 `Tools\Package.ps1`。
 3. 同一时间只允许一个 agent 操作编辑器；MCP 会话在编辑器重启后需重连。
 4. **`.ps1` 一律 ASCII**（PowerShell 5.1 会把无 BOM UTF-8 当 ANSI）。
-5. 二进制资产走 LFS（`.gitattributes` 已配）。
+5. **大资产不进 git**（2026-11-27 起，见 NEXT-SESSION 第 81 节）：
+   **`Content/` 整目录、`Assets/` 下所有二进制（png/jpg/obj/bin/glb/dds/hdr/fbx…）一律不入库**，
+   由 `.gitignore` 挡住。**只提交文本**：源码、文档、工具、`.gltf`/`.json`（`build_level.py` 要读的参数与引用）。
+   **理由**：Fab 有账号就能重下、墨香源文件在研究区、`Content/` 由 `build_level.py` 重建 ——
+   而 5.2 GB 走 LFS 也照样超 GitHub 免费额度、照样推不上去（gotcha #120/#122）。
 6. 不提交 `Binaries/ Intermediate/ Saved/ DerivedDataCache/ .vs/`。
 7. 改完 C++ 必须跑 `Tools\BuildAll.ps1`，确认关卡仍能生成。
 8. **提交在本地，推送按里程碑**：每个可验证的小步都 `git commit`（提交信息写清改了什么 + 怎么验证）；
    **不要每步都 `git push`**——完成一个大的迭代/里程碑（例如 M0.3 全部收口）再推一次远程。
-   中间过程只在本地保存，远程保持"每个里程碑一个干净状态"。
-   **⚠️ `main` 目前推不上去**：`HEAD` 就引用 **5,200 MB** 的 LFS 文件，GitHub 免费额度只有 1 GB，
-   推送会被 `GH008` 拒掉（gotcha #120）。**异地备份走快照分支**：
-   ```powershell
-   # 只含"重下不来的东西"：代码 / 文档 / 工具 / Assets\Map\p0_world.json
-   git checkout --orphan backup-code-YYYYMMDD
-   git rm -r --cached .
-   git add AGENTS.md README.md LingXuJie.uproject .gitignore .gitattributes Docs Source Config Tools Build Assets/Map
-   git commit -m "Snapshot YYYY-MM-DD: code, docs and tooling only"
-   git push -u origin backup-code-YYYYMMDD
-   # 回到 main 且不重写资产（不要用 git checkout -f，见 gotcha #121）
-   git symbolic-ref HEAD refs/heads/main
-   git read-tree HEAD
-   ```
-   **要完整推（含 5.2 GB 资产）必须先买 GitHub data pack 或换远端 —— 要人拍板。**
+   **大资产已不在 git 里（硬约束 5），所以 `main` 是正常可推的。**
+   2026-11-27 把远程 `main` 重建成"只有文本"的新历史：
+   **旧的 236 个提交（含 5.2 GB LFS）留在本地分支 `archive-lfs`，永不推、也不要 push 它**
+   （推会被 `GH008` 拒，gotcha #120）。**想回收那 5.5 GB 空间，删掉 `archive-lfs` 再 `git lfs prune`。**
 9. **编辑器默认不开，但由人决定关不关**：日常闭环是 `BuildAll`（编译 + Python 生成关卡）→ `RunTests` → `RunGame` 截图，
    全程不需要编辑器 GUI。只有要用 MCP / 手摆资产 / 调蓝图时才开编辑器，
    开之前确认没有构建任务（Live Coding 互斥体会让 `BuildAll` 失败）。
@@ -327,9 +320,9 @@ powershell -ExecutionPolicy Bypass -File Tools\MakeRelease.ps1 -Version v0.0.1
 
 ## 5. 已知坑
 
-全部在 [`Docs/UE5-Gotchas.md`](Docs/UE5-Gotchas.md)（**121 条**）：继承 CoinRush 的 27 条（Live Coding 互斥、
+全部在 [`Docs/UE5-Gotchas.md`](Docs/UE5-Gotchas.md)（**122 条**）：继承 CoinRush 的 27 条（Live Coding 互斥、
 LFS、MCP 会话失效、Smart App Control 拦 UBT、打包版 ProjectSavedDir 等），
-加上 P0 阶段新增的 #28–#121（Canvas HUD 伤害数字、相机 yaw、UE5.8 编译两则、actor 清单排查、
+加上 P0 阶段新增的 #28–#122（Canvas HUD 伤害数字、相机 yaw、UE5.8 编译两则、actor 清单排查、
 agent 沙箱弄坏 UBT、SpawnActor 朝向、状态机"巡逻≠回家"、近战判定三连坑、自动曝光洗白画面、
 多平行光竞争、程序化地面不进存档、Python 烘 StaticMesh 撞断言、崩溃报告窗口挡自动化、
 编辑器内重建复用旧模块、重建后截图只有影子、Python 建材质的 Clamp 引脚、
@@ -337,7 +330,7 @@ agent 沙箱弄坏 UBT、SpawnActor 朝向、状态机"巡逻≠回家"、近战
 #67 PIE 开着建不了关卡、#68 墨香 OBJ 的 Y 会被取反、
 #116 组件 override 优先于资产材质槽、#117 沙箱里 try/except 抓不住工具报错、
 #118 CaptureViewport 必须传 annotations、#119 PowerShell 字符串不是字符串、
-#120 GitHub 用 GH008 拒绝缺 LFS 对象的推送、#121 从快照分支切回 main 不能用 checkout -f**）。**新坑继续追加**。
+#120 GitHub 用 GH008 拒绝缺 LFS 对象的推送、#121 从快照分支切回 main 不能用 checkout -f、#122 LFS 不是"大资产进 git"的解药**）。**新坑继续追加**。
 
 **能力地图与 API 出处在 [`Docs/UE5-OFFICIAL-REFERENCE.md`](Docs/UE5-OFFICIAL-REFERENCE.md)：**
 我们这台 5.8.4 有哪些 MCP 工具集、视口相机的权威 API（引擎源码核实）、
