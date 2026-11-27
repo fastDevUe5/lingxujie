@@ -6730,7 +6730,7 @@ Assets/**/*.gltf            （269 个，6.1 MB）
 ### 三、验证
 
 ```
-git ls-files         1150
+git ls-files         1148
 tracked 工作区体积    16.3 MB
 git status           0 行
 check-ignore         Content/*.umap=ignored, Assets/**/*.png=ignored,
