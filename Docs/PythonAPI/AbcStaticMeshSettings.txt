@@ -1,0 +1,38 @@
+# unreal.AbcStaticMeshSettings  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/AbcStaticMeshSettings.html
+
+unreal.AbcStaticMeshSettings
+
+class unreal.AbcStaticMeshSettings(merge_meshes: bool = False, propagate_matrix_transformations: bool = False, generate_lightmap_u_vs: bool = False)
+Bases: StructBase
+Abc Static Mesh Settings
+C++ Source:
+
+Plugin: AlembicImporter
+Module: AlembicLibrary
+File: AbcImportSettings.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+generate_lightmap_u_vs (bool): [Read-Write] Flag for whether or not lightmap UVs should be generated
+merge_meshes (bool): [Read-Write] Whether or not to merge the static meshes on import (remember this can cause problems with overlapping UV-sets)
+propagate_matrix_transformations (bool): [Read-Write] This will, if applicable, apply matrix transformations to the meshes
+
+property generate_lightmap_u_vs: bool
+[Read-Write] Flag for whether or not lightmap UVs should be generated
+
+Type:
+(bool)
+
+property merge_meshes: bool
+[Read-Write] Whether or not to merge the static meshes on import (remember this can cause problems with overlapping UV-sets)
+
+Type:
+(bool)
+
+property propagate_matrix_transformations: bool
+[Read-Write] This will, if applicable, apply matrix transformations to the meshes
+
+Type:
+(bool)

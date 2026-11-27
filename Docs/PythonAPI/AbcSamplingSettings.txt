@@ -1,0 +1,59 @@
+# unreal.AbcSamplingSettings  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/AbcSamplingSettings.html
+
+unreal.AbcSamplingSettings
+
+class unreal.AbcSamplingSettings(sampling_type: AlembicSamplingType = Ellipsis, frame_steps: int = 0, time_steps: float = 0.0, frame_start: int = 0, frame_end: int = 0, skip_empty: bool = False)
+Bases: StructBase
+Abc Sampling Settings
+C++ Source:
+
+Plugin: AlembicImporter
+Module: AlembicLibrary
+File: AbcImportSettings.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+frame_end (int32): [Read-Write] Ending index to stop sampling the animation at
+frame_start (int32): [Read-Write] Starting index to start sampling the animation from
+frame_steps (int32): [Read-Write] Steps to take when sampling the animation
+sampling_type (AlembicSamplingType): [Read-Write] Type of sampling performed while importing the animation
+skip_empty (bool): [Read-Write] Skip empty (pre-roll) frames and start importing at the frame which actually contains data
+time_steps (float): [Read-Write] Time steps to take when sampling the animation
+
+property frame_end: int
+[Read-Write] Ending index to stop sampling the animation at
+
+Type:
+(int32)
+
+property frame_start: int
+[Read-Write] Starting index to start sampling the animation from
+
+Type:
+(int32)
+
+property frame_steps: int
+[Read-Write] Steps to take when sampling the animation
+
+Type:
+(int32)
+
+property sampling_type: AlembicSamplingType
+[Read-Write] Type of sampling performed while importing the animation
+
+Type:
+(AlembicSamplingType)
+
+property skip_empty: bool
+[Read-Write] Skip empty (pre-roll) frames and start importing at the frame which actually contains data
+
+Type:
+(bool)
+
+property time_steps: float
+[Read-Write] Time steps to take when sampling the animation
+
+Type:
+(float)

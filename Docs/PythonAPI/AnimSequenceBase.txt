@@ -1,0 +1,109 @@
+# unreal.AnimSequenceBase  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/AnimSequenceBase.html
+
+unreal.AnimSequenceBase
+
+class unreal.AnimSequenceBase(outer: Object | None = None, name: Name | str = 'None')
+Bases: AnimationAsset
+Anim Sequence Base
+C++ Source:
+
+Module: Engine
+File: AnimSequenceBase.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+asset_mapping_table (AssetMappingTable): [Read-Only] Asset mapping table when ParentAsset is set
+asset_user_data (Array[AssetUserData]): [Read-Write] Array of user data stored with the asset
+controller (AnimationDataController): [Read-Only] UAnimDataController instance set to operate on DataModel
+data_model (AnimDataModel): [Read-Only]
+data_model_interface (AnimationDataModel): [Read-Only] IAnimationDataModel instance containing (source) animation data
+loop (bool): [Read-Write] The default looping behavior of this animation.
+Asset players can override this
+meta_data (Array[AnimMetaData]): [Read-Write] Meta data that can be saved with the asset
+You can query by GetMetaData function
+
+parent_asset (AnimationAsset): [Read-Only] Parent Asset, if set, you won’t be able to edit any data in here but just mapping table
+During cooking, this data will be used to bake out to normal asset
+
+preview_pose_asset (PoseAsset): [Read-Write] The default skeletal mesh to use when previewing this asset - this only applies when you open Persona using this asset//
+todo:: note that this doesn’t retarget right now
+rate_scale (float): [Read-Write] Number for tweaking playback rate of this animation globally.
+sequence_length (float): [Read-Only]
+skeleton (Skeleton): [Read-Only] Pointer to the Skeleton this asset can be played on .
+thumbnail_info (ThumbnailInfo): [Read-Only] Information for thumbnail rendering
+
+add_animation_modifier_of_class(modifier_class) → bool
+Add Animation Modifier Of Class
+
+Parameters:
+modifier_class (type(Class))
+
+Return type:
+bool
+
+add_transform_attribute(attribute_name, bone_name, keys, values) → bool
+Add Transform Attribute
+
+Parameters:
+
+attribute_name (Name)
+bone_name (Name)
+keys (Array[float])
+values (Array[Transform])
+
+Return type:
+bool
+
+property controller: AnimationDataController
+[Read-Only] UAnimDataController instance set to operate on DataModel
+
+Type:
+(AnimationDataController)
+
+property data_model: AnimDataModel
+[Read-Only]
+
+Type:
+(AnimDataModel)
+
+property data_model_interface: AnimationDataModel
+[Read-Only] IAnimationDataModel instance containing (source) animation data
+
+Type:
+(AnimationDataModel)
+
+get_anim_pose_at_frame(frame_index, evaluation_options) → AnimPose
+Evaluates an Animation Sequence Base to generate a valid Anim Pose instance
+
+Parameters:
+
+frame_index (int32) – Exact frame at which the pose should be evaluated
+evaluation_options (AnimPoseEvaluationOptions) – Options determining the way the pose should be evaluated
+
+Returns:
+pose (AnimPose): Anim Pose to hold the evaluated data
+
+Return type:
+AnimPose
+
+get_anim_pose_at_time(time, evaluation_options) → AnimPose
+Evaluates an Animation Sequence Base to generate a valid Anim Pose instance
+
+Parameters:
+
+time (double) – Time at which the pose should be evaluated
+evaluation_options (AnimPoseEvaluationOptions) – Options determining the way the pose should be evaluated
+
+Returns:
+pose (AnimPose): Anim Pose to hold the evaluated data
+
+Return type:
+AnimPose
+
+property sequence_length: float
+[Read-Only]
+
+Type:
+(float)

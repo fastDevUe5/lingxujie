@@ -1,0 +1,31 @@
+# unreal.MaterialExpression  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/MaterialExpression.html
+
+unreal.MaterialExpression
+
+class unreal.MaterialExpression(outer: Object | None = None, name: Name | str = 'None')
+Bases: Object
+Material Expression
+C++ Source:
+
+Module: Engine
+File: MaterialExpression.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+desc (str): [Read-Write] A description that level designers can add (shows in the material editor UI).
+material_expression_editor_x (int32): [Read-Write]
+material_expression_editor_y (int32): [Read-Write]
+
+property material_expression_editor_x: int
+[Read-Write]
+
+Type:
+(int32)
+
+property material_expression_editor_y: int
+[Read-Write]
+
+Type:
+(int32)

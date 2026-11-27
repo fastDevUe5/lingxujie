@@ -1,0 +1,521 @@
+# unreal.AssetTools  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/AssetTools
+
+unreal.AssetTools¶
+
+
+class unreal.AssetTools(outer: Object | None = None, name: Name | str = 'None')¶
+
+Bases: Interface
+
+Asset Tools
+
+C++ Source:
+
+
+
+Module: AssetTools
+
+File: IAssetTools.h
+
+
+begin_advanced_copy_packages(input_names_to_copy, target_path, on_copy_complete) → None¶
+
+Begin Advanced Copy Packages
+
+
+
+Parameters:
+
+
+
+input_names_to_copy (Array[Name])
+
+target_path (str)
+
+on_copy_complete (AdvancedCopyCompletedEvent)
+
+
+create_asset(asset_name, package_path, asset_class, factory, calling_context='None', overwrite_existing=False) → Object¶
+
+Creates an asset with the specified name, path, and factory
+
+
+
+Parameters:
+
+
+
+asset_name (str) – the name of the new asset
+
+package_path (str) – the package that will contain the new asset
+
+asset_class (type(Class)) – the class of the new asset
+
+factory (Factory) – the factory that will build the new asset
+
+calling_context (Name) – optional name of the module or method calling CreateAsset() - this is passed to the factory
+
+overwrite_existing (bool) – if set to true, this will overwrite an existing object without prompting
+
+
+Returns:
+
+the new asset or NULL if it fails
+
+
+
+Return type:
+
+Object
+
+
+create_asset_async(asset_name, package_path, asset_class, factory, on_complete, on_cancelled, calling_context='None', overwrite_existing=False) → bool¶
+
+Creates an asset with the specified name, path, and factory asynchronously
+
+
+
+Parameters:
+
+
+
+asset_name (str) – the name of the new asset
+
+package_path (str) – the package that will contain the new asset
+
+asset_class (type(Class)) – the class of the new asset
+
+factory (Factory) – the factory that will build the new asset
+
+on_complete (AssetCreateCompleteDynamic) – called when the factory has successfully created the asset
+
+on_cancelled (AssetCreateCancelledDynamic) – called if the asynchronous method is cancelled
+
+calling_context (Name) – optional name of the module or method calling CreateAsset() - this is passed to the factory
+
+overwrite_existing (bool) – if set to true, this will overwrite an existing object without prompting
+
+
+Returns:
+
+the new asset or NULL if it fails
+
+
+
+Return type:
+
+bool
+
+
+create_asset_with_dialog(asset_name, package_path, asset_class, factory, calling_context='None', call_configure_properties=True) → Object¶
+
+Opens an asset picker dialog and creates an asset with the specified name and path
+
+
+
+Parameters:
+
+
+
+asset_name (str)
+
+package_path (str)
+
+asset_class (type(Class))
+
+factory (Factory)
+
+calling_context (Name)
+
+call_configure_properties (bool)
+
+
+Return type:
+
+Object
+
+
+create_asset_with_dialog_async(asset_name, package_path, asset_class, factory, on_complete, on_cancelled, calling_context='None') → bool¶
+
+Opens an async dialog to create an asset.
+
+
+
+Parameters:
+
+
+
+asset_name (str)
+
+package_path (str)
+
+asset_class (type(Class))
+
+factory (Factory)
+
+on_complete (AssetCreateCompleteDynamic)
+
+on_cancelled (AssetCreateCancelledDynamic)
+
+calling_context (Name)
+
+
+Returns:
+
+true if the process was started successfully.
+
+
+
+Return type:
+
+bool
+
+
+create_unique_asset_name(base_package_name, suffix) -> (out_package_name=str, out_asset_name=str)¶
+
+Creates a unique package and asset name taking the form InBasePackageName+InSuffix
+
+
+
+Parameters:
+
+
+
+base_package_name (str)
+
+suffix (str)
+
+
+Returns:
+
+out_package_name (str):
+
+out_asset_name (str):
+
+
+Return type:
+
+tuple
+
+
+diff_against_depot(object, package_path, package_name) → None¶
+
+Try to diff the local version of an asset against the latest one from the depot
+
+
+
+Parameters:
+
+
+
+object (Object) – The object we want to compare against the depot
+
+package_path (str) – The fullpath to the package
+
+package_name (str) – The name of the package
+
+
+diff_assets(old_asset, new_asset, old_revision, new_revision) → None¶
+
+Try and diff two assets using class-specific tool. Will do nothing if either asset is NULL, or they are not the same class.
+
+
+
+Parameters:
+
+
+
+old_asset (Object)
+
+new_asset (Object)
+
+old_revision (RevisionInfo)
+
+new_revision (RevisionInfo)
+
+
+duplicate_asset(asset_name, package_path, original_object) → Object¶
+
+Creates an asset with the specified name and path. Uses OriginalObject as the duplication source.
+
+
+
+Parameters:
+
+
+
+asset_name (str)
+
+package_path (str)
+
+original_object (Object)
+
+
+Return type:
+
+Object
+
+
+duplicate_asset_with_dialog(asset_name, package_path, original_object) → Object¶
+
+Opens an asset picker dialog and creates an asset with the specified name and path. Uses OriginalObject as the duplication source.
+
+
+
+Parameters:
+
+
+
+asset_name (str)
+
+package_path (str)
+
+original_object (Object)
+
+
+Return type:
+
+Object
+
+
+duplicate_asset_with_dialog_and_title(asset_name, package_path, original_object, dialog_title) → Object¶
+
+Opens an asset picker dialog and creates an asset with the specified name and path.
+
+Uses OriginalObject as the duplication source.
+
+Uses DialogTitle as the dialog’s title.
+
+
+
+Parameters:
+
+
+
+asset_name (str)
+
+package_path (str)
+
+original_object (Object)
+
+dialog_title (Text)
+
+
+Return type:
+
+Object
+
+
+export_assets(assets_to_export, export_path) → None¶
+
+Exports the specified objects to file.
+
+
+
+Parameters:
+
+
+
+assets_to_export (Array[str]) – List of full asset names (e.g /Game/Path/Asset) to export
+
+export_path (str) – The directory path to export to.
+
+
+export_assets_with_dialog(assets_to_export, prompt_for_individual_filenames) → None¶
+
+Exports the specified objects to file. First prompting the user to pick an export directory and optionally prompting the user to pick a unique directory per file
+
+
+
+Parameters:
+
+
+
+assets_to_export (Array[str]) – List of assets to export
+
+prompt_for_individual_filenames (bool)
+
+
+find_soft_references_to_object(target_object) → Array[Object]¶
+
+Returns list of objects that soft reference the given soft object path. This will load assets into memory to verify
+
+
+
+Parameters:
+
+target_object (SoftObjectPath)
+
+
+
+Returns:
+
+referencing_objects (Array[Object]):
+
+
+
+Return type:
+
+Array[Object]
+
+
+import_asset_tasks(import_tasks) → None¶
+
+Imports assets using tasks specified.
+
+
+
+Parameters:
+
+import_tasks (Array[AssetImportTask]) – Tasks that specify how to import each file
+
+
+import_assets_automated(import_data) → Array[Object]¶
+
+Imports assets using data specified completely up front. Does not ever ask any questions of the user or show any modal error messages
+
+
+
+Parameters:
+
+import_data (AutomatedAssetImportData)
+
+
+
+Returns:
+
+list of successfully imported assets
+
+
+
+Return type:
+
+Array[Object]
+
+
+import_assets_with_dialog(destination_path) → Array[Object]¶
+
+Opens a file open dialog to choose files to import to the destination path.
+
+
+
+Parameters:
+
+destination_path (str) – Path to import files to
+
+
+
+Returns:
+
+list of successfully imported assets
+
+
+
+Return type:
+
+Array[Object]
+
+
+is_asset_read_only(asset_data) → bool¶
+
+Determines whether an asset is considered read-only for editing, based on its flags and the current permissions (
+
+see: GetWritableFolderPermissionList).
+
+note: This does not check the read-only state of the file itself or anything regarding source control, as it’s only checking if the asset can be edited in-memory, not that any edits can be saved to disk.
+
+
+
+Parameters:
+
+asset_data (AssetData)
+
+
+
+Return type:
+
+bool
+
+
+migrate_packages(package_names_to_migrate, destination_path, options=[False, False, AssetMigrationConflict.SKIP, '']) → None¶
+
+Migrate packages and dependencies to another folder
+
+
+
+Parameters:
+
+
+
+package_names_to_migrate (Array[Name])
+
+destination_path (str)
+
+options (MigrationOptions)
+
+
+open_editor_for_assets(assets) → None¶
+
+Opens editor for assets
+
+deprecated: Please use UAssetEditorSubsystem::OpenEditorForAssets instead.
+
+
+
+Parameters:
+
+assets (Array[Object])
+
+
+rename_assets(assets_and_names) → bool¶
+
+Renames assets using the specified names.
+
+
+
+Parameters:
+
+assets_and_names (Array[AssetRenameData])
+
+
+
+Return type:
+
+bool
+
+
+rename_assets_with_dialog(assets_and_names, auto_checkout=False) → AssetRenameResult¶
+
+Renames assets using the specified names.
+
+
+
+Parameters:
+
+
+
+assets_and_names (Array[AssetRenameData])
+
+auto_checkout (bool)
+
+
+Return type:
+
+AssetRenameResult
+
+
+rename_referencing_soft_object_paths(packages_to_check, asset_redirector_map) → None¶
+
+Function that renames all FSoftObjectPath object with the old asset path to the new one.
+
+
+
+Parameters:
+
+
+
+packages_to_check (Array[Package]) – Packages to check for referencing FSoftObjectPath.
+
+asset_redirector_map (Map[SoftObjectPath, SoftObjectPath]) – Map from old asset path to new asset path

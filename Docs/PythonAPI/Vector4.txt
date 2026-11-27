@@ -1,0 +1,373 @@
+# unreal.Vector4  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/Vector4.html
+
+unreal.Vector4
+
+class unreal.Vector4(x: float = 0.0, y: float = 0.0, z: float = 0.0, w: float = 0.0)
+Bases: StructBase
+A 4-D homogeneous vector.
+note: The full C++ class is located here: EngineSourceRuntimeCorePublicMathVector4.h
+C++ Source:
+
+Module: CoreUObject
+File: NoExportTypes.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+w (double): [Read-Write]
+x (double): [Read-Write]
+y (double): [Read-Write]
+z (double): [Read-Write]
+
+ZERO: Vector4
+4D vector zero constant (0,0,0)
+
+Type:
+(Vector4)
+
+__add__(other: Vector4) → None
+Overloads:
+
+Vector4 Returns addition of Vector A and Vector B (A + B)
+
+__eq__(other: object) → bool
+Overloads:
+
+Vector4 Returns true if vector A is equal to vector B (A == B)
+
+__iadd__(other: Vector4) → None
+Overloads:
+
+Vector4 Returns addition of Vector A and Vector B (A + B)
+
+__imul__(other: Vector4) → None
+Overloads:
+
+Vector4 Element-wise Vector multiplication (Result = {A.x*B.x, A.y*B.y, A.z*B.z, A.w*B.w})
+
+__isub__(other: Vector4) → None
+Overloads:
+
+Vector4 Returns subtraction of Vector B from Vector A (A - B)
+
+__mul__(other: Vector4) → None
+Overloads:
+
+Vector4 Element-wise Vector multiplication (Result = {A.x*B.x, A.y*B.y, A.z*B.z, A.w*B.w})
+
+__ne__(other: object) → bool
+Overloads:
+
+Vector4 Returns true if vector A is not equal to vector B (A != B) within a specified error tolerance
+
+__neg__() → None
+Gets a negated copy of the vector. Equivalent to -Vector for scripts.
+
+__or__(other: Vector4) → None
+Overloads:
+
+Vector4 Returns the dot product of two vectors - see http://mathworld.wolfram.com/DotProduct.html
+
+__sub__(other: Vector4) → None
+Overloads:
+
+Vector4 Returns subtraction of Vector B from Vector A (A - B)
+
+__truediv__(other: Vector4) → None
+Overloads:
+
+Vector4 Element-wise Vector divide (Result = {A.x/B.x, A.y/B.y, A.z/B.z, A.w/B.w})
+
+add(b) → Vector4
+Returns addition of Vector A and Vector B (A + B)
+
+Parameters:
+b (Vector4)
+
+Return type:
+Vector4
+
+assign(vector) → None
+Assign the values of the supplied vector.
+
+Parameters:
+vector (Vector4) – Vector to copy values from.
+
+cross3(b) → Vector4
+Returns the cross product of two vectors - see http://mathworld.wolfram.com/CrossProduct.html
+
+Parameters:
+b (Vector4)
+
+Return type:
+Vector4
+
+divide(b) → Vector4
+Element-wise Vector divide (Result = {A.x/B.x, A.y/B.y, A.z/B.z, A.w/B.w})
+
+Parameters:
+b (Vector4)
+
+Return type:
+Vector4
+
+dot(b) → double
+Returns the dot product of two vectors - see http://mathworld.wolfram.com/DotProduct.html
+
+Parameters:
+b (Vector4)
+
+Return type:
+double
+
+dot3(b) → double
+Returns the dot product of two vectors - see http://mathworld.wolfram.com/DotProduct.html The W element is ignored.
+
+Parameters:
+b (Vector4)
+
+Return type:
+double
+
+equals(b) → bool
+Returns true if vector A is equal to vector B (A == B)
+
+Parameters:
+b (Vector4)
+
+Return type:
+bool
+
+is_nan() → bool
+Determines if any component is not a number (NAN)
+
+Returns:
+true if one or more components is NAN, otherwise false.
+
+Return type:
+bool
+
+is_near_equal(b, error_tolerance=0.000100) → bool
+Returns true if vector A is equal to vector B (A == B) within a specified error tolerance
+
+Parameters:
+
+b (Vector4)
+error_tolerance (float)
+
+Return type:
+bool
+
+is_nearly_zero3(tolerance=0.000100) → bool
+Checks whether vector is near to zero within a specified tolerance. The W element is ignored.
+
+Parameters:
+tolerance (float) – Error tolerance.
+
+Returns:
+true if vector is in tolerance to zero, otherwise false.
+
+Return type:
+bool
+
+is_normal3() → bool
+Determines if vector is normalized / unit (length 1). The W element is ignored.
+
+Returns:
+true if normalized, false otherwise.
+
+Return type:
+bool
+
+is_not_near_equal(b, error_tolerance=0.000100) → bool
+Returns true if vector A is not equal to vector B (A != B) within a specified error tolerance
+
+Parameters:
+
+b (Vector4)
+error_tolerance (float)
+
+Return type:
+bool
+
+is_unit3(squared_lenth_tolerance=0.000100) → bool
+Determines if vector is normalized / unit (length 1) within specified squared tolerance. The W element is ignored.
+
+Parameters:
+squared_lenth_tolerance (float)
+
+Returns:
+true if unit, false otherwise.
+
+Return type:
+bool
+
+is_zero() → bool
+Checks whether all components of the vector are exactly zero.
+
+Returns:
+true if vector is exactly zero, otherwise false.
+
+Return type:
+bool
+
+length() → double
+Returns the length of the vector.
+
+Return type:
+double
+
+length3() → double
+Returns the length of the vector. The W element is ignored.
+
+Return type:
+double
+
+length_squared() → double
+Returns the squared length of the vector.
+
+Return type:
+double
+
+length_squared3() → double
+Returns the squared length of the vector. The W element is ignored.
+
+Return type:
+double
+
+mirror_by_vector3(surface_normal) → Vector4
+Given a direction vector and a surface normal, returns the vector reflected across the surface normal.
+Produces a result like shining a laser at a mirror!
+The W element is ignored.
+
+Parameters:
+surface_normal (Vector4) – A normal of the surface the ray should be reflected on.
+
+Returns:
+Reflected vector.
+
+Return type:
+Vector4
+
+multiply(b) → Vector4
+Element-wise Vector multiplication (Result = {A.x*B.x, A.y*B.y, A.z*B.z, A.w*B.w})
+
+Parameters:
+b (Vector4)
+
+Return type:
+Vector4
+
+negated() → Vector4
+Gets a negated copy of the vector. Equivalent to -Vector for scripts.
+
+Return type:
+Vector4
+
+normal3(tolerance=0.000100) → Vector4
+Gets a normalized unit copy of the vector, ensuring it is safe to do so based on the length. The W element is ignored and the returned vector has W=0.
+Returns zero vector if vector length is too small to safely normalize.
+
+Parameters:
+tolerance (float) – Minimum squared vector length.
+
+Returns:
+A normalized copy if safe, (0,0,0) otherwise.
+
+Return type:
+Vector4
+
+normal_unsafe3() → Vector4
+Calculates normalized unit version of vector without checking for zero length. The W element is ignored and the returned vector has W=0.
+
+Returns:
+Normalized version of vector.
+
+Return type:
+Vector4
+
+normalize3(tolerance=0.000000) → None
+Normalize this vector in-place if it is large enough or set it to (0,0,0,0) otherwise. The W element is ignored and the returned vector has W=0.
+
+Parameters:
+tolerance (float) – Minimum squared length of vector for normalization.
+
+not_equal(b) → bool
+Returns true if vector A is not equal to vector B (A != B) within a specified error tolerance
+
+Parameters:
+b (Vector4)
+
+Return type:
+bool
+
+quaternion() → Quat
+Return the Quaternion orientation corresponding to the direction in which the vector points.
+Similar to the FRotator version, returns a result without roll such that it preserves the up vector.
+note: If you don’t care about preserving the up vector and just want the most direct rotation, you can use the faster ‘FindBetweenVectors(ForwardVector, YourVector)’ or ‘FindBetweenNormals(…)’ if you know the vector is of unit length.
+
+Returns:
+Quaternion from the Vector’s direction, without any roll.
+
+Return type:
+Quat
+
+rotator() → Rotator
+Return the FRotator orientation corresponding to the direction in which the vector points.
+Sets Yaw and Pitch to the proper numbers, and sets Roll to zero because the roll can’t be determined from a vector.
+
+Returns:
+FRotator from the Vector’s direction, without any roll.
+
+Return type:
+Rotator
+
+set(x, y, z, w) → None
+Set the values of the vector directly.
+
+Parameters:
+
+x (double)
+y (double)
+z (double)
+w (double)
+
+subtract(b) → Vector4
+Returns subtraction of Vector B from Vector A (A - B)
+
+Parameters:
+b (Vector4)
+
+Return type:
+Vector4
+
+vector() → Vector
+Converts a Vector4 to a Vector (dropping the W element)
+
+Return type:
+Vector
+
+property w: float
+[Read-Write]
+
+Type:
+(double)
+
+property x: float
+[Read-Write]
+
+Type:
+(double)
+
+property y: float
+[Read-Write]
+
+Type:
+(double)
+
+property z: float
+[Read-Write]
+
+Type:
+(double)

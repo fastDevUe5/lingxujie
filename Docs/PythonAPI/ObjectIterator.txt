@@ -1,0 +1,9 @@
+# unreal.ObjectIterator  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/ObjectIterator.html
+
+unreal.ObjectIterator
+
+class unreal.ObjectIterator(type: Class | type = Ellipsis)
+Bases: object
+Type for iterating Unreal Object instances

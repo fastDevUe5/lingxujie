@@ -1,0 +1,220 @@
+# unreal.AssetRegistryHelpers  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/AssetRegistryHelpers.html
+
+unreal.AssetRegistryHelpers
+
+class unreal.AssetRegistryHelpers(outer: Object | None = None, name: Name | str = 'None')
+Bases: Object
+Asset Registry Helpers
+C++ Source:
+
+Module: AssetRegistry
+File: AssetRegistryHelpers.h
+
+classmethod asset_has_editor_only_data(asset_data) → bool
+Returns true if the asset has its editor-only data
+
+Parameters:
+asset_data (AssetData)
+
+Return type:
+bool
+
+classmethod create_asset_data(asset, allow_blueprint_class=False) → AssetData
+Creates asset data from a UObject.
+
+Parameters:
+
+asset (Object) – The asset to create asset data for
+allow_blueprint_class (bool) – By default trying to create asset data for a blueprint class will create one for the UBlueprint instead
+
+Return type:
+AssetData
+
+classmethod find_asset_native_class(asset_data)
+Returns the first native class of the asset type that can be found. Normally this is just the FAssetData::GetClass(),
+however if the class is a blueprint generated class it may not be loaded. In which case GetAncestorClassNames will
+be used to find the first native super class. This can be slow if temporary caching mode is not on.
+
+Parameters:
+asset_data (AssetData)
+
+Return type:
+type(Class)
+
+classmethod get_asset(asset_data) → Object
+Returns the asset UObject if it is loaded or loads the asset if it is unloaded then returns the result
+
+Parameters:
+asset_data (AssetData)
+
+Return type:
+Object
+
+classmethod get_asset_registry() → AssetRegistry
+Get Asset Registry
+
+Return type:
+AssetRegistry
+
+classmethod get_blueprint_assets(filter) → Array[AssetData]
+Gets asset data for all blueprint assets that match the filter. ClassPaths in the filter specify the blueprint’s parent class.
+
+Parameters:
+filter (ARFilter)
+
+Returns:
+out_asset_data (Array[AssetData]):
+
+Return type:
+Array[AssetData]
+
+classmethod get_class(asset_data)
+Get Class
+
+Parameters:
+asset_data (AssetData)
+
+Return type:
+type(Class)
+
+classmethod get_derived_class_asset_data(base_classes) → Array[AssetData]
+Gets a list of FAssetData for all child classes, loaded or unloaded, if you have a native UClass* convert it
+to a FTopLevelAssetPath using UClass::GetClassPathName. The list of derived types can be quite large, but
+this function attempts to be as efficient as possible for large asset sets.
+
+Parameters:
+base_classes (Array[TopLevelAssetPath])
+
+Returns:
+out_derived_class_asset_data (Array[AssetData]):
+
+Return type:
+Array[AssetData]
+
+classmethod get_export_text_name(asset_data) → str
+Returns the name for the asset in the form: Class’ObjectPath’
+
+Parameters:
+asset_data (AssetData)
+
+Return type:
+str
+
+classmethod get_full_name(asset_data) → str
+Returns the full name for the asset in the form: Class ObjectPath
+
+Parameters:
+asset_data (AssetData)
+
+Return type:
+str
+
+classmethod get_tag_value(asset_data, tag_name) → str or None
+Gets the value associated with the given tag as a string
+
+Parameters:
+
+asset_data (AssetData)
+tag_name (Name)
+
+Returns:
+out_tag_value (str):
+
+Return type:
+str or None
+
+classmethod is_asset_cooked(asset_data) → bool
+Returns true if the asset is cooked
+
+Parameters:
+asset_data (AssetData)
+
+Return type:
+bool
+
+classmethod is_asset_loaded(asset_data) → bool
+Returns true if the asset is loaded
+
+Parameters:
+asset_data (AssetData)
+
+Return type:
+bool
+
+classmethod is_redirector(asset_data) → bool
+Returns true if the this asset is a redirector.
+
+Parameters:
+asset_data (AssetData)
+
+Return type:
+bool
+
+classmethod is_u_asset(asset_data) → bool
+Returns true if this is the primary asset in a package, true for maps and assets but false for secondary objects like class redirectors
+
+Parameters:
+asset_data (AssetData)
+
+Return type:
+bool
+
+classmethod is_valid(asset_data) → bool
+Checks to see if this AssetData refers to an asset or is NULL
+
+Parameters:
+asset_data (AssetData)
+
+Return type:
+bool
+
+classmethod set_filter_tags_and_values(filter, tags_and_values) → ARFilter
+Populates the FARFilters tags and values map with the passed in tags and values
+
+Parameters:
+
+filter (ARFilter)
+tags_and_values (Array[TagAndValue])
+
+Return type:
+ARFilter
+
+classmethod sort_by_asset_name(assets, sort_order) → Array[AssetData]
+Sorts the assets by their asset name.
+
+Parameters:
+
+assets (Array[AssetData]) – The assets to sort
+sort_order (AssetRegistrySortOrder) – Whether to sort ascending or descending
+
+Returns:
+assets (Array[AssetData]): The assets to sort
+
+Return type:
+Array[AssetData]
+
+classmethod sort_by_predicate(assets, sorting_predicate, sort_order) → Array[AssetData]
+Sorts the assets based on a custom Blueprint delegate.
+
+Parameters:
+
+assets (Array[AssetData]) – The assets to sort
+sorting_predicate (SortingPredicate) – Implements a Left <= Right relation
+sort_order (AssetRegistrySortOrder) – Whether to sort ascending or descending
+
+Returns:
+assets (Array[AssetData]): The assets to sort
+
+Return type:
+Array[AssetData]
+
+classmethod to_soft_object_path(asset_data) → SoftObjectPath
+Convert to a SoftObjectPath for loading
+
+Parameters:
+asset_data (AssetData)
+
+Return type:
+SoftObjectPath

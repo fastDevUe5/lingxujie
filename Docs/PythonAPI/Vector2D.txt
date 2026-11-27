@@ -1,0 +1,492 @@
+# unreal.Vector2D  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/Vector2D.html
+
+unreal.Vector2D
+
+class unreal.Vector2D(x: float = 0.0, y: float = 0.0)
+Bases: StructBase
+A vector in 2-D space composed of components (X, Y) with floating point precision.
+note: The full C++ class is located here: EngineSourceRuntimeCorePublicMathVector2D.h
+C++ Source:
+
+Module: CoreUObject
+File: NoExportTypes.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+x (double): [Read-Write]
+y (double): [Read-Write]
+
+ONE: Vector2D
+2D one vector constant (1,1)
+
+Type:
+(Vector2D)
+
+UNIT45_DEG: Vector2D
+//en.wikipedia.org/wiki/Unit_vector
+
+Type:
+(Vector2D)
+
+Type:
+2D unit vector constant along the 45 degree angle or symmetrical positive axes (sqrt(.5),sqrt(.5)) or (.707,.707). https
+
+ZERO: Vector2D
+2D zero vector constant (0,0)
+
+Type:
+(Vector2D)
+
+__add__(other: Vector2D) → None
+Overloads:
+
+Vector2D Returns addition of Vector A and Vector B (A + B)
+double Returns Vector A added by B
+
+__eq__(other: object) → bool
+Overloads:
+
+Vector2D Returns true if vector A is equal to vector B (A == B)
+
+__iadd__(other: Vector2D) → None
+Overloads:
+
+Vector2D Returns addition of Vector A and Vector B (A + B)
+double Returns Vector A added by B
+
+__imul__(other: Vector2D) → None
+Overloads:
+
+Vector2D Element-wise Vector multiplication (Result = {A.x*B.x, A.y*B.y})
+double Returns Vector A scaled by B
+
+__isub__(other: Vector2D) → None
+Overloads:
+
+Vector2D Returns subtraction of Vector B from Vector A (A - B)
+double Returns Vector A subtracted by B
+
+__mul__(other: Vector2D) → None
+Overloads:
+
+Vector2D Element-wise Vector multiplication (Result = {A.x*B.x, A.y*B.y})
+double Returns Vector A scaled by B
+
+__ne__(other: object) → bool
+Overloads:
+
+Vector2D Returns true if vector2D A is not equal to vector2D B (A != B) within a specified error tolerance
+
+__neg__() → None
+Gets a negated copy of the vector.
+
+__or__(other: Vector2D) → None
+Overloads:
+
+Vector2D Returns the dot product of two 2d vectors - see http://mathworld.wolfram.com/DotProduct.html
+
+__sub__(other: Vector2D) → None
+Overloads:
+
+Vector2D Returns subtraction of Vector B from Vector A (A - B)
+double Returns Vector A subtracted by B
+
+__truediv__(other: Vector2D) → None
+Overloads:
+
+Vector2D Element-wise Vector divide (Result = {A.x/B.x, A.y/B.y})
+double Returns Vector A divided by B
+
+__xor__(other: Vector2D) → None
+Overloads:
+
+Vector2D Returns the cross product of two 2d vectors - see http://mathworld.wolfram.com/CrossProduct.html
+
+add(b) → Vector2D
+Returns addition of Vector A and Vector B (A + B)
+
+Parameters:
+b (Vector2D)
+
+Return type:
+Vector2D
+
+add_float(b) → Vector2D
+Returns Vector A added by B
+
+Parameters:
+b (double)
+
+Return type:
+Vector2D
+
+clamped_axes(min_axis_val, max_axis_val) → Vector2D
+Creates a copy of this vector with both axes clamped to the given range.
+
+Parameters:
+
+min_axis_val (double)
+max_axis_val (double)
+
+Returns:
+New vector with clamped axes.
+
+Return type:
+Vector2D
+
+cross(b) → double
+Returns the cross product of two 2d vectors - see http://mathworld.wolfram.com/CrossProduct.html
+
+Parameters:
+b (Vector2D)
+
+Return type:
+double
+
+distance(v2) → double
+Distance between two 2D points.
+
+Parameters:
+v2 (Vector2D) – The second point.
+
+Returns:
+The distance between two 2D points.
+
+Return type:
+double
+
+distance_squared(v2) → double
+Squared distance between two 2D points.
+
+Parameters:
+v2 (Vector2D) – The second point.
+
+Returns:
+The squared distance between two 2D points.
+
+Return type:
+double
+
+divide(b) → Vector2D
+Element-wise Vector divide (Result = {A.x/B.x, A.y/B.y})
+
+Parameters:
+b (Vector2D)
+
+Return type:
+Vector2D
+
+divide_float(b=1.000000) → Vector2D
+Returns Vector A divided by B
+
+Parameters:
+b (double)
+
+Return type:
+Vector2D
+
+dot(b) → double
+Returns the dot product of two 2d vectors - see http://mathworld.wolfram.com/DotProduct.html
+
+Parameters:
+b (Vector2D)
+
+Return type:
+double
+
+equals(b) → bool
+Returns true if vector A is equal to vector B (A == B)
+
+Parameters:
+b (Vector2D)
+
+Return type:
+bool
+
+get_abs() → Vector2D
+Get a copy of this vector with absolute value of each component.
+
+Returns:
+A copy of this vector with absolute value of each component.
+
+Return type:
+Vector2D
+
+get_abs_max() → double
+Get the maximum absolute value of the vector’s components.
+
+Returns:
+The maximum absolute value of the vector’s components.
+
+Return type:
+double
+
+get_max() → double
+Get the maximum value of the vector’s components.
+
+Returns:
+The maximum value of the vector’s components.
+
+Return type:
+double
+
+get_min() → double
+Get the minimum value of the vector’s components.
+
+Returns:
+The minimum value of the vector’s components.
+
+Return type:
+double
+
+get_rotated(angle_deg) → Vector2D
+Rotates around axis (0,0,1)
+
+Parameters:
+angle_deg (float) – Angle to rotate (in degrees)
+
+Returns:
+Rotated Vector
+
+Return type:
+Vector2D
+
+int_point() → IntPoint
+Converts a Vector2D to an IntPoint
+
+Return type:
+IntPoint
+
+interp_to(target, delta_time, interp_speed) → Vector2D
+Tries to reach Target based on distance from Current position, giving a nice smooth feeling when tracking a position.
+
+Parameters:
+
+target (Vector2D) – Target position
+delta_time (float) – Time since last tick
+interp_speed (float) – Interpolation speed, if the speed given is 0, then jump to the target.
+
+Returns:
+New interpolated position
+
+Return type:
+Vector2D
+
+interp_to_constant(target, delta_time, interp_speed) → Vector2D
+Tries to reach Target at a constant rate.
+
+Parameters:
+
+target (Vector2D) – Target position
+delta_time (float) – Time since last tick
+interp_speed (float) – Interpolation speed
+
+Returns:
+New interpolated position
+
+Return type:
+Vector2D
+
+is_near_equal(b, error_tolerance=0.000100) → bool
+Returns true if vector2D A is equal to vector2D B (A == B) within a specified error tolerance
+
+Parameters:
+
+b (Vector2D)
+error_tolerance (float)
+
+Return type:
+bool
+
+is_nearly_zero(tolerance=0.000100) → bool
+Checks whether vector is near to zero within a specified tolerance.
+
+Parameters:
+tolerance (float) – Error tolerance.
+
+Returns:
+true if vector is in tolerance to zero, otherwise false.
+
+Return type:
+bool
+
+is_not_near_equal(b, error_tolerance=0.000100) → bool
+Returns true if vector2D A is not equal to vector2D B (A != B) within a specified error tolerance
+
+Parameters:
+
+b (Vector2D)
+error_tolerance (float)
+
+Return type:
+bool
+
+is_zero() → bool
+Checks whether all components of the vector are exactly zero.
+
+Returns:
+true if vector is exactly zero, otherwise false.
+
+Return type:
+bool
+
+length() → double
+Returns the length of a 2D Vector.
+
+Return type:
+double
+
+length_squared() → double
+Returns the squared length of a 2D Vector.
+
+Return type:
+double
+
+multiply(b) → Vector2D
+Element-wise Vector multiplication (Result = {A.x*B.x, A.y*B.y})
+
+Parameters:
+b (Vector2D)
+
+Return type:
+Vector2D
+
+multiply_float(b) → Vector2D
+Returns Vector A scaled by B
+
+Parameters:
+b (double)
+
+Return type:
+Vector2D
+
+negated() → Vector2D
+Gets a negated copy of the vector.
+
+Return type:
+Vector2D
+
+normal(tolerance=0.000000) → Vector2D
+Gets a normalized copy of the vector, checking it is safe to do so based on the length.
+Returns zero vector if vector length is too small to safely normalize.
+
+Parameters:
+tolerance (float) – Minimum squared length of vector for normalization.
+
+Returns:
+A normalized copy of the vector if safe, (0,0) otherwise.
+
+Return type:
+Vector2D
+
+normal_unsafe() → Vector2D
+Returns a unit normal version of the 2D vector
+
+Return type:
+Vector2D
+
+normalize(tolerance=0.000000) → None
+Normalize this vector in-place if it is large enough, set it to (0,0) otherwise.
+see: NormalSafe2D()
+
+Parameters:
+tolerance (float) – Minimum squared length of vector for normalization.
+
+not_equal(b) → bool
+Returns true if vector2D A is not equal to vector2D B (A != B) within a specified error tolerance
+
+Parameters:
+b (Vector2D)
+
+Return type:
+bool
+
+set(x, y) → None
+Set the values of the vector directly.
+
+Parameters:
+
+x (double)
+y (double)
+
+spherical_to_unit_cartesian() → Vector
+Converts spherical coordinates on the unit sphere into a Cartesian unit length vector.
+
+Return type:
+Vector
+
+subtract(b) → Vector2D
+Returns subtraction of Vector B from Vector A (A - B)
+
+Parameters:
+b (Vector2D)
+
+Return type:
+Vector2D
+
+subtract_float(b) → Vector2D
+Returns Vector A subtracted by B
+
+Parameters:
+b (double)
+
+Return type:
+Vector2D
+
+to_direction_and_length() -> (out_dir=Vector2D, out_length=double)
+Util to convert this vector into a unit direction vector and its original length.
+
+Returns:
+out_dir (Vector2D): Reference passed in to store unit direction vector.
+out_length (double): Reference passed in to store length of the vector.
+
+Return type:
+tuple
+
+to_rounded() → Vector2D
+Get this vector as a vector where each component has been rounded to the nearest int.
+
+Returns:
+New FVector2D from this vector that is rounded.
+
+Return type:
+Vector2D
+
+to_sign() → Vector2D
+Get a copy of the vector as sign only.
+Each component is set to +1 or -1, with the sign of zero treated as +1.
+
+Returns:
+A copy of the vector with each component set to +1 or -1
+
+Return type:
+Vector2D
+
+truncated() → IntVector2
+Rounds A to an integer with truncation towards zero for each element in a vector2D. (e.g. -1.7 truncated to -1, 2.8 truncated to 2)
+
+Return type:
+IntVector2
+
+vector(z=0.000000) → Vector
+Converts a Vector2D to a Vector
+
+Parameters:
+z (float)
+
+Return type:
+Vector
+
+property x: float
+[Read-Write]
+
+Type:
+(double)
+
+property y: float
+[Read-Write]
+
+Type:
+(double)

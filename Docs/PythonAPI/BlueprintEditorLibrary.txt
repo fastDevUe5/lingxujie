@@ -1,0 +1,882 @@
+# unreal.BlueprintEditorLibrary  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/BlueprintEditorLibrary.html
+
+unreal.BlueprintEditorLibrary
+
+class unreal.BlueprintEditorLibrary(outer: Object | None = None, name: Name | str = 'None')
+Bases: BlueprintFunctionLibrary
+Blueprint Editor Library
+C++ Source:
+
+Module: BlueprintEditorLibrary
+File: BlueprintEditorLibrary.h
+
+classmethod add_event_dispatcher(blueprint, name) → bool
+Creates a new event dispatcher on the Blueprint with the given name.
+Returns false if the name is already in use or the Blueprint is invalid.
+
+Parameters:
+
+blueprint (Blueprint)
+name (Name)
+
+Return type:
+bool
+
+classmethod add_event_dispatcher_parameter(blueprint, dispatcher_name, param_name, param_type) → bool
+Adds a parameter to an event dispatcher’s signature.
+Returns false if the dispatcher does not exist or the parameter name is already in use.
+
+Parameters:
+
+blueprint (Blueprint)
+dispatcher_name (Name)
+param_name (Name)
+param_type (EdGraphPinType)
+
+Return type:
+bool
+
+classmethod add_event_override(blueprint, event_name, position) → K2Node_Event
+Creates an event-override node in the Blueprint’s event graph for an inherited
+event-shape function.
+If an event node for this function already exists on the Blueprint it is returned
+unchanged. Fails (returns nullptr) when the function is not an event-shape
+overridable on this Blueprint, when no event graph exists, or when the Blueprint
+is invalid.
+
+Parameters:
+
+blueprint (Blueprint) – The blueprint to add the event override to
+event_name (Name) – Name of an inherited overridable event-shape function.
+position (IntPoint) – Position for the new node in the event graph.
+
+Returns:
+The event-override node, or nullptr if it could not be created.
+
+Return type:
+K2Node_Event
+
+classmethod add_function_graph(blueprint, func_name='NewFunction') → EdGraph
+Adds a function to the given blueprint
+
+Parameters:
+
+blueprint (Blueprint) – The blueprint to add the function to
+func_name (str) – Name of the function to add
+
+Returns:
+UEdGraph*
+
+Return type:
+EdGraph
+
+classmethod add_function_override(blueprint, function_name) → EdGraph
+Creates a function-graph override of an inherited function. The graph’s terminator
+nodes inherit the parent’s signature and a CallParentFunction node is emitted.
+If a function graph with this name already exists it is returned unchanged. Fails if
+the function is already overridden as an event node (remove that node first).
+
+Parameters:
+
+blueprint (Blueprint) – The blueprint to add the override to
+function_name (Name) – Name of an inherited overridable function.
+
+Returns:
+The override function graph, or nullptr if the function cannot be overridden on this Blueprint.
+
+Return type:
+EdGraph
+
+classmethod add_member_variable(blueprint, member_name, variable_type) → bool
+Adds a member variable to the specified blueprint with the specified type.
+
+Parameters:
+
+blueprint (Blueprint)
+member_name (Name)
+variable_type (EdGraphPinType)
+
+Returns:
+true if it succeeds, false if it fails.
+
+Return type:
+bool
+
+classmethod change_member_variable_type(blueprint, variable_name, new_type) → None
+Changes the specified member variable’s type - inherited variables must have their type changed at the point of declaration
+
+Parameters:
+
+blueprint (Blueprint)
+variable_name (Name)
+new_type (EdGraphPinType)
+
+classmethod compare_asset_save_version_to(asset, version_to_check) → AssetSaveVersionComparisonResults
+Compares the given assets save version to the VersionToCheck.
+see: GetSavedByEngineVersion and GetCurrentEngineVersion
+
+Parameters:
+
+asset (Object) – The asset which you would like to check the SavedByEngineVersion of.
+version_to_check (str) – String representation of the engine version to compare against. For example, “5.6.0-37518009+++UE5+Main”
+
+Returns:
+result (AssetSaveVersionComparisonResults): The outcome of the version comparison
+
+Return type:
+AssetSaveVersionComparisonResults
+
+classmethod compare_soft_object_save_version_to(object_to_check, version_to_check) → AssetSaveVersionComparisonResults
+Compares the given soft object’s save version to the VersionToCheck. This will read the packages file header
+see: GetSavedByEngineVersion and GetCurrentEngineVersion
+
+Parameters:
+
+object_to_check (Object) – Soft object pointer to the object whose save version you would like to compare.
+version_to_check (str) – String representation of the engine version to compare against. For example, “5.6.0-37518009+++UE5+Main”
+
+Returns:
+result (AssetSaveVersionComparisonResults): The outcome of the version comparison
+
+Return type:
+AssetSaveVersionComparisonResults
+
+classmethod compile_blueprint(blueprint) → bool
+Compiles the given blueprint.
+
+Parameters:
+blueprint (Blueprint) – Blueprint to compile
+
+Returns:
+True if compilation succeeded with no errors
+
+Return type:
+bool
+
+classmethod create_blueprint_asset_with_parent(asset_path, parent_class) → Blueprint
+Creates a blueprint based on a specific parent, honoring registered custom blueprint types
+
+Parameters:
+
+asset_path (str) – The full path that the asset should be created with
+parent_class (type(Class)) – The parent class that the blueprint should be based on
+
+Return type:
+Blueprint
+
+classmethod find_condition_pin(node) → BlueprintGraphPin
+Finds the Condition pin on this node
+
+Parameters:
+node (K2Node_IfThenElse)
+
+Return type:
+BlueprintGraphPin
+
+classmethod find_data_input_pin(node) → BlueprintGraphPin
+Returns the single data input pin associated with this node, returning default pin if there are multiple or no input(s)
+
+Parameters:
+node (K2Node)
+
+Return type:
+BlueprintGraphPin
+
+classmethod find_else_pin(node) → BlueprintGraphPin
+Finds the Else pin on this node
+
+Parameters:
+node (K2Node_IfThenElse)
+
+Return type:
+BlueprintGraphPin
+
+classmethod find_event_graph(blueprint) → EdGraph
+Finds the event graph of the given blueprint. Null if it doesn’t have one. This will only return
+the primary event graph of the blueprint (the graph named “EventGraph”).
+
+Parameters:
+blueprint (Blueprint) – Blueprint to search for the event graph on
+
+Returns:
+UEdGraph* Event graph of the blueprint if it has one, null if it doesn’t have one
+
+Return type:
+EdGraph
+
+classmethod find_execute_pin(node) → BlueprintGraphPin
+Returns the ‘execute’ or ‘do’ pin associated with this node, if any
+
+Parameters:
+node (K2Node)
+
+Return type:
+BlueprintGraphPin
+
+classmethod find_graph(blueprint, graph_name) → EdGraph
+Finds the graph with the given name on the blueprint. Null if it doesn’t have one.
+
+Parameters:
+
+blueprint (Blueprint) – Blueprint to search
+graph_name (Name) – The name of the graph to search for
+
+Returns:
+UEdGraph* Pointer to the graph with the given name, null if not found
+
+Return type:
+EdGraph
+
+classmethod find_input_pin(node, pin_name, type=[]) → BlueprintGraphPin
+Returns an input pin specified by name and, optionally, type
+
+Parameters:
+
+node (K2Node)
+pin_name (Name)
+type (EdGraphPinType)
+
+Return type:
+BlueprintGraphPin
+
+classmethod find_input_pin_by_index(node, index, type=[]) → BlueprintGraphPin
+Returns an input pin specified by index and, optionally, type
+
+Parameters:
+
+node (K2Node)
+index (int32)
+type (EdGraphPinType)
+
+Return type:
+BlueprintGraphPin
+
+classmethod find_output_pin(node, pin_name, type=[]) → BlueprintGraphPin
+Returns an output pin specified by name and, optionally, type
+
+Parameters:
+
+node (K2Node)
+pin_name (Name)
+type (EdGraphPinType)
+
+Return type:
+BlueprintGraphPin
+
+classmethod find_output_pin_by_index(node, index, type=[]) → BlueprintGraphPin
+Returns an output pin specified by index and, optionally, type
+
+Parameters:
+
+node (K2Node)
+index (int32)
+type (EdGraphPinType)
+
+Return type:
+BlueprintGraphPin
+
+classmethod find_result_pin(node) → BlueprintGraphPin
+Returns the single data output pin associated with this node, returning default pin if there are multiple or no output(s)
+
+Parameters:
+node (K2Node)
+
+Return type:
+BlueprintGraphPin
+
+classmethod find_self_pin(node) → BlueprintGraphPin
+Returns the self pin associated with this node, if any
+
+Parameters:
+node (K2Node)
+
+Return type:
+BlueprintGraphPin
+
+classmethod find_then_pin(node) → BlueprintGraphPin
+Returns the ‘then’ pin associated with this node, if any
+
+Parameters:
+node (K2Node)
+
+Return type:
+BlueprintGraphPin
+
+classmethod generated_class(blueprint_obj)
+Gets the class generated when this blueprint is compiled
+
+Parameters:
+blueprint_obj (Blueprint) – The blueprint object
+
+Returns:
+UClass* The generated class
+
+Return type:
+type(Class)
+
+classmethod get_array_type(contained_type) → EdGraphPinType
+
+Parameters:
+contained_type (EdGraphPinType)
+
+Returns:
+a array of ContainedType type - returns ‘int’ type if invalid type is provided
+
+Return type:
+EdGraphPinType
+
+classmethod get_basic_type_by_name(type_name) → EdGraphPinType
+
+Parameters:
+type_name (Name)
+
+Returns:
+a pintype for ‘int’, ‘byte’, ‘bool’, ‘real’, ‘name’, ‘string’ or ‘text’ - returns ‘int’ type if invalid type is provided
+
+Return type:
+EdGraphPinType
+
+classmethod get_blueprint_asset(object) → Blueprint
+Finds the UBlueprint associated with the object, locally searching the object graph for a
+UBlueprint associated with an asset object. If the Object is a UBlueprint this function will
+perform a simple cast. Note that the blueprint object itself is editor only and not present
+in cooked assets.
+
+Parameters:
+object (Object) – The object we need to get the UBlueprint from
+
+Returns:
+UBlueprint* The blueprint associated with the given object, nullptr if the object has no associated blueprint or the blueprint is in another package
+
+Return type:
+Blueprint
+
+classmethod get_blueprint_for_class(class_) -> (Blueprint, does_class_have_blueprint=bool)
+Looks up the UBlueprint that generated the provided class, if any. Provides a ‘true’ exec pin
+to execute if there is a valid blueprint associated with the Class.
+
+Parameters:
+class (type(Class)) – The class to look up the blueprint for
+
+Returns:
+The blueprint that generated the class, nullptr if the UClass is native or otherwise cooked
+does_class_have_blueprint (bool): Whether the provided class had a blueprint
+
+Return type:
+bool
+
+classmethod get_blueprint_parent_class(blueprint)
+Returns the parent class of the given Blueprint.
+
+Parameters:
+blueprint (Blueprint) – Blueprint to query
+
+Returns:
+The parent class of the Blueprint, or null if the Blueprint is invalid
+
+Return type:
+type(Class)
+
+classmethod get_blueprint_variable_category(blueprint, variable_name) → Text
+Gets the user-defined category of a Blueprint member variable. Categories are
+used to group variables in the My Blueprint panel.
+
+Parameters:
+
+blueprint (Blueprint) – The blueprint object
+variable_name (Name) – The variable name
+
+Returns:
+The category text. Empty if the variable was not found or has no explicit category override (defaults to the Blueprint’s name in the UI).
+
+Return type:
+Text
+
+classmethod get_blueprint_variable_replication(blueprint, variable_name) → BlueprintVariableReplication
+Gets the replication mode of a Blueprint variable.
+
+Parameters:
+
+blueprint (Blueprint) – The blueprint object
+variable_name (Name) – The variable name
+
+Returns:
+The replication mode: None, Replicated, or RepNotify
+
+Return type:
+BlueprintVariableReplication
+
+classmethod get_class_reference_type(class_type) → EdGraphPinType
+
+Parameters:
+class_type (type(Class))
+
+Returns:
+a class reference pintype for the provided class - returns ‘int’ type if invalid class is provided
+
+Return type:
+EdGraphPinType
+
+classmethod get_comment_color(comment_node) → LinearColor
+Gets the background color of a comment node.
+
+Parameters:
+comment_node (EdGraphNode_Comment)
+
+Return type:
+LinearColor
+
+classmethod get_comment_text(comment_node) → str
+Returns the comment text of a comment node.
+
+Parameters:
+comment_node (EdGraphNode_Comment)
+
+Return type:
+str
+
+classmethod get_create_delegate_function(node) → Name
+Returns the selected function name on a Create Event node (the dropdown value).
+Returns NAME_None if no function is selected.
+
+Parameters:
+node (K2Node_CreateDelegate)
+
+Return type:
+Name
+
+classmethod get_current_engine_version() → str
+Returns a string which represents the current engine version (FEngineVersion::Current())
+For example: “5.6.0-37518009+++UE5+Main”
+
+Return type:
+str
+
+classmethod get_map_type(key_type, value_type) → EdGraphPinType
+
+Parameters:
+
+key_type (EdGraphPinType)
+value_type (EdGraphPinType)
+
+Returns:
+a map of KeyType to ValueType type - returns ‘int’ type if invalid type is provided
+
+Return type:
+EdGraphPinType
+
+classmethod get_member_variable_type(blueprint, member_variable_name) → EdGraphPinType | None
+Returns the type of a member variable, unset if no variable is found. Inherited variables can be requested using a fully qualified name to avoid ambiguities.
+
+Parameters:
+
+blueprint (Blueprint)
+member_variable_name (str)
+
+Return type:
+Optional[EdGraphPinType]
+
+classmethod get_node_category(node) → str
+Returns this node’s menu category
+
+Parameters:
+node (K2Node)
+
+Return type:
+str
+
+classmethod get_node_pos(node) → IntPoint
+Returns this node’s visual position in the graph
+
+Parameters:
+node (K2Node)
+
+Return type:
+IntPoint
+
+classmethod get_node_size(node) → Vector2D
+Returns the size (width, height) of a node as stored in the graph data.
+Note: sizes are only populated after the graph has been rendered in the editor.
+
+Parameters:
+node (EdGraphNode)
+
+Return type:
+Vector2D
+
+classmethod get_node_title(node) → str
+Returns this node’s title, as used when the node is displayed in a list
+
+Parameters:
+node (K2Node)
+
+Return type:
+str
+
+classmethod get_nodes_in_comment(comment_node) → Array[K2Node]
+Returns the K2 nodes contained within the given comment node.
+Only UK2Node-derived nodes are returned; nested comments and other non-K2 node
+types are excluded.
+Membership is explicitly maintained when comments are created programmatically.
+Note: if the comment is manually moved or resized in the editor, membership is
+rebuilt spatially and may diverge from the programmatic assignment.
+
+Parameters:
+comment_node (EdGraphNode_Comment)
+
+Return type:
+Array[K2Node]
+
+classmethod get_object_reference_type(object_type) → EdGraphPinType
+
+Parameters:
+object_type (type(Class))
+
+Returns:
+a object reference pintype for the provided class - returns ‘int’ type if invalid object type is provided
+
+Return type:
+EdGraphPinType
+
+classmethod get_saved_by_engine_version(asset) → str
+Returns a string representation of the engine version which the given asset was saved with.
+see: FLinker::Summary::SavedByEngineVersion
+see: FPackageFileSummary
+
+Parameters:
+asset (Object) – The asset to check the saved by engine version of.
+
+Returns:
+String representation of the engine version which this asset was saved with. “INVALID” if none. For example: “5.6.0-37518009+++UE5+Main”
+
+Return type:
+str
+
+classmethod get_set_type(contained_type) → EdGraphPinType
+
+Parameters:
+contained_type (EdGraphPinType)
+
+Returns:
+a set of ContainedType type - returns ‘int’ type if invalid type is provided
+
+Return type:
+EdGraphPinType
+
+classmethod get_struct_type(struct_type) → EdGraphPinType
+
+Parameters:
+struct_type (ScriptStruct)
+
+Returns:
+a pintype for the provided struct - returns ‘int’ type if invalid struct is provided
+
+Return type:
+EdGraphPinType
+
+classmethod list_all_pins(node, direction=EdGraphPinDirection.EGPD_MAX) → Array[BlueprintGraphPin]
+Returns all visible pins on this node, optionally discriminated by direction
+
+Parameters:
+
+node (K2Node)
+direction (EdGraphPinDirection)
+
+Return type:
+Array[BlueprintGraphPin]
+
+classmethod list_compatible_functions_for_delegate(node) → Array[Name]
+Lists functions compatible with the delegate signature of a Create Event node.
+Returns an empty array if the node’s delegate output pin is not yet connected.
+
+Parameters:
+node (K2Node_CreateDelegate)
+
+Return type:
+Array[Name]
+
+classmethod list_event_dispatchers(blueprint) → Array[Name]
+Returns the names of all event dispatchers defined on the Blueprint.
+
+Parameters:
+blueprint (Blueprint)
+
+Return type:
+Array[Name]
+
+classmethod list_events(blueprint) → Array[BlueprintFunctionInfo]
+Lists all events visible on this Blueprint: locally defined custom events, overridable
+parent-class events, and event-shape interface members. Each entry carries an
+is_implemented flag indicating whether the event node has been placed on the Blueprint.
+
+Parameters:
+blueprint (Blueprint)
+
+Return type:
+Array[BlueprintFunctionInfo]
+
+classmethod list_functions(blueprint) → Array[BlueprintFunctionInfo]
+Lists all non-event functions visible on this Blueprint: locally defined function
+graphs, overridable parent-class functions, and functions declared on interfaces
+(both explicitly implemented and inherited through a natively-implemented interface).
+Each entry carries an is_implemented flag indicating whether a function graph for
+that name exists on the Blueprint.
+
+Parameters:
+blueprint (Blueprint)
+
+Return type:
+Array[BlueprintFunctionInfo]
+
+classmethod list_graph_names(blueprint) → Array[Name]
+Lists the names of the editable graphs in the BP
+
+Parameters:
+blueprint (Blueprint)
+
+Returns:
+out_graph_names (Array[Name]):
+
+Return type:
+Array[Name]
+
+classmethod list_graphs(blueprint) → Array[EdGraph]
+Lists all of the graphs that a Blueprint contains.
+
+Parameters:
+blueprint (Blueprint) – Blueprint to enumerate
+
+Returns:
+TArray<FName> A list of the graphs in the blueprint.
+
+Return type:
+Array[EdGraph]
+
+classmethod list_input_pins(node) → Array[BlueprintGraphPin]
+Returns all visible input pins on this node
+
+Parameters:
+node (K2Node)
+
+Return type:
+Array[BlueprintGraphPin]
+
+classmethod list_member_variable_names(blueprint, include_inherited_members=True) → Array[str]
+Lists the names of the member variables in the BP. Inherited members will be prefixed with the full path of their declaring class.
+
+Parameters:
+
+blueprint (Blueprint)
+include_inherited_members (bool)
+
+Returns:
+out_member_variable_names (Array[str]):
+
+Return type:
+Array[str]
+
+classmethod list_output_pins(node) → Array[BlueprintGraphPin]
+Returns all visible output pins on this node
+
+Parameters:
+node (K2Node)
+
+Return type:
+Array[BlueprintGraphPin]
+
+classmethod pin_type_to_json_schema(pin_type, self_context) → str
+A: json schema string describing the type
+
+Parameters:
+
+pin_type (EdGraphPinType)
+self_context (type(Class))
+
+Return type:
+str
+
+classmethod refresh_all_open_blueprint_editors() → None
+Refresh any open blueprint editors
+
+classmethod refresh_open_editors_for_blueprint(bp) → None
+Attempt to refresh any open blueprint editors for the given asset
+
+Parameters:
+bp (Blueprint)
+
+classmethod remove_event_dispatcher(blueprint, name) → bool
+Removes the event dispatcher with the given name from the Blueprint.
+Returns false if no dispatcher with that name exists or the Blueprint is invalid.
+
+Parameters:
+
+blueprint (Blueprint)
+name (Name)
+
+Return type:
+bool
+
+classmethod remove_event_dispatcher_parameter(blueprint, dispatcher_name, param_name) → bool
+Removes a parameter from an event dispatcher’s signature.
+Returns false if the dispatcher or parameter does not exist.
+
+Parameters:
+
+blueprint (Blueprint)
+dispatcher_name (Name)
+param_name (Name)
+
+Return type:
+bool
+
+classmethod remove_function_graph(blueprint, func_name) → None
+Deletes the function of the given name on this blueprint. Does NOT replace function call sites.
+
+Parameters:
+
+blueprint (Blueprint) – The blueprint to remove the function from
+func_name (Name) – The name of the function to remove
+
+classmethod remove_graph(blueprint, graph) → None
+Removes the given graph from the blueprint if possible
+
+Parameters:
+
+blueprint (Blueprint) – The blueprint the graph will be removed from
+graph (EdGraph) – The graph to remove
+
+classmethod remove_unused_nodes(blueprint) → None
+Remove any nodes in this blueprint that have no connections made to them.
+
+Parameters:
+blueprint (Blueprint) – The blueprint to remove the nodes from
+
+classmethod remove_unused_variables(blueprint) → int32
+Deletes any unused blueprint created variables the given blueprint.
+An Unused variable is any BP variable that is not referenced in any
+blueprint graphs
+
+Parameters:
+blueprint (Blueprint) – Blueprint that you would like to remove variables from
+
+Returns:
+Number of variables removed
+
+Return type:
+int32
+
+classmethod rename_graph(graph, new_name_str='NewGraph') → None
+Attempts to rename the given graph with a new name
+
+Parameters:
+
+graph (EdGraph) – The graph to rename
+new_name_str (str) – The new name of the graph
+
+classmethod reparent_blueprint(blueprint, new_parent_class) → None
+Attempts to reparent the given blueprint to the new chosen parent class.
+
+Parameters:
+
+blueprint (Blueprint) – Blueprint that you would like to reparent
+new_parent_class (type(Class)) – The new parent class to use
+
+classmethod replace_variable_references(blueprint, old_var_name, new_var_name) → None
+Replace any references of variables with the OldVarName to references of those with the NewVarName if possible
+
+Parameters:
+
+blueprint (Blueprint) – Blueprint to replace the variable references on
+old_var_name (Name) – The variable you want replaced
+new_var_name (Name) – The new variable that will be used in the old one’s place
+
+classmethod set_blueprint_variable_category(blueprint, variable_name, new_category) → None
+Sets the user-defined category on a Blueprint member variable. Categories are
+used to group variables in the My Blueprint panel.
+Note: Will not change the category for variables defined via native classes.
+
+Parameters:
+
+blueprint (Blueprint) – The blueprint object
+variable_name (Name) – The variable name
+new_category (Text) – The new category text. Pass empty to reset to the default (the Blueprint’s name).
+
+classmethod set_blueprint_variable_expose_on_spawn(blueprint, variable_name, expose_on_spawn) → None
+Sets “Expose On Spawn” to true/false on a Blueprint variable
+
+Parameters:
+
+blueprint (Blueprint) – The blueprint object
+variable_name (Name) – The variable name
+expose_on_spawn (bool) – Set to true to expose on spawn
+
+classmethod set_blueprint_variable_expose_to_cinematics(blueprint, variable_name, expose_to_cinematics) → None
+Sets “Expose To Cinematics” to true/false on a Blueprint variable
+
+Parameters:
+
+blueprint (Blueprint) – The blueprint object
+variable_name (Name) – The variable name
+expose_to_cinematics (bool) – Set to true to expose to cinematics
+
+classmethod set_blueprint_variable_instance_editable(blueprint, variable_name, instance_editable) → None
+Sets “Instance Editable” to true/false on a Blueprint variable
+
+Parameters:
+
+blueprint (Blueprint) – The blueprint object
+variable_name (Name) – The variable name
+instance_editable (bool) – Toggle InstanceEditable
+
+classmethod set_blueprint_variable_replication(blueprint, variable_name, replication) → None
+Sets the replication mode on a Blueprint variable.
+RepNotify will auto-create an OnRep_ function if one does not already exist.
+
+Parameters:
+
+blueprint (Blueprint) – The blueprint object
+variable_name (Name) – The variable name
+replication (BlueprintVariableReplication) – The replication mode: None, Replicated, or RepNotify
+
+classmethod set_comment_color(comment_node, color) → None
+Sets the background color of a comment node.
+
+Parameters:
+
+comment_node (EdGraphNode_Comment)
+color (LinearColor)
+
+classmethod set_comment_text(comment_node, new_text) → None
+Sets the comment text of a comment node.
+
+Parameters:
+
+comment_node (EdGraphNode_Comment)
+new_text (str)
+
+classmethod set_create_delegate_function(node, function_name) → None
+Sets the selected function on a Create Event node (the dropdown value).
+Use ListCompatibleFunctionsForDelegate to find valid function names.
+
+Parameters:
+
+node (K2Node_CreateDelegate)
+function_name (Name)
+
+classmethod set_node_pos(node, pos) → None
+Sets this node’s visual position in the graph
+
+Parameters:
+
+node (K2Node)
+pos (IntPoint)
+
+classmethod upgrade_operator_nodes(blueprint) → None
+Replace any old operator nodes (float + float, vector + float, int + vector, etc)
+with the newer Promotable Operator version of the node. Preserve any connections the
+original node had to the newer version of the node.
+
+Parameters:
+blueprint (Blueprint) – Blueprint to upgrade

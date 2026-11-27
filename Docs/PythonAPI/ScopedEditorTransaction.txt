@@ -1,0 +1,15 @@
+# unreal.ScopedEditorTransaction  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/ScopedEditorTransaction.html
+
+unreal.ScopedEditorTransaction
+
+class unreal.ScopedEditorTransaction(desc: Text | str)
+Bases: object
+Type used to create and managed a scoped editor transaction in Python
+
+__enter__(self) → ScopedEditorTransaction -- begin this transaction
+
+__exit__(self, type: Type[BaseException] | None, value: BaseException | None, traceback: TracebackType | None) → bool -- end this transaction
+
+cancel(self) → None -- cancel this transaction

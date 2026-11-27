@@ -1,0 +1,45 @@
+# unreal.Color  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/Color.html
+
+unreal.Color
+
+class unreal.Color(b: int = 0, g: int = 0, r: int = 0, a: int = 0)
+Bases: StructBase
+Stores a color with 8 bits of precision per channel. (BGRA).
+note: The full C++ class is located here: EngineSourceRuntimeCorePublicMathColor.h
+C++ Source:
+
+Module: CoreUObject
+File: NoExportTypes.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+a (uint8): [Read-Write]
+b (uint8): [Read-Write]
+g (uint8): [Read-Write]
+r (uint8): [Read-Write]
+
+property a: int
+[Read-Write]
+
+Type:
+(uint8)
+
+property b: int
+[Read-Write]
+
+Type:
+(uint8)
+
+property g: int
+[Read-Write]
+
+Type:
+(uint8)
+
+property r: int
+[Read-Write]
+
+Type:
+(uint8)

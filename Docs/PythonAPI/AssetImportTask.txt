@@ -1,0 +1,214 @@
+# unreal.AssetImportTask  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/AssetImportTask
+
+unreal.AssetImportTask¶
+
+
+class unreal.AssetImportTask(outer: Object | None = None, name: Name | str = 'None')¶
+
+Bases: Object
+
+Contains data for a group of assets to import
+
+C++ Source:
+
+
+
+Module: UnrealEd
+
+File: AssetImportTask.h
+
+
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+
+
+async_ (bool): [Read-Write] Perform the import asynchronously for file formats where async import is available
+
+automated (bool): [Read-Write] Avoid dialogs
+
+destination_name (str): [Read-Write] Optional custom name to import as (if you are using interchange the name must be set in a pipeline and this field will be ignored)
+
+destination_path (str): [Read-Write] Path where asset will be imported to
+
+factory (Factory): [Read-Write] Optional factory to use
+
+filename (str): [Read-Write] Filename to import
+
+imported_object_paths (Array[str]): [Read-Write] Paths to objects created or updated after import
+
+options (Object): [Read-Write] Import options specific to the type of asset
+
+replace_existing (bool): [Read-Write] Overwrite existing assets
+
+replace_existing_settings (bool): [Read-Write] Replace existing settings when overwriting existing assets
+
+result (Array[Object]): [Read-Write]
+
+deprecated: Please use the GetObjects function instead.
+
+save (bool): [Read-Write] Save after importing
+
+
+property async_: bool¶
+
+[Read-Write] Perform the import asynchronously for file formats where async import is available
+
+
+
+Type:
+
+(bool)
+
+
+property automated: bool¶
+
+[Read-Write] Avoid dialogs
+
+
+
+Type:
+
+(bool)
+
+
+property destination_name: str¶
+
+[Read-Write] Optional custom name to import as (if you are using interchange the name must be set in a pipeline and this field will be ignored)
+
+
+
+Type:
+
+(str)
+
+
+property destination_path: str¶
+
+[Read-Write] Path where asset will be imported to
+
+
+
+Type:
+
+(str)
+
+
+property factory: Factory¶
+
+[Read-Write] Optional factory to use
+
+
+
+Type:
+
+(Factory)
+
+
+property filename: str¶
+
+[Read-Write] Filename to import
+
+
+
+Type:
+
+(str)
+
+
+get_objects() → Array[Object]¶
+
+Get the list of imported objects.
+
+Note that if the import was asynchronous, this will block until the results are ready.
+
+To test whether asynchronous results are ready or not, use IsAsyncImportComplete().
+
+
+
+Return type:
+
+Array[Object]
+
+
+property imported_object_paths: None¶
+
+[Read-Write] Paths to objects created or updated after import
+
+
+
+Type:
+
+(Array[str])
+
+
+is_async_import_complete() → bool¶
+
+Query whether this asynchronous import task is complete, and the results are ready to read.
+
+This will always return true in the case of a blocking import.
+
+
+
+Return type:
+
+bool
+
+
+property options: Object¶
+
+[Read-Write] Import options specific to the type of asset
+
+
+
+Type:
+
+(Object)
+
+
+property replace_existing: bool¶
+
+[Read-Write] Overwrite existing assets
+
+
+
+Type:
+
+(bool)
+
+
+property replace_existing_settings: bool¶
+
+[Read-Write] Replace existing settings when overwriting existing assets
+
+
+
+Type:
+
+(bool)
+
+
+property result: None¶
+
+[Read-Write]
+
+deprecated: Please use the GetObjects function instead.
+
+
+
+Type:
+
+(Array[Object])
+
+
+property save: bool¶
+
+[Read-Write] Save after importing
+
+
+
+Type:
+
+(bool)

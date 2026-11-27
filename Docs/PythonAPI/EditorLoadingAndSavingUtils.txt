@@ -1,0 +1,208 @@
+# unreal.EditorLoadingAndSavingUtils  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/EditorLoadingAndSavingUtils.html
+
+unreal.EditorLoadingAndSavingUtils
+
+class unreal.EditorLoadingAndSavingUtils(outer: Object | None = None, name: Name | str = 'None')
+Bases: Object
+This class is a wrapper for editor loading and saving functionality
+It is meant to contain only functions that can be executed in script (but are also allowed in C++).
+It is separated from FEditorFileUtils to ensure new easier to use methods can be created without breaking FEditorFileUtils backwards compatibility
+However this should be used in place of FEditorFileUtils wherever possible as the goal is to deprecate FEditorFileUtils eventually
+C++ Source:
+
+Module: UnrealEd
+File: FileHelpers.h
+
+classmethod export_scene(export_selected_actors_only) → None
+Exports the current scene
+
+Parameters:
+export_selected_actors_only (bool)
+
+classmethod fully_load_assets(assets) → None
+Fully loads the given assets, so that UE no longer has a write lock on their on-disk files.
+
+Parameters:
+assets (Array[Object]) – Array of assets to fully load.
+
+classmethod fully_load_packages(packages) → None
+Fully loads the given packages, so that UE no longer has a write lock on their on-disk files.
+
+Parameters:
+packages (Array[Package]) – Array of packages to fully load.
+
+classmethod get_dirty_content_packages() → Array[Package]
+Appends array with all currently dirty content packages.
+
+Returns:
+out_dirty_packages (Array[Package]): Array to append dirty packages to.
+
+Return type:
+Array[Package]
+
+classmethod get_dirty_map_packages() → Array[Package]
+Appends array with all currently dirty map packages.
+
+Returns:
+out_dirty_packages (Array[Package]): Array to append dirty packages to.
+
+Return type:
+Array[Package]
+
+classmethod import_scene(filename) → None
+Imports a file such as (FBX or obj) and spawns actors f into the current level
+
+Parameters:
+filename (str)
+
+classmethod load_map(filename) → World
+Loads the specified map. Does not prompt the user to save the current map.
+
+Parameters:
+filename (str) – Level package filename, including path.
+
+Returns:
+true if the map was loaded successfully.
+
+Return type:
+World
+
+classmethod load_map_with_dialog() → World
+Prompts the user to save the current map if necessary, the presents a load dialog and
+loads a new map if selected by the user.
+
+Return type:
+World
+
+classmethod new_blank_map(save_existing_map) → World
+New Blank Map
+
+Parameters:
+save_existing_map (bool)
+
+Return type:
+World
+
+classmethod new_map_from_template(path_to_template_level, save_existing_map) → World
+New Map from Template
+
+Parameters:
+
+path_to_template_level (str)
+save_existing_map (bool)
+
+Return type:
+World
+
+classmethod reload_packages(packages_to_reload, interaction_mode=ReloadPackagesInteractionMode.INTERACTIVE) -> (out_any_packages_reloaded=bool, out_error_message=Text)
+Helper function that attempts to reload the specified top-level packages.
+
+Parameters:
+
+packages_to_reload (Array[Package]) – The list of packages that should be reloaded
+interaction_mode (ReloadPackagesInteractionMode) – Whether the function is allowed to ask the user questions (such as whether to reload dirty packages)
+
+Returns:
+out_any_packages_reloaded (bool): True if the set of loaded packages was changed
+out_error_message (Text): An error message specifying any problems with reloading packages
+
+Return type:
+tuple
+
+classmethod save_current_level() → bool
+Saves the active level, prompting the use for checkout if necessary.
+
+Returns:
+true on success, False on fail
+
+Return type:
+bool
+
+classmethod save_dirty_packages(save_map_packages, save_content_packages) → bool
+Looks at all currently loaded packages and saves them if their “bDirty” flag is set.
+Assume all dirty packages should be saved and check out from source control (if enabled).
+
+Parameters:
+
+save_map_packages (bool) – true if map packages should be saved
+save_content_packages (bool) – true if we should save content packages.
+
+Returns:
+true on success, false on fail.
+
+Return type:
+bool
+
+classmethod save_dirty_packages_with_dialog(save_map_packages, save_content_packages) → bool
+Looks at all currently loaded packages and saves them if their “bDirty” flag is set.
+Prompt the user to select which dirty packages to save and check them out from source control (if enabled).
+
+Parameters:
+
+save_map_packages (bool) – true if map packages should be saved
+save_content_packages (bool) – true if we should save content packages.
+
+Returns:
+true on success, false on fail.
+
+Return type:
+bool
+
+classmethod save_map(world, asset_path) → bool
+Saves the specified map, returning true on success.
+
+Parameters:
+
+world (World) – The world to save.
+asset_path (str) – The valid content directory path and name for the asset. E.g “/Game/MyMap”
+
+Returns:
+true if the map was saved successfully.
+
+Return type:
+bool
+
+classmethod save_packages(packages_to_save, only_dirty) → bool
+Save all packages.
+Assume all dirty packages should be saved and check out from source control (if enabled).
+
+Parameters:
+
+packages_to_save (Array[Package]) – The list of packages to save. Both map and content packages are supported
+only_dirty (bool)
+
+Returns:
+true on success, false on fail.
+
+Return type:
+bool
+
+classmethod save_packages_with_dialog(packages_to_save, only_dirty) → bool
+Save all packages. Optionally prompting the user to select which packages to save.
+Prompt the user to select which dirty packages to save and check them out from source control (if enabled).
+
+Parameters:
+
+packages_to_save (Array[Package]) – The list of packages to save. Both map and content packages are supported
+only_dirty (bool)
+
+Returns:
+true on success, false on fail.
+
+Return type:
+bool
+
+classmethod unload_packages(packages_to_unload) -> (out_any_packages_unloaded=bool, out_error_message=Text)
+Unloads a list of packages
+
+Parameters:
+packages_to_unload (Array[Package]) – Array of packages to unload.
+
+Returns:
+out_any_packages_unloaded (bool):
+out_error_message (Text):
+
+Return type:
+tuple

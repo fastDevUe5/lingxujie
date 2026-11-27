@@ -1,0 +1,17 @@
+# unreal.NaniteSettings  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/NaniteSettings.html
+
+unreal.NaniteSettings
+
+class unreal.NaniteSettings
+Bases: StructBase
+Nanite Settings
+C++ Source:
+
+Module: Engine
+File: WorldSettings.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+allow_masked_materials (bool): [Read-Write]

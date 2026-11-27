@@ -1,0 +1,79 @@
+{
+  "world": {
+    "name": "灵虚界 P0",
+    "reference": "墨香 Online（地名与地图结构参照，资源全部自制或授权）",
+    "size_cm": 25000,
+    "note": "坐标单位 cm；y 越大越靠北。四张图沿主路南北串联，不做岔路。"
+  },
+  "zones": [
+    {
+      "id": "taoyuan",
+      "name": "桃源村",
+      "role": "出生点、教学、首批任务",
+      "centre": [0, -8600],
+      "size": [6000, 6000],
+      "ground": "grass",
+      "buildings": 4,
+      "npcs": 2,
+      "monsters": 0
+    },
+    {
+      "id": "lanzhou",
+      "name": "兰州",
+      "role": "主城：NPC、商店、交任务",
+      "centre": [0, -4800],
+      "size": [9000, 9000],
+      "ground": "stone",
+      "buildings": 8,
+      "row_spacing": 1100,
+      "npcs": 4,
+      "monsters": 0
+    },
+    {
+      "id": "dunhuang",
+      "name": "敦煌",
+      "role": "野外练级带",
+      "centre": [0, -300],
+      "size": [12000, 12000],
+      "ground": "sand",
+      "buildings": 0,
+      "npcs": 0,
+      "monsters": 7
+    },
+    {
+      "id": "qinling",
+      "name": "秦皇陵",
+      "role": "秘境：Boss",
+      "centre": [0, 6600],
+      "size": [8000, 8000],
+      "ground": "stone",
+      "buildings": 2,
+      "npcs": 0,
+      "monsters": 1
+    }
+  ],
+  "roads": [
+    { "from": [0, -11600], "to": [0, -10800], "width": 520, "surface": "stone" },
+    { "from": [0, -10800], "to": [0, -4800], "width": 1000, "surface": "stone" },
+    { "from": [0, -4800], "to": [0, -300], "width": 1000, "surface": "stone" },
+    { "from": [0, -300], "to": [0, 6600], "width": 800, "surface": "dirt" }
+  ],
+  "poi": [
+    { "zone": "taoyuan", "id": "spawn", "name": "出生点", "at": [0, -9000] },
+    { "zone": "taoyuan", "id": "elder", "name": "村老（引导）", "at": [-1200, -8600] },
+    { "zone": "lanzhou", "id": "shop", "name": "杂货商", "at": [700, -4800] },
+    { "zone": "lanzhou", "id": "quest", "name": "任务发布", "at": [-700, -4600] },
+    { "zone": "lanzhou", "id": "elder", "name": "城老", "at": [700, -5600] },
+    { "zone": "lanzhou", "id": "healer", "name": "药师", "at": [-700, -5200] },
+    { "zone": "lanzhou", "id": "pond", "name": "水塘园林", "at": [2400, -3800] },
+    { "zone": "dunhuang", "id": "camp", "name": "驿站", "at": [0, -300] },
+    { "zone": "dunhuang", "id": "mob1", "name": "沙狐", "at": [-1600, -4200] },
+    { "zone": "dunhuang", "id": "mob2", "name": "赤蝎", "at": [1700, -3600] },
+    { "zone": "dunhuang", "id": "mob3", "name": "流沙鬼", "at": [-2400, -2600] },
+    { "zone": "dunhuang", "id": "mob4", "name": "旱魃", "at": [2500, -2000] },
+    { "zone": "dunhuang", "id": "mob5", "name": "沙行兽", "at": [-3000, -900] },
+    { "zone": "dunhuang", "id": "mob6", "name": "风蚀妖", "at": [2900, -100] },
+    { "zone": "dunhuang", "id": "mob7", "name": "石窟守卫", "at": [1500, 900] },
+    { "zone": "qinling", "id": "boss", "name": "Boss 石台", "at": [0, 6600] }
+  ]
+}

@@ -1,0 +1,43 @@
+# unreal.MaterialExpressionTextureCoordinate  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/MaterialExpressionTextureCoordinate.html
+
+unreal.MaterialExpressionTextureCoordinate
+
+class unreal.MaterialExpressionTextureCoordinate(outer: Object | None = None, name: Name | str = 'None')
+Bases: MaterialExpression
+Material Expression Texture Coordinate
+C++ Source:
+
+Module: Engine
+File: MaterialExpressionTextureCoordinate.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+coordinate_index (int32): [Read-Write] Texture coordinate index
+desc (str): [Read-Write] A description that level designers can add (shows in the material editor UI).
+material_expression_editor_x (int32): [Read-Write]
+material_expression_editor_y (int32): [Read-Write]
+u_tiling (float): [Read-Write] Controls how much the texture tiles horizontally, by scaling the U component of the vertex UVs by the specified amount.
+un_mirror_u (bool): [Read-Write] Would like to unmirror U or V
+- if the texture is mirrored and if you would like to undo mirroring for this texture sample, use this to unmirror
+un_mirror_v (bool): [Read-Write]
+v_tiling (float): [Read-Write] Controls how much the texture tiles vertically, by scaling the V component of the vertex UVs by the specified amount.
+
+property coordinate_index: int
+[Read-Write] Texture coordinate index
+
+Type:
+(int32)
+
+property u_tiling: float
+[Read-Write] Controls how much the texture tiles horizontally, by scaling the U component of the vertex UVs by the specified amount.
+
+Type:
+(float)
+
+property v_tiling: float
+[Read-Write] Controls how much the texture tiles vertically, by scaling the V component of the vertex UVs by the specified amount.
+
+Type:
+(float)

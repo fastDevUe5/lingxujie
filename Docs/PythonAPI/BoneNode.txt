@@ -1,0 +1,17 @@
+# unreal.BoneNode  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/BoneNode.html
+
+unreal.BoneNode
+
+class unreal.BoneNode
+Bases: StructBase
+Each Bone node in BoneTree
+C++ Source:
+
+Module: Engine
+File: Skeleton.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+translation_retargeting_mode (BoneTranslationRetargetingMode): [Read-Write] Retargeting Mode for Translation Component.

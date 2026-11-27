@@ -1,0 +1,101 @@
+# unreal.ActorDesc  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/ActorDesc.html
+
+unreal.ActorDesc
+
+class unreal.ActorDesc(guid: Guid = [], native_class: Class = Ellipsis, class_: SoftObjectPath = Ellipsis, name: Name = 'None', label: Name = 'None', bounds: Box = Ellipsis, runtime_grid: Name = 'None', is_spatially_loaded: bool = False, actor_is_editor_only: bool = False, actor_package: Name = 'None', actor_path: Name = 'None', data_layer_assets: None = [])
+Bases: StructBase
+Snapshot of an actor descriptor, which represents the state of an actor on disk.
+The actor may or may not be loaded.
+C++ Source:
+
+Module: Engine
+File: WorldPartitionBlueprintLibrary.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+actor_is_editor_only (bool): [Read-Only] Actor’s editor-only property.
+actor_package (Name): [Read-Only] Actor’s package name.
+actor_path (Name): [Read-Only] Actor’s path name.
+bounds (Box): [Read-Only] Streaming bounds of this actor.
+class_ (SoftObjectPath): [Read-Only] Actor class, can point to a native or Blueprint class and may be redirected.
+data_layer_assets (Array[SoftObjectPath]): [Read-Only] Actor’s data layer assets.
+guid (Guid): [Read-Only] The actor GUID of this descriptor.
+is_spatially_loaded (bool): [Read-Only] Actor’s streaming state.
+label (Name): [Read-Only] Actor’s label.
+name (Name): [Read-Only] Internal name of the actor.
+native_class (type(Class)): [Read-Only] Actor first native class.
+runtime_grid (Name): [Read-Only] Actor’s target runtime grid.
+
+property actor_is_editor_only: bool
+[Read-Only] Actor’s editor-only property.
+
+Type:
+(bool)
+
+property actor_package: Name
+[Read-Only] Actor’s package name.
+
+Type:
+(Name)
+
+property actor_path: Name
+[Read-Only] Actor’s path name.
+
+Type:
+(Name)
+
+property bounds: Box
+[Read-Only] Streaming bounds of this actor.
+
+Type:
+(Box)
+
+property class_: SoftObjectPath
+[Read-Only] Actor class, can point to a native or Blueprint class and may be redirected.
+
+Type:
+(SoftObjectPath)
+
+property data_layer_assets: None
+[Read-Only] Actor’s data layer assets.
+
+Type:
+(Array[SoftObjectPath])
+
+property guid: Guid
+[Read-Only] The actor GUID of this descriptor.
+
+Type:
+(Guid)
+
+property is_spatially_loaded: bool
+[Read-Only] Actor’s streaming state.
+
+Type:
+(bool)
+
+property label: Name
+[Read-Only] Actor’s label.
+
+Type:
+(Name)
+
+property name: Name
+[Read-Only] Internal name of the actor.
+
+Type:
+(Name)
+
+property native_class: Class
+[Read-Only] Actor first native class.
+
+Type:
+(type(Class))
+
+property runtime_grid: Name
+[Read-Only] Actor’s target runtime grid.
+
+Type:
+(Name)

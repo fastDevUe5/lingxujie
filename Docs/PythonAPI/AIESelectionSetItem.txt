@@ -1,0 +1,38 @@
+# unreal.AIESelectionSetItem  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/AIESelectionSetItem.html
+
+unreal.AIESelectionSetItem
+
+class unreal.AIESelectionSetItem(item_name: Text = '', names: None = [], view_data: AIESelectionSetItemViewData = Ellipsis)
+Bases: StructBase
+Main selection set item, has it’s name, it’s view data, and array of names making up the set
+C++ Source:
+
+Plugin: ControlRig
+Module: ControlRigEditor
+File: SelectionSets.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+item_name (Text): [Read-Write] The Name of the Set
+names (Array[AIESelectionSetItemName]): [Read-Write] The collection of set items that make up the set, basically an array of names with some metadata
+view_data (AIESelectionSetItemViewData): [Read-Write] Viewing Data for the set, like location and color
+
+property item_name: Text
+[Read-Only] The Name of the Set
+
+Type:
+(Text)
+
+property names: None
+[Read-Only] The collection of set items that make up the set, basically an array of names with some metadata
+
+Type:
+(Array[AIESelectionSetItemName])
+
+property view_data: AIESelectionSetItemViewData
+[Read-Only] Viewing Data for the set, like location and color
+
+Type:
+(AIESelectionSetItemViewData)

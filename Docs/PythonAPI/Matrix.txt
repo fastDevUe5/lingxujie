@@ -1,0 +1,526 @@
+# unreal.Matrix  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/Matrix.html
+
+unreal.Matrix
+
+class unreal.Matrix(x_plane: Plane = Ellipsis, y_plane: Plane = Ellipsis, z_plane: Plane = Ellipsis, w_plane: Plane = Ellipsis)
+Bases: StructBase
+A 4x4 matrix.
+note: The full C++ class is located here: EngineSourceRuntimeCorePublicMathMatrix.h
+C++ Source:
+
+Module: CoreUObject
+File: NoExportTypes.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+w_plane (Plane): [Read-Write]
+x_plane (Plane): [Read-Write]
+y_plane (Plane): [Read-Write]
+z_plane (Plane): [Read-Write]
+
+IDENTITY: Matrix
+Identity matrix
+
+Type:
+(Matrix)
+
+__add__(other: Matrix) → None
+Overloads:
+
+Matrix Gets the result of adding a matrix to this.
+@param Other The Matrix to add.
+@return The result of addition.
+
+__eq__(other: object) → bool
+Overloads:
+
+Matrix Checks whether another Matrix is equal to this, within specified tolerance.
+@param Other The other Matrix.
+@param Tolerance Error Tolerance.
+@return true if two Matrix are equal, within specified tolerance, otherwise false.
+
+__iadd__(other: Matrix) → None
+Overloads:
+
+Matrix Gets the result of adding a matrix to this.
+@param Other The Matrix to add.
+@return The result of addition.
+
+__imul__(other: Matrix) → None
+Overloads:
+
+Matrix Gets the result of multiplying a Matrix to this.
+@param Other The matrix to multiply this by.
+@return The result of multiplication.
+
+double Multiplies all values of the matrix by a float.
+If your Matrix represents a Transform that you wish to scale you should use Apply Scale instead
+
+__mul__(other: Matrix) → None
+Overloads:
+
+Matrix Gets the result of multiplying a Matrix to this.
+@param Other The matrix to multiply this by.
+@return The result of multiplication.
+
+double Multiplies all values of the matrix by a float.
+If your Matrix represents a Transform that you wish to scale you should use Apply Scale instead
+
+__ne__(other: object) → bool
+Overloads:
+
+Matrix Checks whether another Matrix is not equal to this, within specified tolerance.
+@param Other The other Matrix.
+@return true if two Matrix are not equal, within specified tolerance, otherwise false.
+
+add(b) → Matrix
+Gets the result of adding a matrix to this.
+
+Parameters:
+b (Matrix)
+
+Returns:
+The result of addition.
+
+Return type:
+Matrix
+
+apply_scale(scale) → Matrix
+Apply Scale to this matrix
+(Assumes Matrix represents a transform)
+
+Parameters:
+scale (float)
+
+Return type:
+Matrix
+
+concatenate_translation(translation) → Matrix
+Returns a matrix with an additional translation concatenated.
+(Assumes Matrix represents a transform)
+
+Parameters:
+translation (Vector)
+
+Return type:
+Matrix
+
+contains_na_n() → bool
+Returns true if any element of this matrix is NaN
+
+Return type:
+bool
+
+equals(b, tolerance=0.000100) → bool
+Checks whether another Matrix is equal to this, within specified tolerance.
+
+Parameters:
+
+b (Matrix)
+tolerance (float) – Error Tolerance.
+
+Returns:
+true if two Matrix are equal, within specified tolerance, otherwise false.
+
+Return type:
+bool
+
+get_column(column) → Vector
+get a column of this matrix
+
+Parameters:
+column (MatrixColumns)
+
+Returns:
+vector of the column
+
+Return type:
+Vector
+
+get_determinant() → float
+
+Returns:
+determinant of this matrix.
+
+Return type:
+float
+
+get_frustum_bottom_plane() → Plane or None
+Get the bottom plane of the Frustum of this matrix
+(Assumes Matrix represents a View Projection Matrix)
+
+Returns:
+out_plane (Plane): the bottom plane of the Frustum of this matrix
+
+Return type:
+Plane or None
+
+get_frustum_far_plane() → Plane or None
+Get the far plane of the Frustum of this matrix
+(Assumes Matrix represents a View Projection Matrix)
+
+Returns:
+out_plane (Plane): the far plane of the Frustum of this matrix
+
+Return type:
+Plane or None
+
+get_frustum_left_plane() → Plane or None
+Get the left plane of the Frustum of this matrix
+(Assumes Matrix represents a View Projection Matrix)
+
+Returns:
+out_plane (Plane): the left plane of the Frustum of this matrix
+
+Return type:
+Plane or None
+
+get_frustum_near_plane() → Plane or None
+Get the near plane of the Frustum of this matrix
+(Assumes Matrix represents a View Projection Matrix)
+
+Returns:
+out_plane (Plane): the near plane of the Frustum of this matrix
+
+Return type:
+Plane or None
+
+get_frustum_right_plane() → Plane or None
+Get the right plane of the Frustum of this matrix
+(Assumes Matrix represents a View Projection Matrix)
+
+Returns:
+out_plane (Plane): the right plane of the Frustum of this matrix
+
+Return type:
+Plane or None
+
+get_frustum_top_plane() → Plane or None
+Get the top plane of the Frustum of this matrix
+(Assumes Matrix represents a View Projection Matrix)
+
+Returns:
+out_plane (Plane): the top plane of the Frustum of this matrix
+
+Return type:
+Plane or None
+
+get_inverse() → Matrix
+Get the inverse of the Matrix. Handles nil matrices.
+
+Return type:
+Matrix
+
+get_matrix_without_scale(tolerance=0.000000) → Matrix
+Returns matrix after RemoveScaling with error Tolerance
+(Assumes Matrix represents a transform)
+
+Parameters:
+tolerance (float)
+
+Return type:
+Matrix
+
+get_maximum_axis_scale() → float
+
+Returns:
+the maximum magnitude of any row of the matrix. (Assumes Matrix represents a transform)
+
+Return type:
+float
+
+get_origin() → Vector
+Get the origin of the co-ordinate system
+(Assumes Matrix represents a transform)
+
+Returns:
+co-ordinate system origin
+
+Return type:
+Vector
+
+get_rot_determinant() → float
+
+Returns:
+the determinant of rotation 3x3 matrix (Assumes Top Left 3x3 Submatrix represents a Rotation)
+
+Return type:
+float
+
+get_rotator() → Rotator
+Get the rotator representation of this matrix
+(Assumes Matrix represents a transform)
+
+Returns:
+rotator representation of this matrix
+
+Return type:
+Rotator
+
+get_scale_vector(tolerance=0.000000) → Vector
+return a 3D scale vector calculated from this matrix (where each component is the magnitude of a row vector) with error Tolerance.
+(Assumes Matrix represents a transform)
+
+Parameters:
+tolerance (float)
+
+Return type:
+Vector
+
+get_scaled_axes() -> (x=Vector, y=Vector, z=Vector)
+get axes of this matrix scaled by the scale of the matrix
+(Assumes Matrix represents a transform)
+
+Returns:
+x (Vector): axes returned to this param
+y (Vector): axes returned to this param
+z (Vector): axes returned to this param
+
+Return type:
+tuple
+
+get_scaled_axis(axis) → Vector
+get axis of this matrix scaled by the scale of the matrix
+(Assumes Matrix represents a transform)
+
+Parameters:
+axis (AxisType)
+
+Returns:
+vector of the axis
+
+Return type:
+Vector
+
+get_transpose_adjoint() → Matrix
+Get the Transose Adjoint of the Matrix.
+
+Return type:
+Matrix
+
+get_transposed() → Matrix
+Transpose.
+
+Return type:
+Matrix
+
+get_unit_axes() -> (x=Vector, y=Vector, z=Vector)
+get unit length axes of this matrix
+(Assumes Matrix represents a transform)
+
+Returns:
+x (Vector): axes returned to this param
+y (Vector): axes returned to this param
+z (Vector): axes returned to this param
+
+Return type:
+tuple
+
+get_unit_axis(axis) → Vector
+get unit length axis of this matrix
+(Assumes Matrix represents a transform)
+
+Parameters:
+axis (AxisType)
+
+Returns:
+vector of the axis
+
+Return type:
+Vector
+
+inverse_transform_position(v) → Vector
+Inverts the matrix and then transforms V - correctly handles scaling in this matrix.
+(Assumes Matrix represents a transform)
+
+Parameters:
+v (Vector)
+
+Return type:
+Vector
+
+inverse_transform_vector(v) → Vector
+Transform a direction vector by the inverse of this matrix - will not take into account translation part.
+If you want to transform a surface normal (or plane) and correctly account for non-uniform scaling you should use TransformByUsingAdjointT with adjoint of matrix inverse.
+(Assumes Matrix represents a transform)
+
+Parameters:
+v (Vector)
+
+Return type:
+Vector
+
+mirror(mirror_axis, flip_axis) → Matrix
+Utility for mirroring this transform across a certain plane, and flipping one of the axis as well.
+(Assumes Matrix represents a transform)
+
+Parameters:
+
+mirror_axis (AxisType)
+flip_axis (AxisType)
+
+Return type:
+Matrix
+
+multiply(b) → Matrix
+Gets the result of multiplying a Matrix to this.
+
+Parameters:
+b (Matrix)
+
+Returns:
+The result of multiplication.
+
+Return type:
+Matrix
+
+multiply_float(b) → Matrix
+Multiplies all values of the matrix by a float.
+If your Matrix represents a Transform that you wish to scale you should use Apply Scale instead
+
+Parameters:
+b (double)
+
+Return type:
+Matrix
+
+not_equal(b, tolerance=0.000100) → bool
+Checks whether another Matrix is not equal to this, within specified tolerance.
+
+Parameters:
+
+b (Matrix)
+tolerance (float)
+
+Returns:
+true if two Matrix are not equal, within specified tolerance, otherwise false.
+
+Return type:
+bool
+
+remove_scaling(tolerance=0.000000) → None
+Remove any scaling from this matrix (ie magnitude of each row is 1) with error Tolerance
+(Assumes Matrix represents a transform)
+
+Parameters:
+tolerance (float)
+
+remove_translation() → Matrix
+Remove any translation from this matrix
+(Assumes Matrix represents a transform)
+
+Return type:
+Matrix
+
+rotator() → Rotator
+Converts a Matrix to a Rotator
+(Assumes Matrix represents a transform)
+
+Return type:
+Rotator
+
+scale_translation(scale3d) → Matrix
+Scale the translation part of the matrix by the supplied vector.
+(Assumes Matrix represents a transform)
+
+Parameters:
+scale3d (Vector)
+
+Return type:
+Matrix
+
+set_axis(axis, axis_vector) → None
+set an axis of this matrix
+(Assumes Matrix represents a transform)
+
+Parameters:
+
+axis (AxisType) – vector of the axis
+axis_vector (Vector)
+
+set_column(column, value) → None
+Set Column (Matrix)
+
+Parameters:
+
+column (MatrixColumns)
+value (Vector)
+
+set_origin(new_origin) → None
+Set the origin of the coordinate system to the given vector
+(Assumes Matrix represents a transform)
+
+Parameters:
+new_origin (Vector)
+
+to_quat() → Quat
+Transform a rotation matrix into a quaternion.
+(Assumes Matrix represents a transform)
+warning: rotation part will need to be unit length for this to be right!
+
+Return type:
+Quat
+
+transform() → Transform
+Converts a Matrix to a Transform
+(Assumes Matrix represents a transform)
+
+Return type:
+Transform
+
+transform_position(v) → Vector4
+Transform a location - will take into account translation part of the FMatrix.
+(Assumes Matrix represents a transform)
+
+Parameters:
+v (Vector)
+
+Return type:
+Vector4
+
+transform_vector(v) → Vector4
+Transform a direction vector - will not take into account translation part of the FMatrix.
+If you want to transform a surface normal (or plane) and correctly account for non-uniform scaling you should use TransformByUsingAdjointT.
+(Assumes Matrix represents a transform)
+
+Parameters:
+v (Vector)
+
+Return type:
+Vector4
+
+transform_vector4(v) → Vector4
+Transform a vector by the matrix.
+(Assumes Matrix represents a transform)
+
+Parameters:
+v (Vector4)
+
+Return type:
+Vector4
+
+property w_plane: Plane
+[Read-Write]
+
+Type:
+(Plane)
+
+property x_plane: Plane
+[Read-Write]
+
+Type:
+(Plane)
+
+property y_plane: Plane
+[Read-Write]
+
+Type:
+(Plane)
+
+property z_plane: Plane
+[Read-Write]
+
+Type:
+(Plane)

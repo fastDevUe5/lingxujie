@@ -1,0 +1,198 @@
+# unreal.MeshNaniteSettings  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/MeshNaniteSettings.html
+
+unreal.MeshNaniteSettings
+
+class unreal.MeshNaniteSettings(enabled: bool = False, explicit_tangents: bool = False, lerp_u_vs: bool = False, separable: bool = False, voxel_ndf: bool = False, voxel_opacity: bool = False, shape_preservation: NaniteShapePreservation = Ellipsis, position_precision: int = 0, normal_precision: int = 0, tangent_precision: int = 0, bone_weight_precision: int = 0, keep_percent_triangles: float = 0.0, trim_relative_error: float = 0.0, generate_fallback: NaniteGenerateFallback = Ellipsis, fallback_target: NaniteFallbackTarget = Ellipsis, fallback_percent_triangles: float = 0.0, fallback_relative_error: float = 0.0, max_edge_length_factor: float = 0.0, num_rays: int = 0, voxel_level: int = 0, ray_back_up: float = 0.0, displacement_uv_channel: int = 0)
+Bases: StructBase
+Settings applied when building Nanite data.
+C++ Source:
+
+Module: Engine
+File: EngineTypes.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+bone_weight_precision (int32): [Read-Write] Blend Weight Precision in bits. -1 is auto. 0 is rigid.
+displacement_maps (Array[MeshDisplacementMap]): [Read-Write]
+displacement_uv_channel (int32): [Read-Write] UV channel used to sample displacement maps
+enabled (bool): [Read-Write] If true, Nanite data will be generated.
+explicit_tangents (bool): [Read-Write] Whether to store explicit tangents instead of using the implicitly derived ones.
+fallback_percent_triangles (float): [Read-Write] Percentage of triangles to keep from source mesh for fallback. 1.0 = no reduction, 0.0 = no triangles.
+fallback_relative_error (float): [Read-Write] Reduce until at least this amount of error is reached relative to size of the mesh
+fallback_target (NaniteFallbackTarget): [Read-Write] Which heuristic to use when generating the fallback mesh.
+generate_fallback (NaniteGenerateFallback): [Read-Write] Whether fallback mesh should be generated.
+keep_percent_triangles (float): [Read-Write] Percentage of triangles to keep from source mesh. 1.0 = no reduction, 0.0 = no triangles.
+lerp_u_vs (bool): [Read-Write] Whether to interpolate UVs when simplifying.
+Should be enabled whenever possible.
+For real UV coordinates this allows calculating the lowest error optimal UVs for new vertices when simplifying,
+assuming the UVs are used as normal texture coordinates and will interpolate across the face of the triangles.
+Disable if data stored in UVs isn’t valid to interpolate, for example if indexes are stored in UVs.
+Lerping an index doesn’t make sense and would break the shader trying to use it.
+Note: If disabled, error from UVs is no longer accounted for when Nanite selects the LOD to render because
+error due to arbitrary vertex attributes that aren’t interpolatable can’t be generally reasoned about.
+
+max_edge_length_factor (float): [Read-Write] Controls the maximum distance allowed between each vertex of the mesh on screen. Can be used to prevent oversimplification
+of meshes that are intended to be deformed (e.g. animation using World Position Offset, Spline Mesh Component, etc.).
+Should be left at default of 0 unless explicitly needed to fix oversimplification issues.
+nanite_assembly_data (NaniteAssemblyData): [Read-Only] Nanite Assembly data set up by the import
+normal_precision (int32): [Read-Write] Normal Precision in bits. -1 is auto.
+num_rays (int32): [Read-Write] Number of rays traced per voxel to sample the surface
+position_precision (int32): [Read-Write] Position Precision. Step size is 2^(-PositionPrecision) cm. MIN_int32 is auto.
+ray_back_up (float): [Read-Write]
+separable (bool): [Read-Write]
+shape_preservation (NaniteShapePreservation): [Read-Write]
+tangent_precision (int32): [Read-Write] Tangent Precision in bits. -1 is auto.
+target_minimum_residency_in_kb (uint32): [Read-Write] How much of the resource should always be resident (In KB). Approximate due to paging. 0: Minimum size (single page). MAX_uint32: Entire mesh.
+trim_relative_error (float): [Read-Write] Reduce until at least this amount of error is reached relative to size of the mesh
+voxel_level (int32): [Read-Write]
+voxel_ndf (bool): [Read-Write]
+voxel_opacity (bool): [Read-Write]
+
+property b_preserve_area: NaniteShapePreservation
+‘b_preserve_area’ was renamed to ‘shape_preservation’.
+
+Type:
+deprecated
+
+property bone_weight_precision: int
+[Read-Write] Blend Weight Precision in bits. -1 is auto. 0 is rigid.
+
+Type:
+(int32)
+
+property displacement_uv_channel: int
+[Read-Write] UV channel used to sample displacement maps
+
+Type:
+(int32)
+
+property enabled: bool
+[Read-Write] If true, Nanite data will be generated.
+
+Type:
+(bool)
+
+property explicit_tangents: bool
+[Read-Write] Whether to store explicit tangents instead of using the implicitly derived ones.
+
+Type:
+(bool)
+
+property fallback_percent_triangles: float
+[Read-Write] Percentage of triangles to keep from source mesh for fallback. 1.0 = no reduction, 0.0 = no triangles.
+
+Type:
+(float)
+
+property fallback_relative_error: float
+[Read-Write] Reduce until at least this amount of error is reached relative to size of the mesh
+
+Type:
+(float)
+
+property fallback_target: NaniteFallbackTarget
+[Read-Write] Which heuristic to use when generating the fallback mesh.
+
+Type:
+(NaniteFallbackTarget)
+
+property generate_fallback: NaniteGenerateFallback
+[Read-Write] Whether fallback mesh should be generated.
+
+Type:
+(NaniteGenerateFallback)
+
+property keep_percent_triangles: float
+[Read-Write] Percentage of triangles to keep from source mesh. 1.0 = no reduction, 0.0 = no triangles.
+
+Type:
+(float)
+
+property lerp_u_vs: bool
+[Read-Write] Whether to interpolate UVs when simplifying.
+Should be enabled whenever possible.
+For real UV coordinates this allows calculating the lowest error optimal UVs for new vertices when simplifying,
+assuming the UVs are used as normal texture coordinates and will interpolate across the face of the triangles.
+Disable if data stored in UVs isn’t valid to interpolate, for example if indexes are stored in UVs.
+Lerping an index doesn’t make sense and would break the shader trying to use it.
+Note: If disabled, error from UVs is no longer accounted for when Nanite selects the LOD to render because
+error due to arbitrary vertex attributes that aren’t interpolatable can’t be generally reasoned about.
+
+Type:
+(bool)
+
+property max_edge_length_factor: float
+[Read-Write] Controls the maximum distance allowed between each vertex of the mesh on screen. Can be used to prevent oversimplification
+of meshes that are intended to be deformed (e.g. animation using World Position Offset, Spline Mesh Component, etc.).
+Should be left at default of 0 unless explicitly needed to fix oversimplification issues.
+
+Type:
+(float)
+
+property normal_precision: int
+[Read-Write] Normal Precision in bits. -1 is auto.
+
+Type:
+(int32)
+
+property num_rays: int
+[Read-Write] Number of rays traced per voxel to sample the surface
+
+Type:
+(int32)
+
+property position_precision: int
+[Read-Write] Position Precision. Step size is 2^(-PositionPrecision) cm. MIN_int32 is auto.
+
+Type:
+(int32)
+
+property ray_back_up: float
+[Read-Write]
+
+Type:
+(float)
+
+property separable: bool
+[Read-Write]
+
+Type:
+(bool)
+
+property shape_preservation: NaniteShapePreservation
+[Read-Write]
+
+Type:
+(NaniteShapePreservation)
+
+property tangent_precision: int
+[Read-Write] Tangent Precision in bits. -1 is auto.
+
+Type:
+(int32)
+
+property trim_relative_error: float
+[Read-Write] Reduce until at least this amount of error is reached relative to size of the mesh
+
+Type:
+(float)
+
+property voxel_level: int
+[Read-Write]
+
+Type:
+(int32)
+
+property voxel_ndf: bool
+[Read-Write]
+
+Type:
+(bool)
+
+property voxel_opacity: bool
+[Read-Write]
+
+Type:
+(bool)

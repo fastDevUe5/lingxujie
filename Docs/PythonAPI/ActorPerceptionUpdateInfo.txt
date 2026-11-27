@@ -1,0 +1,37 @@
+# unreal.ActorPerceptionUpdateInfo  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/ActorPerceptionUpdateInfo.html
+
+unreal.ActorPerceptionUpdateInfo
+
+class unreal.ActorPerceptionUpdateInfo(target_id: int = 0, target: Actor = Ellipsis, stimulus: AIStimulus = Ellipsis)
+Bases: StructBase
+Sensed Actor’s Update Data
+C++ Source:
+
+Module: AIModule
+File: AIPerceptionComponent.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+stimulus (AIStimulus): [Read-Write] Updated stimulus
+target (Actor): [Read-Write] Actor associated to the stimulus (can be null)
+target_id (int32): [Read-Write] Id of to the stimulus source
+
+property stimulus: AIStimulus
+[Read-Write] Updated stimulus
+
+Type:
+(AIStimulus)
+
+property target: Actor
+[Read-Write] Actor associated to the stimulus (can be null)
+
+Type:
+(Actor)
+
+property target_id: int
+[Read-Write] Id of to the stimulus source
+
+Type:
+(int32)

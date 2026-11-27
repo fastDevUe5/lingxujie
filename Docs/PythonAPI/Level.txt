@@ -1,0 +1,59 @@
+# unreal.Level  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/Level.html
+
+unreal.Level
+
+class unreal.Level(outer: Object | None = None, name: Name | str = 'None')
+Bases: Object
+A Level is a collection of Actors (lights, volumes, mesh instances etc.).
+Multiple Levels can be loaded and unloaded into the World to create a streaming experience.
+see: https://docs.unrealengine.com/latest/INT/Engine/Levels
+see: UActor
+C++ Source:
+
+Module: Engine
+File: Level.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+lightmap_total_size (float): [Read-Only] Total number of KB used for lightmap textures in the level.
+shadowmap_total_size (float): [Read-Only] Total number of KB used for shadowmap textures in the level.
+use_actor_folders (bool): [Read-Write] Use actor folder objects, actor folders of this level will be persistent in their own object.
+use_external_actors (bool): [Read-Write] Use external actors, new actor spawned in this level will be external and existing external actors will be loaded on load.
+
+add_asset_user_data_of_class(user_data_class) → bool
+Creates and adds an instance of the provided AssetUserData class to the target asset.
+
+Parameters:
+user_data_class (type(Class)) – UAssetUserData sub class to create
+
+Returns:
+Whether or not an instance of InUserDataClass was succesfully added
+
+Return type:
+bool
+
+get_asset_user_data_of_class(user_data_class) → AssetUserData
+Returns an instance of the provided AssetUserData class if it’s contained in the target asset.
+
+Parameters:
+user_data_class (type(Class)) – UAssetUserData sub class to get
+
+Returns:
+The instance of the UAssetUserData class contained, or null if it doesn’t exist
+
+Return type:
+AssetUserData
+
+has_asset_user_data_of_class(user_data_class) → bool
+Checks whether or not an instance of the provided AssetUserData class is contained.
+
+Parameters:
+user_data_class (type(Class)) – UAssetUserData sub class to check for
+
+Returns:
+Whether or not an instance of InUserDataClass was found
+
+Return type:
+bool

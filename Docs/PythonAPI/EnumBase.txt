@@ -1,0 +1,15 @@
+# unreal.EnumBase  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/EnumBase.html
+
+unreal.EnumBase
+
+class unreal.EnumBase
+Bases: _WrapperBase
+Type for all Unreal exposed enum instances
+
+classmethod cast(cls: Type[_T], object: object) → _T -- cast the given object to this Unreal enum type
+
+get_display_name(self) → Text -- get the UMETA display name of this type in the current culture
+
+classmethod static_enum(cls) → Enum -- get the Unreal enum of this type

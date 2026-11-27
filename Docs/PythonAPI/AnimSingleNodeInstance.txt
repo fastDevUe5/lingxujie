@@ -1,0 +1,127 @@
+# unreal.AnimSingleNodeInstance  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/AnimSingleNodeInstance.html
+
+unreal.AnimSingleNodeInstance
+
+class unreal.AnimSingleNodeInstance(outer: Object | None = None, name: Name | str = 'None')
+Bases: AnimInstance
+Anim Single Node Instance
+C++ Source:
+
+Module: Engine
+File: AnimSingleNodeInstance.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+on_all_montage_instances_ended (OnAllMontageInstancesEndedMCDelegate): [Read-Write] Called when all Montage instances have ended.
+on_montage_blended_in (OnMontageBlendedInEndedMCDelegate): [Read-Write] Called when a montage finishes blending in
+on_montage_blending_out (OnMontageBlendingOutStartedMCDelegate): [Read-Write] Called when a montage starts blending out, whether interrupted or finished
+on_montage_ended (OnMontageEndedMCDelegate): [Read-Write] Called when a montage has ended, whether interrupted or finished
+on_montage_section_changed (OnMontageSectionChangedMCDelegate): [Read-Write] Called when a montage section changes
+on_montage_started (OnMontageStartedMCDelegate): [Read-Write] Called when a montage has started
+propagate_notifies_to_linked_instances (bool): [Read-Write] Whether to propagate notifies to any linked anim instances
+receive_notifies_from_linked_instances (bool): [Read-Write] Whether to process notifies from any linked anim instances
+root_motion_mode (RootMotionMode): [Read-Write] Sets where this blueprint pulls Root Motion from
+use_main_instance_montage_evaluation_data (bool): [Read-Write] If true, linked instances will use the main instance’s montage data. (i.e. playing a montage on a main instance will play it on the linked layer too.)
+
+get_animation_asset() → AnimationAsset
+Get the currently used asset
+
+Return type:
+AnimationAsset
+
+get_length() → float
+Get Length
+
+Return type:
+float
+
+get_mirror_data_table() → MirrorDataTable
+Get Mirror Data Table
+
+Return type:
+MirrorDataTable
+
+play_anim(is_looping=False, play_rate=1.000000, start_position=0.000000) → None
+For AnimSequence specific *
+
+Parameters:
+
+is_looping (bool)
+play_rate (float)
+start_position (float)
+
+set_animation_asset(new_asset, is_looping=True, play_rate=1.000000) → None
+Set New Asset - calls InitializeAnimation, for now we need MeshComponent *
+
+Parameters:
+
+new_asset (AnimationAsset)
+is_looping (bool)
+play_rate (float)
+
+set_blend_space_position(position) → None
+Set Blend Space Position
+
+Parameters:
+position (Vector)
+
+set_looping(is_looping) → None
+Set Looping
+
+Parameters:
+is_looping (bool)
+
+set_mirror_data_table(mirror_data_table) → None
+Set Mirror Data Table
+
+Parameters:
+mirror_data_table (MirrorDataTable)
+
+set_play_rate(play_rate) → None
+Set Play Rate
+
+Parameters:
+play_rate (float)
+
+set_playing(is_playing) → None
+Set Playing
+
+Parameters:
+is_playing (bool)
+
+set_position(position, fire_notifies=True) → None
+Set Position
+
+Parameters:
+
+position (float)
+fire_notifies (bool)
+
+set_position_with_previous_time(position, previous_time, fire_notifies=True) → None
+Set Position with Previous Time
+
+Parameters:
+
+position (float)
+previous_time (float)
+fire_notifies (bool)
+
+set_preview_curve_override(pose_name, value, remove_if_zero) → None
+Set pose value
+
+Parameters:
+
+pose_name (Name)
+value (float)
+remove_if_zero (bool)
+
+set_reverse(reverse) → None
+Set Reverse
+
+Parameters:
+reverse (bool)
+
+stop_anim() → None
+Stop Anim

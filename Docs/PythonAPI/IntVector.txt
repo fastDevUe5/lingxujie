@@ -1,0 +1,38 @@
+# unreal.IntVector  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/IntVector.html
+
+unreal.IntVector
+
+class unreal.IntVector(x: int = 0, y: int = 0, z: int = 0)
+Bases: StructBase
+An integer vector in 3D space.
+note: The full C++ class is located here: EngineSourceRuntimeCorePublicMathIntVector.h
+C++ Source:
+
+Module: CoreUObject
+File: NoExportTypes.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+x (int32): [Read-Write]
+y (int32): [Read-Write]
+z (int32): [Read-Write]
+
+property x: int
+[Read-Write]
+
+Type:
+(int32)
+
+property y: int
+[Read-Write]
+
+Type:
+(int32)
+
+property z: int
+[Read-Write]
+
+Type:
+(int32)

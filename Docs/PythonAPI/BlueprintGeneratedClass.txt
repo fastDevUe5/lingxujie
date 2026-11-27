@@ -1,0 +1,13 @@
+# unreal.BlueprintGeneratedClass  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/BlueprintGeneratedClass.html
+
+unreal.BlueprintGeneratedClass
+
+class unreal.BlueprintGeneratedClass(outer: Object | None = None, name: Name | str = 'None')
+Bases: Class
+Blueprint Generated Class
+C++ Source:
+
+Module: Engine
+File: BlueprintGeneratedClass.h

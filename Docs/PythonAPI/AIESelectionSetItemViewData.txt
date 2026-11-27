@@ -1,0 +1,31 @@
+# unreal.AIESelectionSetItemViewData  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/AIESelectionSetItemViewData.html
+
+unreal.AIESelectionSetItemViewData
+
+class unreal.AIESelectionSetItemViewData(color: LinearColor = Ellipsis, row: int = 0)
+Bases: StructBase
+View Data for the set, contains location and color in the UI
+C++ Source:
+
+Plugin: ControlRig
+Module: ControlRigEditor
+File: SelectionSets.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+color (LinearColor): [Read-Write] The Color of the Set
+row (int32): [Read-Write] The logical row the set should be in, basically it’s order. This is an internal order for just one set
+
+property color: LinearColor
+[Read-Only] The Color of the Set
+
+Type:
+(LinearColor)
+
+property row: int
+[Read-Only] The logical row the set should be in, basically it’s order. This is an internal order for just one set
+
+Type:
+(int32)

@@ -1,0 +1,60 @@
+# unreal.AnimationAttributeIdentifier  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/AnimationAttributeIdentifier.html
+
+unreal.AnimationAttributeIdentifier
+
+class unreal.AnimationAttributeIdentifier(name: Name = 'None', bone_name: Name = 'None', bone_index: int = 0, script_struct: ScriptStruct = Ellipsis, script_struct_path: SoftObjectPath = Ellipsis)
+Bases: StructBase
+Script-friendly structure for identifying an attribute (curve).
+Wrapping the attribute name, bone name and index, and underlying data type for use within the AnimDataController API.
+C++ Source:
+
+Module: Engine
+File: AttributeIdentifier.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+bone_index (int32): [Read-Write]
+bone_name (Name): [Read-Write]
+name (Name): [Read-Write]
+script_struct (ScriptStruct): [Read-Write]
+script_struct_path (SoftObjectPath): [Read-Write]
+
+property bone_index: int
+[Read-Only]
+
+Type:
+(int32)
+
+property bone_name: Name
+[Read-Only]
+
+Type:
+(Name)
+
+is_valid() → bool
+
+Returns:
+Whether or not the Attribute Identifier is valid
+
+Return type:
+bool
+
+property name: Name
+[Read-Only]
+
+Type:
+(Name)
+
+property script_struct: ScriptStruct
+[Read-Only]
+
+Type:
+(ScriptStruct)
+
+property script_struct_path: SoftObjectPath
+[Read-Only]
+
+Type:
+(SoftObjectPath)

@@ -1,0 +1,1024 @@
+# unreal.EditorAssetLibrary  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/EditorAssetLibrary
+
+unreal.EditorAssetLibrary¶
+
+
+class unreal.EditorAssetLibrary(outer: Object | None = None, name: Name | str = 'None')¶
+
+Bases: BlueprintFunctionLibrary
+
+Utility class to do most of the common functionalities with the ContentBrowser.
+
+The AssetRegistryHelpers class has more complex utilities. Use FindAssetData to get a FAssetData from an Asset Path.
+
+The Asset Path can be represented by
+
+
+
+ie. (Reference/Text Path) StaticMesh’/Game/MyFolder/MyAsset.MyAsset’
+
+ie. (Full Name) StaticMesh /Game/MyFolder/MyAsset.MyAsset
+
+ie. (Path Name) /Game/MyFolder/MyAsset.MyAsset
+
+ie. (Package Name) /Game/MyFolder/MyAsset
+
+
+The Directory Path can be represented byie. /Game/MyNewFolder/
+
+ie. /Game/MyNewFolder
+
+
+All operations can be slow. The editor should not be in play in editor mode. It will not work on assets of the type level.
+
+C++ Source:
+
+
+
+Plugin: EditorScriptingUtilities
+
+Module: EditorScriptingUtilities
+
+File: EditorAssetLibrary.h
+
+
+classmethod checkout_asset(asset_to_checkout) → bool¶
+
+Checkout the asset from the Content Browser.
+
+
+
+Parameters:
+
+asset_to_checkout (str) – Asset Path of the asset that we want to checkout.
+
+
+
+Returns:
+
+True if the operation succeeds.
+
+
+
+Return type:
+
+bool
+
+
+classmethod checkout_directory(directory_path, recursive=True) → bool¶
+
+Checkout assets from the Content Browser. It will load the assets if needed.
+
+All objects that are in the directory will be checkout. Assets will be loaded before being checkout.
+
+
+
+Parameters:
+
+
+
+directory_path (str) – Directory of the assets that to checkout.
+
+recursive (bool) – If the AssetPath is a folder, the search will be recursive and will checkout the asset in the sub folders.
+
+
+Returns:
+
+True if the operation succeeds.
+
+
+
+Return type:
+
+bool
+
+
+classmethod checkout_loaded_asset(asset_to_checkout) → bool¶
+
+Checkout the asset from the Content Browser.
+
+
+
+Parameters:
+
+asset_to_checkout (Object) – Asset to checkout.
+
+
+
+Returns:
+
+True if the operation succeeds.
+
+
+
+Return type:
+
+bool
+
+
+classmethod checkout_loaded_assets(assets_to_checkout) → bool¶
+
+Checkout the assets from the Content Browser.
+
+
+
+Parameters:
+
+assets_to_checkout (Array[Object])
+
+
+
+Returns:
+
+True if the operation succeeds.
+
+
+
+Return type:
+
+bool
+
+
+classmethod consolidate_assets(asset_to_consolidate_to, assets_to_consolidate) → bool¶
+
+Consolidates an asset by replacing all references/uses of the provided AssetsToConsolidate with references to AssetToConsolidateTo.
+
+This is useful when you want all references of assets to be replaced by a single asset.
+
+The function first attempts to directly replace all relevant references located within objects that are already loaded and in memory.
+
+Next, it deletes the AssetsToConsolidate, leaving behind object redirectors to AssetToConsolidateTo.
+
+note: The AssetsToConsolidate are DELETED by this function.
+
+note: Modified objects will be saved if the operation succeeds.
+
+
+
+Parameters:
+
+
+
+asset_to_consolidate_to (Object) – Asset to which all references of the AssetsToConsolidate will instead refer to after this operation completes.
+
+assets_to_consolidate (Array[Object]) – All references to these assets will be modified to reference AssetToConsolidateTo instead.
+
+
+Returns:
+
+True if the operation succeeds.
+
+
+
+Return type:
+
+bool
+
+
+classmethod delete_asset(asset_path_to_delete) → bool¶
+
+Delete the package the assets live in. All objects that live in the package will be deleted.
+
+This is a Force Delete. It doesn’t check if the asset has references in other Levels or by Actors.
+
+It will close all the asset editors and may clear the Transaction buffer (Undo History).
+
+Will try to mark the file as deleted. The Asset will be loaded before being deleted.
+
+
+
+Parameters:
+
+asset_path_to_delete (str) – Asset Path of the asset that we want to delete.
+
+
+
+Returns:
+
+True if the operation succeeds.
+
+
+
+Return type:
+
+bool
+
+
+classmethod delete_directory(directory_path) → bool¶
+
+Delete the packages inside a directory. If the directory is then empty, delete the directory.
+
+This is a Force Delete. It doesn’t check if the assets have references in other Levels or by Actors.
+
+It will close all the asset editors and may clear the Transaction buffer (Undo History).
+
+Will try to mark the file as deleted. Assets will be loaded before being deleted.
+
+The search is always recursive. It will try to delete the sub folders.
+
+
+
+Parameters:
+
+directory_path (str) – Directory that will be mark for delete and deleted.
+
+
+
+Returns:
+
+True if the operation succeeds.
+
+
+
+Return type:
+
+bool
+
+
+classmethod delete_loaded_asset(asset_to_delete) → bool¶
+
+Delete an asset from the Content Browser that is already loaded.
+
+This is a Force Delete. It doesn’t check if the asset has references in other Levels or by Actors.
+
+It will close all the asset editors and may clear the Transaction buffer (Undo History).
+
+Will try to mark the file as deleted.
+
+
+
+Parameters:
+
+asset_to_delete (Object) – Asset that we want to delete.
+
+
+
+Returns:
+
+True if the operation succeeds.
+
+
+
+Return type:
+
+bool
+
+
+classmethod delete_loaded_assets(assets_to_delete) → bool¶
+
+Delete assets from the Content Browser that are already loaded.
+
+This is a Force Delete. It doesn’t check if the assets have references in other Levels or by Actors.
+
+It will close all the asset editors and may clear the Transaction buffer (Undo History).
+
+Will try to mark the files as deleted.
+
+
+
+Parameters:
+
+assets_to_delete (Array[Object]) – Assets that we want to delete.
+
+
+
+Returns:
+
+True if the operation succeeds.
+
+
+
+Return type:
+
+bool
+
+
+classmethod do_assets_exist(asset_paths) → bool¶
+
+Check if the assets exist in the Content Browser.
+
+
+
+Parameters:
+
+asset_paths (Array[str]) – Asset Path of the assets (that are not a level).
+
+
+
+Returns:
+
+True if they exist and it is valid.
+
+
+
+Return type:
+
+bool
+
+
+classmethod does_asset_exist(asset_path) → bool¶
+
+Check if the asset exists in the Content Browser.
+
+
+
+Parameters:
+
+asset_path (str) – Asset Path of the asset (that is not a level).
+
+
+
+Returns:
+
+True if it does exist and it is valid.
+
+
+
+Return type:
+
+bool
+
+
+classmethod does_directory_exist(directory_path) → bool¶
+
+Check is the directory exist in the Content Browser.
+
+
+
+Parameters:
+
+directory_path (str) – Long Path Name of the directory.
+
+
+
+Returns:
+
+True if it does exist and it is valid.
+
+
+
+Return type:
+
+bool
+
+
+classmethod does_directory_have_assets(directory_path, recursive=True) → bool¶
+
+Check if there any asset that exist in the directory.
+
+
+
+Parameters:
+
+
+
+directory_path (str) – Long Path Name of the directory.
+
+recursive (bool)
+
+
+Returns:
+
+True if there is any assets.
+
+
+
+Return type:
+
+bool
+
+
+classmethod duplicate_asset(source_asset_path, destination_asset_path) → Object¶
+
+Duplicate an asset from the Content Browser. Will try to checkout the file. The Asset will be loaded before being duplicated.
+
+
+
+Parameters:
+
+
+
+source_asset_path (str) – Asset Path of the asset that we want to copy from.
+
+destination_asset_path (str) – Asset Path of the duplicated asset.
+
+
+Returns:
+
+The duplicated object if the operation succeeds.
+
+
+
+Return type:
+
+Object
+
+
+classmethod duplicate_directory(source_directory_path, destination_directory_path) → bool¶
+
+Duplicate asset from the Content Browser that are in the folder.
+
+Will try to checkout the files. The Assets will be loaded before being duplicated.
+
+
+
+Parameters:
+
+
+
+source_directory_path (str) – Directory of the assets that we want to duplicate from.
+
+destination_directory_path (str) – Directory of the duplicated asset.
+
+
+Returns:
+
+True if the operation succeeds.
+
+
+
+Return type:
+
+bool
+
+
+classmethod duplicate_loaded_asset(source_asset, destination_asset_path) → Object¶
+
+Duplicate an asset from the Content Browser that is already loaded. Will try to checkout the file.
+
+
+
+Parameters:
+
+
+
+source_asset (Object) – Asset that we want to copy from.
+
+destination_asset_path (str) – Asset Path of the duplicated asset.
+
+
+Returns:
+
+The duplicated object if the operation succeeds
+
+
+
+Return type:
+
+Object
+
+
+classmethod find_asset_data(asset_path) → AssetData¶
+
+Return the AssetData for the Asset that can then be used with the more complex lib AssetRegistryHelpers.
+
+
+
+Parameters:
+
+asset_path (str) – Asset Path we are trying to find.
+
+
+
+Returns:
+
+The AssetData found.
+
+
+
+Return type:
+
+AssetData
+
+
+classmethod find_package_referencers_for_asset(asset_path, load_assets_to_confirm=False) → Array[str]¶
+
+Find Package Referencers for an asset. Only Soft and Hard dependencies would be looked for.
+
+Soft are dependencies which don’t need to be loaded for the object to be used.
+
+Had are dependencies which are required for correct usage of the source asset and must be loaded at the same time.
+
+Other references may exist. The asset may be currently used in memory by another asset, by the editor or by code.
+
+Package dependencies are cached with the asset. False positive can happen until all the assets are loaded and re-saved.
+
+
+
+Parameters:
+
+
+
+asset_path (str) – Asset Path of the asset that we are looking for (that is not a level).
+
+load_assets_to_confirm (bool) – The asset and the referencers will be loaded (if not a level) to confirm the dependencies.
+
+
+Returns:
+
+The package path of the referencers.
+
+
+
+Return type:
+
+Array[str]
+
+
+classmethod get_metadata_tag(object, tag) → str¶
+
+Get the value associated with the given tag of a loaded asset’s metadata.
+
+
+
+Parameters:
+
+
+
+object (Object) – The object from which to retrieve the metadata.
+
+tag (Name) – The tag to find in the metadata.
+
+
+Returns:
+
+The string value associated with the tag.
+
+
+
+Return type:
+
+str
+
+
+classmethod get_metadata_tag_values(object) → Map[Name, str]¶
+
+Get all tags/values of a loaded asset’s metadata.
+
+
+
+Parameters:
+
+object (Object) – The object from which to retrieve the metadata.
+
+
+
+Returns:
+
+The list of all Tags and Values.
+
+
+
+Return type:
+
+Map[Name, str]
+
+
+classmethod get_package_for_object(object) → Package¶
+
+Returns the object’s containing package
+
+
+
+Parameters:
+
+object (Object)
+
+
+
+Return type:
+
+Package
+
+
+classmethod get_path_name_for_loaded_asset(loaded_asset) → str¶
+
+Return a valid AssetPath for a loaded asset. The asset need to be a valid asset in the Content Browser.
+
+Similar to GetPathName(). The format will be: /Game/MyFolder/MyAsset.MyAsset
+
+
+
+Parameters:
+
+loaded_asset (Object) – Loaded Asset that exist in the Content Browser.
+
+
+
+Returns:
+
+If valid, the asset Path of the loaded asset.
+
+
+
+Return type:
+
+str
+
+
+classmethod get_project_root_asset_directory() → str¶
+
+Historically, all project assets were stored in the logical “/Game/” directory
+
+when using plugins or UEFN projects, we want to ease asset reuse, and so the ambiguous
+
+“/Game/” directory is untenable. This function will return the useful project name.
+
+
+
+Returns:
+
+The current project name in UEFN, otherwise /Game/ for .uprojects
+
+
+
+Return type:
+
+str
+
+
+classmethod get_tag_values(asset_path) → Map[Name, str]¶
+
+Gets all TagValues (from Asset Registry) associated with an (unloaded) asset as strings value.
+
+
+
+Parameters:
+
+asset_path (str) – Asset Path we are trying to find.
+
+
+
+Returns:
+
+The list of all TagName & TagValue.
+
+
+
+Return type:
+
+Map[Name, str]
+
+
+classmethod list_asset_by_tag_value(tag_name, tag_value) → Array[str]¶
+
+Return the list of all the assets that have the pair of Tag/Value.
+
+
+
+Parameters:
+
+
+
+tag_name (Name) – The tag associated with the assets requested.
+
+tag_value (str) – The value associated with the assets requested.
+
+
+Returns:
+
+The list of asset found.
+
+
+
+Return type:
+
+Array[str]
+
+
+classmethod list_assets(directory_path, recursive=True, include_folder=False) → Array[str]¶
+
+Return the list of all the assets found in the DirectoryPath.
+
+
+
+Parameters:
+
+
+
+directory_path (str) – Directory path of the asset we want the list from.
+
+recursive (bool) – The search will be recursive and will look in sub folders.
+
+include_folder (bool) – The result will include folders name.
+
+
+Returns:
+
+The list of asset found.
+
+
+
+Return type:
+
+Array[str]
+
+
+classmethod load_asset(asset_path) → Object¶
+
+Load an asset from the Content Browser. It will verify if the object is already loaded and only load it if it’s necessary.
+
+
+
+Parameters:
+
+asset_path (str) – Asset Path of the asset (that is not a level).
+
+
+
+Returns:
+
+Found or loaded asset.
+
+
+
+Return type:
+
+Object
+
+
+classmethod load_blueprint_class(asset_path)¶
+
+Load a Blueprint asset from the Content Browser and return its generated class. It will verify if the object is already loaded and only load it if it’s necessary.
+
+
+
+Parameters:
+
+asset_path (str) – Asset Path of the Blueprint asset.
+
+
+
+Returns:
+
+Found or loaded class.
+
+
+
+Return type:
+
+type(Class)
+
+
+classmethod make_directory(directory_path) → bool¶
+
+Create the directory on disk and in the Content Browser.
+
+
+
+Parameters:
+
+directory_path (str) – Long Path Name of the directory.
+
+
+
+Returns:
+
+True if the operation succeeds.
+
+
+
+Return type:
+
+bool
+
+
+classmethod remove_metadata_tag(object, tag) → None¶
+
+Remove the given tag from a loaded asset’s metadata.
+
+
+
+Parameters:
+
+
+
+object (Object) – The object from which to retrieve the metadata.
+
+tag (Name) – The tag to remove from the metadata.
+
+
+classmethod rename_asset(source_asset_path, destination_asset_path) → bool¶
+
+Rename an asset from the Content Browser. Equivalent to a Move operation.
+
+Will try to checkout the file. The Asset will be loaded before being renamed.
+
+
+
+Parameters:
+
+
+
+source_asset_path (str) – Asset Path of the asset that we want to copy from.
+
+destination_asset_path (str) – Asset Path of the renamed asset.
+
+
+Returns:
+
+True if the operation succeeds.
+
+
+
+Return type:
+
+bool
+
+
+classmethod rename_directory(source_directory_path, destination_directory_path) → bool¶
+
+Rename assets from the Content Browser that are in the folder.
+
+Equivalent to a Move operation. Will try to checkout the files. The Assets will be loaded before being renamed.
+
+
+
+Parameters:
+
+
+
+source_directory_path (str) – Directory of the assets that we want to rename from.
+
+destination_directory_path (str) – Directory of the renamed asset.
+
+
+Returns:
+
+True if the operation succeeds.
+
+
+
+Return type:
+
+bool
+
+
+classmethod rename_loaded_asset(source_asset, destination_asset_path) → bool¶
+
+Rename an asset from the Content Browser that is already loaded.
+
+Equivalent to a Move operation. Will try to checkout the files.
+
+
+
+Parameters:
+
+
+
+source_asset (Object) – Asset that we want to copy from.
+
+destination_asset_path (str) – Asset Path of the duplicated asset.
+
+
+Returns:
+
+True if the operation succeeds.
+
+
+
+Return type:
+
+bool
+
+
+classmethod save_asset(asset_to_save, only_if_is_dirty=True) → bool¶
+
+Save the packages the assets live in. All objects that live in the package will be saved.
+
+Will try to checkout the file first. The Asset will be loaded before being saved.
+
+
+
+Parameters:
+
+
+
+asset_to_save (str)
+
+only_if_is_dirty (bool) – Only checkout/save the asset if it’s dirty.
+
+
+Returns:
+
+True if the operation succeeds.
+
+
+
+Return type:
+
+bool
+
+
+classmethod save_directory(directory_path, only_if_is_dirty=True, recursive=True) → bool¶
+
+Save the packages the assets live in inside the directory. All objects that are in the directory will be saved.
+
+Will try to checkout the file first. Assets will be loaded before being saved.
+
+
+
+Parameters:
+
+
+
+directory_path (str) – Directory that will be checked out and saved.
+
+only_if_is_dirty (bool) – Only checkout asset that are dirty.
+
+recursive (bool) – The search will be recursive and it will save the asset in the sub folders.
+
+
+Returns:
+
+True if the operation succeeds.
+
+
+
+Return type:
+
+bool
+
+
+classmethod save_loaded_asset(asset_to_save, only_if_is_dirty=True) → bool¶
+
+Save the packages the assets live in. All objects that live in the package will be saved. Will try to checkout the file.
+
+
+
+Parameters:
+
+
+
+asset_to_save (Object) – Asset that we want to save.
+
+only_if_is_dirty (bool) – Only checkout asset that are dirty.
+
+
+Returns:
+
+True if the operation succeeds.
+
+
+
+Return type:
+
+bool
+
+
+classmethod save_loaded_assets(assets_to_save, only_if_is_dirty=True) → bool¶
+
+Save the packages the assets live in. All objects that live in the package will be saved. Will try to checkout the files.
+
+
+
+Parameters:
+
+
+
+assets_to_save (Array[Object])
+
+only_if_is_dirty (bool) – Only checkout asset that are dirty.
+
+
+Returns:
+
+True if the operation succeeds.
+
+
+
+Return type:
+
+bool
+
+
+classmethod set_metadata_tag(object, tag, value) → None¶
+
+Set the value associated with a given tag of a loaded asset’s metadata.
+
+
+
+Parameters:
+
+
+
+object (Object) – The object from which to retrieve the metadata.
+
+tag (Name) – The tag to set in the metadata.
+
+value (str) – The string value to associate with the tag.
+
+
+classmethod sync_browser_to_objects(asset_paths) → None¶
+
+Browses to the associated asset and selects it in the most recently used Content Browser (summoning one if necessary)
+
+This is an asynchronous operation that can take a couple of frames to resolve the request
+
+
+
+Parameters:
+
+asset_paths (Array[str]) – The list of asset paths to sync to in the Content Browser

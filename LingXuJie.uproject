@@ -1,0 +1,50 @@
+﻿{
+	"FileVersion": 3,
+	"EngineAssociation": "E5B7C1D2-4A3F-4C88-9D67-1B2A3C4D5E6F",
+	"Category": "Game",
+	"Description": "LingXuJie - a cultivation (xiuxian) 3D MMO prototype built with C++ and editor Python.",
+	"Modules": [
+		{
+			"Name": "LingXuJie",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "PythonScriptPlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "EditorScriptingUtilities",
+			"Enabled": true
+		},
+		{
+			"Name": "ModelContextProtocol",
+			"Enabled": true
+		},
+		{
+			"Name": "ToolsetRegistry",
+			"Enabled": true
+		},
+		{
+			"Name": "EditorToolset",
+			"Enabled": true
+		},
+		{
+			"Name": "AutomationTestToolset",
+			"Enabled": true
+		},
+		{
+			"Name": "SlateInspectorToolset",
+			"Enabled": true
+		},
+		{
+			"Name": "ProceduralVegetationEditor",
+			"Enabled": true
+		}
+	]
+}

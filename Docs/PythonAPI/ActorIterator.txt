@@ -1,0 +1,9 @@
+# unreal.ActorIterator  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/ActorIterator.html
+
+unreal.ActorIterator
+
+class unreal.ActorIterator(world: World, type: Class | type = Ellipsis)
+Bases: object
+Type for iterating Unreal actor instances

@@ -1,0 +1,41 @@
+# OS / 编辑器杂项
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.log
+
+# Unreal 构建产物：绝不入库（AGENTS.md 硬约束 6）
+Binaries/
+Intermediate/
+Saved/
+DerivedDataCache/
+.vs/
+*.sln
+*.suo
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
+
+# DSH 本地 bundle 的依赖（源文件仍然提交）
+dsh-bundles/**/node_modules/
+dsh-bundles/**/.pnpm-store/
+
+# 本地 token / 临时文件
+*.tmp
+*.bak
+
+# git-lfs 安装时自动写入的钩子（重新执行 git lfs install --local 会重建）
+.githooks/post-checkout
+.githooks/post-commit
+.githooks/post-merge
+.githooks/pre-push
+
+
+# Polyfork style-trial assets (trial only, not committed; see Tools/polyfork_trial.py)
+Content/Polyfork/
+
+
+# Python ����
+__pycache__/
+*.pyc

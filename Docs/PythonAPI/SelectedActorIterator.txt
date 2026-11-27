@@ -1,0 +1,9 @@
+# unreal.SelectedActorIterator  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/SelectedActorIterator.html
+
+unreal.SelectedActorIterator
+
+class unreal.SelectedActorIterator(world: World, type: Class | type = Ellipsis)
+Bases: object
+Type for iterating selected Unreal actor instances

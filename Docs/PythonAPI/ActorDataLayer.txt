@@ -1,0 +1,25 @@
+# unreal.ActorDataLayer  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/ActorDataLayer.html
+
+unreal.ActorDataLayer
+
+class unreal.ActorDataLayer
+Bases: StructBase
+Actor Data Layer
+C++ Source:
+
+Module: Engine
+File: DeprecatedDataLayer.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+name (Name): [Read-Write] The name of this layer
+deprecated: FActorDataLayer is deprecated.
+
+property name: Name
+[Read-Write] The name of this layer
+deprecated: FActorDataLayer is deprecated.
+
+Type:
+(Name)

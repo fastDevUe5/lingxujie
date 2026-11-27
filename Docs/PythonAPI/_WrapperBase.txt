@@ -1,0 +1,9 @@
+# unreal._WrapperBase  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/_WrapperBase.html
+
+unreal._WrapperBase
+
+class unreal._WrapperBase(*args: Any, **kwargs: Any)
+Bases: object
+Base type for all Unreal exposed types

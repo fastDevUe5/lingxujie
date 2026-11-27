@@ -1,0 +1,81 @@
+# unreal.EditorDialog  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/EditorDialog.html
+
+unreal.EditorDialog
+
+class unreal.EditorDialog(outer: Object | None = None, name: Name | str = 'None')
+Bases: BlueprintFunctionLibrary
+Utility class to create simple pop-up dialogs to notify the user of task completion,
+or to ask them to make simple Yes/No/Retry/Cancel type decisions.
+C++ Source:
+
+Plugin: EditorScriptingUtilities
+Module: EditorScriptingUtilities
+File: EditorDialogLibrary.h
+
+classmethod show_message(title, message, message_type, default_value=AppReturnType.NO, message_category=AppMsgCategory.WARNING) → AppReturnType
+Open a modal message box dialog with the given message. If running in “-unattended” mode it will immediately
+return the value specified by DefaultValue. If not running in “-unattended” mode then it will block execution
+until the user makes a decision, at which point their decision will be returned.
+
+Parameters:
+
+title (Text) – The title of the created dialog window
+message (Text) – Text of the message to show
+message_type (AppMsgType) – Specifies which buttons the dialog should have
+default_value (AppReturnType) – If the application is Unattended, the function will log and return DefaultValue
+message_category (AppMsgCategory) – The category of the message (affects the icon used)
+
+Returns:
+The result of the users decision, or DefaultValue if running in unattended mode.
+
+Return type:
+AppReturnType
+
+classmethod show_object_details_view(title, out_object, options=[True, True, False, 0, 0, 0.600000]) → bool
+Open a modal message box dialog containing a details view for inspecting / modifying a UObject.
+
+Parameters:
+
+title (Text) – The title of the created dialog window
+out_object (Object) – Object instance of ClassOfObject which is supposed to be viewed
+options (EditorDialogLibraryObjectDetailsViewOptions) – Optional settings to customize the look of the details view
+
+Returns:
+The result of the users decision, true=Ok, false=Cancel, or false if running in unattended mode.
+
+Return type:
+bool
+
+classmethod show_objects_details_view(title, out_objects, options=[True, True, False, 0, 0, 0.600000]) → bool
+Open a modal message box dialog containing a details view for inspecting / modifying multiples UObjects.
+
+Parameters:
+
+title (Text) – The title of the created dialog window
+out_objects (Array[Object]) – Array of object instances which are supposed to be viewed
+options (EditorDialogLibraryObjectDetailsViewOptions) – Optional settings to customize the look of the details view
+
+Returns:
+The result of the users decision, true=Ok, false=Cancel, or false if running in unattended mode.
+
+Return type:
+bool
+
+classmethod show_suppressable_warning_dialog(title, message, ini_setting_name, ini_setting_file_name_override='', default_value=True) → bool
+Open a modal suppressable warning window, if suppressed will return the default value
+
+Parameters:
+
+title (Text) – The title of the created dialog window
+message (Text) – Text of the message to show
+ini_setting_name (str) – The name of the entry in the INI where the state of the “Disable this warning” check box is stored
+ini_setting_file_name_override (str) – The name of the INI where the state of the InIniSettingName flag is stored (defaults to GEditorPerProjectIni)
+default_value (bool) – If the warning is suppressed, the function will log and return DefaultValue
+
+Returns:
+The result of the users decision, or DefaultValue if suppressed.
+
+Return type:
+bool

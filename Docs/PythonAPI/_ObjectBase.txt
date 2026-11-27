@@ -1,0 +1,49 @@
+# unreal._ObjectBase  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/_ObjectBase.html
+
+unreal._ObjectBase
+
+class unreal._ObjectBase(outer: Object | None = None, name: Name | str = 'None')
+Bases: _WrapperBase
+Type for all Unreal exposed object instances
+
+call_method(self, name: str, *args: Tuple[object, ...], **kwargs: Mapping[str, object]) → Any -- call a method on this object via Unreal reflection using the given ordered (a tuple passed as args) or named (a dict passed as kwargs) argument data - allows calling methods that don't have Python glue
+
+classmethod cast(cls: Type[_T], object: object) → _T -- cast the given object to this Unreal object type or raise an exception if the cast is not possible
+
+get_class(self) → Class -- get the Unreal class of this instance
+
+classmethod get_default_object(cls: Type[_T]) → _T -- get the Unreal class default object (CDO) of this type
+
+get_editor_property(self, name: str) → object -- get the value of any property visible to the editor
+
+get_fname(self) → Name -- get the name of this instance
+
+get_full_name(self) → str -- get the full name (class name + full path) of this instance
+
+get_name(self) → str -- get the name of this instance
+
+get_outer(self) -> Any -- get the outer object from this instance (if any)
+
+get_outermost(self) → Package -- get the outermost object (the package) from this instance
+
+get_package(self) → Package -- get the package directly associated with this instance
+
+get_path_name(self) → str -- get the path name of this instance
+
+get_typed_outer(self, type: Union[Class, type]) -> Any -- get the first outer object of the given type from this instance (if any)
+
+get_world(self) -> Optional[World] -- get the world associated with this instance (if any)
+
+is_package_external(self) → bool -- returns true if this instance has a different package than its outer's package
+
+modify(self, always_mark_dirty: bool = True) -> bool -- inform that this instance is about to be modified (tracks changes for undo/redo if transactional)
+
+rename(self, name: Name | str = 'None', outer: Object | None = None) → bool -- rename this instance and/or change its outer
+
+set_editor_properties(self, properties: Mapping[str, object]) → None -- set the value of any properties visible to the editor (from a name->value dict), ensuring that the pre/post change notifications are called
+
+set_editor_property(self, name: str, value: object, notify_mode: PropertyAccessChangeNotifyMode = PropertyAccessChangeNotifyMode.DEFAULT) → None -- set the value of any property visible to the editor, ensuring that the pre/post change notifications are called
+
+classmethod static_class(cls) → Class -- get the Unreal class of this type

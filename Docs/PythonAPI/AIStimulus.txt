@@ -1,0 +1,64 @@
+# unreal.AIStimulus  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/AIStimulus.html
+
+unreal.AIStimulus
+
+class unreal.AIStimulus
+Bases: StructBase
+C++ Source:
+
+Module: AIModule
+File: AIPerceptionTypes.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+age (float): [Read-Write]
+expiration_age (float): [Read-Write]
+receiver_location (Vector): [Read-Write]
+stimulus_location (Vector): [Read-Write]
+strength (float): [Read-Write]
+successfully_sensed (bool): [Read-Write]
+tag (Name): [Read-Write]
+
+property age: float
+[Read-Write]
+
+Type:
+(float)
+
+property expiration_age: float
+[Read-Write]
+
+Type:
+(float)
+
+property receiver_location: Vector
+[Read-Write]
+
+Type:
+(Vector)
+
+property stimulus_location: Vector
+[Read-Write]
+
+Type:
+(Vector)
+
+property strength: float
+[Read-Write]
+
+Type:
+(float)
+
+property successfully_sensed: bool
+[Read-Write]
+
+Type:
+(bool)
+
+property tag: Name
+[Read-Write]
+
+Type:
+(Name)

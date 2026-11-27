@@ -1,0 +1,32 @@
+# unreal.ActorRecordedProperty  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/ActorRecordedProperty.html
+
+unreal.ActorRecordedProperty
+
+class unreal.ActorRecordedProperty(property_name: Name = 'None', enabled: bool = False)
+Bases: StructBase
+Actor Recorded Property
+C++ Source:
+
+Plugin: Takes
+Module: TakesCore
+File: TakeRecorderSourceProperty.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+enabled (bool): [Read-Write]
+property_name (Name): [Read-Write]
+recorder_name (Text): [Read-Only]
+
+property enabled: bool
+[Read-Write]
+
+Type:
+(bool)
+
+property property_name: Name
+[Read-Write]
+
+Type:
+(Name)

@@ -1,0 +1,23 @@
+# unreal.ScopedSlowTask  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/ScopedSlowTask.html
+
+unreal.ScopedSlowTask
+
+class unreal.ScopedSlowTask(work: float, desc: Text | str = '', enabled: bool = True)
+Bases: object
+Type used to create and managed a scoped slow task in Python
+
+__enter__(self) → ScopedSlowTask -- begin this slow task
+
+__exit__(self, type: Type[BaseException] | None, value: BaseException | None, traceback: TracebackType | None) → bool -- end this slow task
+
+enter_progress_frame(self, work: float = 1.0, desc: Union[Text, str]="") -> None -- indicate that we are to enter a frame that will take up the specified amount of work (completes any previous frames)
+
+make_dialog(self, can_cancel: bool = False, allow_in_pie: bool = False) → None -- creates a new dialog for this slow task, if there is currently not one open
+
+make_dialog_delayed(self, delay: float, can_cancel: bool = False, allow_in_pie: bool = False) → None -- creates a new dialog for this slow task after the given time delay (in seconds). If the task completes before this time, no dialog will be shown
+
+should_cancel(self) → bool -- True if the user has requested that the slow task be canceled
+
+tick_progress(self) → None -- Let the UI refresh but doesn't advance progress

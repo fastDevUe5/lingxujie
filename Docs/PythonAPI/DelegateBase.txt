@@ -1,0 +1,29 @@
+# unreal.DelegateBase  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/DelegateBase.html
+
+unreal.DelegateBase
+
+class unreal.DelegateBase(*args: Any, **kwargs: Any)
+Bases: _WrapperBase
+Type for all Unreal exposed delegate instances
+
+__copy__(self) → Any -- copy this Unreal delegate
+
+bind_callable(self, callable: Callable[..., Any]) → None -- bind this Unreal delegate to a Python callable
+
+bind_delegate(self, delegate: DelegateBase) → None -- bind this Unreal delegate to the same object and function as another delegate
+
+bind_function(self, obj: Object, name: Name | str) → None -- bind this Unreal delegate to a named Unreal function on the given object instance
+
+classmethod cast(cls: Type[_T], object: object) → _T -- cast the given object to this Unreal delegate type
+
+copy(self) → Any -- copy this Unreal delegate
+
+execute(self, *args: Any) → Any -- call this Unreal delegate, but error if it's unbound
+
+execute_if_bound(self, *args: Any) → Any -- call this Unreal delegate, but only if it's bound to something
+
+is_bound(self) → bool -- is this Unreal delegate bound to something?
+
+unbind(self) → None -- unbind this Unreal delegate

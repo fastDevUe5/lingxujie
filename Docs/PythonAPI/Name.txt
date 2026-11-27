@@ -1,0 +1,15 @@
+# unreal.Name  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/Name.html
+
+unreal.Name
+
+class unreal.Name(value: Name | str = 'None')
+Bases: _WrapperBase
+Type for all Unreal exposed name instances
+
+classmethod cast(cls, object: object) → Name -- cast the given object to this Unreal name type
+
+is_none(self) → bool -- is this Unreal name set to NAME_None?
+
+is_valid(self) → bool -- is this Unreal name valid?

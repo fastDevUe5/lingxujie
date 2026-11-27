@@ -1,0 +1,206 @@
+# unreal.AnimDataModel  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/AnimDataModel.html
+
+unreal.AnimDataModel
+
+class unreal.AnimDataModel(outer: Object | None = None, name: Name | str = 'None')
+Bases: Object
+The Model represents the source data for animations. It contains both bone animation data as well as animated curves.
+They are currently only a sub-object of a AnimSequenceBase instance. The instance derives all runtime data from the source data.
+C++ Source:
+
+Module: Engine
+File: AnimDataModel.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+animated_bone_attributes (Array[AnimatedBoneAttribute]): [Read-Only] Container with all animated (bone) attribute data
+bone_animation_tracks (Array[BoneAnimationTrack]): [Read-Only] All individual bone animation tracks
+curve_data (AnimationCurveData): [Read-Only] Container with all animated curve data
+frame_rate (FrameRate): [Read-Only] Rate at which the animated data is sampled
+modified_event (AnimDataModelModifiedDynamicEvent): [Read-Write] Dynamic delegate event allows scripting to register to any broadcasted notify.
+number_of_frames (int32): [Read-Only] Total number of sampled animated frames
+number_of_keys (int32): [Read-Only] Total number of sampled animated keys
+play_length (float): [Read-Only]
+
+property animated_bone_attributes: None
+[Read-Only] Container with all animated (bone) attribute data
+
+Type:
+(Array[AnimatedBoneAttribute])
+
+property bone_animation_tracks: None
+[Read-Only] All individual bone animation tracks
+
+Type:
+(Array[BoneAnimationTrack])
+
+property curve_data: AnimationCurveData
+[Read-Only] Container with all animated curve data
+
+Type:
+(AnimationCurveData)
+
+property frame_rate: FrameRate
+[Read-Only] Rate at which the animated data is sampled
+
+Type:
+(FrameRate)
+
+get_animation_sequence() → AnimSequence
+
+Returns:
+The outer UAnimSequence object if found, otherwise returns a nullptr
+
+Return type:
+AnimSequence
+
+get_bone_animation_tracks() → Array[BoneAnimationTrack]
+Get Bone Animation Tracks
+
+Return type:
+Array[BoneAnimationTrack]
+
+get_bone_track_by_index(track_index) → BoneAnimationTrack
+Get Bone Track by Index
+
+Parameters:
+track_index (int32)
+
+Return type:
+BoneAnimationTrack
+
+get_bone_track_by_name(track_name) → BoneAnimationTrack
+Get Bone Track by Name
+
+Parameters:
+track_name (Name)
+
+Return type:
+BoneAnimationTrack
+
+get_bone_track_index(track) → int32
+Get Bone Track Index
+
+Parameters:
+track (BoneAnimationTrack)
+
+Return type:
+int32
+
+get_bone_track_index_by_name(track_name) → int32
+Get Bone Track Index by Name
+
+Parameters:
+track_name (Name)
+
+Return type:
+int32
+
+get_bone_track_names() → Array[Name]
+Populates the provided array with all contained (bone) track names
+
+Returns:
+out_names (Array[Name]): [out] Array containing all bone track names
+
+Return type:
+Array[Name]
+
+get_frame_rate() → FrameRate
+
+Returns:
+Frame rate at which the animation data is key-ed
+
+Return type:
+FrameRate
+
+get_num_bone_tracks() → int32
+
+Returns:
+Total number of bone animation tracks
+
+Return type:
+int32
+
+get_number_of_float_curves() → int32
+
+Returns:
+Total number of stored float curves
+
+Return type:
+int32
+
+get_number_of_frames() → int32
+
+Returns:
+Total number of frames of animation data stored
+
+Return type:
+int32
+
+get_number_of_keys() → int32
+
+Returns:
+Total number of animation data keys stored
+
+Return type:
+int32
+
+get_number_of_transform_curves() → int32
+
+Returns:
+Total number of stored FTransform curves
+
+Return type:
+int32
+
+get_play_length() → double
+
+Returns:
+Total length of play-able animation data
+
+Return type:
+double
+
+is_valid_bone_track_index(track_index) → bool
+Is Valid Bone Track Index
+
+Parameters:
+track_index (int32)
+
+Return type:
+bool
+
+is_valid_bone_track_name(track_name) → bool
+Is Valid Bone Track Name
+
+Parameters:
+track_name (Name)
+
+Return type:
+bool
+
+property modified_event: AnimDataModelModifiedDynamicEvent
+[Read-Write] Dynamic delegate event allows scripting to register to any broadcasted notify.
+
+Type:
+(AnimDataModelModifiedDynamicEvent)
+
+property number_of_frames: int
+[Read-Only] Total number of sampled animated frames
+
+Type:
+(int32)
+
+property number_of_keys: int
+[Read-Only] Total number of sampled animated keys
+
+Type:
+(int32)
+
+property play_length: float
+[Read-Only]
+
+Type:
+(float)

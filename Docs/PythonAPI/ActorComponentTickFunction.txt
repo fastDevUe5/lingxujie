@@ -1,0 +1,26 @@
+# unreal.ActorComponentTickFunction  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/ActorComponentTickFunction.html
+
+unreal.ActorComponentTickFunction
+
+class unreal.ActorComponentTickFunction
+Bases: TickFunction
+Tick function that calls UActorComponent::ConditionalTick.
+C++ Source:
+
+Module: Engine
+File: EngineBaseTypes.h
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+allow_tick_on_dedicated_server (bool): [Read-Write] If we allow this tick to run on a dedicated server
+end_tick_group (TickingGroup): [Read-Write] Defines the tick group that this tick function must finish within.
+Normal synchronous ticks do not need to set this manually.
+The game thread will stall at the end of this group if the function (or a spawned task) is still in progress.
+start_with_tick_enabled (bool): [Read-Write] If true, this tick function will start enabled, but can be disabled later on.
+tick_even_when_paused (bool): [Read-Write] Bool indicating that this function should execute even if the gameplay is paused. Pause ticks are very limited in capabilities.
+tick_group (TickingGroup): [Read-Write] Defines the first tick group where this function can be executed.
+These groups determine the relative order of when objects tick during a frame update.
+If this function has prerequisites, execution may be delayed to a later group.
+tick_interval (float): [Read-Write] The time in seconds between executions of this tick function. If <= 0 then it will tick every frame.

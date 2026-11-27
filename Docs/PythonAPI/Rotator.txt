@@ -1,0 +1,317 @@
+# unreal.Rotator  (UE 5.8 Python API)
+
+Source: https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/Rotator
+
+unreal.Rotator¶
+
+
+class unreal.Rotator(roll: float = 0.0, pitch: float = 0.0, yaw: float = 0.0)¶
+
+Bases: StructBase
+
+An orthogonal rotation in 3d space.
+
+note: The full C++ class is located here: EngineSourceRuntimeCorePublicMathRotator.h
+
+C++ Source:
+
+
+
+Module: CoreUObject
+
+File: NoExportTypes.h
+
+
+
+Editor Properties: (see get_editor_property/set_editor_property)
+
+
+
+pitch (double): [Read-Write] Pitch (degrees) around Y axis
+
+roll (double): [Read-Write] Roll (degrees) around X axis
+
+yaw (double): [Read-Write] Yaw (degrees) around Z axis
+
+
+__eq__(other: object) → bool¶
+
+Overloads:
+
+
+
+Rotator Returns true if rotator A is equal to rotator B (A == B) within a specified error tolerance
+
+
+__ne__(other: object) → bool¶
+
+Overloads:
+
+
+
+Rotator Returns true if rotator A is not equal to rotator B (A != B) within a specified error tolerance
+
+
+__neg__() → None¶
+
+Negate a rotator
+
+
+combine(b) → Rotator¶
+
+Combine 2 rotations to give you the resulting rotation of first applying A, then B.
+
+
+
+Parameters:
+
+b (Rotator)
+
+
+
+Return type:
+
+Rotator
+
+
+delta(b) → Rotator¶
+
+Normalized A-B
+
+
+
+Parameters:
+
+b (Rotator)
+
+
+
+Return type:
+
+Rotator
+
+
+get_axes() -> (x=Vector, y=Vector, z=Vector)¶
+
+Get the reference frame direction vectors (axes) described by this rotation
+
+
+
+Returns:
+
+x (Vector):
+
+y (Vector):
+
+z (Vector):
+
+
+Return type:
+
+tuple
+
+
+get_forward_vector() → Vector¶
+
+Rotate the world forward vector by the given rotation
+
+
+
+Return type:
+
+Vector
+
+
+get_right_vector() → Vector¶
+
+Rotate the world right vector by the given rotation
+
+
+
+Return type:
+
+Vector
+
+
+get_up_vector() → Vector¶
+
+Rotate the world up vector by the given rotation
+
+
+
+Return type:
+
+Vector
+
+
+inversed() → Rotator¶
+
+Negate a rotator
+
+
+
+Return type:
+
+Rotator
+
+
+is_near_equal(b, error_tolerance=0.000100) → bool¶
+
+Returns true if rotator A is equal to rotator B (A == B) within a specified error tolerance
+
+
+
+Parameters:
+
+
+
+b (Rotator)
+
+error_tolerance (float)
+
+
+Return type:
+
+bool
+
+
+is_not_near_equal(b, error_tolerance=0.000100) → bool¶
+
+Returns true if rotator A is not equal to rotator B (A != B) within a specified error tolerance
+
+
+
+Parameters:
+
+
+
+b (Rotator)
+
+error_tolerance (float)
+
+
+Return type:
+
+bool
+
+
+lerp(b, alpha, shortest_path) → Rotator¶
+
+Linearly interpolates between A and B based on Alpha (100% of A when Alpha=0 and 100% of B when Alpha=1)
+
+
+
+Parameters:
+
+
+
+b (Rotator)
+
+alpha (float)
+
+shortest_path (bool)
+
+
+Return type:
+
+Rotator
+
+
+property pitch: float¶
+
+[Read-Write] Pitch (degrees) around Y axis
+
+
+
+Type:
+
+(double)
+
+
+quaternion() → Quat¶
+
+Converts to Quaternion representation of this Rotator.
+
+
+
+Return type:
+
+Quat
+
+
+property roll: float¶
+
+[Read-Write] Roll (degrees) around X axis
+
+
+
+Type:
+
+(double)
+
+
+scale(b) → Rotator¶
+
+Returns rotator representing rotator A scaled by B
+
+
+
+Parameters:
+
+b (float)
+
+
+
+Return type:
+
+Rotator
+
+
+scale_integer(b) → Rotator¶
+
+Returns rotator representing rotator A scaled by B
+
+
+
+Parameters:
+
+b (int32)
+
+
+
+Return type:
+
+Rotator
+
+
+to_vector() → Vector¶
+
+Get the X direction vector after this rotation
+
+
+
+Return type:
+
+Vector
+
+
+transform() → Transform¶
+
+Converts Rotator to Transform
+
+
+
+Return type:
+
+Transform
+
+
+property yaw: float¶
+
+[Read-Write] Yaw (degrees) around Z axis
+
+
+
+Type:
+
+(double)
